@@ -5,6 +5,7 @@ from django.contrib.auth.password_validation import validate_password
 from .models import User
 
 
+
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
@@ -44,7 +45,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
             # If added new columns through the User model, add them in this
             # create method. Example below:
 
-            # is_student=validated_data['is_student']
+            is_student=validated_data['is_student']
         )
         user.set_password(validated_data['password'])
         user.save()
