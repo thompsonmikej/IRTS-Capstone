@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+# from django.db.models import IntegerField, Model
+# from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class User(AbstractUser):
@@ -13,8 +15,20 @@ class User(AbstractUser):
     # Example (note import of models above that is commented out)
     # this will add a column to the user table
     is_student = models.BooleanField('Is student', default=False)
-    semester = models.IntegerField(max_length=1) 
+    semester = models.IntegerField() 
     gpa = models.FloatField()
-    credits_earned = models.IntegerField(max_length=3) 
+    credits_earned = models.IntegerField() 
     grad_ready = models.BooleanField()
     
+
+# https://stackoverflow.com/questions/849142/how-to-limit-the-maximum-value-of-a-numeric-field-in-a-django-model
+# https://docs.djangoproject.com/en/2.2/ref/validators/#django.core.validators.MinValueValidator
+
+# class MaxValidNumber(Model):
+#     limited_integer_field = IntegerField(
+#         default=1,
+#         validators=[
+#             MaxValueValidator(100),
+#             MinValueValidator(1)
+#         ]
+#      )

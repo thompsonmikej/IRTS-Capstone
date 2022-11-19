@@ -31,3 +31,5 @@ def user_cars(request):
         cars = Car.objects.filter(user_id=request.user.id)
         serializer = CarSerializer(cars, many=True)
         return Response(serializer.data)
+
+
