@@ -4,8 +4,8 @@ from . import views
 urlpatterns = [
     path('', views.get_all_courses),  
     # path('<int:pk>/', views.courses_detail),
-    path('/api/courses/all/', views.get_all_courses),
-    path('/api/courses/new/', views.user_courses)
+    path('all/', views.get_all_courses),
+    path('new/', views.user_courses)
     # path('/api/course/', views.user_courses)
 ]
 

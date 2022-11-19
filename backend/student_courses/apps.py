@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class StudentCourseConfig(AppConfig):
+class Student_CourseConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'student_course'
+    name = 'student_courses'

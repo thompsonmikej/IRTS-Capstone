@@ -40,7 +40,10 @@ INSTALLED_APPS = [
     'rest_framework',
     'authentication.apps.AuthenticationConfig',
     'corsheaders',
+    'courses.apps.CoursesConfig',  
+    'student_courses.apps.Student_CourseConfig',  
     'cars.apps.CarsConfig'  # This app is for example use only
+    
 ]
 
 MIDDLEWARE = [
