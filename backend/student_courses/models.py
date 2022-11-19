@@ -6,6 +6,6 @@ from courses.models import Student_Course
 class StudentCourse(models.Model):
     student = models.ForeignKey(User, on_delete=models.CASCADE) 
     course = models.ForeignKey(Student_Course, on_delete=models.CASCADE) 
-    grade_received = models.IntegerField() 
-    credits_received = models.IntegerField() 
+    grade_received = models.IntegerField(blank=True, null=True) 
+    credits_received = models.IntegerField(blank=True, null=True) 
 

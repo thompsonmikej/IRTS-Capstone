@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here.
 class Student_Course(models.Model):
     name = models.CharField(max_length=255)
-    year_semester = models.IntegerField()
+    year_semester = models.IntegerField(blank=True, null=True)
     
     # SEMESTER 8, name:
 #     8 THESIS, 4 CR

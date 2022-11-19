@@ -15,10 +15,10 @@ class User(AbstractUser):
     # Example (note import of models above that is commented out)
     # this will add a column to the user table
     is_student = models.BooleanField('Is student', default=False)
-    semester = models.IntegerField() 
-    gpa = models.FloatField()
-    credits_earned = models.IntegerField() 
-    grad_ready = models.BooleanField()
+    semester = models.IntegerField(blank=True, null=True)
+    gpa = models.FloatField(blank=True, null=True)
+    credits_earned = models.IntegerField(blank=True, null=True) 
+    grad_ready = models.BooleanField('Graduation ready', default=False)
     
 
 # https://stackoverflow.com/questions/849142/how-to-limit-the-maximum-value-of-a-numeric-field-in-a-django-model
