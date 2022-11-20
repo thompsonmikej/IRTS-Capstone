@@ -19,16 +19,6 @@ class User(AbstractUser):
     gpa = models.FloatField(blank=True, null=True)
     credits_earned = models.IntegerField(blank=True, null=True) 
     grad_ready = models.BooleanField('Graduation ready', default=False)
+    name = models.CharField(max_length=255)
+    year_semester = models.IntegerField(blank=True, null=True)
     
-
-# https://stackoverflow.com/questions/849142/how-to-limit-the-maximum-value-of-a-numeric-field-in-a-django-model
-# https://docs.djangoproject.com/en/2.2/ref/validators/#django.core.validators.MinValueValidator
-
-# class MaxValidNumber(Model):
-#     limited_integer_field = IntegerField(
-#         default=1,
-#         validators=[
-#             MaxValueValidator(100),
-#             MinValueValidator(1)
-#         ]
-#      )

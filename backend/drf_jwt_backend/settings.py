@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'authentication.apps.AuthenticationConfig',
     'corsheaders',
     'courses.apps.CoursesConfig',  
-    'student_courses.apps.Student_CourseConfig',  
+    'student_courses.apps.StudentCourseConfig',  
     'cars.apps.CarsConfig'  # This app is for example use only
     
 ]
