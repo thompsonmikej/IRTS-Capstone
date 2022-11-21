@@ -32,19 +32,19 @@ def select_courses(request):
         serializer = CourseSerializer(courses, many=True)
         return Response(serializer.data)
 
-# @api_view(['GET', 'PUT', 'DELETE']) 
-# def get_user_courses(request, pk):
-#     product= get_object_or_404(Product, pk=pk)
-#     if request.method == 'GET':
-#         serializer = ProductSerializer(product) 
-#         return Response(serializer.data)
+@api_view(['GET', 'PUT', 'DELETE']) 
+def change_user_courses(request, pk):
+    product= get_object_or_404(Product, pk=pk)
+    if request.method == 'GET':
+        serializer = ProductSerializer(product) 
+        return Response(serializer.data)
 
-#     elif request.method == 'PUT':
-#         serializer = ProductSerializer(product, data=request.data)
-#         serializer.is_valid(raise_exception= True)
-#         serializer.save()
-#         return Response(serializer.data)
+    elif request.method == 'PUT':
+        serializer = ProductSerializer(product, data=request.data)
+        serializer.is_valid(raise_exception= True)
+        serializer.save()
+        return Response(serializer.data)
 
-#     elif request.method == 'DELETE':
-#         product.delete()
-#         return Response(status=status.HTTP_204_NO_CONTENT)
+    elif request.method == 'DELETE':
+        product.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

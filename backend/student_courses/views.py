@@ -10,7 +10,7 @@ from .serializers import StudentCourseSerializer
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
-def get_all_student_courses(request):
+def get_all_user_courses(request):
     student_course = StudentCourse.objects.all()
     serializer = StudentCourseSerializer(student_courses, many=True)
     return Response(serializer.data)
@@ -18,7 +18,7 @@ def get_all_student_courses(request):
 
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
-def get_user_courses(request):
+def get_user_grades(request):
     # print(
     #     'User ', f"{request.user.id} {request.user.email} {request.user.username}")
     if request.method == 'POST':
