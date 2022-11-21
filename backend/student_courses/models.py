@@ -1,6 +1,6 @@
 from django.db import models
 from authentication.models import User
-from .models import Course
+from courses.models import Course
 
 # Create your models here.
 class StudentCourse(models.Model):

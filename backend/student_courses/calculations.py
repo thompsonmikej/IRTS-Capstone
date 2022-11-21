@@ -75,7 +75,7 @@ def graduation_ready(gpa, credits_earned, credits_required, determine_semester):
 ready_to_graduate = graduation_ready(3.1, 126, determine_semester, credits_required)
 
 def how_many_objects():
-    """User specifies the number of objects to update in this series.
+    """User specifies the number of objects (grades or courses) to update in this section.
     """    
     i = 0
     objects= int(input('How many courses would you like to add, up to 4? \nPlease enter a number from 1-4. Or enter 0 to restart.\n'))
@@ -201,7 +201,7 @@ def calculate_credits_accumulated(credits_earned_per_course, previous_credits):
 course_credits_accumulated = calculate_credits_accumulated(
     credits_earned_per_course, 92)
 
-
+#post request not input-- thru reactJS
 
 def choose_a_semester(): 
     """First part, begins a course object with the semester number.
