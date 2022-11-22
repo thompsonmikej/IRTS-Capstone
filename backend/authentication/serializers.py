@@ -5,23 +5,16 @@ from django.contrib.auth.password_validation import validate_password
 from .models import User
 
 
-
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)
         # for any additional fields you'd like to add to the JWT sent back in response
         # add below using the token["field name"] = user.name_of_property
-        
+        # token["is_student"] = user.is_student
+
         token["username"] = user.username
         token["first_name"] = user.first_name
-        token["is_student"] = user.is_student
-        token["semester"] = user.semester
-        token["gpa"] = user.gpa
-        token["credits_earned"] = user.credits_earned
-        token["grad_ready"] = user.grad_ready
-        token["name"] = user.name
-        token["year_semester"] = user.year_semester
 
         return token
 
@@ -38,8 +31,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
         # If added new columns through the User model, add them in the fields
         # list as seen below
         fields = ('username', 'password', 'email',
-                  'first_name', 'last_name', 'is_student' , 'semester', 'gpa', 'credits_earned', 'grad_ready')
-     
+                  'first_name', 'last_name')
 
     def create(self, validated_data):
 
@@ -52,9 +44,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
             # If added new columns through the User model, add them in this
             # create method. Example below:
 
-            is_student=validated_data['is_student'],
-
-
+            # is_student=validated_data['is_student']
         )
         user.set_password(validated_data['password'])
         user.save()

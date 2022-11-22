@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -14,6 +14,14 @@ def get_all_courses(request):
     courses = Course.objects.all()
     serializer = CourseSerializer(courses, many=True)
     return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def view_available_courses(request): 
+    courses = Course.objects.filter(year_semester__lt=request.user.year_semester)
+    serializer = CourseSerializer(courses, many=True)
+    return Response(serializer.data)
+
 
 
 @api_view(['GET', 'POST'])
@@ -33,18 +41,18 @@ def select_courses(request):
         return Response(serializer.data)
 
 @api_view(['GET', 'PUT', 'DELETE']) 
-def change_user_courses(request, pk):
-    product= get_object_or_404(Product, pk=pk)
+def user_courses(request, pk):
+    courses= get_object_or_404(Course, pk=pk)
     if request.method == 'GET':
-        serializer = ProductSerializer(product) 
+        serializer = CourseSerializer(courses) 
         return Response(serializer.data)
 
     elif request.method == 'PUT':
-        serializer = ProductSerializer(product, data=request.data)
+        serializer = CourseSerializer(courses, data=request.data)
         serializer.is_valid(raise_exception= True)
         serializer.save()
         return Response(serializer.data)
 
     elif request.method == 'DELETE':
-        product.delete()
+        courses.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

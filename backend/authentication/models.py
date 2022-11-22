@@ -19,6 +19,5 @@ class User(AbstractUser):
     gpa = models.FloatField(blank=True, null=True)
     credits_earned = models.IntegerField(blank=True, null=True) 
     grad_ready = models.BooleanField('Graduation ready', default=False)
-    name = models.CharField(max_length=255)
     year_semester = models.IntegerField(blank=True, null=True)
     
