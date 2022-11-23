@@ -7,10 +7,10 @@ urlpatterns = [
     # path('grades/current/', views.get_all_user_courses),
     # path('credits/get/<year_semester>/', views.get_all_user_courses),
     
-    path('grades/changeget/', views.get_or_change_grades),
+    # path('grades/changeget/', views.get_or_change_grades),
     
-    path('grades/get/<int:pk>', views.change_grade_or_course),
-    path('grades/delete/<int:pk>/', views.change_grade_or_course)
+    path('grades/course/<str:course>/', views.get_grades),
+    # path('grades/delete/<int:pk>/', views.change_grade_or_course)
     # path('grades/delete/<str:name>/', views.change_grade_or_course)
    
 ]

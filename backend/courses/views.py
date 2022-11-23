@@ -20,20 +20,22 @@ def get_all_courses(request):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def view_available_courses(request, year_semester):
-    """api/course/available
+    """api/course/available/<year_semester>/
     """ 
-    courses = Course.objects.filter(year_semester=request.user.year_semester)
+    print('year semester', year_semester)
+    courses = Course.objects.filter(year_semester=year_semester)
     serializer = CourseSerializer(courses, many=True)
+    print(courses)
     return Response(serializer.data)
 
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def view_transcript(request, year_semester): 
-    """api/course/transcript
-    """
-    courses = Course.objects.filter(year_semester__lt=request.user.year_semester)
-    serializer = CourseSerializer(courses, many=True)
-    return Response(serializer.data)
+# @api_view(['GET'])
+# @permission_classes([IsAuthenticated])
+# def view_transcript(request, year_semester): 
+#     """api/course/transcript
+#     """
+#     courses = Course.objects.filter(year_semester__lt=request.user.year_semester)
+#     serializer = CourseSerializer(courses, many=True)
+#     return Response(serializer.data)
 
 
 @api_view(['GET'])
@@ -60,6 +62,8 @@ def change_courses(request):
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])   #by name
 def delete_courses(request, name):
+    """api/courses/delete/<name>/
+    """  
     course = get_object_or_404(Course, name=name)
     course.delete()
     return Response(status=status.HTTP_204_NO_CONTENT)
