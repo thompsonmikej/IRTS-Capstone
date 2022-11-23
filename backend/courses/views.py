@@ -41,10 +41,9 @@ def view_transcript(request, year_semester):
 def find_courses(request):
     """api/courses/find
     """
-    if request.method == 'GET':
-        courses = Course.objects.filter(data=request.data)
-        serializer = CourseSerializer(courses, many=True)
-        return Response(serializer.data)
+    courses = Course.objects.filter(data=request.data)
+    serializer = CourseSerializer(courses, many=True)
+    return Response(serializer.data)
 
 
 @api_view(['POST'])
@@ -52,21 +51,16 @@ def find_courses(request):
 def change_courses(request):
     """api/courses/change
     """    
-    if request.method == 'POST':
-        serializer = CourseSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
+    serializer = CourseSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['DELETE'])
-@permission_classes([IsAuthenticated])
-def delete_courses(request, fk): 
-    """api/courses/delete
-    """
-    courses = Course.objects.filter(fk=fk)
-    serializer = CourseSerializer(courses, many=True)
-    return Response(serializer.data)
-
-
+@permission_classes([IsAuthenticated])   #by name
+def delete_courses(request, name):
+    course = get_object_or_404(Course, name=name)
+    course.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)
+    
