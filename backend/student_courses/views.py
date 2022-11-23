@@ -11,6 +11,8 @@ from .serializers import StudentCourseSerializer
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def student_users(request, is_student):
+    """user story
+    """
     is_student = StudentCourse.objects.filter(is_student=True)
     serializer = StudentCourseSerializer(is_student, many=True)
     return Response(serializer.data)
@@ -19,14 +21,29 @@ def student_users(request, is_student):
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
 def get_or_change_grades(request, grade_received):
+    """user story
+    """
     # print(
     #     'User ', f"{request.user.id} {request.user.email} {request.user.username}")
     if request.method == 'POST': #add grade
         serializer = StudentCourseSerializer(grade_received=request.grade_received)
         if serializer.is_valid():
+            serializer.save(data=request.data)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])   #by name
+def change_courses(request):
+    """user story
+    """    
+    if request.method == 'POST':
+        serializer = StudentCourseSerializer(data=request.data)
+        if serializer.is_valid():
             serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
         
     elif request.method == 'GET': #get their grade
         grade_received = StudentCourse.objects.filter(grade_received=request.grade_received)
@@ -35,6 +52,8 @@ def get_or_change_grades(request, grade_received):
 
 @api_view(['GET', 'PUT', 'DELETE']) 
 def change_grade_or_course(request, pk):
+    """user story
+    """
     grade_or_course= get_object_or_404(StudentCourse, pk=pk)
     if request.method == 'GET':
         serializer = StudentCourseSerializer(grade_or_course) 

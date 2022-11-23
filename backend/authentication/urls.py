@@ -8,8 +8,5 @@ urlpatterns = [
     path('register/', RegisterView.as_view(), name='register'),
 
 
-    # path('api/courses/', views.get_all_user_courses),
-    # path('api/courses/', views.get_all_user_courses),
-
     
 ]

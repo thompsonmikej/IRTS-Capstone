@@ -6,8 +6,8 @@ urlpatterns = [
     path('all/', views.get_all_courses),
     path('available/', views.view_available_courses),
     path('transcript/', views.view_transcript),
-    path('delete/<str:name>/', views.delete_courses),
-    path('change/', views.find_or_change_courses),
-    path('find/', views.find_or_change_courses)
+    path('delete/<int:pk>/', views.delete_courses),
+    path('change/', views.change_courses),
+    path('find/', views.find_courses)
         
 ]

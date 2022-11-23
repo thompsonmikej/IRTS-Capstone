@@ -11,13 +11,17 @@ from .serializers import CourseSerializer
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def get_all_courses(request):
+    """api/courses/all
+    """
     courses = Course.objects.all()
     serializer = CourseSerializer(courses, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def view_available_courses(request, year_semester): 
+def view_available_courses(request, year_semester):
+    """api/course/available
+    """ 
     courses = Course.objects.filter(year_semester=request.user.year_semester)
     serializer = CourseSerializer(courses, many=True)
     return Response(serializer.data)
@@ -25,40 +29,44 @@ def view_available_courses(request, year_semester):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def view_transcript(request, year_semester): 
+    """api/course/transcript
+    """
     courses = Course.objects.filter(year_semester__lt=request.user.year_semester)
     serializer = CourseSerializer(courses, many=True)
     return Response(serializer.data)
 
+
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def view_available_courses(request, year_semester): 
-    courses = Course.objects.filter(year_semester=request.user.year_semester)
-    serializer = CourseSerializer(courses, many=True)
-    return Response(serializer.data)
-
-
-@api_view(['DELETE'])
-@permission_classes([IsAuthenticated])
-def delete_courses(request, name): 
-    courses = Course.objects.filter(name=request.user.name)
-    serializer = CourseSerializer(courses, many=True)
-    return Response(serializer.data)
-
-
-
-@api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])   #by name
-def find_or_change_courses(request):
-    # print(
-    #     'User ', f"{request.user.id} {request.user.email} {request.user.username}")
-    if request.method == 'POST':
-        serializer = CourseSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save(user=request.user)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    elif request.method == 'GET':
+def find_courses(request):
+    """api/courses/find
+    """
+    if request.method == 'GET':
         courses = Course.objects.filter(data=request.data)
         serializer = CourseSerializer(courses, many=True)
         return Response(serializer.data)
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])   #by name
+def change_courses(request):
+    """api/courses/change
+    """    
+    if request.method == 'POST':
+        serializer = CourseSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
+def delete_courses(request, fk): 
+    """api/courses/delete
+    """
+    courses = Course.objects.filter(fk=fk)
+    serializer = CourseSerializer(courses, many=True)
+    return Response(serializer.data)
+
 

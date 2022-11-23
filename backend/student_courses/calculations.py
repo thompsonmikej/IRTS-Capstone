@@ -22,29 +22,26 @@
 # credits_received   #calcated below
 
 
-# def user_or_employee(user_status, determine_semester, gpa_calc, credits_accum , ready_to_graduate):
-#     is_student = user_status
-#     if is_student= True:
-#         year_semester = determine_semester
-#         gpa = gpa_calc
-#         credits_earned = credits_accum
-#         grad_ready = ready_to_graduate
-#     else:
-#         year_semester = 'null'
-#         gpa = 'null'
-#         credits_earned = 'null'
-#         grad_ready = 'null'
-
-# account_status = user_or_employee(detemine_semester, gpa_calc, credits_accum, ready_to_graduate)
+def user_or_employee(user_status, determine_semester, gpa_calc, credits_accum , ready_to_graduate):
+    is_student = user_status
+    if is_student= True:
+        year_semester = determine_semester
+        gpa = gpa_calc
+        credits_earned = credits_accum
+        grad_ready = ready_to_graduate
+    else:
+        year_semester = 'null'
+        gpa = 'null'
+        credits_earned = 'null'
+        grad_ready = 'null'
+account_status = user_or_employee(detemine_semester, gpa_calc, credits_accum, ready_to_graduate)
 
 def credits_to_graduate():
     """Number of credits required for graduation
     """    
     minimum_credits_to_graduate = 124
     return minimum_credits_to_graduate
-
 credits_required = credits_to_graduate()
-
 
 def semester(course_credits_accumulated, credits_required):
     """Assigns the grade level based on number of credits accumulated. The upper threshold is determined in credits_to_graduate function
@@ -56,7 +53,6 @@ def semester(course_credits_accumulated, credits_required):
     else:
         print('Based on the credit total, student is in semester 7')
         return(701)
-
 determine_semester= semester(100, credits_required)
 
 # determine the credit ranges of a semester based on the number of credits
@@ -71,7 +67,6 @@ def graduation_ready(gpa, credits_earned, credits_required, determine_semester):
     else:
         print('Not ready.')
         return False
-
 ready_to_graduate = graduation_ready(3.1, 126, determine_semester, credits_required)
 
 def how_many_objects():
@@ -94,7 +89,6 @@ def how_many_objects():
     else:
         print('Please re-enter a number within the range. Thanks.')
         return how_many_objects()
-
 number_of_objects = how_many_objects()
 
 
@@ -131,7 +125,6 @@ def transcript_creator():
     course_tally = []
     print('Courses on your transcript: course tally (starts blank). ', course_tally)
     return course_tally
-
 transcript_for_output= transcript_creator()
 
 
@@ -143,12 +136,7 @@ def courses_taken(chosen_subject, transcript_for_output):
     this_transcript.append(chosen_subject)
     print('This is a transcript of courses taken. ', this_transcript)
     return this_transcript
-
-
 student_transcript = courses_taken('ENG', transcript_for_output)
-
-
-
 
 #filter the transcript for current grade report or prior
 
@@ -172,7 +160,6 @@ def choose_grade():
     else:
         print('Please re-enter a number within the range.')
         return choose_grade()
-
 grade_applied = choose_grade()
 
 
@@ -187,7 +174,6 @@ def award_course_credits(numeric_grade, credits_attempted):
         credits_attempted = 0
         print('Grade points earned: ', grade_points_earned )
         return credits_attempted
-
 credits_earned_per_course = award_course_credits(3.1, 4)
 
 
@@ -198,6 +184,7 @@ def calculate_credits_accumulated(credits_earned_per_course, previous_credits):
     print('Total credits accumulated (credit_tally): ', credit_tally)
     return credit_tally
  
+
 course_credits_accumulated = calculate_credits_accumulated(
     credits_earned_per_course, 92)
 
@@ -214,7 +201,6 @@ def choose_a_semester():
     else:
         print('Please re-enter a number within the range.')
         return choose_a_semester()
-
 select_semester = choose_a_semester()
 
 #choose semester only once, choose each course once
@@ -249,7 +235,6 @@ def choose_a_subject(select_semester, available_courses):
         case _:
           # Prompt user again. Another instance of recursion
             return choose_a_subject(select_semester)
-
 chosen_subject = choose_a_subject(select_semester, available_courses)
 
 
@@ -260,7 +245,6 @@ def grade_for_subject(chosen_subject, grade_applied):
     subject_and_grade = chosen_subject, grade_applied
     print('Grade_for_subject: ', subject_and_grade)
     return subject_and_grade
-
 graded_subject = grade_for_subject(chosen_subject, grade_applied)
 
 
@@ -282,7 +266,6 @@ def extract_credit_value(chosen_subject):
     the_credit = int(chosen_subject[index-1])
     print("The credit value of this course, for GPA purposes is: ", the_credit)
     return the_credit
-
 credit_value = extract_credit_value(chosen_subject)
 
 # As a student, I want to access my records and see an accurate calculated GPA score based on my recorded grades.
