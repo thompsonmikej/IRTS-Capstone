@@ -24,8 +24,8 @@ def student_users(request):
 def grad_ready_users(request):
     """/api/users/grads/  students filtered by credits_received >=124 && gpa >3
     """
-    print(f'''students to be filtered by credits received above 124 and gpa above 3 ''')
-    graduate = StudentCourse.objects.all()
+    print(f'''students to be filtered by above 124 and gpa above 3 ''')
+    graduate = StudentCourse.objects.filter(credits_received__gte=124)
     serializer = StudentCourseSerializer(graduate, many=True)
     print('grad ready_users', graduate)
     return Response(serializer.data)
@@ -34,13 +34,12 @@ def grad_ready_users(request):
 # CREDITS
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def get_credits(request,credits_received):
+def get_user_credits(request):
     """/api/users/credits/get/all  
     """
-    print(f'''get credits', {credits_received}''')
-    credit = StudentCourse.objects.filter(credits_received=credits_received)
+    credit = StudentCourse.objects.filter(credits_received__gt=0)
     serializer = StudentCourseSerializer(credit, many=True)
-    print('get_credits', credit)
+    print('get_credits', credits_received)
     return Response(serializer.data)
 
 @api_view(['GET'])

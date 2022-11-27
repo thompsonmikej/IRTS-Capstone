@@ -8,7 +8,7 @@ urlpatterns = [
 
 # Credits
    path('credits/get/<year_semester>/', views.get_semester_credits),
-   path('credits/get/all', views.get_credits),
+   path('credits/get/all', views.get_user_credits),
 
 # Grades below
     path('grades/get/', views.get_grades),
@@ -23,6 +23,7 @@ urlpatterns = [
     path('courses/new', views.create_courses),
     path('courses/change/', views.change_courses),
     path('courses/delete/', views.delete_courses),
+
 
 
 ]
