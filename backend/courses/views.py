@@ -22,10 +22,8 @@ def get_all_courses(request):
 def view_available_courses(request, year_semester):
     """api/course/available/<year_semester>/
     """ 
-    print('year semester', year_semester)
     courses = Course.objects.filter(year_semester=year_semester)
     serializer = CourseSerializer(courses, many=True)
-    print(courses)
     return Response(serializer.data)
 
 # @api_view(['GET'])
