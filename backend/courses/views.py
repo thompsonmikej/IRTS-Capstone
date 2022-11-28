@@ -26,16 +26,6 @@ def view_available_courses(request, year_semester):
     serializer = CourseSerializer(courses, many=True)
     return Response(serializer.data)
 
-# @api_view(['GET'])
-# @permission_classes([IsAuthenticated])
-# def view_transcript(request, year_semester): 
-#     """api/course/transcript
-#     """
-#     courses = Course.objects.filter(year_semester__lt=request.user.year_semester)
-#     serializer = CourseSerializer(courses, many=True)
-#     return Response(serializer.data)
-
-
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])   #by name
 def find_courses(request):

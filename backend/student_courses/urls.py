@@ -14,8 +14,8 @@ urlpatterns = [
     path('grades/get/', views.get_grades),
     path('grades/change/<int:grade_received>', views.change_grades),
 #  path('grades/new/', views.
-    path('grades/gpa/', views.get_gpa),
-    path('grades/delete/<str:name>/', views.delete_grades),
+    
+    path('grades/delete/<int:grade_received>', views.delete_grades),
 
 # Courses
     # path('courses/grade/<str:grade_received>/', views.get_grades),
@@ -23,8 +23,5 @@ urlpatterns = [
     path('courses/new', views.create_courses),
     path('courses/change/', views.change_courses),
     path('courses/delete/', views.delete_courses),
-
-
-
 ]
 

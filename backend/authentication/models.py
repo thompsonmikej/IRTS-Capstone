@@ -15,6 +15,8 @@ class User(AbstractUser):
     # Example (note import of models above that is commented out)
     # this will add a column to the user table
     is_student = models.BooleanField('Is student', default=False)
+
+    #Below pertains only to student 
     semester = models.IntegerField(blank=True, null=True)
     gpa = models.FloatField(blank=True, null=True)
     credits_earned = models.IntegerField(blank=True, null=True) 

@@ -44,10 +44,10 @@ def get_user_credits(request):
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def get_semester_credits(request,credits_received):
+def get_semester_credits(request):
     """/api/users/credits/get/<year_semester>/
     """
-    print(f'''get semester credits', {credits_received}''')
+    # print(f'''get semester credits', {credits_received}''')
     credit = StudentCourse.objects.filter(credits_received=credits_received)
     serializer = StudentCourseSerializer(credit, many=True)
     print('get_semester_credits', credit)
@@ -57,7 +57,7 @@ def get_semester_credits(request,credits_received):
 # GRADES
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def get_grades(request, grade_received):
+def get_grades(request):
     """api/users/grades/get
     """
     serializer = StudentCourseSerializer(data=request.data)
@@ -70,25 +70,26 @@ def get_grades(request, grade_received):
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def get_gpa(request, grade_received):
-    """api/users/grades/gpa
+def get_gpa(request):
+    """api/users/grades/gpa  ##USER?
     """
+    gpa_received = StudentCourse.objects.filter(gpa__gte=0)
     serializer = StudentCourseSerializer(data=request.data)
     print('get GPA')
     if serializer.is_valid():
         serializer.save()
-        print('get GPA')
+        print('get GPA', gpa_received)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])   #by name
-def change_grades(request, grade_received):
+def change_grades(request):
     """api/users/grades/change/
     """    
     serializer = StudentCourseSerializer(data=request.data)
-    print(f'''change grades', {grade_received}''')
+    print('change grades')
     if serializer.is_valid():
         serializer.save()
         print('POST change grades')
@@ -96,10 +97,10 @@ def change_grades(request, grade_received):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['DELETE']) 
-def delete_grades(request, grade_received):
+def delete_grades(request):
     """api/users/grades/delete/
     """
-    print(f'''deleted grades', {grade_received}''')
+    print('deleted grades')
     grade_deleted= get_object_or_404(StudentCourse)
     serializer = StudentCourseSerializer(grade_deleted) 
     return Response(serializer.data)
@@ -133,7 +134,7 @@ def change_courses(request):
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def create_courses(request, grade_received):
+def create_courses(request):
     """api/users/courses/new     
     """
     serializer = StudentCourseSerializer(data=request.data)
