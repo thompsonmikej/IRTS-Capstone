@@ -26,8 +26,8 @@ class RegisterView(generics.CreateAPIView):
 def get_gpa(request):
     """api/auth/grades/gpa  ##USER?
     """
-    student_gpa = User.objects.all()  # filter(gpa__gte=0)
-    serializer = RegistrationSerializer(data=request.data)
+    student_gpa = User.objects.filter(gpa__gte=0)
+    serializer = StudentSerializer(data=request.data)
     print('get GPA')
     if serializer.is_valid():
         serializer.save()

@@ -21,26 +21,26 @@ def student_users(request):
 
 
 # CREDITS
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def get_user_credits(request):
-    """/api/users/credits/get/all  
-    """
-    credit = StudentCourse.objects.filter(credits_received__gt=0)
-    serializer = StudentCourseSerializer(credit, many=True)
-    print('get_credits', credits_received)
-    return Response(serializer.data)
+# @api_view(['GET'])
+# @permission_classes([IsAuthenticated])
+# def get_user_credits(request):
+#     """/api/users/credits/get/all  
+#     """
+#     credit = StudentCourse.objects.filter(credits_received__gt=0)
+#     serializer = StudentCourseSerializer(credit, many=True)
+#     print('get_credits', credits_received)
+#     return Response(serializer.data)
 
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def get_semester_credits(request):
-    """/api/users/credits/get/<year_semester>/
-    """
-    # print(f'''get semester credits', {credits_received}''')
-    credit = StudentCourse.objects.filter(credits_received=credits_received)
-    serializer = StudentCourseSerializer(credit, many=True)
-    print('get_semester_credits', credit)
-    return Response(serializer.data)
+# @api_view(['GET'])
+# @permission_classes([IsAuthenticated])
+# def get_semester_credits(request):
+#     """/api/users/credits/get/<year_semester>/
+#     """
+#     # print(f'''get semester credits', {credits_received}''')
+#     credit = StudentCourse.objects.filter(credits_received=credits_received)
+#     serializer = StudentCourseSerializer(credit, many=True)
+#     print('get_semester_credits', credit)
+#     return Response(serializer.data)
 
 
 # GRADES

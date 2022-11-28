@@ -1,1 +1,0 @@
-SELECT * FROM irts_db.courses_course;
