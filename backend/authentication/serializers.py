@@ -19,6 +19,16 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         return token
 
 
+class StudentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'semester', 'gpa', 'credits_earned',
+                  'grad_ready']
+
+# student_id = serializers.IntegerField(write_only=True)
+# course_id = serializers.IntegerField(write_only=True)
+
+
 
 
 class RegistrationSerializer(serializers.ModelSerializer):

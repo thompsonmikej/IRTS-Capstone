@@ -19,17 +19,6 @@ def student_users(request):
     print('GET users with courses, all_student users', student)
     return Response(serializer.data)
 
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def grad_ready_users(request):
-    """/api/users/grads/  students filtered by credits_received >=124 && gpa >3
-    """
-    print(f'''students to be filtered by above 124 and gpa above 3 ''')
-    graduate = StudentCourse.objects.filter(credits_received__gte=124)
-    serializer = StudentCourseSerializer(graduate, many=True)
-    print('grad ready_users', graduate)
-    return Response(serializer.data)
-
 
 # CREDITS
 @api_view(['GET'])
@@ -60,6 +49,7 @@ def get_semester_credits(request):
 def get_grades(request):
     """api/users/grades/get
     """
+    # this_grade = StudentCourse.objects.filter(grade_received=grade_received)
     serializer = StudentCourseSerializer(data=request.data)
     print('get grades')
     if serializer.is_valid():
@@ -88,6 +78,8 @@ def get_gpa(request):
 def change_grades(request):
     """api/users/grades/change/
     """    
+    grade_received = StudentCourse.objects.filter(grade_received=grade_received)
+    print('POST change courses', grade_received)
     serializer = StudentCourseSerializer(data=request.data)
     print('change grades')
     if serializer.is_valid():
