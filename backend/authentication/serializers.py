@@ -19,7 +19,9 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         return token
 
 
-class StudentSerializer(serializers.ModelSerializer):
+class GradReadySerializer(serializers.ModelSerializer):
+    """api/auth/grads/
+    """ 
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'semester', 'gpa', 'credits_earned',

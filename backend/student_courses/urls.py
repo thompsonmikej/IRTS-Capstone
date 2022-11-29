@@ -12,7 +12,7 @@ urlpatterns = [
 
 # Grades below
     path('grades/get/', views.get_grades),
-    path('grades/change/<int:grade_received>', views.change_grades),
+    path('grades/change/', views.change_grades),
 #  path('grades/new/', views.
     
     path('grades/delete/<int:grade_received>', views.delete_grades),

@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
 from .models import StudentCourse
-from .serializers import StudentCourseSerializer
+from .serializers import StudentCourseSerializer, GradedCourseSerializer
 
 # Create your views here.
 #USERS
@@ -20,15 +20,15 @@ def student_users(request):
     return Response(serializer.data)
 
 
-# CREDITS
+# # CREDITS
 # @api_view(['GET'])
 # @permission_classes([IsAuthenticated])
 # def get_user_credits(request):
 #     """/api/users/credits/get/all  
 #     """
 #     credit = StudentCourse.objects.filter(credits_received__gt=0)
-#     serializer = StudentCourseSerializer(credit, many=True)
-#     print('get_credits', credits_received)
+#     serializer = CourseCreditSerializer(credit, many=True)
+#     print('get_credits', credit)
 #     return Response(serializer.data)
 
 # @api_view(['GET'])
@@ -50,7 +50,7 @@ def get_grades(request):
     """api/users/grades/get
     """
     # this_grade = StudentCourse.objects.filter(grade_received=grade_received)
-    serializer = StudentCourseSerializer(data=request.data)
+    serializer = GradedCourseSerializer(data=request.data)
     print('get grades')
     if serializer.is_valid():
         serializer.save()
@@ -78,9 +78,9 @@ def get_gpa(request):
 def change_grades(request):
     """api/users/grades/change/
     """    
-    grade_received = StudentCourse.objects.filter(grade_received=grade_received)
-    print('POST change courses', grade_received)
-    serializer = StudentCourseSerializer(data=request.data)
+    # grade_received = StudentCourse.objects.filter(grade_received=grade_received)
+    # print('POST change courses', grade_received)
+    serializer = GradedCourseSerializer(data=request.data)
     print('change grades')
     if serializer.is_valid():
         serializer.save()
@@ -106,7 +106,7 @@ def get_all_courses(request):
     """/api/courses/all/
     """
     course = StudentCourse.objects.all()
-    serializer = StudentCourseSerializer(course, many=True)
+    serializer = NewCourseSerializer(course, many=True)
     print('get_all_courses', course)
     return Response(serializer.data)
 
