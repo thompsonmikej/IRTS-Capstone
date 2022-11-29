@@ -5,33 +5,33 @@ import useAuth from "../../hooks/useAuth";
 const GradeReport = () => {
 
     const [user, token] = useAuth();
-    const [grades, setGrades] = useState([]);
+    const [items, setItems] = useState([]);
 
     useEffect(() => {
-        const fetchGrades = async () => {
+        const fetchItems = async () => {
             try {
                 let response = await axios.get('http://127.0.0.1:8000/api/grades/get/', {
                     headers: {
                         Authorization: "Bearer " + token,
                     },
                 });
-                console.log('Success response in get_grades', grades)   
-                setGrades(response.data);
+                console.log('Success response in GradeReport', items)
+                setItems(response.data);
             } catch (error) {
-                console.log('Error in get_grades', error);
+                console.log('Error in GradeReport', error);
             }
         };
-        fetchGrades();
+        fetchItems();
     }, [token]);
     return (
-        <><h2>Grade Report</h2><><><div>
-            {grades.map((grades) => (
-                <p key={grades.id}>
-                    {grades.student} {grades.course} {grades.grade_received}  {grades.credits_received}
-                </p>
-            ))}
-
-            {console.log('Return in get_grades', grades)}
+        <><h2>Student Grade Report</h2><><><div>
+            {   items.map((item) => (
+                    <p key={item.id}>
+                    {item.student} {item.course} {item.grade_received}  {item.credits_received}
+                    </p>
+                    ))}
+            
+            {console.log('Return in GradeReport', items)}
         </div>
         </></></>
     );

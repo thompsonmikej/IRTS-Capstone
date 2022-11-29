@@ -25,9 +25,9 @@ const AllUsers = () => {
     }, [token]);
     return (
         <><h2>Current Enrollment</h2><><><div>
-            {   persons.map((persons) => (
-                    <p key={persons.id}>
-                    ID# {persons.student.id}, {persons.student.first_name} {persons.student.last_name}, {persons.course.year_semester} SEM,  {persons.course.name}, GPA {persons.student.gpa}, {persons.student.credits_earned} CR ACCUM
+            {   persons.map((person) => (
+                    <p key={person.id}>
+                    ID# {person.student.id}, {person.student.first_name} {person.student.last_name}, {person.course.year_semester} SEM,  {person.course.name}, GPA {person.student.gpa}, {person.student.credits_earned} CR ACCUM
                     </p>
                     ))}
             
