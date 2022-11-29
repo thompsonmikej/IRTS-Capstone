@@ -1,11 +1,6 @@
-//start with hello world	
-//axios call in useEffect, console log response	
-//then try to display info	
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import useAuth from "../../hooks/useAuth";
-// export default class GradsPage extends React.Component	
 
 const GradsPage = () => {
 
@@ -43,4 +38,5 @@ const GradsPage = () => {
 };
 
 export default GradsPage;
+
 

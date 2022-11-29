@@ -10,8 +10,8 @@ urlpatterns = [
 #    path('credits/get/<year_semester>/', views.get_semester_credits),
 
 # Grades below
-    path('grades/get/', views.get_grades),
-    path('grades/change/', views.change_grades),
+    path('get/', views.get_grades),
+    path('change/', views.change_grades),
 #  path('grades/new/', views.
     
     path('grades/delete/<int:grade_received>', views.delete_grades),

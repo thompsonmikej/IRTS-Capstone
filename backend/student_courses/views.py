@@ -47,7 +47,7 @@ def student_users(request):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_grades(request):
-    """api/users/grades/get
+    """api/grades/get
     """
     # this_grade = StudentCourse.objects.filter(grade_received=grade_received)
     serializer = GradedCourseSerializer(data=request.data)
