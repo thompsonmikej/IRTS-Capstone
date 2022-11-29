@@ -27,8 +27,9 @@ const GradsPage = () => {
         <><h2>Candidates for Graduation</h2><><><div>
             {   grads.map((grads) => (
                     <p key={grads.id}>
-                    {grads.first_name} {grads.last_name} {grads.semester}  {grads.gpa} {grads.credits_earned}
-                    </p>
+                    {grads.first_name} {grads.last_name}, {grads.semester} SEM, GPA {grads.gpa}, {grads.credits_earned} CR ACCUM
+                </p>
+                // { grads.first_name } { grads.last_name }, SEM { grads.semester }, GPA { grads.gpa }, CR { grads.credits_earned } 
                     ))}
             
             {console.log('Return in Grad_ready', grads)}

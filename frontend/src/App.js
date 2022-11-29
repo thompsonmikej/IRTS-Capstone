@@ -8,6 +8,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import GradsPage from "./pages/GradsPage/GradsPage";
 import GradeReport from "./pages/GradeReport/GradeReport"
+import AllUsers from "./pages/AllUsers/AllUsers"
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -33,6 +34,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/grads" element={<GradsPage />} />
         <Route path="/grades" element={<GradeReport />} />
+        <Route path="/enrolled" element={<AllUsers />} />
         
         {/* Route for grad page */}
       </Routes>
