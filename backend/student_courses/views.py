@@ -20,27 +20,7 @@ def student_users(request):
     return Response(serializer.data)
 
 
-# # CREDITS
-# @api_view(['GET'])
-# @permission_classes([IsAuthenticated])
-# def get_user_credits(request):
-#     """/api/users/credits/get/all  
-#     """
-#     credit = StudentCourse.objects.filter(credits_received__gt=0)
-#     serializer = CourseCreditSerializer(credit, many=True)
-#     print('get_credits', credit)
-#     return Response(serializer.data)
 
-# @api_view(['GET'])
-# @permission_classes([IsAuthenticated])
-# def get_semester_credits(request):
-#     """/api/users/credits/get/<year_semester>/
-#     """
-#     # print(f'''get semester credits', {credits_received}''')
-#     credit = StudentCourse.objects.filter(credits_received=credits_received)
-#     serializer = StudentCourseSerializer(credit, many=True)
-#     print('get_semester_credits', credit)
-#     return Response(serializer.data)
 
 
 # GRADES
@@ -147,6 +127,10 @@ def delete_courses(request):
     print('delete_courses', course_deleted)
     return Response(serializer.data)
 
+
+# How to get a user
+# How to assign a course
+# How to assign a grade
 
 
 # @api_view(['GET', 'PUT', 'DELETE']) 

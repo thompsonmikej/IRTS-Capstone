@@ -6,7 +6,7 @@ const AllCourses = () => {
 
     const [user, token] = useAuth();
     const [items, setItems] = useState([]);
-
+// ${searchTerm}
     useEffect(() => {
         const fetchItems = async () => {
             try {
@@ -27,7 +27,7 @@ const AllCourses = () => {
         <><h2>Current Available Courses</h2><><><div>
             {   items.map((item) => (
                     <p key={item.id}>
-                    {item.name}
+                    {item.name}, POSS CR {item.credit_value}
                     {/* {items.student.first_name} {items.student.last_name}, {items.course.year_semester} SEM,  {items.course.name}, GPA {persons.student.gpa}, {persons.student.credits_earned} CR ACCUM */}
                     </p>
                     ))}

@@ -6,8 +6,7 @@ urlpatterns = [
     path('all/', views.student_users),
     
 
-# Credits
-#    path('credits/get/<year_semester>/', views.get_semester_credits),
+
 
 # Grades below
     path('get/', views.get_grades),
