@@ -3,8 +3,8 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
-from .models import StudentCourse
-from .serializers import StudentCourseSerializer, GradedCourseSerializer
+from .models import StudentCourse, User
+from .serializers import StudentCourseSerializer, GradedCourseSerializer, IndividualSerializer
 
 # Create your views here.
 #USERS
@@ -20,7 +20,18 @@ def student_users(request):
     return Response(serializer.data)
 
 
-
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_user_by_id(request, fk):
+    """api/users/get/<int:fk>
+    """
+    user_received = get_object_or_404(User, fk=fk)
+    serializer = IndividualSerializer(user_received)
+    print('get user by id', user_received)
+    return Response(serializer.data)
+    
+        # serializer = ProductSerializer(product) #singular car
+        # return Response(serializer.data)
 
 
 # GRADES
@@ -86,7 +97,7 @@ def get_all_courses(request):
     """/api/courses/all/
     """
     course = StudentCourse.objects.all()
-    serializer = NewCourseSerializer(course, many=True)
+    serializer = StudentCourseSerializer(course, many=True)
     print('get_all_courses', course)
     return Response(serializer.data)
 
