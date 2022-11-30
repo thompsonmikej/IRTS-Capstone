@@ -21,7 +21,7 @@ class GradedCourseSerializer(serializers.ModelSerializer):
 class IndividualSerializer(serializers.ModelSerializer):
     class Meta:
         model = StudentCourse
-        fields = ['user']
+        fields = ['user', 'course']
         depth = 1
 
 # class CourseCreditSerializer(serializers.ModelSerializer):

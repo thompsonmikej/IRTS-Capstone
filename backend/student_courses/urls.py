@@ -4,7 +4,7 @@ from . import views
 urlpatterns = [
 #Users
     path('all/', views.student_users),
-    path('get/<user>', views.get_user_by_id),
+    path('<user>/', views.get_user_by_id),
     
 
 # Grades below

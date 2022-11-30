@@ -22,11 +22,11 @@ def student_users(request):
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def get_user_by_id(request, fk):
-    """api/users/get/<int:fk>
+def get_user_by_id(request, user):
+    """api/users/<user id number>
     """
-    user_received = get_object_or_404(User, fk=fk)
-    serializer = IndividualSerializer(user_received)
+    user_received = StudentCourse.objects.filter(user=user)
+    serializer = IndividualSerializer(user_received, many=True)
     print('get user by id', user_received)
     return Response(serializer.data)
     
