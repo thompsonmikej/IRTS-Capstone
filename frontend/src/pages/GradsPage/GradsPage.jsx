@@ -24,13 +24,12 @@ const GradsPage = () => {
         fetchPersons();
     }, [token]);
     return (
-        <><h2>Candidates for Graduation</h2><><><div>
+        <><h2>Candidates for Graduation</h2><br/><><><div>
             {   persons.map((person) => (
                     <p key={person.id}>
-                    {person.first_name} {person.last_name}, {person.semester} SEM, GPA {person.gpa}, {person.credits_earned} CR ACCUM
+                    {person.first_name} {person.last_name}, SEM {person.semester}, GPA: {person.gpa}, CR ACCUM: {person.credits_earned} 
                 </p>
-                // { grads.first_name } { grads.last_name }, SEM { grads.semester }, GPA { grads.gpa }, CR { grads.credits_earned } 
-                    ))}
+                      ))}
             
             {console.log('Return in Grad_ready', persons)}
         </div>

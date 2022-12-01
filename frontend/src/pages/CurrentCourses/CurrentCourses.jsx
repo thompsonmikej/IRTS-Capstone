@@ -24,7 +24,7 @@ const CurrentCourses = () => {
         fetchItems();
     }, [token]);
     return (
-        <><h2>Current Available Courses</h2><><><div>
+        <><h2>Select Your Courses (Current Available)</h2><br/><><><div>
             {   items.map((item) => (
                     <><p key={item.id}>
                     {item.name}, COURSE CR {item.credit_value}
