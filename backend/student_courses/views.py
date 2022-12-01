@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
 from .models import StudentCourse, User
-from .serializers import StudentCourseSerializer, GradedCourseSerializer, IndividualSerializer
+from .serializers import StudentCourseSerializer, GradedCourseSerializer
 
 # Create your views here.
 #USERS
@@ -26,7 +26,7 @@ def get_user_by_id(request, user):
     """api/users/<user by id number>
     """
     user_received = StudentCourse.objects.filter(user=user)
-    serializer = IndividualSerializer(user_received, many=True)
+    serializer = GradedCourseSerializer(user_received, many=True)
     print('get user by id', user_received)
     return Response(serializer.data)
 

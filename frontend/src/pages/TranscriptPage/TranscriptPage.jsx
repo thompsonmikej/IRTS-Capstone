@@ -25,10 +25,10 @@ const TranscriptPage = (props) => {
         fetchStudentCourses();
     }, [token]);
     return (
-        <><h2>Transcript of all courses</h2><><><div>
+        <><h2>Transcript of All Courses for Student</h2><><><div>
             {studentCourses.map((studentCourse) => (
                 <p key={studentCourse.id}>
-                    ID# {studentCourse.user.id}, {studentCourse.user.first_name} {studentCourse.user.last_name} {studentCourse.course.semester} SEM,  {studentCourse.course.name}, CR VALUE {studentCourse.course.credit_value}, CR EARNED {studentCourse.course.credits_earned} 
+                    Student ID# {studentCourse.user.id}, {studentCourse.user.first_name} {studentCourse.user.last_name}, Semester {studentCourse.course.semester},   {studentCourse.course.name}, Your grade: {studentCourse.course.credit_value},    Course Credits: {studentCourse.course.credit_value},    Credits Received: {studentCourse.credits_received} 
                     </p>
                     ))}
             
