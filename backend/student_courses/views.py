@@ -22,7 +22,7 @@ def student_users(request):
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def get_user_by_id(request, user):
+def get_transcript(request, user):
     """api/users/<user by id number>
     """
     user_received = StudentCourse.objects.filter(user=user)
@@ -41,10 +41,14 @@ def get_user_studentcourses(request):
 #Get all studentcourses that need grades
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def get_ungraded_studentcourses(request):
-    ungraded_courses = StudentCourse.objects.filter(grade_received=None)
-    serializer = StudentCourseSerializer(ungraded_courses, many=True)
+def get_ungraded_studentcourses(request, user):
+    """api/users/<user by id number>
+    """
+    user_received = StudentCourse.objects.filter(grade_received=None)
+    serializer = GradedCourseSerializer(user_received, many=True)
+    print('get user by id', user_received)
     return Response(serializer.data)
+
 
 # GRADES
 @api_view(['GET'])

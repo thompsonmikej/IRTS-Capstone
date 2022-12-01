@@ -18,11 +18,6 @@ class GradedCourseSerializer(serializers.ModelSerializer):
         fields = ['user', 'course', 'grade_received', 'credits_received']
         depth = 1
 
-class IndividualSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = StudentCourse
-        fields = ['user', 'course', 'grade_received']
-        depth = 1
 
 # class CourseCreditSerializer(serializers.ModelSerializer):
 #     """api/users/credits/get/all 
