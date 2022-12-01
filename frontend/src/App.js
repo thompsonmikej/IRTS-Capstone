@@ -7,7 +7,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import GradsPage from "./pages/GradsPage/GradsPage";
-import GradeReport from "./pages/GradeReport/GradeReport"
+import GradeReport from "./pages/UngradedCourses/UngradedCourses"
 import AllUsers from "./pages/AllUsers/AllUsers"
 import AllCourses from "./pages/AllCourses/AllCourses"
 
@@ -17,6 +17,7 @@ import Footer from "./components/Footer/Footer";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
+import TranscriptPage from "./pages/TranscriptPage/TranscriptPage";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route path="/grades" element={<GradeReport />} />
         <Route path="/enrolled" element={<AllUsers />} />
         <Route path="/available" element={<AllCourses />} />
+        <Route path="/transcript" element={<TranscriptPage />} />
         
         {/* Route for grad page */}
       </Routes>

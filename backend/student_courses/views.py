@@ -14,25 +14,37 @@ from .serializers import StudentCourseSerializer, GradedCourseSerializer, Indivi
 def student_users(request):
     """/api/users/all/  These are students with classes. GET users with courses
     """
-    student = StudentCourse.objects.all()
-    serializer = StudentCourseSerializer(student, many=True)
-    print('GET users with courses, all_student users', student)
+    student_courses = StudentCourse.objects.all()
+    serializer = StudentCourseSerializer(student_courses, many=True)
+    print('GET users with courses, all_student users', student_courses)
     return Response(serializer.data)
 
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_user_by_id(request, user):
-    """api/users/<user id number>
+    """api/users/<user by id number>
     """
     user_received = StudentCourse.objects.filter(user=user)
     serializer = IndividualSerializer(user_received, many=True)
     print('get user by id', user_received)
     return Response(serializer.data)
-    
-        # serializer = ProductSerializer(product) #singular car
-        # return Response(serializer.data)
 
+# Get all logged in user's courses, aka transcript
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_user_studentcourses(request):
+    users_courses = StudentCourse.objects.filter(user_id=request.user.id)
+    serializer = StudentCourseSerializer(users_courses, many=True)
+    return Response(serializer.data)
+
+#Get all studentcourses that need grades
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_ungraded_studentcourses(request):
+    ungraded_courses = StudentCourse.objects.filter(grade_received=None)
+    serializer = StudentCourseSerializer(ungraded_courses, many=True)
+    return Response(serializer.data)
 
 # GRADES
 @api_view(['GET'])
@@ -54,6 +66,7 @@ def get_grades(request):
 def get_gpa(request):
     """api/users/grades/gpa  ##USER?
     """
+    #query for all studentcourses for logged in user, find the grades and average them
     gpa_received = StudentCourse.objects.filter(gpa__gte=0)
     serializer = StudentCourseSerializer(data=request.data)
     print('get GPA')
@@ -93,7 +106,7 @@ def delete_grades(request):
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
-def get_all_courses(request):
+def get_all_studentcourses(request):
     """/api/courses/all/
     """
     course = StudentCourse.objects.all()
@@ -101,8 +114,8 @@ def get_all_courses(request):
     print('get_all_courses', course)
     return Response(serializer.data)
 
-@api_view(['POST']) 
-def change_courses(request):
+@api_view(['PUT']) 
+def change_studentcourses(request):
     """api/users/courses/change/
     """
     serializer = StudentCourseSerializer(data=request.data)
@@ -114,23 +127,23 @@ def change_courses(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-
-@api_view(['GET'])
+#Used for when a logged-in student registers for a new course
+@api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def create_courses(request):
+def create_studentcourses(request):
     """api/users/courses/new     
     """
     serializer = StudentCourseSerializer(data=request.data)
     print('create courses')
     if serializer.is_valid():
-        serializer.save()
+        serializer.save(user=request.user)
         print('create courses')
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['DELETE']) 
-def delete_courses(request):
+def delete_studentcourses(request):
     """api/users/courses/delete/
     """
     course_deleted= get_object_or_404(StudentCourse)
@@ -144,13 +157,6 @@ def delete_courses(request):
 # How to assign a grade
 
 
-# @api_view(['GET', 'PUT', 'DELETE']) 
-# def change_courses(request, pk):
-#     """api/users/courses/change/
-#     """
-#     grade_or_course= get_object_or_404(StudentCourse, pk=pk)
-#     if request.method == 'GET':
-#         serializer = StudentCourseSerializer(grade_or_course) 
-#         return Response(serializer.data)
+
 
         
