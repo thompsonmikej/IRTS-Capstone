@@ -28,7 +28,6 @@ const CurrentCourses = () => {
             {   items.map((item) => (
                     <><p key={item.id}>
                     {item.name}, COURSE CR {item.credit_value}
-                    {/* {items.student.first_name} {items.student.last_name}, {items.course.year_semester} SEM,  {items.course.name}, GPA {persons.student.gpa}, {persons.student.credits_earned} CR ACCUM */}
                 </p></>
                     ))}
             
