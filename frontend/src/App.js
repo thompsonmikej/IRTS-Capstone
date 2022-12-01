@@ -7,9 +7,8 @@ import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import GradsPage from "./pages/GradsPage/GradsPage";
-// import GradeReport from "./pages/UngradedCoursesPage/UngradedCoursePage"
 // import AllUsers from "./pages/AllUsers/AllUsers"
-import AllCourses from "./pages/AllCourses/AllCourses"
+import CurrentCourses from "./pages/CurrentCourses/CurrentCourses"
 import TranscriptPage from "./pages/TranscriptPage/TranscriptPage";
 import UngradedCoursesPage from "./pages/UngradedCoursesPage/UngradedCoursesPage";
 
@@ -39,7 +38,7 @@ function App() {
         <Route path="/grads" element={<GradsPage />} />
         {/* <Route path="/grades" element={<GradeReport />} /> */}
         {/* <Route path="/enrolled" element={<AllUsers />} /> */}
-        <Route path="/available" element={<AllCourses />} />
+        <Route path="/available" element={<CurrentCourses />} />
         <Route path="/transcript" element={<TranscriptPage />} />
         <Route path="/ungraded" element={<UngradedCoursesPage />} />
         

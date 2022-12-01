@@ -108,15 +108,7 @@ def delete_grades(request):
 
 #COURSES
 
-@api_view(['GET'])
-@permission_classes([AllowAny])
-def get_all_studentcourses(request):
-    """/api/courses/all/
-    """
-    course = StudentCourse.objects.all()
-    serializer = StudentCourseSerializer(course, many=True)
-    print('get_all_courses', course)
-    return Response(serializer.data)
+
 
 @api_view(['PUT']) 
 def change_studentcourses(request):

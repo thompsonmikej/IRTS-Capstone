@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import useAuth from "../../hooks/useAuth";
 
-const AllCourses = () => {
+const CurrentCourses = () => {
 
     const [user, token] = useAuth();
     const [items, setItems] = useState([]);
@@ -10,15 +10,15 @@ const AllCourses = () => {
     useEffect(() => {
         const fetchItems = async () => {
             try {
-                let response = await axios.get('http://127.0.0.1:8000/api/courses/', {
+                let response = await axios.get('http://127.0.0.1:8000/api/courses/current/', {
                     headers: {
                         Authorization: "Bearer " + token,
                     },
                 });
-                console.log('Success response in AllCourses', items)
+                console.log('Success response in CurrentCourses', items)
                 setItems(response.data);
             } catch (error) {
-                console.log('Error in AllCourses', error);
+                console.log('Error in CurrentCourses', error);
             }
         };
         fetchItems();
@@ -32,12 +32,12 @@ const AllCourses = () => {
                 </p></>
                     ))}
             
-            {console.log('Return in AllCourses', items)}
+            {console.log('Return in CurrentCourses', items)}
         </div>
         </></></>
     );
 };
 
-export default AllCourses;
+export default CurrentCourses;
 
 

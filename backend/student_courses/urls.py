@@ -24,7 +24,7 @@ urlpatterns = [
 
 # Courses
     # path('courses/grade/<str:grade_received>/', views.get_grades),
-    path('courses/all', views.get_all_studentcourses),
+    
 
     path('courses/change/', views.change_studentcourses),
     path('courses/delete/', views.delete_studentcourses),
