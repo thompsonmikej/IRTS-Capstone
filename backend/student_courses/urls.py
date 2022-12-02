@@ -23,9 +23,6 @@ urlpatterns = [
     path('grades/delete/<int:grade_received>', views.delete_grades),
 
 # Courses
-    # path('courses/grade/<str:grade_received>/', views.get_grades),
-    
-
     path('courses/change/', views.change_studentcourses),
     path('courses/delete/', views.delete_studentcourses),
 ]
