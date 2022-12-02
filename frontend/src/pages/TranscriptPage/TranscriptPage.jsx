@@ -8,6 +8,7 @@ const TranscriptPage = (props) => {
     const [user, token] = useAuth();
     const [studentCourses, setStudentCourses] = useState([]);
     const [gpa, setGpa] = useState(0)
+    const [credits, setCredits] = useState(0)
 
     
     useEffect(() => {
@@ -42,15 +43,29 @@ const TranscriptPage = (props) => {
         let gpa = sum / studentCourses.length;
         console.log('sum', sum); //166
         console.log('number of courses', studentCourses.length); //4
-        
+        console.log('setGpa', gpa); 
         setGpa(gpa)
     }
 
+    useEffect(() => {   
+            findCredits();
+    }, [studentCourses])
+
+    function findCredits() {
+        let sumCredits = 0;
+        for (let i = 0; i < studentCourses.length; i++) {
+            console.log('studentCourses[i]', studentCourses[i])
+            sumCredits += studentCourses[i].credits_received
+        }
+        console.log('sum of credits', sumCredits); //166
+        setCredits(sumCredits)
+    }
+    
     return (
-        <><h2>Transcript of All Courses for Student; GPA: {gpa}</h2><br/><><><div>
+        <><h2>Transcript of All Courses for Student; GPA: {gpa}; CR EARNED: {credits}</h2><br/><><><div>
             {studentCourses.map((studentCourse) => (
                 <p key={studentCourse.id}>
-                    STU ID# {studentCourse.user.id}, {studentCourse.user.first_name} {studentCourse.user.last_name}, SEM {studentCourse.course.semester},   {studentCourse.course.name}, GRADE RECEIVED: {studentCourse.grade_received},  COURSE CR: {studentCourse.course.credit_value},    CR RECEIVED: {studentCourse.credits_received} 
+                    STU ID# {studentCourse.user.id}, {studentCourse.user.first_name} {studentCourse.user.last_name}, SEM {studentCourse.course.semester},   {studentCourse.course.name}, GRADE EARNED: {studentCourse.grade_received},  COURSE CR: {studentCourse.course.credit_value},    CR EARNED: {studentCourse.credits_received} 
                     </p>
                     ))}
             
