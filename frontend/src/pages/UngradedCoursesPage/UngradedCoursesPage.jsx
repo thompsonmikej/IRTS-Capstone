@@ -28,7 +28,7 @@ const UngradedCoursesPage = (props) => {
         <><h2>Ungraded Courses for Student</h2><br/><><><div>
             {ungradedCourses.map((ungradedCourse) => (
                 <p key={ungradedCourse.id}>
-                    STU ID# {ungradedCourse.user.id}, {ungradedCourse.user.first_name} {ungradedCourse.user.last_name}, SEM {ungradedCourse.course.semester},   {ungradedCourse.course.name}, GRADE RECEIVED: {ungradedCourse.grade_received},  COURSE CR: {ungradedCourse.course.credit_value}
+                    STU ID# {ungradedCourse.user.id}, {ungradedCourse.user.first_name} {ungradedCourse.user.last_name}, SEM {ungradedCourse.course.semester},   {ungradedCourse.course.name}, GRADE EARNED: {ungradedCourse.grade_received},  CR ATTEMPTED: {ungradedCourse.course.credit_value}
                     </p>
                     ))}
             

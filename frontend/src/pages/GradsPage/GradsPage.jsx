@@ -27,7 +27,7 @@ const GradsPage = () => {
         <><h2>Candidates for Graduation</h2><br/><><><div>
             {   persons.map((person) => (
                     <p key={person.id}>
-                    {person.first_name} {person.last_name}, SEM {person.semester}, GPA: {person.gpa}, CR ACCUM: {person.credits_earned} 
+                    {person.first_name} {person.last_name}, LAST COMPLETE SEM: {person.semester}, GPA: {person.gpa}, CR EARNED: {person.credits_earned} 
                 </p>
                       ))}
             
