@@ -24,15 +24,19 @@ const UngradedCoursesPage = (props) => {
         };
         fetchUngradedCourses();
     }, [token]);
+
+
     return (
-        <><h1>Ungraded Courses for {user.first_name} {user.last_name}</h1><br/><><><div>
+        <><h1>Scheduled Courses for {user.first_name} {user.last_name}</h1><br/><><><div>
             {ungradedCourses.map((ungradedCourse) => (
                 <div key={ungradedCourse.id}>
                     <hr/>
                     <span>{ungradedCourse.course.name} | </span>
+                    <span>DAYS: M, T, W | </span>
                     <span>GRADE EARNED: {ungradedCourse.grade_received} | </span>
-                    <span>CREDITS ATTEMPTED: {ungradedCourse.course.credit_value} </span>
+                    <span>CREDITS ATTEMPTED: {ungradedCourse.course.credit_value} |</span>
                     <span>CREDITS EARNED: 0 </span>
+             
                     </div>
                     ))}
             

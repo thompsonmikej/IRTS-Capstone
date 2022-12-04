@@ -24,7 +24,7 @@ const CurrentCourses = () => {
         fetchItems();
     }, [token]);
     return (
-        <><h1>Available at Your Grade Level</h1><br/><><><div>
+        <><h1>Courses at Your Current Grade Level</h1><br/><><><div>
             {   items.map((item) => (
                     <><div key={item.id}>
                     <hr />
