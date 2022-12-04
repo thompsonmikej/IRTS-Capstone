@@ -25,11 +25,15 @@ const UngradedCoursesPage = (props) => {
         fetchUngradedCourses();
     }, [token]);
     return (
-        <><h2>Ungraded Courses for Student</h2><br/><><><div>
+        <><h1>Ungraded Courses for {user.first_name} {user.last_name}</h1><br/><><><div>
             {ungradedCourses.map((ungradedCourse) => (
-                <p key={ungradedCourse.id}>
-                    STU ID# {ungradedCourse.user.id}, {ungradedCourse.user.first_name} {ungradedCourse.user.last_name}, SEM {ungradedCourse.course.semester},   {ungradedCourse.course.name}, GRADE EARNED: {ungradedCourse.grade_received},  CR ATTEMPTED: {ungradedCourse.course.credit_value}
-                    </p>
+                <div key={ungradedCourse.id}>
+                    <hr/>
+                    <span>{ungradedCourse.course.name} | </span>
+                    <span>GRADE EARNED: {ungradedCourse.grade_received} | </span>
+                    <span>CREDITS ATTEMPTED: {ungradedCourse.course.credit_value} </span>
+                    <span>CREDITS EARNED: 0 </span>
+                    </div>
                     ))}
             
             {console.log('Return in ungradedCourse', ungradedCourses)}

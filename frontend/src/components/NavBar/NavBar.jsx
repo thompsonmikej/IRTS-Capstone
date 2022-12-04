@@ -12,7 +12,7 @@ const Navbar = () => {
       <ul>
         <li className="brand">
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-            <b>Welcome to the Integrated Registration Tracking System (IRTS)</b>
+            <b>Integrated Registration Tracking System (IRTS)</b>
           </Link>
         </li>
         <li>

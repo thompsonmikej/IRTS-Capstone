@@ -24,11 +24,14 @@ const CurrentCourses = () => {
         fetchItems();
     }, [token]);
     return (
-        <><h2>Select Your Courses (Current Available)</h2><br/><><><div>
+        <><h1>Available at Your Grade Level</h1><br/><><><div>
             {   items.map((item) => (
-                    <><p key={item.id}>
-                    {item.name}, COURSE CR {item.credit_value}
-                </p></>
+                    <><div key={item.id}>
+                    <hr />
+                    <span>COURSE: {item.name} | </span>
+                    <span>CREDIT VALUE: {item.credit_value}</span>
+                    
+                </div></>
                     ))}
             
             {console.log('Return in CurrentCourses', items)}
