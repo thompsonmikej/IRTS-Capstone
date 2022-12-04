@@ -1,4 +1,4 @@
-.studentPic{
-width: 20%;
-height: 20%;
+.studentPic {
+max-width: 20%;
+max-height: 20%;
 }

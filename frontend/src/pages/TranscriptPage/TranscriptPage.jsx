@@ -100,10 +100,10 @@ const TranscriptPage = (props) => {
             <h2>CURRENT SEMESTER: {semester}</h2>
             <h2>GPA: {gpa}</h2>
             <hr />
-            <br /><><><div>
+            <br /><><><div className="container">
             {studentCourses.map((studentCourse) => (
                 <p key={studentCourse.id}>
-                    <span>COURSE: {studentCourse.course.name} |</span>
+                    <span>{studentCourse.course.name} |</span>
                     <span>CREDIT VALUE: {studentCourse.course.credit_value} |</span>
                     <span>GRADE EARNED: {studentCourse.grade_received} |</span>
                     <span>CREDIT EARNED: {studentCourse.credits_received}</span> 

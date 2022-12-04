@@ -10,34 +10,37 @@
 
 html {
   box-sizing: border-box;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: monospace;
 }
 
 p {
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 button {
-  background-color: transparent;
-  border: 2px solid steelblue;
-  color: steelblue;
-  font-size: 1rem;
-  font-family: inherit;
-  max-width: 100px;
-  padding: 0.5rem 0.5rem;
+  background-color: #cc5500;
+  border: 2px solid #550040;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: bold;
+  max-width: 15rem;
+  border-radius: 2rem;
+  padding: 0.5rem 0.75rem;
+
 }
 
 button:hover {
   cursor: pointer;
   color: white;
-  background-color: steelblue;
+  background-color: #550040;
+  border-radius: 0rem;
 }
 
 .container {
   margin: 0 auto;
-  max-width: 600px;
-  overflow: auto;
-  text-align: center;
+  max-width: 80rem;
+  text-align: left;
+
 }
 
 .form {

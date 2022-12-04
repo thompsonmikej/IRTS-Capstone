@@ -24,7 +24,9 @@ const GradsPage = () => {
         fetchPersons();
     }, [token]);
     return (
-        <><h1>Candidates for Graduation</h1><br/><><><div>
+        <><h1>Candidates for Graduation</h1>
+            <h2>24 credits required to graduate</h2>
+            <br /><><><div className="container">
             {   persons.map((person) => (
                 <div key={person.id}>
                     <hr/>

@@ -26,12 +26,16 @@ const CurrentCourses = () => {
     return (
         <><h1>Courses at Your Current Grade Level</h1><br/><><><div>
             {   items.map((item) => (
-                    <><div key={item.id}>
+                <><div key={item.id} className="container">
                     <hr />
-                    <span>COURSE: {item.name} | </span>
-                    <span>CREDIT VALUE: {item.credit_value}</span>
-                    
-                </div></>
+                    <span>{item.name} | </span>
+                    <span>CREDIT VALUE: {item.credit_value} | </span>
+                    <span>DAYS AVAILABLE: M, T, W | </span>
+                </div>
+                    <div>
+                    <button>Add to Schedule</button>    
+                    </div>                
+                </>
                     ))}
             
             {console.log('Return in CurrentCourses', items)}
