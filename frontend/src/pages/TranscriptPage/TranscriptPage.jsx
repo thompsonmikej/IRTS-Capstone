@@ -68,14 +68,10 @@ const TranscriptPage = (props) => {
         calcSemester();
     }, [studentCourses])
 
-    //INCOMPLETE
+  
     function calcSemester() {
-        // Calculates current semester according to credits earned
         let creditCountMultiple = (credits / 12)
         let currentSemester = (Math.ceil(creditCountMultiple + 7))//+ Courses.semester
-        // if (currentSemester >= 8) {
-        //     currentSemester == 8
-        // } Max the semester at 8
         console.log('credit count', creditCountMultiple)
         console.log('calc semester', currentSemester)
         setCalcSemester(currentSemester)

@@ -33,7 +33,7 @@ const CurrentCourses = () => {
                     <span>DAYS AVAILABLE: M, T, W | </span>
                 </div>
                     <div>
-                    <button>Add to Schedule</button>    
+                    <button onclick="function()">Add to Schedule</button>    //Adds this line to the Scheduled Courses page (ungraded)
                     </div>                
                 </>
                     ))}
