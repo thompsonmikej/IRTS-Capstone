@@ -10,5 +10,6 @@ urlpatterns = [
     path('register/', RegisterView.as_view(), name='register'),
     # path('grades/gpa/', views.get_gpa),
     path('grads/', views.grad_ready_users),
+    path('enrolled/', views.student_users),
 
 ]

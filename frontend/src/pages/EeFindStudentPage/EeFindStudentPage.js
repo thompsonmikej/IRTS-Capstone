@@ -21,24 +21,26 @@ const LoginPage = () => {
   return (
     <div className="container">
       <form className="form" onSubmit={handleSubmit}>
+// If the person registered as EE, then loginPage should request the name of the student and display view Graduates
         <label>
-          Username:{" "}
+          Enter Student's First Name:{" "}
           <input
             type="text"
-            name="username"
-            value={formData.username}
+            name="student first_name"
+            value={formData.first_name}
             onChange={handleInputChange}
           />
         </label>
         <label>
-          Password:{" "}
+          Enter Student's Last Name:{" "}
           <input
             type="text"
-            name="password"
-            value={formData.password}
+            name="student first_name"
+            value={formData.last_name}
             onChange={handleInputChange}
           />
         </label>
+
         {isServerError ? (
           <p className="error">Incorrect credentials.<br/>Please try again.</p>
         ) : null}

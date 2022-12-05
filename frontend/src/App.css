@@ -7,13 +7,17 @@
   padding: 0;
   box-sizing: inherit;
 }
+a {
+  text-decoration: none;
+  margin-right: 0.5rem;
+  }
 
 html {
   box-sizing: border-box;
   font-family: monospace;
 }
 
-p {
+p, label {
   font-size: 1.25rem;
 }
 
@@ -26,6 +30,7 @@ button {
   max-width: 15rem;
   border-radius: 2rem;
   padding: 0.5rem 0.75rem;
+  margin-left: 2rem;
 
 }
 

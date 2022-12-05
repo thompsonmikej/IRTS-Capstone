@@ -9,40 +9,24 @@ from .serializers import StudentCourseSerializer, GradedCourseSerializer
 # Create your views here.
 #USERS
 
-@api_view(['GET'])
-@permission_classes([AllowAny])
-def student_users(request):
-    """/api/users/all/  These are students with classes. GET users with courses
-    """
-    student_courses = StudentCourse.objects.all()
-    serializer = StudentCourseSerializer(student_courses, many=True)
-    print('GET users with courses, all_student users', student_courses)
-    return Response(serializer.data)
-
-
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def get_transcript(request, user):
-    """api/users/<user by id number>
-    """
-    user_received = StudentCourse.objects.filter(user=user)
-    serializer = GradedCourseSerializer(user_received, many=True)
-    print('get user by id', user_received)
-    return Response(serializer.data)
 
 # Get all logged in user's courses, aka transcript
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def get_user_studentcourses(request):
-    users_courses = StudentCourse.objects.filter(user_id=request.user.id)
-    serializer = StudentCourseSerializer(users_courses, many=True)
+def get_transcript(request):
+    """api/student_courses/transcript/  TRANSCRIPT
+    """
+    user_received = StudentCourse.objects.filter(user=request.user)
+    serializer = GradedCourseSerializer(user_received, many=True)
+    print('get user by id', user_received)
     return Response(serializer.data)
+
 
 #Get all studentcourses that need grades
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_ungraded_studentcourses(request, user):
-    """api/users/<user by id number>
+    """api/users/
     """
     user_received = StudentCourse.objects.filter(grade_received=None)
     serializer = GradedCourseSerializer(user_received, many=True)

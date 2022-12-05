@@ -31,8 +31,8 @@ const Navbar = () => {
           </Link>
         </li>
         <li >
-          <Link to="/grads" className="navLinkEmployee">
-            <b>View Graduation Candidates</b>
+          <Link to="/grads" className="navLink navLinkEmployee">
+            <b>View Graduates</b>
           </Link>
         </li>
         <li>

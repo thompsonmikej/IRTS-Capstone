@@ -64,12 +64,22 @@ const RegisterPage = () => {
             onChange={handleInputChange}
           />
         </label>
-        <p style={{ fontSize: "12px" }}>
-          NOTE: Make this an uncommon password with characters, numbers, and
-          special characters!
+        <p>
+          NOTE: Create an unusual word or phrase with a combination <br />of at least 8 characters, numbers, and
+          special characters.<br />
         </p>
-        <button>Register!</button>
-      </form>
+        <label >
+          If Student, Type 1:{" "}
+          <input
+            className="EEwidth"
+            type="text"
+            name="Type '1' if a Student"
+            value={formData.is_student}
+            onChange={handleInputChange}
+          />
+        </label>
+         <button>Register!</button>
+         </form>
     </div>
   );
 };

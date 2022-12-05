@@ -23,6 +23,14 @@ const CurrentCourses = () => {
         };
         fetchItems();
     }, [token]);
+
+
+    function selectCourse(courseId) {
+        console.log(courseId)
+        //axios call to sign current user up to the course whose id is courseId
+        //aka, create a new studentcourse with this courseid and the logged in user
+    }
+
     return (
         <><h1>Courses at Your Current Grade Level</h1><br/><><><div>
             {   items.map((item) => (
@@ -33,7 +41,7 @@ const CurrentCourses = () => {
                     <span>DAYS AVAILABLE: M, T, W | </span>
                 </div>
                     <div>
-                    <button onclick="function()">Add to Schedule</button>    //Adds this line to the Scheduled Courses page (ungraded)
+                    <button onClick={() => selectCourse(item.id)}>Add to Schedule</button>    //Adds this line to the Scheduled Courses page (ungraded)
                     </div>                
                 </>
                     ))}

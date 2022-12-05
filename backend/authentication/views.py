@@ -15,10 +15,21 @@ class MyTokenObtainPairView(TokenObtainPairView):
 
 class RegisterView(generics.CreateAPIView):
 
-
     queryset = User.objects.all()
     permission_classes = (AllowAny,)
     serializer_class = RegistrationSerializer
+
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def student_users(request):
+    """/api/auth/enrolled/  These are students with classes. GET users with courses
+    """
+    student_courses = User.objects.all()
+    serializer = RegistrationSerializer(student_courses, many=True)
+    print('GET users with courses, all_student users', student_courses)
+    return Response(serializer.data)
+
 
 
 @api_view(['GET'])
@@ -31,3 +42,10 @@ def grad_ready_users(request):
     serializer = GradReadySerializer(graduate, many=True)
     print('grad ready_users', graduate)
     return Response(serializer.data)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_all_students(request):
+    all_students = User.objects.filter(is_student=True)
+    #serializer, response

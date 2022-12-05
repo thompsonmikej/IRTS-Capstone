@@ -17,7 +17,7 @@ const TranscriptPage = (props) => {
     useEffect(() => {
         const fetchStudentCourses = async () => {
             try {
-                let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/1/`, {
+                let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/transcript/`, {
                     headers: {
                         Authorization: "Bearer " + token,
                     },

@@ -2,15 +2,11 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path('user_courses/', views.get_user_studentcourses),
     path('register_new_course/', views.create_studentcourses),
-
-    # path('ungraded_courses/', views.get_ungraded_studentcourses),
 
 
 #Users
-    path('all/', views.student_users),
-    path('<user>/', views.get_transcript), #Transcript of All Courses
+    path('transcript/', views.get_transcript), #Transcript of All Courses
     path('ungraded/<user>/', views.get_ungraded_studentcourses), #Ungraded Courses/ Current
     
 # Grades below
