@@ -16,7 +16,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li >
-          <Link to="/ungraded" className="navLink">
+          <Link to="/scheduled" className="navLink">
             <b>Current Schedule</b>
           </Link>
         </li>

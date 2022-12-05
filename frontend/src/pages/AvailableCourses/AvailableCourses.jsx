@@ -1,24 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
-const CurrentCourses = () => {
+const AvailableCourses = () => {
 
     const [user, token] = useAuth();
     const [items, setItems] = useState([]);
-// ${searchTerm}
+    const [applyCourse, setApplyCourse] = useState([]);
+
     useEffect(() => {
         const fetchItems = async () => {
             try {
-                let response = await axios.get('http://127.0.0.1:8000/api/courses/current/', {
+                let response = await axios.get(`http://127.0.0.1:8000/api/courses/current/`, {
                     headers: {
                         Authorization: "Bearer " + token,
                     },
                 });
-                console.log('Success response in CurrentCourses', items)
+                console.log('Success response in AvailableCourses', items)
                 setItems(response.data);
             } catch (error) {
-                console.log('Error in CurrentCourses', error);
+                console.log('Error in AvailableCourses', error);
             }
         };
         fetchItems();
@@ -26,11 +28,21 @@ const CurrentCourses = () => {
 
 
     function selectCourse(courseId) {
-        console.log(courseId)
+        let navigate = navigate();
         //axios call to sign current user up to the course whose id is courseId
         //aka, create a new studentcourse with this courseid and the logged in user
-    }
-
+    
+        const fetchCourse = async (courseId) => {
+            try {
+                let response = await axios.post(`http://127.0.0.1:8000/api/student_courses/register_new_course/`);
+                console.log('success in courseId: ', courseId)
+                applyCourse(response.data.items)
+                navigate('/scheduled')
+            } catch (error) {
+                console.log('error in courseId', error.response.data)
+            }
+        }
+    };
     return (
         <><h1>Courses at Your Current Grade Level</h1><br/><><><div>
             {   items.map((item) => (
@@ -39,19 +51,19 @@ const CurrentCourses = () => {
                     <span>{item.name} | </span>
                     <span>CREDIT VALUE: {item.credit_value} | </span>
                     <span>DAYS AVAILABLE: M, T, W | </span>
-                </div>
                     <div>
-                    <button onClick={() => selectCourse(item.id)}>Add to Schedule</button>    //Adds this line to the Scheduled Courses page (ungraded)
-                    </div>                
+                        <button type='submit' onClick={() => selectCourse(item.id)}>Add to Schedule</button>
+                        {/* Adds this line to the Scheduled (scheduled) Courses page */}
+                    </div> 
+                </div>
+               
                 </>
                     ))}
             
-            {console.log('Return in CurrentCourses', items)}
+            {console.log('Return in AvailableCourses', items)}
         </div>
         </></></>
     );
 };
 
-export default CurrentCourses;
-
-
+export default AvailableCourses;

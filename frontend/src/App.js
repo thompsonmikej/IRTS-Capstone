@@ -7,10 +7,10 @@ import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import GradsPage from "./pages/GradsPage/GradsPage";
-// import AllUsers from "./pages/AllUsers/AllUsers"
-import CurrentCourses from "./pages/CurrentCourses/CurrentCourses"
+import AllUsers from "./pages/AllUsers/AllUsers"
+import AvailableCourses from "./pages/AvailableCourses/AvailableCourses"
 import TranscriptPage from "./pages/TranscriptPage/TranscriptPage";
-import UngradedCoursesPage from "./pages/UngradedCoursesPage/UngradedCoursesPage";
+import ScheduledCoursesPage from "./pages/ScheduledCoursesPage/ScheduledCoursesPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -37,10 +37,10 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/grads" element={<GradsPage />} />
         {/* <Route path="/grades" element={<GradeReport />} /> */}
-        {/* <Route path="/enrolled" element={<AllUsers />} /> */}
-        <Route path="/available" element={<CurrentCourses />} />
+        <Route path="/enrolled" element={<AllUsers />} />
+        <Route path="/available" element={<AvailableCourses />} />
         <Route path="/transcript" element={<TranscriptPage />} />
-        <Route path="/ungraded" element={<UngradedCoursesPage />} />
+        <Route path="/scheduled" element={<ScheduledCoursesPage />} />
         
 
       </Routes>

@@ -25,7 +25,7 @@ def get_transcript(request):
 #Get all studentcourses that need grades
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def get_ungraded_studentcourses(request, user):
+def get_scheduled_studentcourses(request, user):
     """api/users/
     """
     user_received = StudentCourse.objects.filter(grade_received=None)
@@ -92,14 +92,12 @@ def delete_grades(request):
 
 #COURSES
 
-
-
-@api_view(['PUT']) 
+@api_view(['POST']) 
 def change_studentcourses(request):
-    """api/users/courses/change/
+    """api/student_courses/register_new_course/  FUNCTION TO ADD COURSE ON SCHEDULE
     """
     serializer = StudentCourseSerializer(data=request.data)
-    print('Postman body student_id, course_id')
+    print('Postman body: student_id, course_id')
     if serializer.is_valid():
         serializer.save()
         print('POST change courses')

@@ -15,18 +15,18 @@ const HomePage = () => {
   useEffect(() => {
     const fetchStudent= async () => {
       try {           
-        let response = await axios.get("http://127.0.0.1:8000/api/student_courses/ungraded/1/", {
+        let response = await axios.get("http://127.0.0.1:8000/api/student_courses/scheduled/1/", {
           headers: {
             Authorization: "Bearer " + token,
-          },
+          },  
         });
         setStudent(response.data);
       } catch (error) {
         console.log(error.response.data);
       }
-    };
+    };  
     fetchStudent();
-  }, [token]);  //className="container"
+  }, [token]);  //className="container"    Remove this section
   return (
     <div > 
       <h1>Welcome {user.first_name} {user.last_name}!

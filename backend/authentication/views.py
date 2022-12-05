@@ -35,7 +35,7 @@ def student_users(request):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def grad_ready_users(request):
-    """/api/auth/grads/  students filtered by credits_received >=124 && gpa >=3
+    """/api/auth/grads/  students to be filtered by credits_received >=24 && gpa >=3
     """
     print(f'''students to be filtered by above 24 and gpa above 3 ''')
     graduate = User.objects.filter(grad_ready=True)
@@ -47,5 +47,9 @@ def grad_ready_users(request):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_all_students(request):
+    """/api/auth/all_students/  
+    """
     all_students = User.objects.filter(is_student=True)
-    #serializer, response
+    print('get all students ', all_students)
+    serializer = RegistrationSerializer(all_students, many=True)
+    return Response(serializer.data)

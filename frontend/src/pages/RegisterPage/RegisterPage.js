@@ -69,7 +69,7 @@ const RegisterPage = () => {
           special characters.<br />
         </p>
         <label >
-          If Student, Type 1:{" "}
+          If Student, Type 1:{" "}   {/* May want to default a page to student */}
           <input
             className="EEwidth"
             type="text"
