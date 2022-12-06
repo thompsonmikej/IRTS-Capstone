@@ -16,13 +16,14 @@ let initialValues = {
 };
 
 const AddCoursesPage = () => {
+  const { loginUser, isServerError } = useContext(AuthContext);
   const [user, token] = useAuth();
   const navigate = useNavigate();
   const [formData, handleInputChange, handleSubmit] = useCustomForm(initialValues, postNewCourses);
  
 async function postNewCourses() {
   try {
-    let response = await axios.post(`http://127.0.0.1:8000/api/courses/create/`, formData, {
+    let response = await axios.post(`http://127.0.0.1:8000/api/courses/change/`, formData, {
       headers: {
         Authorization: "Bearer " + token,
       },
@@ -39,7 +40,7 @@ async function postNewCourses() {
     <div className="container">
       <form className="form" onSubmit={handleSubmit}>
         <label>
-          Username:{" "}
+          Course name:{" "}
           <input
             type="text"
             name="name"
@@ -48,7 +49,7 @@ async function postNewCourses() {
           />
         </label>
         <label>
-          Password:{" "}
+          Credit Value:{" "}
           <input
             type="text"
             name="credit_value"
@@ -57,7 +58,7 @@ async function postNewCourses() {
           />
         </label>
         <label>
-          Username:{" "}
+          Semester:{" "}
           <input
             type="text"
             name="semester"
@@ -65,7 +66,7 @@ async function postNewCourses() {
             onChange={handleInputChange}
           />
         </label>
-         <button>Add Course</button>
+           <button>Add Course</button>
       </form>
     </div>
   );

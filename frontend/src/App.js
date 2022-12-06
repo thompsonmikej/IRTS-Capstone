@@ -44,7 +44,7 @@ function App() {
         <Route path="/transcript" element={<TranscriptPage />} />
         <Route path="/scheduled" element={<ScheduledCoursesPage />} />
         {/* <Route path="/add_courses" element={<PrivateRoute><AddCoursesPage /></PrivateRoute>} /> */}
-        <Route path="/add_courses" element={<AddCoursesPage />} />
+        <Route path="/add_course" element={<AddCoursesPage />} />
 
       </Routes>
       <Footer />

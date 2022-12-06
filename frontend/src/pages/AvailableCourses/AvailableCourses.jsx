@@ -29,24 +29,23 @@ const AvailableCourses = () => {
     }, [token]);
 
 
-    function selectCourse(courseId) {
+    const selectCourse = async(courseId) => {
         let navigate = navigate();
         //axios call to sign current user up to the course whose id is courseId
         //aka, create a new studentcourse with this courseid and the logged in user
-    
-        const fetchCourse = async (courseId) => {
-            try {
-                let response = await axios.post(`http://127.0.0.1:8000/api/student_courses/register_new_course/`);
-                console.log('success in courseId: ', courseId)
-                applyCourse(response.data.items)
-                navigate('/scheduled')
-            } catch (error) {
-                console.log('error in courseId', error.response.data)
-            }
+
+        try {
+            let response = await axios.post(`http://127.0.0.1:8000/api/student_courses/register_new_course/`);
+            console.log('success in courseId: ', courseId)
+            applyCourse(response.data.items)
+            navigate('/scheduled')
+        } catch (error) {
+            console.log('error in courseId', error.response.data)
         }
+ 
     };
     return (
-        <><h1>Courses at Your Current Grade Level</h1><><>
+        <><h1>Available at Your Current Grade Level</h1><><>
             <h2>
                 <Link to="/add_course" className="register">Add New Course to Catalog</Link>
             </h2>   
