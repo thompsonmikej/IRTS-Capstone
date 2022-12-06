@@ -41,11 +41,22 @@ button:hover {
   border-radius: 0rem;
 }
 
+.schedule-button {
+  display: contents;
+}
+
 .container {
   margin: 0 auto;
   max-width: 80rem;
   text-align: left;
 
+}
+.register {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.5rem;
+  text-decoration: underline;
+  color: #550040;
+  text-align: center; 
 }
 
 .form {

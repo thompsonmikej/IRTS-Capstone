@@ -1,5 +1,6 @@
 // General Imports
 import { Routes, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./App.css";
 
 // Pages Imports
@@ -11,6 +12,7 @@ import AllUsers from "./pages/AllUsers/AllUsers"
 import AvailableCourses from "./pages/AvailableCourses/AvailableCourses"
 import TranscriptPage from "./pages/TranscriptPage/TranscriptPage";
 import ScheduledCoursesPage from "./pages/ScheduledCoursesPage/ScheduledCoursesPage";
+import AddCoursesPage from "./pages/AddCoursesPage/AddCoursesPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -41,7 +43,7 @@ function App() {
         <Route path="/available" element={<AvailableCourses />} />
         <Route path="/transcript" element={<TranscriptPage />} />
         <Route path="/scheduled" element={<ScheduledCoursesPage />} />
-        
+        <Route path="/add_courses" element={<PrivateRoute><AddCoursesPage /></PrivateRoute>} />
 
       </Routes>
       <Footer />

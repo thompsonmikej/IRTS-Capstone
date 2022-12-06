@@ -29,7 +29,12 @@ const AllUsers = () => {
                     <div key={person.id}>
                     <span> ID# {person.user.id}, {person.user.first_name} {person.user.last_name}</span>
                     {/* {person.course.year_semester} SEM,  {person.course.name}, GPA {person.student.gpa}, {person.student.credits_earned} CR ACCUM */}
-                    </div>
+                    <div className="schedule-button">
+                        <button type='submit' onClick={() => selectStudent(item.id)}>Select</button>
+                        {/* Removes this line from the Scheduled (scheduled) Courses page  */}
+                    </div>    
+                
+                </div>
                     ))}
             
             {console.log('Return in all_users', persons)}

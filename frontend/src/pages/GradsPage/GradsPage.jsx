@@ -31,10 +31,12 @@ const GradsPage = () => {
             {   persons.map((person) => (
                 <div key={person.id}>
                     <hr/>
-                    <span> {person.first_name} {person.last_name} | </span>
-                    <span>LAST SEM: {person.semester} |</span>
+                    <span>{person.first_name} {person.last_name} | </span>
+                    <span>LAST SEM: {person.semester} | </span>
                     <span>GPA: {person.gpa} |</span>
-                    <span>CR EARNED: {person.credits_earned} </span>
+                    <span>CR EARNED: {person.credits_earned} | </span>
+                    <span>ADM DATE: AUG | </span>
+                    <span>GRAD DATE: FEB </span>
                 </div>
                       ))}
             

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import './AvailableCourses.css';
+
 
 const AvailableCourses = () => {
 
@@ -52,6 +52,8 @@ const AvailableCourses = () => {
                     <span>{item.name} | </span>
                     <span>CR VALUE: {item.credit_value} | </span>
                     <span>DAYS: M, T, W | </span>
+                    <span>INSTR: X | </span>
+                    <span>LOC: Online | </span>
                     <div className="schedule-button">
                         <button type='submit' onClick={() => selectCourse(item.id)}>Enroll</button>
                         {/* Adds this line to the Scheduled (scheduled) Courses page */}

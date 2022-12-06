@@ -68,7 +68,7 @@ def get_gpa(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])   #by name
 def change_grades(request):
-    """api/users/grades/change/
+    """api/student_courses/grade_change/
     """    
     # grade_received = StudentCourse.objects.filter(grade_received=grade_received)
     # print('POST change courses', grade_received)

@@ -14,7 +14,6 @@ ul {
 li {
   font-size: 1.5rem;
   font-family: monospace;
-  
 }
 
 li:hover{
@@ -29,7 +28,6 @@ li:hover{
   padding: 1.5rem 2rem;
   border-radius: 1.5rem;
   font-size: 1.75rem;
-
 }
 
 .navBar button {
@@ -99,4 +97,7 @@ hr {
 color: white;
 font-variant: all-petite-caps;
 font-size: 2rem;
+margin-left: .25rem;
+margin-right: .25rem;
+
 }

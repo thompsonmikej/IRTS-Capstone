@@ -11,33 +11,28 @@ const Navbar = () => {
     <div className="navBar">
       <ul>
         <li className="navText brand">
-          {/* <Link to="/" className="navText">
+          <Link to="/" className="navText">
             <b>Integrated Registration Tracking System</b>
-          </Link> */}
-          {/* {user ? (
-            <button onClick={() => navigate("/login")}><b>Integrated Registration Tracking System <br />* Student *</b></button>
-          ) : (
-            <button onClick={() => navigate("/loginEE")}><b>Integrated Registration Tracking System <br />* Employee *</b></button>
-          )}   Should Toggle between student and employee access */}
-        </li>
+          </Link> 
+          </li>
         <li >
           <Link to="/scheduled" className="navLink">
-            <b>Current Schedule</b>
+            <b> Current Schedule </b>
           </Link>
         </li>
         <li >
           <Link to="/available" className="navLink">
-            <b>Available Courses</b>
+            <b> Available Courses </b>
           </Link>
         </li>
         <li >
           <Link to="/transcript" className="navLink">
-            <b>View Transcript</b>
+            <b> View Transcript </b>
           </Link>
         </li>
         <li >
           <Link to="/grads" className="navLink navLinkEmployee">
-            <b>View Graduates</b>
+            <b> Grad Candidates </b>
           </Link>
         </li>
         <li>
