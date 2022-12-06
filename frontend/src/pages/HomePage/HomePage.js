@@ -1,8 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
-
-
+import './HomePage.css';
 import axios from "axios";
 
 const HomePage = () => {
@@ -29,9 +28,8 @@ const HomePage = () => {
   }, [token]);  //className="container"    Remove this section
   return (
     <div > 
-      <h1>Welcome {user.first_name} {user.last_name}!
-        <br />Registration Services for You</h1>
-      <div><img src="https://img.freepik.com/free-photo/portrait-smiling-african-american-male-college-student-walking-with-coffee-isolated-white-wall_231208-638.jpg?w=740&t=st=1670117811~exp=1670118411~hmac=c8e92f3fe7101ca46fa69017402a1f51c691d6d6bff23e98701e80bf4bd97045" alt="student" className="studentPic"/>
+      <h1>Welcome!<br />Registration Services for {user.first_name} {user.last_name}</h1>
+      <div className="stu-pic"><img src="https://img.freepik.com/free-photo/portrait-smiling-african-american-male-college-student-walking-with-coffee-isolated-white-wall_231208-638.jpg?w=740&t=st=1670117811~exp=1670118411~hmac=c8e92f3fe7101ca46fa69017402a1f51c691d6d6bff23e98701e80bf4bd97045" alt="student" />
       </div>
             <></>
     </div>

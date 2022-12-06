@@ -10,10 +10,15 @@ const Navbar = () => {
   return (
     <div className="navBar">
       <ul>
-        <li className="brand">
-          <Link to="/" className="navText">
+        <li className="navText brand">
+          {/* <Link to="/" className="navText">
             <b>Integrated Registration Tracking System</b>
-          </Link>
+          </Link> */}
+          {/* {user ? (
+            <button onClick={() => navigate("/login")}><b>Integrated Registration Tracking System <br />* Student *</b></button>
+          ) : (
+            <button onClick={() => navigate("/loginEE")}><b>Integrated Registration Tracking System <br />* Employee *</b></button>
+          )}   Should Toggle between student and employee access */}
         </li>
         <li >
           <Link to="/scheduled" className="navLink">

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import './ScheduledCoursesPage.css';
 
-//ScheduledCoursesPage
 const ScheduledCoursesPage = (props) => {
 
     const [user, token] = useAuth();
@@ -57,11 +57,11 @@ const ScheduledCoursesPage = (props) => {
                     <hr/>
                     <span>{scheduledCourse.course.name} | </span>
                     <span>DAYS: M, T, W | </span>
-                    <span>CREDIT VALUE: {scheduledCourse.course.credit_value} |</span>
-                    <span>GRADE EARNED: TBD | </span>
-                    <span>CREDITS EARNED: 0 </span>
-                    <div>
-                        <button type='submit' onClick={() => selectCourse(item.id)}>Delete from Schedule</button>
+                    <span>CR VALUE: {scheduledCourse.course.credit_value} |</span>
+                    <span>GRADE: TBD | </span>
+                    <span>CR EARNED: 0 </span>
+                    <div className="schedule-button">
+                        <button type='submit'  onClick={() => selectCourse(item.id)}>Delete</button>
                         {/* Removes this line from the Scheduled (scheduled) Courses page  */}
                     </div> 
                     </div>

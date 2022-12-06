@@ -25,15 +25,16 @@ const GradsPage = () => {
     }, [token]);
     return (
         <><h1>Candidates for Graduation</h1>
+            <h2>BACHELOR DEGREE PROGRAM</h2>
             <h2>24 credits required to graduate</h2>
             <br /><><><div className="container">
             {   persons.map((person) => (
                 <div key={person.id}>
                     <hr/>
                     <span> {person.first_name} {person.last_name} | </span>
-                    <span>LAST SEMESTER: {person.semester} |</span>
+                    <span>LAST SEM: {person.semester} |</span>
                     <span>GPA: {person.gpa} |</span>
-                    <span>CREDITS EARNED: {person.credits_earned} </span>
+                    <span>CR EARNED: {person.credits_earned} </span>
                 </div>
                       ))}
             

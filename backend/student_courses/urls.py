@@ -13,7 +13,7 @@ urlpatterns = [
 
     path('get/', views.get_grades),
     path('change/', views.change_grades),
-    path('scheduled/', views.get_scheduledd_studentcourses), #gets courses without grades, presumably in current schedule
+    path('scheduled/', views.get_scheduled_studentcourses), #gets courses without grades, presumably in current schedule
 #  path('grades/new/', views.
     
     path('grades/delete/<int:grade_received>', views.delete_grades),

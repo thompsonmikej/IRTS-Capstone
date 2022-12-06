@@ -92,6 +92,7 @@ const TranscriptPage = (props) => {
 
     return (
         <><h1>Transcript of All Courses for {user.first_name} {user.last_name}</h1>
+            <h2>BACHELOR DEGREE PROGRAM</h2>
             <h2>CREDITS EARNED: {credits};</h2>
             <h2>CURRENT SEMESTER: {semester}</h2>
             <h2>GPA: {gpa}</h2>
@@ -100,9 +101,9 @@ const TranscriptPage = (props) => {
             {studentCourses.map((studentCourse) => (
                 <p key={studentCourse.id}>
                     <span>{studentCourse.course.name} |</span>
-                    <span>CREDIT VALUE: {studentCourse.course.credit_value} |</span>
-                    <span>GRADE EARNED: {studentCourse.grade_received} |</span>
-                    <span>CREDIT EARNED: {studentCourse.credits_received}</span> 
+                    <span>CR VALUE: {studentCourse.course.credit_value} |</span>
+                    <span>GRADE: {studentCourse.grade_received} |</span>
+                    <span>CR EARNED: {studentCourse.credits_received}</span> 
                     <hr/>
                     </p>
                     ))}
