@@ -43,7 +43,8 @@ function App() {
         <Route path="/available" element={<AvailableCourses />} />
         <Route path="/transcript" element={<TranscriptPage />} />
         <Route path="/scheduled" element={<ScheduledCoursesPage />} />
-        <Route path="/add_courses" element={<PrivateRoute><AddCoursesPage /></PrivateRoute>} />
+        {/* <Route path="/add_courses" element={<PrivateRoute><AddCoursesPage /></PrivateRoute>} /> */}
+        <Route path="/add_courses" element={<AddCoursesPage />} />
 
       </Routes>
       <Footer />

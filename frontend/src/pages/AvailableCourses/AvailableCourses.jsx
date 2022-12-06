@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 
@@ -45,7 +46,11 @@ const AvailableCourses = () => {
         }
     };
     return (
-        <><h1>Courses at Your Current Grade Level</h1><br/><><><div>
+        <><h1>Courses at Your Current Grade Level</h1><><>
+            <h2>
+                <Link to="/add_course" className="register">Add New Course to Catalog</Link>
+            </h2>   
+            <div>
             {   items.map((item) => (
                 <><div key={item.id} className="container">
                     <hr />
@@ -59,7 +64,7 @@ const AvailableCourses = () => {
                         {/* Adds this line to the Scheduled (scheduled) Courses page */}
                     </div> 
                 </div>
-               
+                   
                 </>
                     ))}
             
