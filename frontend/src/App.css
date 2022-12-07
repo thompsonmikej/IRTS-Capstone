@@ -22,8 +22,7 @@ p, label {
 }
 
 button {
-  background-color: #cc5500;
-  border: 2px solid #550040;
+  background-color: #550040;
   color: white;
   font-size: 1.25rem;
   font-weight: bold;
@@ -37,7 +36,7 @@ button {
 button:hover {
   cursor: pointer;
   color: white;
-  background-color: #550040;
+  background-color: #cc5500;
   border-radius: 0rem;
 }
 
@@ -53,7 +52,7 @@ button:hover {
 }
 .register {
   font-family: 'Courier New', Courier, monospace;
-  font-size: 1.5rem;
+  font-size: 1.85rem;
   text-decoration: underline;
   color: #550040;
   text-align: center; 

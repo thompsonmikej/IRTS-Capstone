@@ -8,8 +8,9 @@ const ScheduledCoursesPage = (props) => {
 
     const [user, token] = useAuth();
     const [scheduledCourses, setScheduledCourses] = useState([]);
+    const [sumAttemptedCredits, setSumAttemptedCredits] = useState(0)
     // const navigate = useNavigate();
-
+    
     useEffect(() => {
         async function fetchScheduledCourses() {
             try {
@@ -27,10 +28,27 @@ const ScheduledCoursesPage = (props) => {
         };
         fetchScheduledCourses();
     }, [token]);
+
+    useEffect(() => {
+        attemptedCredits();
+    }, [scheduledCourses])
+
+    function attemptedCredits() {
+        let sumAttemptedCredits = 0;
+        for (let i = 0; i < scheduledCourses.length; i++) {
+            console.log('scheduled Courses[i]', scheduledCourses[i])
+            sumAttemptedCredits += scheduledCourses[i].credit_value
+        }
+        console.log('sum of attempted credits', sumAttemptedCredits);
+        setSumAttemptedCredits(sumAttemptedCredits)
+    }
     
     return (
         <><h1>Scheduled Courses for {user.first_name} {user.last_name}</h1>
-            <h2>BACHELOR DEGREE PROGRAM</h2><br /><><><div>
+            <h2>BACHELOR DEGREE PROGRAM</h2>
+            <h2>COURSES ENROLLED: </h2>
+            <h2>TOTAL CREDITS ATTEMPTED: {sumAttemptedCredits}</h2>
+            <br /><><><div>
             {scheduledCourses.map((scheduledCourse) => (
                 <div key={scheduledCourse.id} className="container">
                                         <hr />
@@ -53,5 +71,3 @@ const ScheduledCoursesPage = (props) => {
 };
 
 export default ScheduledCoursesPage;
-
-

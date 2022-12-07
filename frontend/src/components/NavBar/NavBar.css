@@ -17,11 +17,11 @@ li {
 }
 
 li:hover{
-  background-color: #550040;
+  background-color:#cc5500 ;
 }
 
 .navBar {
-  background: #cc5500;
+  background: #550040;
   box-shadow: .5rem .5rem .5rem #444;
   color: white;
   margin: 2rem;
@@ -31,24 +31,19 @@ li:hover{
 }
 
 .navBar button {
-  /* border: .5rem solid white; */
   padding: 0.4rem 0.5rem;
-  /* border-radius: 5rem; */
   font-weight: bold;
   font-size: 1.5rem;
   color: white;
-  /* border: 0.25rem solid #550040; */
-  /* background-color: white; */
-  }
-
+  border-color: white;
+    }
 
 .navText {
   color: white;
 }
 
-
 .navBar button:hover {
-  background: #550040;
+  background: #cc5500;
   color:white;
   cursor: pointer;
   /* border-radius: 0rem; */
