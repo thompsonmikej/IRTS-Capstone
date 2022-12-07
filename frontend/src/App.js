@@ -11,7 +11,7 @@ import GradsPage from "./pages/GradsPage/GradsPage";
 import EnrolledStudentsPage from "./pages/EnrolledStudentsPage/EnrolledStudentsPage"
 import AvailableCourses from "./pages/AvailableCourses/AvailableCourses"
 import TranscriptPage from "./pages/TranscriptPage/TranscriptPage";
-// import ScheduledCoursesPage from "./pages/ScheduledCoursesPage/ScheduledCoursesPage";
+import ScheduledCoursesPage from "./pages/ScheduledCoursesPage/ScheduledCoursesPage";
 import AddCoursesPage from "./pages/AddCoursesPage/AddCoursesPage";
 
 // Component Imports
@@ -42,7 +42,7 @@ function App() {
         <Route path="/enrolled" element={<EnrolledStudentsPage />} />  {/* via home screen; EE access */}
         <Route path="/available" element={<AvailableCourses />} />
         <Route path="/transcript" element={<TranscriptPage />} />
-        {/* <Route path="/scheduled" element={<ScheduledCoursesPage />} /> */}
+        <Route path="/scheduled" element={<ScheduledCoursesPage />} />
         {/* <Route path="/add_courses" element={<PrivateRoute><AddCoursesPage /></PrivateRoute>} /> */}
         <Route path="/add_courses" element={<AddCoursesPage />} />  {/*  via available courses; EE access */}
 

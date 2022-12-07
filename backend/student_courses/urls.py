@@ -14,3 +14,4 @@ urlpatterns = [
     path('grades/delete/<int:grade_received>', views.delete_grades),
 ]
 
+

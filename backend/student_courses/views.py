@@ -26,11 +26,11 @@ def get_transcript(request):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_scheduled_studentcourses(request):
-    """api/users/
+    """api/student_courses/scheduled  FINDS UNGRADED COURSES ON STUDENT SCHEDULE
     """
-    user_received = StudentCourse.objects.filter(grade_received=None)
-    serializer = GradedCourseSerializer(user_received, many=True)
-    print('get user by id', user_received)
+    ungraded_courses = StudentCourse.objects.filter(grade_received=None)
+    serializer = GradedCourseSerializer(ungraded_courses, many=True)
+    print('get scheduled courses', ungraded_courses)
     return Response(serializer.data)
 
 
@@ -73,7 +73,7 @@ def change_grades(request, studentcourse_id):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def create_studentcourses(request):
-    """api/student_courses/register_new_course/  FUNCTION TO ADD COURSE ON SCHEDULE
+    """api/student_courses/register_new_course/  FUNCTION TO ADD COURSE ONTO SCHEDULE
     """
     serializer = StudentCourseSerializer(data=request.data)
     print('create courses')

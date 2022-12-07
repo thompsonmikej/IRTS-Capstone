@@ -4,13 +4,16 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 
+
 const ScheduledCoursesPage = (props) => {
 
     const [user, token] = useAuth();
     const [scheduledCourses, setScheduledCourses] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchScheduledCourses = async () => {
+        async function fetchScheduledCourses(courseId) {
+            console.log('course id: ', courseId)
             try {
                 let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/scheduled/`, {
                     headers: {
@@ -18,7 +21,8 @@ const ScheduledCoursesPage = (props) => {
                     },
                 });
                 console.log('Success response in ScheduledCourses', scheduledCourses)
-                setScheduledCourses(response.data);
+                setScheduledCourses(response.data.items);
+
             } catch (error) {
                 console.log('Error in ScheduledCourses', error);
             }
@@ -26,47 +30,22 @@ const ScheduledCoursesPage = (props) => {
         fetchScheduledCourses();
     }, [token]);
 
-    // function selectCourse(courseId) {
-    //     let navigate = navigate();
-    //     const fetchCourse = async (courseId) => {
-    //         try {
-    //             let response = await axios.delete(`http://127.0.0.1:8000/api/student_courses/register_new_course/`);
-    //             console.log('success in courseId: ', courseId)
-    //             applyCourse(response.data.items)
-    //             navigate('/scheduled')
-    //         } catch (error) {
-    //             console.log('error in courseId', error.response.data)
-    //         }
-    //     }
-    // };
-
-    // axios.delete(URL, {
-    //     headers: {
-    //         Authorization: authorizationToken
-    //     },
-    //     data: {
-    //         source: source
-    //     }
-    // });
-
-
     return (
-        <><h1>Scheduled Courses for {user.first_name} {user.last_name}</h1><br/><><><div>
+        <><h1>Scheduled Courses for {user.first_name} {user.last_name}</h1><br /><><><div>
             {scheduledCourses.map((scheduledCourse) => (
                 <div key={scheduledCourse.id} className="container">
-                    <hr/>
+                    <hr />
                     <span>{scheduledCourse.course.name} | </span>
                     <span>DAYS: M, T, W | </span>
                     <span>CR VALUE: {scheduledCourse.course.credit_value} |</span>
                     <span>GRADE: TBD | </span>
                     <span>CR EARNED: 0 </span>
-                    <div className="schedule-button">
-                        <button type='submit'  onClick={() => selectCourse(item.id)}>Delete</button>
-                        {/* Removes this line from the Scheduled (scheduled) Courses page  */}
-                    </div> 
-                    </div>
-                    ))}
-            
+                    {/* <div className="schedule-button">
+                        <button type='submit' onClick={() => scheduledCourses(scheduledCourse.course.id)}>Add Grade</button>
+                    </div>  */}
+                </div>
+            ))}
+
             {console.log('Return in scheduledCourse', scheduledCourses)}
         </div>
         </></></>

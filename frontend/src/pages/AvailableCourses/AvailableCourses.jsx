@@ -10,6 +10,7 @@ const AvailableCourses = () => {
     const [user, token] = useAuth();
     const [items, setItems] = useState([]);
     const [applyCourse, setApplyCourse] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchItems = async () => {
@@ -30,13 +31,24 @@ const AvailableCourses = () => {
 
 
     const selectCourse = async(courseId) => {
-        let navigate = navigate('/scheduled');
         //axios call to sign current user up to the course whose id is courseId
         //aka, create a new studentcourse with this courseid and the logged in user
+        let courseObject = {
+            "course_id": courseId,
+        }
+
         try {
-            let response = await axios.post(`http://127.0.0.1:8000/api/student_courses/register_new_course/`);
+            console.log('courseObject', courseObject)
+            let response = await axios.post(`http://127.0.0.1:8000/api/student_courses/register_new_course/`,
+                courseObject,
+            {
+                headers: {
+                    Authorization: "Bearer " + token,
+                },
+            });
+            
             console.log('success in courseId: ', courseId)
-            applyCourse(response.data.items)
+            setApplyCourse(response.data.items)
             navigate('/scheduled')
         } catch (error) {
             console.log('error in courseId', error.response.data)
@@ -52,6 +64,7 @@ const AvailableCourses = () => {
             {   items.map((item) => (
                 <><div key={item.id} className="container">
                     <hr />
+                    {console.log(item)}
                     <span>{item.name} | </span>
                     <span>CR VALUE: {item.credit_value} | </span>
                     <span>DAYS: M, T, W | </span>
