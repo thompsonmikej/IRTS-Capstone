@@ -8,7 +8,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import GradsPage from "./pages/GradsPage/GradsPage";
-import AllUsers from "./pages/AllUsers/AllUsers"
+import EnrolledStudentsPage from "./pages/EnrolledStudentsPage/EnrolledStudentsPage"
 import AvailableCourses from "./pages/AvailableCourses/AvailableCourses"
 import TranscriptPage from "./pages/TranscriptPage/TranscriptPage";
 // import ScheduledCoursesPage from "./pages/ScheduledCoursesPage/ScheduledCoursesPage";
@@ -39,12 +39,12 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/grads" element={<GradsPage />} />
         {/* <Route path="/grades" element={<GradeReport />} /> */}
-        <Route path="/enrolled" element={<AllUsers />} />
+        <Route path="/enrolled" element={<EnrolledStudentsPage />} />  {/* via home screen; EE access */}
         <Route path="/available" element={<AvailableCourses />} />
         <Route path="/transcript" element={<TranscriptPage />} />
         {/* <Route path="/scheduled" element={<ScheduledCoursesPage />} /> */}
         {/* <Route path="/add_courses" element={<PrivateRoute><AddCoursesPage /></PrivateRoute>} /> */}
-        <Route path="/add_courses" element={<AddCoursesPage />} />
+        <Route path="/add_courses" element={<AddCoursesPage />} />  {/*  via available courses; EE access */}
 
       </Routes>
       <Footer />

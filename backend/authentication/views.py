@@ -20,14 +20,24 @@ class RegisterView(generics.CreateAPIView):
     serializer_class = RegistrationSerializer
 
 
+# @api_view(['GET'])
+# @permission_classes([AllowAny])
+# def student_users(request):
+#     """/api/auth/enrolled/  These are students with classes. GET users with courses
+#     """
+#     students = User.objects.filter(is_student=True)
+#     serializer = RegistrationSerializer(students, many=True)
+#     print('GET users with courses, all_student users', students)
+#     return Response(serializer.data)
+
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def student_users(request):
     """/api/auth/enrolled/  These are students with classes. GET users with courses
     """
-    student_courses = User.objects.all()
-    serializer = RegistrationSerializer(student_courses, many=True)
-    print('GET users with courses, all_student users', student_courses)
+    students = User.objects.filter(semester__gt=0)
+    serializer = GradReadySerializer(students, many=True)
+    print('GET users with courses, all_student users', students)
     return Response(serializer.data)
 
 

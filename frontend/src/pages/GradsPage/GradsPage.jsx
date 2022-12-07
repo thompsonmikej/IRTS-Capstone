@@ -25,7 +25,7 @@ const GradsPage = () => {
     }, [token]);
     return (
         <><h1>Candidates for Graduation</h1>
-            <h2>BACHELOR DEGREE PROGRAM</h2>
+            <h2>BACHELOR'S DEGREE PROGRAM</h2>
             <h2>24 credits required to graduate</h2>
             <br /><><><div className="container">
             {   persons.map((person) => (

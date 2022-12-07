@@ -20,7 +20,6 @@ const AddCoursesPage = () => {
   const [formData, handleInputChange, handleSubmit] = useCustomForm(initialValues, postNewCourses);
 
   async function postNewCourses() {
-    console.log(formData)
     try {
       let response = await axios.post(`http://127.0.0.1:8000/api/courses/create/`, formData, {
         headers: {
@@ -28,7 +27,7 @@ const AddCoursesPage = () => {
         },
       });
       navigate('/available');
-      console.log('add courses ', formData)
+      console.log('add courses create ')
     } catch (error) {
       console.log(error.message);
     }

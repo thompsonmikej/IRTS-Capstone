@@ -10,22 +10,22 @@ const ScheduledCoursesPage = (props) => {
     const [scheduledCourses, setScheduledCourses] = useState([]);
 
     useEffect(() => {
-        const fetchScheduledCourses = async () => {
+        async function fetchScheduledCourses(courseId) {
             try {
-                let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/scheduled/1/`, {
+                let response = await axios.post(`http://127.0.0.1:8000/api/student_courses/scheduled/`, formData, {
                     headers: {
                         Authorization: "Bearer " + token,
                     },
                 });
+                navigate('/scheduled');
                 console.log('Success response in ScheduledCourses', scheduledCourses)
-                setScheduledCourses(response.data);
+                setScheduledCourses(response.data.items);
             } catch (error) {
                 console.log('Error in ScheduledCourses', error);
             }
         };
         fetchScheduledCourses();
     }, [token]);
-
     
     return (
         <><h1>Scheduled Courses for {user.first_name} {user.last_name}</h1><br/><><><div>
@@ -37,10 +37,10 @@ const ScheduledCoursesPage = (props) => {
                     <span>CR VALUE: {scheduledCourse.course.credit_value} |</span>
                     <span>GRADE: TBD | </span>
                     <span>CR EARNED: 0 </span>
-                    <div className="schedule-button">
-                        <button type='submit'  onClick={() => deleteCourse(item.id)}>Delete</button>
+                    {/* <div className="schedule-button">
+                        <button type='submit'  onClick={() => selectCourse(item.id)}>Delete</button>
                         {/* Removes this line from the Scheduled (scheduled) Courses page  */}
-                    </div> 
+                    </div>  */}
                     </div>
                     ))}
             
