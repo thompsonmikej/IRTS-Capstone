@@ -12,7 +12,7 @@ const ScheduledCoursesPage = (props) => {
     useEffect(() => {
         const fetchScheduledCourses = async () => {
             try {
-                let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/scheduled/1/`, {
+                let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/scheduled/`, {
                     headers: {
                         Authorization: "Bearer " + token,
                     },

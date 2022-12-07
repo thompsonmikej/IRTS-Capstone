@@ -30,10 +30,9 @@ const AvailableCourses = () => {
 
 
     const selectCourse = async(courseId) => {
-        let navigate = navigate();
+        let navigate = navigate('/scheduled');
         //axios call to sign current user up to the course whose id is courseId
         //aka, create a new studentcourse with this courseid and the logged in user
-
         try {
             let response = await axios.post(`http://127.0.0.1:8000/api/student_courses/register_new_course/`);
             console.log('success in courseId: ', courseId)
@@ -47,7 +46,7 @@ const AvailableCourses = () => {
     return (
         <><h1>Available at Your Current Grade Level</h1><><>
             <h2>
-                <Link to="/add_course" className="register">Add New Course to Catalog</Link>
+                <Link to="/add_courses" className="register">Add New Course to Catalog</Link>
             </h2>   
             <div>
             {   items.map((item) => (
@@ -60,10 +59,8 @@ const AvailableCourses = () => {
                     <span>LOC: Online | </span>
                     <div className="schedule-button">
                         <button type='submit' onClick={() => selectCourse(item.id)}>Enroll</button>
-                        {/* Adds this line to the Scheduled (scheduled) Courses page */}
-                    </div> 
+                    </div>
                 </div>
-                   
                 </>
                     ))}
             

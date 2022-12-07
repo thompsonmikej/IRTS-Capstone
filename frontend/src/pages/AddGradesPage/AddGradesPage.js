@@ -17,39 +17,24 @@ let initialValues = {
 };
 
 const AddGradesPage = () => {
-  const [user, token] = useAuth();
-  const navigate = useNavigate();
-  const [formData, handleInputChange, handleSubmit] = useCustomForm(initialValues, postNewGrades);
- 
-async function postNewGrades() {
-  try {
-    let response = await axios.post(`http://127.0.0.1:8000/api/grades/create/`, formData, {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    }); 
-    navigate('/');
-    console.log('post new Grade')
-  } catch (error) {
-    console.log(error.message);
-    
-  }
-}
+    try {
+      let response = await axios.post(`http://127.0.0.1:8000/api/grades/create/`, formData, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      navigate('/');
+      console.log('post new Grade')
+    } catch (error) {
+      console.log(error.message);
 
+    }
+  }
   return (
     <div className="container">
       <form className="form" onSubmit={handleSubmit}>
         <label>
-          Username:{" "}
-          <input
-            type="text"
-            name="user"
-            value={formData.user}
-            onChange={handleInputChange}
-          />
-        </label>
-        <label>
-          Password:{" "}
+          Course name:{" "}
           <input
             type="text"
             name="course"
@@ -58,7 +43,7 @@ async function postNewGrades() {
           />
         </label>
         <label>
-          Username:{" "}
+          Grade Received:{" "}
           <input
             type="text"
             name="grade_received"
@@ -67,7 +52,7 @@ async function postNewGrades() {
           />
         </label>
         <label>
-          Password:{" "}
+          Credits Received:{" "}
           <input
             type="text"
             name="credits_received"
@@ -76,11 +61,10 @@ async function postNewGrades() {
           />
         </label>
 
-         <button>Add Grade to Student</button>
+        <button type='submit' onClick={() => postNewGrades()}>Add Grade to Student</button>
       </form>
     </div>
   );
-};
 
 export default AddGradesPage;
 

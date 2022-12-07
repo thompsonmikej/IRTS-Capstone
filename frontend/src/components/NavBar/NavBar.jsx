@@ -12,7 +12,7 @@ const Navbar = () => {
       <ul>
         <li className="navText brand">
           <Link to="/" className="navText">
-            <b>Integrated Registration Tracking System</b>
+            <b>Integrated Registration<br/>Tracking System</b>
           </Link> 
           </li>
         <li >

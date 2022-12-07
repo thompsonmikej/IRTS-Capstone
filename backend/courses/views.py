@@ -45,9 +45,11 @@ def get_current_studentcourses(request):
     print('get current courses', current_available)
     return Response(serializer.data)
 
+    
+
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])   #by name
+@permission_classes([IsAuthenticated])   
 def create_courses(request):
     """api/courses/create
     """    
@@ -55,7 +57,8 @@ def create_courses(request):
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST) 
+        
 
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])   #by name  

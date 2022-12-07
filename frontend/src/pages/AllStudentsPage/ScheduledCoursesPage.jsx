@@ -26,30 +26,7 @@ const ScheduledCoursesPage = (props) => {
         fetchScheduledCourses();
     }, [token]);
 
-    // function selectCourse(courseId) {
-    //     let navigate = navigate();
-    //     const fetchCourse = async (courseId) => {
-    //         try {
-    //             let response = await axios.delete(`http://127.0.0.1:8000/api/student_courses/register_new_course/`);
-    //             console.log('success in courseId: ', courseId)
-    //             applyCourse(response.data.items)
-    //             navigate('/scheduled')
-    //         } catch (error) {
-    //             console.log('error in courseId', error.response.data)
-    //         }
-    //     }
-    // };
-
-    // axios.delete(URL, {
-    //     headers: {
-    //         Authorization: authorizationToken
-    //     },
-    //     data: {
-    //         source: source
-    //     }
-    // });
-
-
+    
     return (
         <><h1>Scheduled Courses for {user.first_name} {user.last_name}</h1><br/><><><div>
             {scheduledCourses.map((scheduledCourse) => (
@@ -61,7 +38,7 @@ const ScheduledCoursesPage = (props) => {
                     <span>GRADE: TBD | </span>
                     <span>CR EARNED: 0 </span>
                     <div className="schedule-button">
-                        <button type='submit'  onClick={() => selectCourse(item.id)}>Delete</button>
+                        <button type='submit'  onClick={() => deleteCourse(item.id)}>Delete</button>
                         {/* Removes this line from the Scheduled (scheduled) Courses page  */}
                     </div> 
                     </div>
