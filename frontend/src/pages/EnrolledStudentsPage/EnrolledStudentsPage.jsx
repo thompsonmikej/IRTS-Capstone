@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import useAuth from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
+//EMPLOYEES ONLY
 const EnrolledStudentsPage = () => {
 
     const [user, token] = useAuth();
     const [persons, setPersons] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchPersons = async () => {
@@ -31,12 +34,13 @@ const EnrolledStudentsPage = () => {
                     <div key={person.id}>
                         <hr />
                         <span>{person.first_name} {person.last_name} | </span>
-                        <span>LAST SEM: {person.semester} | </span>
-                        <span>GPA: {person.gpa} |</span>
-                        <span>CR EARNED: {person.credits_earned} | </span>
-                       <div className="schedule-button">
-                            <button type='submit'>Select</button>
-                        </div>  
+                        <span>SEM: {person.semester} | </span>
+                        <span>ACTIVE | </span>
+                        <span>FULLTIME | </span>
+                        <span>ADM DATE: AUG | </span>
+                        <div className="schedule-button">
+                            <button type='submit' onClick={() => navigate("/scheduled")}>Select</button>
+                        </div>                        
                     </div>
                 ))}
 
