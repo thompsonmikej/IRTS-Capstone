@@ -30,8 +30,8 @@ button {
   border-radius: 2rem;
   padding: 0.5rem 0.75rem;
   margin-left: 2rem;
-
-}
+  grid-template-areas: "r";
+ }
 
 button:hover {
   cursor: pointer;
@@ -48,8 +48,13 @@ button:hover {
   margin: 0 auto;
   max-width: 80rem;
   text-align: left;
-
 }
+
+Link , a {
+  font-size: 1.5rem;
+}
+
+
 .register {
   font-family: 'Courier New', Courier, monospace;
   font-size: 1.85rem;

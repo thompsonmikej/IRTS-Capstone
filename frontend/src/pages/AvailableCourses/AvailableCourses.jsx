@@ -60,16 +60,16 @@ const AvailableCourses = () => {
             <div>
             {   items.map((item) => (
                 <><div key={item.id} className="container">
-                    <hr />
-                    {console.log(item)}
+                    <hr />  
                     <span>{item.name} | </span>
                     <span>CR VALUE: {item.credit_value} | </span>
                     <span>DAYS: M, T, W | </span>
                     <span>INSTR: X | </span>
                     <span>LOC: Online | </span>
-                    <div className="schedule-button">
-                        <button type='submit' onClick={() => selectCourse(item.id)}>Enroll</button>
-                    </div>
+                    {/* <div className="schedule-button">
+                        <button type='submit' onClick={() => selectCourse(item.id)}>Enroll Student</button>
+                    </div> */}
+                    <Link to="/scheduled" onClick="selectCourse(item.id)">Enroll Student</Link>
                 </div>
                 </>
                     ))}

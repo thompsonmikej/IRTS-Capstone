@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import useAuth from "../../hooks/useAuth";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 //EMPLOYEES ONLY
@@ -29,18 +30,18 @@ const EnrolledStudentsPage = () => {
     return (
         <><h1>Enrolled Students</h1>
             <h2>BACHELOR'S DEGREE PROGRAM</h2>
+            <h2>SEMESTER START: AUG, END: NOV </h2>
             <br /><><><div className="container">
                 {persons.map((person) => (
                     <div key={person.id}>
-                        <hr />
-                        <span>{person.first_name} {person.last_name} | </span>
+                        <hr /><div>
+                            <span><Link to="/scheduled" onClick = 'navigate()'>{person.first_name} {person.last_name}</Link> | </span>
                         <span>SEM: {person.semester} | </span>
                         <span>ACTIVE | </span>
-                        <span>FULLTIME | </span>
+                        <span>FULL-TIME | </span>
                         <span>ADM DATE: AUG | </span>
-                        <div className="schedule-button">
-                            <button type='submit' onClick={() => navigate("/scheduled")}>Select</button>
-                        </div>                        
+                        <span><Link to="/enrolled">CONTACT INFO </Link> </span></div>
+                        
                     </div>
                 ))}
 

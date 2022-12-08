@@ -37,7 +37,7 @@ const AddGradesPage = () => {
   return (
   
     <div className="container">
-      {/* <h1>Grade received for {user.first_name </h1><h2>(Course)</h2> */}
+      <h1>Grade received for {user.first_name}</h1>
       <form className="form" onSubmit={handleSubmit}>
 {/*         
         <label>
@@ -50,7 +50,7 @@ const AddGradesPage = () => {
           />
         </label> */}
         <label>
-          Grade Received: {"1 letter "}
+          Enter a Grade: {"A, B, C, or D "}
           <input
             type="text"
             name="grade_received"

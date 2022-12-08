@@ -35,6 +35,7 @@ const AddCoursesPage = () => {
 
   return (
     <div className="container">
+      <h1>Create New Course</h1>
       <form className="form" onSubmit={handleSubmit}>
         <label>
           Course:{" 3 digit, 4 char"}

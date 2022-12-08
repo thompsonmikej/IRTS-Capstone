@@ -56,11 +56,14 @@ const TranscriptPage = (props) => {
 
     function findCredits() {
         let sumCredits = 0;
+        let lenth = 0;
         for (let i = 0; i < studentCourses.length; i++) {
             console.log('studentCourses[i]', studentCourses[i])
             sumCredits += studentCourses[i].credits_received
+            let lenth = studentCourses.length
         }
         console.log('sum of credits', sumCredits); 
+        console.log('length', lenth); 
         setCredits(sumCredits)
     }
     
@@ -74,6 +77,7 @@ const TranscriptPage = (props) => {
         let currentSemester = (Math.ceil(creditCountMultiple + 7))//+ Courses.semester
         console.log('credit count', creditCountMultiple)
         console.log('calc semester', currentSemester)
+        console.log('credits', credits)
         setCalcSemester(currentSemester)
     }
 
@@ -92,7 +96,7 @@ const TranscriptPage = (props) => {
 
     return (
         <><h1>Transcript of All Courses for {user.first_name} {user.last_name}</h1>
-            <h2>BACHELOR DEGREE PROGRAM</h2>
+            <h2>BACHELOR'S DEGREE PROGRAM</h2>
             <h2>CREDITS EARNED: {credits};</h2>
             <h2>CURRENT SEMESTER: {semester}</h2>
             <h2>GPA: {gpa}</h2>
