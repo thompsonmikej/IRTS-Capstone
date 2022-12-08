@@ -29,10 +29,7 @@ const AvailableCourses = () => {
         fetchItems();
     }, [token]);
 
-
     const selectCourse = async(courseId) => {
-        //axios call to sign current user up to the course whose id is courseId
-        //aka, create a new studentcourse with this courseid and the logged in user
         let courseObject = {
             "course_id": courseId,
         }
@@ -56,7 +53,7 @@ const AvailableCourses = () => {
  
     };
     return (
-        <><h1>Available at Your Current Grade Level</h1><><>
+        <><h1>Available at {user.first_name}'s Current Grade Level</h1><><>
             <h2>
                 <Link to="/add_courses" className="register">Add New Course to Catalog</Link>
             </h2>   

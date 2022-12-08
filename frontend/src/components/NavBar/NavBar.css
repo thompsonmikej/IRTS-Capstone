@@ -16,8 +16,9 @@ li {
   font-family: monospace;
 }
 
-li:hover{
-  background-color:#cc5500 ;
+li:hover {
+  background-color:#cc5500;
+  
 }
 
 .navBar {
@@ -42,11 +43,11 @@ li:hover{
   color: white;
 }
 
-.navBar button:hover {
+.navBar button:hover , a:hover {
   background: #cc5500;
   color:white;
   cursor: pointer;
-  /* border-radius: 0rem; */
+  text-decoration: none;
 }
 
 .brand {
@@ -81,12 +82,9 @@ h1, h2{
 }
 
 hr {
-  height: .75rem;
+  height: 1rem;
 }
 
-.navLinkEmployee{
-  /* to be hidden until Employee logs in */
-}
 
 .navLink {
 color: white;

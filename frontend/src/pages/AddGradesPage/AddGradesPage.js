@@ -35,44 +35,38 @@ const AddGradesPage = () => {
   }
 
   return (
+  
     <div className="container">
+      {/* <h1>Grade received for {user.first_name </h1><h2>(Course)</h2> */}
       <form className="form" onSubmit={handleSubmit}>
-        <label>
-          User id:{"should be logged in user"}
-          <input
-            type="text"
-            name="name"
-            value={formData.user_id}
-            onChange={handleInputChange}
-          />
-        </label>
+{/*         
         <label>
           Course id:{""}
           <input
-            type="text"
-            name="credit_value"
+            type="integer"
+            name="course id"
             value={formData.course_id}
             onChange={handleInputChange}
           />
-        </label>
+        </label> */}
         <label>
-          Grade Received: {"1 letter, == should convert to numeric grade "}
+          Grade Received: {"1 letter "}
           <input
             type="text"
-            name="semester"
+            name="grade_received"
             value={formData.grade_received}
             onChange={handleInputChange}
           />
         </label>
-        <label>
-          Credit Received: {"Should equal credit value unless failing grade "}
+        {/* <label>
+          Credit Received: {"Should equal credit value "}
           <input
             type="text"
-            name="semester"
-            value={formData.grade_received}
+            name="credit_received"
+            value={formData.credit_received}
             onChange={handleInputChange}
           />
-        </label>
+        </label> */}
         <button onClick={() => postNewGrades()}>Add Grade</button>
       </form>
     </div>

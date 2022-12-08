@@ -37,7 +37,7 @@ const AddCoursesPage = () => {
     <div className="container">
       <form className="form" onSubmit={handleSubmit}>
         <label>
-          Course:{"3 digit, 4 char"}
+          Course:{" 3 digit, 4 char"}
           <input
             type="text"
             name="name"
@@ -46,7 +46,7 @@ const AddCoursesPage = () => {
           />
         </label>
         <label>
-          Credit Value:{"1 digit , 0-4"}
+          Credit Value:{" 1 digit, 0-4"}
           <input
             type="text"
             name="credit_value"
