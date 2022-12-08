@@ -26,15 +26,15 @@ li:hover {
   box-shadow: .5rem .5rem .5rem #444;
   color: white;
   margin: 2rem;
-  padding: 1.5rem 2rem;
+  padding: 1.5rem 1rem;
   border-radius: 1.5rem;
   font-size: 1.75rem;
 }
 
 .navBar button {
-  padding: 0.4rem 0.5rem;
+  padding: 0.7rem 0.7rem;
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: white;
   border-color: white;
     }
@@ -53,9 +53,9 @@ li:hover {
 .brand {
   cursor: pointer;
   font-family: sans-serif;
-  font-size: 1.75rem;
+  font-size: 2rem;
   text-align: center;
-  margin-right: 6rem;
+  margin: 0 2rem;
   padding: 0rem;
 }
 
@@ -89,7 +89,7 @@ hr {
 .navLink {
 color: white;
 font-variant: all-petite-caps;
-font-size: 2rem;
+font-size: 1.75rem;
 margin-left: .25rem;
 margin-right: .25rem;
 

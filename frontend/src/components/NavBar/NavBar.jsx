@@ -17,22 +17,22 @@ const Navbar = () => {
           </li>
         <li >
           <Link to="/scheduled" className="navLink">
-            <b> Current Schedule </b>
+            <b>Current<br/>Schedule </b>
           </Link>
         </li>
         <li >
           <Link to="/available" className="navLink">
-            <b> Available Courses </b>
+            <b>Available<br />Courses </b>
           </Link>
         </li>
         <li >
           <Link to="/transcript" className="navLink">
-            <b> View Transcript </b>
+            <b>View<br />Transcript </b>
           </Link>
         </li>
         <li >
           <Link to="/grads" className="navLink navLinkEmployee">
-            <b> Grad Candidates </b>
+            <b>Graduation<br />Candidates </b>
           </Link>
         </li>
         <li>
