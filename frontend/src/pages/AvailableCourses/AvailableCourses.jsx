@@ -53,7 +53,7 @@ const AvailableCourses = () => {
  
     };
     return (
-        <><h1>Available at {user.first_name}'s Current Grade Level</h1><><>
+        <><h1>Courses Available to {user.first_name}, Student Id#{user.id}</h1><><>
             <h2>
                 <Link to="/add_courses" className="register">Add New Course to Catalog</Link>
             </h2>   

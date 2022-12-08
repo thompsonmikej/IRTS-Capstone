@@ -67,6 +67,10 @@ function SumOfGrades() {
 11
 
 
+exclude values from an array
+
+array.exclude(grade_received=Null)
+
 
 
 

@@ -32,53 +32,6 @@ const ScheduledCoursesPage = () => {
     fetchItems();
     }, [token]);
 
-
-    useEffect(() => {
-        if (scheduledCourses.length > 0) {
-            findGpa();
-        }
-    }, [scheduledCourses])
-
-    function findGpa() {
-        let sum = 0;
-        for (let i = 0; i < scheduledCourses.length; i++) {
-            console.log('ScheduledCourses[i]', scheduledCourses[i])
-            sum += scheduledCourses[i].grade_received
-        }
-        let gpa = (sum / scheduledCourses.length);
-        console.log('sum', sum);
-        console.log('number of courses', scheduledCourses.length);
-        console.log('setGpa', gpa);
-        setGpa(gpa)
-    }
-
-    useEffect(() => {
-        findCredits();
-    }, [scheduledCourses])
-
-    function findCredits() {
-        let sumCredits = 0;
-        for (let i = 0; i < scheduledCourses.length; i++) {
-            console.log('ScheduledCourses[i]', scheduledCourses[i])
-            sumCredits += scheduledCourses[i].credits_received
-        }
-        console.log('sum of credits', sumCredits);
-        setCredits(sumCredits)
-    }
-
-    useEffect(() => {
-        calcSemester();
-    }, [scheduledCourses])
-
-
-    function calcSemester() {
-        let creditCountMultiple = (credits / 12)
-        let currentSemester = (Math.ceil(creditCountMultiple + 7))//+ Courses.semester
-        console.log('credit count', creditCountMultiple)
-        console.log('calc semester', currentSemester)
-        setCalcSemester(currentSemester)
-    }
-
     const fetchItems = async (courseId) => {
         let courseObject = {
             "course_id": courseId,
@@ -103,9 +56,9 @@ const ScheduledCoursesPage = () => {
 
     };
     return (
-            <><h1>Scheduled Courses for {user.first_name} {user.last_name}</h1>
+        <><h1>Scheduled Courses for {user.first_name} {user.last_name}, Student Id#{user.id}</h1>
                 <h2>BACHELOR DEGREE PROGRAM</h2>
-                <h2>COURSES ENROLLED: TBD </h2>
+            <h2>COURSES ENROLLED: TBD </h2>
                 <h2>TOTAL CREDITS ATTEMPTED: TBD</h2> 
                 <br /><><><div>
                     {items.map((item) => (

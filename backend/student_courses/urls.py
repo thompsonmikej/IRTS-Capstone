@@ -7,11 +7,15 @@ urlpatterns = [
     path('scheduled/', views.get_scheduled_studentcourses), #Ungraded Courses/ Current
     path('grade_change/<int:studentcourse_id>/', views.change_grades), #Give grade to existing course
     path('get_gpa/', views.get_gpa),
+    path('calculate_gpa/<int:user_id>/', views.calculate_gpa),
+    path('calculate_credits/<int:user_id>/', views.calculate_credits_received),
+
 
 # Currently unused
     path('courses/change/', views.change_studentcourses),
     path('courses/delete/', views.delete_studentcourses),
-    path('grades/delete/<int:grade_received>', views.delete_grades),
+    path('grades/delete/<int:grade_received>/', views.delete_grades),
+  
 ]
 
 

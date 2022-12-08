@@ -121,6 +121,22 @@ def delete_studentcourses(request):
 # How to assign a grade
 
 
+@api_view(['GET'])
+def calculate_gpa(request, user_id):
+    graded_courses = StudentCourse.objects.filter(user_id=user_id).exclude(grade_received=None)
+    sum_of_grades = 0
+    for grade in graded_courses:
+        sum_of_grades += grade.grade_received
+    gpa= sum_of_grades/len(graded_courses)
+    return Response(gpa)
 
 
-        
+@api_view(['GET'])
+def calculate_credits_received(request, user_id):
+    credit_tally= StudentCourse.objects.filter(user_id=user_id).exclude(credits_received=None)
+    sum_of_credits = 0
+    for credit in credit_tally:
+        sum_of_credits += credit.credits_received
+    total_credits = sum_of_credits/len(credit_tally)
+    return Response(total_credits)
+

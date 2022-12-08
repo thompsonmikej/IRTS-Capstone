@@ -8,7 +8,7 @@ const TranscriptPage = (props) => {
 
     const [user, token] = useAuth();
     const [studentCourses, setStudentCourses] = useState([]);
-    const [gpa, setGpa] = useState(0)
+    const [thisGpa, setThisGpa] = useState(0)
     const [credits, setCredits] = useState(0)
     const [semester, setCalcSemester] = useState(0)
     const [calcGradReady, setCalcGradReady] = useState(0)
@@ -31,41 +31,55 @@ const TranscriptPage = (props) => {
         fetchStudentCourses();
     }, [token]);
 
- 
         
     useEffect(() => {
         if (studentCourses.length > 0) {
             findGpa();
         }
-    }, [studentCourses])
+    }, [])
 
     function findGpa() {
-        let sum = 0;
+        let gpaCalc = 0;
         for (let i = 0; i < studentCourses.length; i++) {
             console.log('studentCourses[i]', studentCourses[i])
-            sum += studentCourses[i].grade_received
+            gpaCalc += studentCourses[i].grade_received
         }
-        let gpa = (sum / studentCourses.length);
-        console.log('sum', sum); 
-        console.log('number of courses', studentCourses.length); 
-        console.log('setGpa', gpa); 
-        setGpa(gpa)
-    }
+        let thisGpa = (gpaCalc / studentCourses.length);
+        console.log('sum', gpaCalc);
+        console.log('number of courses', studentCourses.length);
+        console.log('setGpa', thisGpa);
+        setThisGpa(thisGpa)
+        }
+    
+    const fetchGpa = async (thisGpa) => {
+        console.log(' fetch thisGpa', thisGpa)
+        try {
+            let response = await axios.put(`http://127.0.0.1:8000/api/auth/post_gpa/${user.id}`, thisGpa, {
+                headers: {
+                    Authorization: "Bearer " + token,
+                },
+            });
+            fetchGpa(response.data);
+        } catch (error) {
+            console.log('Error in StudentCourses', error);
+        }
+       
+    };
 
     useEffect(() => {   
             findCredits();
     }, [studentCourses])
-
+    
     function findCredits() {
         let sumCredits = 0;
-        let lenth = 0;
+        let thisLength = 0;
         for (let i = 0; i < studentCourses.length; i++) {
             console.log('studentCourses[i]', studentCourses[i])
             sumCredits += studentCourses[i].credits_received
-            let lenth = studentCourses.length
+            let thisLength = studentCourses.length
         }
         console.log('sum of credits', sumCredits); 
-        console.log('length', lenth); 
+        console.log('length', thisLength); 
         setCredits(sumCredits)
     }
     
@@ -87,7 +101,7 @@ const TranscriptPage = (props) => {
     function CalcGradReady() {
         let calcGradReady;
         if (credits >= 12)
-            if (gpa <= 3) {
+            if (thisGpa <= 3) {
             calcGradReady = "Ready to Graduate";    
         } else {
             calcGradReady = "";    
@@ -97,11 +111,11 @@ const TranscriptPage = (props) => {
     }
 
     return (
-        <><h1>Transcript of All Courses for {user.first_name} {user.last_name}</h1>
+        <><h1>Transcript of All Courses for {user.first_name} {user.last_name}, Student Id#{user.id}</h1>
             <h2>BACHELOR'S DEGREE PROGRAM</h2>
             <h2>CREDITS EARNED: {credits};</h2>
             <h2>CURRENT SEMESTER: {semester}</h2>
-            <h2>GPA: {gpa}</h2>
+            <h2>GPA: {thisGpa}</h2>
             <hr />
             <br /><><><div className="container">
             {studentCourses.map((studentCourse) => (
