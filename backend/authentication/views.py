@@ -96,3 +96,48 @@ def gpa_earned(request, user_id):
         return Response(serializer.data, status=status.HTTP_200_OK)
     except:
         return Response(status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])   #by name
+def current_semester(request, user_id):
+    """api/auth/post_semester/<int:user_id>/', #stores semester to DB
+    """   
+    student_semester = get_object_or_404(User, pk=user_id)
+    print('semester', user_id) 
+    student_semester.semester=request.data['semester']
+    try:
+        student_semester.save()
+        serializer = GradReadySerializer(student_semester)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    except:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])   #by name
+def grad_status(request, user_id):
+    """api/auth/post_grad_status/<int:user_id>/' #stores grad status to DB
+    """   
+    is_grad = get_object_or_404(User, pk=user_id)
+    print('grad ready', user_id) 
+    is_grad.grad_ready=request.data['grad_ready']
+    try:
+        is_grad.save()
+        serializer = GradReadySerializer(is_grad)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    except:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])   #by name
+def student_status(request, user_id):
+    """api/auth/post_student_status/<int:user_id>/' #stores grad status to DB
+    """   
+    is_current_student = get_object_or_404(User, pk=user_id)
+    print('is_student', user_id) 
+    is_current_student.is_student=request.data['is_student']
+    try:
+        is_current_student.save()
+        serializer = GradReadySerializer(is_current_student)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    except:
+        return Response(status=status.HTTP_400_BAD_REQUEST)

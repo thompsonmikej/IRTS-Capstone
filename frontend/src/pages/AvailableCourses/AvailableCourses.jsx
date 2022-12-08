@@ -66,10 +66,10 @@ const AvailableCourses = () => {
                     <span>DAYS: M, T, W | </span>
                     <span>INSTR: X | </span>
                     <span>LOC: Online | </span>
-                    {/* <div className="schedule-button">
+                    <div className="schedule-button">
                         <button type='submit' onClick={() => selectCourse(item.id)}>Enroll Student</button>
-                    </div> */}
-                    <Link to="/scheduled" onClick="selectCourse(item.id)">Enroll Student</Link>
+                    </div>
+                    {/* <Link to="/scheduled" onClick="selectCourse(item.id)">Enroll Student</Link> */}
                 </div>
                 </>
                     ))}

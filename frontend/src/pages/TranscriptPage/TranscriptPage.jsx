@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import useAuth from "../../hooks/useAuth";
-
+import { Link } from "react-router-dom";
 
 //TranscriptPage
 const TranscriptPage = (props) => {
@@ -109,7 +109,9 @@ const TranscriptPage = (props) => {
                     <span>{studentCourse.course.name} |</span>
                     <span>CR VALUE: {studentCourse.course.credit_value} |</span>
                     <span>GRADE: {studentCourse.grade_received} |</span>
-                    <span>CR EARNED: {studentCourse.credits_received}</span> 
+                    <span>CR EARNED: {studentCourse.credits_received} |</span> 
+                    <span>FALL 2022 |</span> 
+                    <span><Link to="/transcript">VIEW COURSE DETAILS</Link></span> 
                     <hr/>
                     </p>
                     ))}
