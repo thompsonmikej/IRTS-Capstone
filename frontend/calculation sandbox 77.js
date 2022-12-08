@@ -13,6 +13,13 @@ function calcSemester() {
   console.log('calc semester', currentSemester)
   setCalcSemester(currentSemester)
 }
+function calcSemester() {
+  let creditCount = (Math.floor(data.age / 12))
+  let currentSemester = creditCount + data.age
+  console.log('credit count', creditCount)
+  console.log('calc semester', currentSemester)
+  setCalcSemester(currentSemester)
+}
 
 
 

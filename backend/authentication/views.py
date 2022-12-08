@@ -63,3 +63,36 @@ def get_all_students(request):
     print('get all students ', all_students)
     serializer = RegistrationSerializer(all_students, many=True)
     return Response(serializer.data)
+
+
+
+    # Store credits earned to an existing student in auth userDB
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])   #by name
+def sum_credits_earned(request, user_id):
+    """api/auth/sum_credits_earned/
+    """   
+    credits_accumulated = get_object_or_404(User, pk=user_id)
+    print('sum credits earned', user_id) 
+    credits_accumulated.credits_earned=request.data['credits_earned']
+    try:
+        credits_accumulated.save()
+        serializer = GradReadySerializer(credits_accumulated)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    except:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])   #by name
+def gpa_earned(request, user_id):
+    """api/auth/post_gpa/<int:user_id>/', #stores GPA to DB
+    """   
+    calculated_gpa = get_object_or_404(User, pk=user_id)
+    print('gpa', user_id) 
+    calculated_gpa.gpa=request.data['gpa']
+    try:
+        calculated_gpa.save()
+        serializer = GradReadySerializer(calculated_gpa)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    except:
+        return Response(status=status.HTTP_400_BAD_REQUEST)

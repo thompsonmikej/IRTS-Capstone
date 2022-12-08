@@ -11,5 +11,7 @@ urlpatterns = [
     # path('grades/gpa/', views.get_gpa),
     path('grads/', views.grad_ready_users),
     path('enrolled/', views.student_users),
+    path('sum_credits_earned/<int:user_id>/', views.sum_credits_earned), #stores credits accumulated
+    path('post_gpa/<int:user_id>/', views.gpa_earned), #stores GPA to DB
 
 ]

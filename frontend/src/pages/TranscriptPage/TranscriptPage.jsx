@@ -31,6 +31,8 @@ const TranscriptPage = (props) => {
         fetchStudentCourses();
     }, [token]);
 
+ 
+        
     useEffect(() => {
         if (studentCourses.length > 0) {
             findGpa();
