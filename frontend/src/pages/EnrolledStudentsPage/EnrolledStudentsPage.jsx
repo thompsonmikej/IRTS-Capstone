@@ -36,7 +36,8 @@ const EnrolledStudentsPage = () => {
                 {persons.map((person) => (
                     <div key={person.id}>
                         <hr /><div>
-                            <span><Link to="/scheduled" onClick = 'navigate()'>{person.first_name} {person.last_name}</Link> | </span>
+                            {console.log('person', person)}
+                            <span><Link to={`/scheduled/${person.id}/`}>{person.first_name} {person.last_name}</Link> | </span>
                         <span>SEM: {person.semester} | </span>
                         <span>ACTIVE | </span>
                         <span>FULL-TIME | </span>

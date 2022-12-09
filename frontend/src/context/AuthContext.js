@@ -15,7 +15,7 @@ function setUserObject(user) {
     username: user.username,
     id: user.user_id,
     first_name: user.first_name,
-    // last_name: user.last_name,
+    last_name: user.last_name,
     is_student: user.is_student,
   };
 }

@@ -14,6 +14,8 @@ const ScheduledCoursesPage = () => {
     const [semester, setCalcSemester] = useState(0)
     const [scheduledCourses, setScheduledCourses] = useState([]);
     const navigate = useNavigate();
+    //capture the studentId param using useParams()
+    //Then able to get all studentcourses for that student
 
     useEffect(() => {
         const fetchItems = async () => {

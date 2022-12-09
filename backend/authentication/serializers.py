@@ -25,7 +25,7 @@ class GradReadySerializer(serializers.ModelSerializer):
     """ 
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'semester', 'gpa', 'credits_earned',
+        fields = ['id', 'first_name', 'last_name', 'semester', 'gpa', 'credits_earned',
                   'grad_ready']
 
 # student_id = serializers.IntegerField(write_only=True)

@@ -1,128 +1,36 @@
-let data = [
-  { name: 'Sarah', gender: 'female', age: 25 },
-  { name: 'Tom', gender: 'male', age: 18 },
-  { name: 'Tim', gender: 'male', age: 65 },
-  { name: 'Kim', gender: 'female', age: 58 }
-];
+def choose_grade():
+    """Returns a grade. Specify the course in another function--
+    """
+    grades = ['D', 'C', 'B', 'A']
+    
+    selected_grade = grades[(int(input('''Enter the letter grade that the student earned, A, B, C, D.
+        4 : A
+        3 : B
+        2 : C
+        1 : D
+        ''')))-1]
+
+    index = grades.index(selected_grade)+1
+    if grades == 1 or 2 or 3 or 4:
+        print('On the grade report, the letter value is ', selected_grade, ' and the grade point value is ', index)
+        return (selected_grade, index)
+    else:
+        print('Please re-enter a number within the range.')
+        return choose_grade()
+grade_applied = choose_grade()
+
+if grade_applied = 
 
 
-function calcSemester() {
-  let creditCount = (Math.floor(data.age / 12))
-  let currentSemester = creditCount + data.age
-  console.log('credit count', creditCount)
-  console.log('calc semester', currentSemester)
-  setCalcSemester(currentSemester)
-}
-function calcSemester() {
-  let creditCount = (Math.floor(data.age / 12))
-  let currentSemester = creditCount + data.age
-  console.log('credit count', creditCount)
-  console.log('calc semester', currentSemester)
-  setCalcSemester(currentSemester)
-}
-
-
-
-let sum = 0;
-
-for (let i = 0; i < data.length; i++){
-  sum += data[i]
-}
-
-console.log(sum);
-====
-
-const [tempGrades, setGrades] = useState(0)
-
-useEffect(() => {
-  findGrades();
-}, [studentCourses])
-
-function findGrades() {
-  let tempGrades = studentCourses.map((studentCourse) => {   //          
-    return studentCourse.grade_received
-  })
-  console.log('temp Gpa', tempGrades);
-  setGrades(tempGrades);
-}
-
-///
-function CountGrades() {
-  let countOfGrades = studentCourses.map((studentCourse) => {     
-    return studentCourse.grade_received
-  }).length
-  console.log('count Grades', countOfGrades);
-  setCountGrades(studentCourses.length);
-}
-
-function SumOfGrades() {
-  let grade_sum = 0;
-  for (let i = 0; i < studentCourse.grade_received.length; i++) {
-    return grade_sum += studentCourse.grade_received[i]
-  } 
-  console.log('sum of grades', grade_sum);
-  setSumOfGrades(grade_sum)
-}
-(24)CR/12 * 1 + semester (6)
-11
-
-
-exclude values from an array
-
-array.exclude(grade_received=Null)
-
-
-
-
-
-
-
-
-function CalcGpa() {
-
-  return SumOfGrades / CountGrades
-
-}
-
-
-///
-
-function CountGrades() {
-  let grade_sum = 0;
-  for (let i = 0; i < studentCourse.grade_received.length; i++) {
-    grade_sum += studentCourse.grade_received[i]
-  }
-  
-  let countOfGrades = studentCourses.map((studentCourse) => {
-    return studentCourse.grade_received
-  }).length
-  console.log('count Grades', countOfGrades);
-  setCountGrades(countOfGrades);
-}
-
-
-
-
-function SumOfGrades() {
-  
-  console.log('sum of grades', grade_sum);
-  setSumOfGrades(grade_sum)
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+def award_course_credits(numeric_grade, credits_attempted):
+    """First part, awards credit for a course based on earning at least two grade points.
+    """
+    grade_points_earned = numeric_grade
+    if grade_points_earned >= 2:
+        print('Grade points earned: ', grade_points_earned )
+        return credits_attempted
+    else:
+        credits_attempted = 0
+        print('Grade points earned: ', grade_points_earned )
+        return credits_attempted
+credits_earned_per_course = award_course_credits(3.1, 4)

@@ -15,14 +15,19 @@ let initialValues = {
   credits_received: '',
 };
 
-const AddGradesPage = () => {
+const AddGradesPage = (props) => {
   const [user, token] = useAuth();
   const navigate = useNavigate();
-  const [formData, handleInputChange, handleSubmit] = useCustomForm(initialValues, postNewGrades);
+  const [formData, handleInputChange, handleSubmit] = useCustomForm(initialValues, postNewGrade);
 
-  async function postNewGrades() {
+  async function postNewGrade() {
+
+    let modifiedGrade = formData;
+    //if/else to check current letter value of modifiedGrade.grade_received and reassign a number to the property AND assign the appropriate credit value
+    console.log('modifiedgrade', modifiedGrade)
+
     try {
-      let response = await axios.post(`http://127.0.0.1:8000/api/grades/create/`, formData, {
+      let response = await axios.post(`http://127.0.0.1:8000/api/grades/create/`, modifiedGrade, {
         headers: {
           Authorization: "Bearer " + token,
         },
@@ -52,7 +57,7 @@ const AddGradesPage = () => {
           />
         </label>
         
-        <button onClick={() => postNewGrades()}>Add Grade</button>
+        <button onClick={handleSubmit}>Add Grade</button>
       </form>
     </div>
   );

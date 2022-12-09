@@ -31,6 +31,9 @@ const Navbar = () => {
           </Link>
         </li>
         <li >
+          <Link to="/directory" className="navLink">
+            <b>Employee<br />Login </b>
+          </Link>
         </li>
         <li>
           {user ? (
