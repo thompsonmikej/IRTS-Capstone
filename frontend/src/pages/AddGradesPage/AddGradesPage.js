@@ -37,18 +37,11 @@ const AddGradesPage = () => {
   return (
   
     <div className="container">
-      <h1>Grade received for {user.first_name}</h1>
+      <h1>Add Grade for {user.first_name}, student Id#{user.id}</h1>
+      <h2>COURSE TITLE</h2>
+      <h2>CREDIT VALUE</h2>
+      <h2>AUG - NOV </h2><hr/><br />
       <form className="form" onSubmit={handleSubmit}>
-{/*         
-        <label>
-          Course id:{""}
-          <input
-            type="integer"
-            name="course id"
-            value={formData.course_id}
-            onChange={handleInputChange}
-          />
-        </label> */}
         <label>
           Enter a Grade: {"A, B, C, or D "}
           <input
@@ -58,15 +51,7 @@ const AddGradesPage = () => {
             onChange={handleInputChange}
           />
         </label>
-        {/* <label>
-          Credit Received: {"Should equal credit value "}
-          <input
-            type="text"
-            name="credit_received"
-            value={formData.credit_received}
-            onChange={handleInputChange}
-          />
-        </label> */}
+        
         <button onClick={() => postNewGrades()}>Add Grade</button>
       </form>
     </div>

@@ -64,6 +64,24 @@ const AddCoursesPage = () => {
             onChange={handleInputChange}
           />
         </label>
+        <label>
+          Instructor: {""}
+          <input
+            type="text"
+            name=""
+            // value={formData.semester}
+            // onChange={handleInputChange}
+          />
+        </label>
+        <label>
+          Course Description: {""}
+          <input
+            type="text"
+            name=""
+          // value={formData.semester}
+          // onChange={handleInputChange}
+          />
+        </label>
         <button onClick={() => postNewCourses()}>Add to Catalog</button>
       </form>
     </div>

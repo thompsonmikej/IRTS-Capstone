@@ -17,12 +17,12 @@ const Navbar = () => {
           </li>
         <li >
           <Link to="/scheduled" className="navLink">
-            <b>Current<br/>Schedule </b>
+            <b>Scheduled<br/>Courses </b>
           </Link>
         </li>
         <li >
           <Link to="/available" className="navLink">
-            <b>Available<br />Courses </b>
+            <b>Courses<br/>Available</b>
           </Link>
         </li>
         <li >

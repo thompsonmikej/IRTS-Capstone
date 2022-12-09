@@ -56,7 +56,7 @@ const ScheduledCoursesPage = () => {
 
     };
     return (
-        <><h1>Scheduled Courses for {user.first_name} {user.last_name}, Student Id#{user.id}</h1>
+        <><h1>Scheduled Courses for {user.first_name} {user.last_name}, student ID#{user.id}</h1>
                 <h2>BACHELOR'S DEGREE PROGRAM</h2>
                 <h2>COURSES ENROLLED: TBD </h2>
                 <h2>TOTAL CREDITS ATTEMPTED: TBD</h2> 
@@ -70,9 +70,13 @@ const ScheduledCoursesPage = () => {
                             <span>CR VALUE: {item.course.credit_value} |</span>
                             <span>LOC: Online | </span>
                             <span>AUG - NOV | </span>
-                        <div className="schedule-button">
+                        {/* <div className="schedule-button">
                             <button type='submit' onClick={() => fetchItems(item.course.id)}>Add Grades</button>
-                        </div>
+                            </div> */}
+                        <span>
+                            <Link to="/grades" onClick="fetchItems(item.course.id)">Add Grades</Link>
+                        </span>
+
                     </div>
                 
                 ))}

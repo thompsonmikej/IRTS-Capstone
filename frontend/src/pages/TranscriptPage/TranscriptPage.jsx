@@ -111,9 +111,9 @@ const TranscriptPage = (props) => {
     }
 
     return (
-        <><h1>Transcript of All Courses for {user.first_name} {user.last_name}, Student Id#{user.id}</h1>
+        <><h1>Transcript of Courses for {user.first_name} {user.last_name}, student ID#{user.id}</h1>
             <h2>BACHELOR'S DEGREE PROGRAM</h2>
-            <h2>CREDITS EARNED: {credits};</h2>
+            <h2>CREDITS EARNED: {credits}</h2>
             <h2>CURRENT SEMESTER: {semester}</h2>
             <h2>GPA: {thisGpa}</h2>
             <hr />
@@ -125,7 +125,7 @@ const TranscriptPage = (props) => {
                     <span>GRADE: {studentCourse.grade_received} |</span>
                     <span>CR EARNED: {studentCourse.credits_received} |</span> 
                     <span>FALL 2022 |</span> 
-                    <span><Link to="/transcript">VIEW COURSE DETAILS</Link></span> 
+                    <span><Link to="/transcript">COURSE REQUIREMENTS</Link></span> 
                     <hr/>
                     </p>
                     ))}

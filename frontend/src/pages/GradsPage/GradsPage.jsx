@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import useAuth from "../../hooks/useAuth";
+import { Link } from "react-router-dom";
 
 const GradsPage = () => {
 
@@ -34,7 +35,7 @@ const GradsPage = () => {
                     <span>{person.first_name} {person.last_name} | </span>
                     <span>LAST SEM: {person.semester} | </span>
                     <span>GPA: {person.gpa} |</span>
-                    <span>CR EARNED: {person.credits_earned} | </span>
+                    <span> <Link to="/grads">CR EARNED: {person.credits_earned} | </Link> </span>
                     <span>GRAD DATE: FEB | </span>
                     <span>WITH HONORS </span>
                     <span> </span>

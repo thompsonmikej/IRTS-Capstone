@@ -14,6 +14,7 @@ import TranscriptPage from "./pages/TranscriptPage/TranscriptPage";
 import ScheduledCoursesPage from "./pages/ScheduledCoursesPage/ScheduledCoursesPage";
 import AddCoursesPage from "./pages/AddCoursesPage/AddCoursesPage";
 import AddGradesPage from "./pages/AddGradesPage/AddGradesPage";
+import EEHomePage from "./pages/HomePage/HomePage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -33,9 +34,12 @@ function App() {
           element={
             <PrivateRoute>
               <HomePage />
+              
             </PrivateRoute>
           }
         />
+        
+        <Route path="/eeHomePage" element={<eeHomePage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/grads" element={<GradsPage />} />
