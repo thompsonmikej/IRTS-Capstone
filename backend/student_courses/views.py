@@ -137,6 +137,10 @@ def calculate_credits_received(request, user_id):
     sum_of_credits = 0
     for credit in credit_tally:
         sum_of_credits += credit.credits_received
-    total_credits = sum_of_credits/len(credit_tally)
-    return Response(total_credits)
+        print(credit)
+        print(sum_of_credits)
+        print(credit_tally)
+    return Response(sum_of_credits)
 
+
+    

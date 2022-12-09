@@ -9,6 +9,7 @@ urlpatterns = [
     path('get_gpa/', views.get_gpa),
     path('calculate_gpa/<int:user_id>/', views.calculate_gpa),
     path('calculate_credits/<int:user_id>/', views.calculate_credits_received),
+    # path('grad_ready/', views.calculate_graduation_ready),
 
 
 # Currently unused

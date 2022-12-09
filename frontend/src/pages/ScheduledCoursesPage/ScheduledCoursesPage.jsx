@@ -57,8 +57,8 @@ const ScheduledCoursesPage = () => {
     };
     return (
         <><h1>Scheduled Courses for {user.first_name} {user.last_name}, Student Id#{user.id}</h1>
-                <h2>BACHELOR DEGREE PROGRAM</h2>
-            <h2>COURSES ENROLLED: TBD </h2>
+                <h2>BACHELOR'S DEGREE PROGRAM</h2>
+                <h2>COURSES ENROLLED: TBD </h2>
                 <h2>TOTAL CREDITS ATTEMPTED: TBD</h2> 
                 <br /><><><div>
                     {items.map((item) => (
