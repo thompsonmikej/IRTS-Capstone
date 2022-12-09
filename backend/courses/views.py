@@ -40,7 +40,7 @@ def find_courses(request):
 def get_current_studentcourses(request):
     """api/courses/current/
     """
-    current_available = Course.objects.filter(semester__gt=7)
+    current_available = Course.objects.exclude(credit_value=None)
     serializer = CourseSerializer(current_available, many=True)
     print('get current courses', current_available)
     return Response(serializer.data)

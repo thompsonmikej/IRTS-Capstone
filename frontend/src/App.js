@@ -14,7 +14,7 @@ import TranscriptPage from "./pages/TranscriptPage/TranscriptPage";
 import ScheduledCoursesPage from "./pages/ScheduledCoursesPage/ScheduledCoursesPage";
 import AddCoursesPage from "./pages/AddCoursesPage/AddCoursesPage";
 import AddGradesPage from "./pages/AddGradesPage/AddGradesPage";
-import eeHomePage from "./pages/eeHomePage/eeHomePage";
+import DirectoryPage from "./pages/DirectoryPage/DirectoryPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -39,7 +39,7 @@ function App() {
           }
         />
         
-        <Route path="/eeHomePage" element={<eeHomePage />} />
+        <Route path="/directory" element={<DirectoryPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/grads" element={<GradsPage />} />

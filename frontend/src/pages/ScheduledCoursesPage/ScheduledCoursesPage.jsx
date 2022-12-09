@@ -49,7 +49,7 @@ const ScheduledCoursesPage = () => {
 
             console.log('Success response in items', courseId)
             setItems(response.data.items)
-            navigate('/grades')
+            navigate("/grades")
         } catch (error) {
             console.log('error in courseId', error.response.data)
         }
@@ -70,12 +70,12 @@ const ScheduledCoursesPage = () => {
                             <span>CR VALUE: {item.course.credit_value} |</span>
                             <span>LOC: Online | </span>
                             <span>AUG - NOV | </span>
-                        {/* <div className="schedule-button">
+                        <div className="schedule-button">
                             <button type='submit' onClick={() => fetchItems(item.course.id)}>Add Grades</button>
-                            </div> */}
-                        <span>
+                            </div>
+                        {/* <span>
                             <Link to="/grades" onClick="fetchItems(item.course.id)">Add Grades</Link>
-                        </span>
+                        </span> */}
 
                     </div>
                 

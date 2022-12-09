@@ -11,10 +11,11 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         token = super().get_token(user)
         # for any additional fields you'd like to add to the JWT sent back in response
         # add below using the token["field name"] = user.name_of_property
-        # token["is_student"] = user.is_student
-
+        
         token["username"] = user.username
         token["first_name"] = user.first_name
+        token["last_name"] = user.last_name
+        token["is_student"] = user.is_student
 
         return token
 

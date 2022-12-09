@@ -69,13 +69,12 @@ const AvailableCourses = () => {
                     <span className="schedule-button">
                         <button type='submit' onClick={() => selectCourse(item.id)}>Enroll Student</button>
                     </span>
-                    {/* <Link to="/scheduled" onClick="selectCourse(item.id)">Enroll Student</Link> */}
-                </div>
+                  </div>
                 </>
                     ))}
             
             {console.log('Return in AvailableCourses', items)}
-        </div>
+            </div>    <div className="page-bottom"></div>
         </></></>
     );
 };

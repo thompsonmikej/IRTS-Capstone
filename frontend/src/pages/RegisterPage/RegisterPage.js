@@ -69,7 +69,7 @@ const RegisterPage = () => {
           special characters.<br />
         </p>
         <label >
-          If Student, Type 1:{" "}   {/* May want to default a page to student */}
+          If Student, Type 1:{" "} 
           <input
             className="EEwidth"
             type="text"
@@ -79,7 +79,7 @@ const RegisterPage = () => {
           />
         </label>
          <button>Register!</button>
-         </form>
+      </form>    <div className="page-bottom"></div>
     </div>
   );
 };

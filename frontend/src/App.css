@@ -50,19 +50,19 @@ button:hover {
   text-align: left;
 }
 
-Link , a {
+Link , a , .register{
   font-size: 1.5rem;
 }
 
 
-.register {
+/* .register {
   background: #550040;
   color: white;
   text-decoration: none;
   font-size: 1.5rem;
   font-family: monospace;
   text-align: center; 
-}
+} */
 
 .form {
   align-items: center;
@@ -82,4 +82,8 @@ Link , a {
 }
 .grade {
   background-color: #550a;
+}
+
+.page-bottom{
+  margin-bottom: 15rem;
 }

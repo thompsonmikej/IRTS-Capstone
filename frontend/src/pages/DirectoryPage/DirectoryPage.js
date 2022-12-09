@@ -2,10 +2,10 @@ import React from "react";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
-import './HomePage.css';
+import './DirectoryPage.css';
 import axios from "axios";
 
-const eeHomePage = () => {
+const DirectoryPage = () => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
   // The; "token" value is the JWT token that you will send in the header of any request requiring authentication
   //TODO: Add an AddCars Page to add a car for a logged in user's garage
@@ -29,10 +29,11 @@ const eeHomePage = () => {
   // }, [token]); 
   return (
     <><div className="centered">
-      <br /><h1>Welcome to the Employee Portal<br /> for Registration Services</h1><br />
+      <br /><h1>Welcome to the Employee Portal!</h1>
+      <h2>FIND A STUDENT TO REGISTER <br/>OR SUBMIT A GRADE BELOW</h2><br /><hr />
       <Link to="/enrolled" className="register"> Directory of Current Students </Link>
     </div></>
 
   );
 };
-export default eeHomePage;
+export default DirectoryPage;
