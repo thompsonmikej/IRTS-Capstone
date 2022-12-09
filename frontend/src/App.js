@@ -14,7 +14,7 @@ import TranscriptPage from "./pages/TranscriptPage/TranscriptPage";
 import ScheduledCoursesPage from "./pages/ScheduledCoursesPage/ScheduledCoursesPage";
 import AddCoursesPage from "./pages/AddCoursesPage/AddCoursesPage";
 import AddGradesPage from "./pages/AddGradesPage/AddGradesPage";
-import EEHomePage from "./pages/HomePage/HomePage";
+import eeHomePage from "./pages/eeHomePage/eeHomePage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";

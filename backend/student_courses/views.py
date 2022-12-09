@@ -132,7 +132,6 @@ def calculate_gpa(request, user_id):
 
 
 @api_view(['GET'])
-
 def calculate_credits_received(request, user_id):
     credit_tally= StudentCourse.objects.filter(user_id=user_id).exclude(credits_received=None)
     sum_of_credits = 0
@@ -141,13 +140,43 @@ def calculate_credits_received(request, user_id):
     return Response(sum_of_credits)
 
 
+@api_view(['GET'])
+def calculate_semester_by_credits(request, user_id):
+    credit_tally= StudentCourse.objects.filter(user_id=user_id).exclude(credits_received=None)
+    sum_of_credits = 0
+    current_semester = 0
+    for credit in credit_tally:
+        sum_of_credits += credit.credits_received
+        if sum_of_credits <=11:
+            current_semester = 7
+        elif(sum_of_credits >11 and sum_of_credits <=23):
+            current_semester = 8
+    return Response(current_semester)
+
 # @api_view(['GET'])
-# def calculate_semester_by_credits(sum_of_credits):
-#     # should call run.calculate_credits_received(request, user_id)
-#     if(sum_of_credits <=12):
-#         return 7
-#     elif(sum_of_credits > 13 and <=24):
-#         return 8
+# def calculate_graduation_ready(request, user_id):
+#     credit_tally= StudentCourse.objects.filter(user_id=user_id).exclude(credits_received=None)
+#     graded_courses = StudentCourse.objects.filter(user_id=user_id).exclude(grade_received=None)
+#     sum_of_credits = 0
+#     sum_of_grades = 0
+#     enough_credits = False
+#     valid_gpa = False
+#     for credit in credit_tally:
+#         sum_of_credits += credit.credits_received
+#         print('sum_of_credits',sum_of_credits)
+#         if sum_of_credits >=24:
+#             enough_credits = True
+#             print('enough_credits', enough_credits)
+#             for grade in graded_courses:
+#                 sum_of_grades += grade.grade_received
+#                 print('sum_of_grades', sum_of_grades)
+#                 gpa= sum_of_grades/len(graded_courses)
+#                 print('gpa', gpa)
+#                 if gpa >=3:
+#                     valid_gpa = True
+#                 print('valid_gpa', valid_gpa)
+
+#     return Response(valid_gpa)
 
 
 # @api_view(['GET'])
@@ -161,6 +190,7 @@ def calculate_credits_received(request, user_id):
 #         return 2
 #     else:
 #         return 0
+# numeric_grade_value = calculate_numeric_grade()        
 
 # @api_view(['GET']) #should use values derived from previous functions
 # def calculate_graduation_ready(gpa, sum_of_credits):
@@ -170,4 +200,4 @@ def calculate_credits_received(request, user_id):
 #           return True
 #     else:
 #         return False
-
+# is_grad_ready = calculate_graduation_ready(gpa, sum_of_credits)
