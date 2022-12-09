@@ -30,8 +30,14 @@ const DirectoryPage = () => {
   return (
     <><div className="centered">
       <br /><h1>Welcome to the Employee Portal!</h1>
-      <h2>FIND A STUDENT TO REGISTER <br/>OR SUBMIT A GRADE BELOW</h2><br /><hr />
-      <Link to="/enrolled" className="register"> Directory of Current Students </Link>
+      <br /><hr /><br/>
+      <h2>FIND YOUR STUDENT </h2>
+      <h2>ENROLL STUDENT INTO A CLASS </h2>
+      <h2>GRADE YOUR STUDENT </h2>
+      <div><Link to="/enrolled" className="register"> Directory of Current Students </Link></div><br /><br />
+      <div>
+        <h2>CURRENT LIST  </h2>
+        <Link to="/grads" className="register"> Candidates for Graduation </Link></div>
     </div></>
 
   );

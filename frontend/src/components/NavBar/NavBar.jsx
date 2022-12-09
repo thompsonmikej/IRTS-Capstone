@@ -31,9 +31,6 @@ const Navbar = () => {
           </Link>
         </li>
         <li >
-          <Link to="/grads" className="navLink navLinkEmployee">
-            <b>Graduation<br />Candidates </b>
-          </Link>
         </li>
         <li>
           {user ? (
