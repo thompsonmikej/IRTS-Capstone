@@ -132,15 +132,42 @@ def calculate_gpa(request, user_id):
 
 
 @api_view(['GET'])
+
 def calculate_credits_received(request, user_id):
     credit_tally= StudentCourse.objects.filter(user_id=user_id).exclude(credits_received=None)
     sum_of_credits = 0
     for credit in credit_tally:
         sum_of_credits += credit.credits_received
-        print(credit)
-        print(sum_of_credits)
-        print(credit_tally)
     return Response(sum_of_credits)
 
 
-    
+# @api_view(['GET'])
+# def calculate_semester_by_credits(sum_of_credits):
+#     # should call run.calculate_credits_received(request, user_id)
+#     if(sum_of_credits <=12):
+#         return 7
+#     elif(sum_of_credits > 13 and <=24):
+#         return 8
+
+
+# @api_view(['GET'])
+# def calculate_numeric_grade(request):
+#     letter_grade=StudentCourse.objects.filter(user_id=user_id).exclude(grade_received=None)
+#     if(grade_received == "a"):
+#         return 4
+#     elif(grade_received== "b"):
+#         return 3
+#     elif(grade_received == "c"):
+#         return 2
+#     else:
+#         return 0
+
+# @api_view(['GET']) #should use values derived from previous functions
+# def calculate_graduation_ready(gpa, sum_of_credits):
+#     Should call run.calculate_gpa(request, user_id)
+#     should call run.calculate_credits_received(request, user_id)
+#     if (gpa >= 3 and sum_of_credits >= 24):
+#           return True
+#     else:
+#         return False
+
