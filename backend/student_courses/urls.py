@@ -8,7 +8,7 @@ urlpatterns = [
     path('grade_change/<int:studentcourse_id>/', views.change_grades), #Give grade to existing course
     path('get_gpa/', views.get_gpa),
     path('calculate_gpa/<int:user_id>/', views.calculate_gpa),
-    path('calculate_credits/<int:user_id>/', views.calculate_credits_received),
+    path('calculate_credits/<int:user_id>/', views.calculate_credits_earned),
     path('calculate_semester/<int:user_id>/', views.calculate_semester_by_credits),
     # path('grad_ready/', views.calculate_graduation_ready),
 
