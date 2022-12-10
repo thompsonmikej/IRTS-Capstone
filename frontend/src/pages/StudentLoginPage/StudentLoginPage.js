@@ -1,10 +1,11 @@
 import React, { useContext, useEffect } from "react";
 import AuthContext from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 import useCustomForm from "../../hooks/useCustomForm";
-import { useNavigate, Link } from "react-router-dom";
-import "./LoginPage.css";
+import { Link } from "react-router-dom";
+import "./StudentLoginPage.css";
 
-const LoginPage = () => {
+const StudentLoginPage = () => {
   const navigate = useNavigate();
   const { loginUser, isServerError } = useContext(AuthContext);
   const defaultValues = { username: "", password: "" };
@@ -20,7 +21,7 @@ const LoginPage = () => {
   }, [isServerError]);
 
   return (
-    <><h1>Welcome to the Employee Portal</h1>
+    <><h1>Welcome to the Student Portal!</h1>
       <div className="container">
       <form className="form" onSubmit={handleSubmit}>
         <label>
@@ -42,14 +43,14 @@ const LoginPage = () => {
         {isServerError ? (
           <p className="error">Incorrect credentials.<br />Please try again.</p>
         ) : null}
-        <Link to="/register" className="register">New? Register here.</Link>
-          <button type='submit' onClick={() => navigate('/directory')}>Login</button>
+        {/* <Link to="/register" className="register">Register here</Link> */}
+          <button type='submit' onClick={() => navigate('/scheduled')}>Login</button>
       </form>
     </div></>
   );
 };
 
-export default LoginPage;
+export default StudentLoginPage;
 
 
 // If the person registered as EE, then loginPage should request the name of the student and display view Graduates

@@ -15,19 +15,35 @@ let initialValues = {
   credits_received: '',
 };
 
-const AddGradesPage = (props) => {
+const AddGradesPage = async (props) => {
   const [user, token] = useAuth();
   const navigate = useNavigate();
   const [formData, handleInputChange, handleSubmit] = useCustomForm(initialValues, postNewGrade);
 
-  async function postNewGrade() {
-
+  async function postNewGrade(props) {
     let modifiedGrade = formData;
-    //if/else to check current letter value of modifiedGrade.grade_received and reassign a number to the property AND assign the appropriate credit value
-    console.log('modifiedgrade', modifiedGrade)
+
+    if (modifiedGrade == "A") {
+      console.log('A, 4', modifiedGrade)
+      return "4";
+    }
+    else if (modifiedGrade == "B", modifiedGrade) {
+      console.log('B, 3', modifiedGrade)
+      return "3";
+    }
+    else if (modifiedGrade == "C", modifiedGrade) {
+      console.log('C, 2', modifiedGrade)
+      return "2";
+    }
+    else {
+      console.log('else, 0', modifiedGrade)
+      return "0";
+    }
+  }   
+  // console.log('modifiedgrade', modifiedGrade)
 
     try {
-      let response = await axios.post(`http://127.0.0.1:8000/api/grades/create/`, modifiedGrade, {
+      let response = await axios.post(`http://127.0.0.1:8000/api/grades/create/`,  {
         headers: {
           Authorization: "Bearer " + token,
         },
@@ -37,18 +53,16 @@ const AddGradesPage = (props) => {
     } catch (error) {
       console.log(error.message);
     }
-  }
 
-  return (
-  
+  return (  
     <div className="container">
-      <h1>Add Grade for {user.first_name}, student Id#{user.id}</h1>
+      <h1>Add Grade for {user.first_name} {user.last_name}</h1>
       <h2>COURSE TITLE</h2>
       <h2>CREDIT VALUE</h2>
       <h2>AUG - NOV </h2><hr/><br />
       <form className="form" onSubmit={handleSubmit}>
         <label>
-          Enter a Grade: {"A, B, C, or D "}
+          ENTER A GRADE: {"A, B, C, or D "}
           <input
             type="text"
             name="grade_received"

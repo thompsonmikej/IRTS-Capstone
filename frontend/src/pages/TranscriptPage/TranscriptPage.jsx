@@ -82,7 +82,7 @@ const TranscriptPage = (props) => {
     }, [])
 
     return (
-        <><h1>Transcript of Courses for {user.first_name} {user.last_name}, student ID#{user.id}</h1>
+        <><h1>Transcript of Courses for {user.first_name} {user.last_name}</h1>
             <h2>BACHELOR'S DEGREE PROGRAM</h2>
             <h2>CREDITS EARNED: {credits}</h2>
             <h2>CURRENT SEMESTER: {semester}</h2>
@@ -103,7 +103,7 @@ const TranscriptPage = (props) => {
             
             {console.log('studentCourse return', studentCourses)}
             
-        </div>
+            </div><div className="page-bottom"></div>
         </></></>
 
     );

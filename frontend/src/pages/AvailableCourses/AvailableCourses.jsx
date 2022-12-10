@@ -53,7 +53,7 @@ const AvailableCourses = () => {
  
     };
     return (
-        <><h1>Courses Available to {user.first_name}, student ID#{user.id}</h1><><>
+        <><h1>Courses Available to {user.first_name} {user.last_name}, ID# S-10{user.id}</h1><><>
             <h2>
                 <Link to="/add_courses" className="register">Add Course to Catalog</Link>
             </h2>   
@@ -65,7 +65,7 @@ const AvailableCourses = () => {
                     <span>CR VALUE: {item.credit_value} | </span>
                     <span>DAYS: M, T, W | </span>
                     <span>INSTR: X | </span>
-                    <span>LOC: Online | </span>
+                    <span>LOC: ONLN | </span>
                     <span className="schedule-button">
                         <button type='submit' onClick={() => selectCourse(item.id)}>Enroll Student</button>
                     </span>
@@ -74,7 +74,7 @@ const AvailableCourses = () => {
                     ))}
             
             {console.log('Return in AvailableCourses', items)}
-            </div>    <div className="page-bottom"></div>
+            </div><div className="page-bottom"></div>
         </></></>
     );
 };

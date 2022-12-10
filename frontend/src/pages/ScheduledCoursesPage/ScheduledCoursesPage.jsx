@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-
+import { useParams } from 'react-router-dom';
 
 const ScheduledCoursesPage = () => {
 
@@ -14,7 +14,7 @@ const ScheduledCoursesPage = () => {
     const [semester, setCalcSemester] = useState(0)
     const [scheduledCourses, setScheduledCourses] = useState([]);
     const navigate = useNavigate();
-    //capture the studentId param using useParams()
+    const { studentId } = useParams()
     //Then able to get all studentcourses for that student
 
     useEffect(() => {
@@ -51,14 +51,14 @@ const ScheduledCoursesPage = () => {
 
             console.log('Success response in items', courseId)
             setItems(response.data.items)
-            navigate("/grades")
+            navigate("/grades/:studentId")
         } catch (error) {
             console.log('error in courseId', error.response.data)
         }
 
     };
     return (
-        <><h1>Scheduled Courses for {user.first_name} {user.last_name}, student ID#{user.id}</h1>
+        <><h1>Scheduled Courses for {user.first_name} {user.last_name}, ID# S-10{user.id}</h1>
                 <h2>BACHELOR'S DEGREE PROGRAM</h2>
                 <h2>COURSES ENROLLED: TBD </h2>
                 <h2>TOTAL CREDITS ATTEMPTED: TBD</h2> 
@@ -66,7 +66,6 @@ const ScheduledCoursesPage = () => {
                     {items.map((item) => (
                         <div key={item.id} className="container">
                             <hr />
-
                             <span>{item.course.name} | </span>
                             <span>DAYS: M, T, W | </span>
                             <span>CR VALUE: {item.course.credit_value} |</span>
@@ -75,10 +74,6 @@ const ScheduledCoursesPage = () => {
                         <div className="schedule-button">
                             <button type='submit' onClick={() => fetchItems(item.course.id)}>Add Grades</button>
                             </div>
-                        {/* <span>
-                            <Link to="/grades" onClick="fetchItems(item.course.id)">Add Grades</Link>
-                        </span> */}
-
                     </div>
                 
                 ))}

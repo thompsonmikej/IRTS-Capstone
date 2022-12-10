@@ -38,7 +38,7 @@ const DirectoryPage = () => {
       <div>
         <h2>CURRENT LIST  </h2>
         <Link to="/grads" className="register"> Candidates for Graduation </Link></div>
-    </div></>
+    </div><div className="page-bottom"></div></>
 
   );
 };

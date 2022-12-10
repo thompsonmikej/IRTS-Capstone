@@ -31,7 +31,7 @@ const GradsPage = () => {
             <br /><><><div className="container">
             {   persons.map((person) => (
                 <div key={person.id}>
-                    <hr/>
+                    <hr />
                     <span>{person.first_name} {person.last_name} | </span>
                     <span>LAST SEM: {person.semester} | </span>
                     <span>GPA: {person.gpa} |</span>
@@ -43,7 +43,7 @@ const GradsPage = () => {
                       ))}
             
             {console.log('Return in Grad_ready', persons)}
-        </div>
+            </div><div className="page-bottom"></div>
         </></></>
     );
 };

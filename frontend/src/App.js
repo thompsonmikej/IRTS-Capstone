@@ -6,6 +6,7 @@ import "./App.css";
 // Pages Imports
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import StudentLoginPage from "./pages/StudentLoginPage/StudentLoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import GradsPage from "./pages/GradsPage/GradsPage";
 import EnrolledStudentsPage from "./pages/EnrolledStudentsPage/EnrolledStudentsPage"
@@ -42,9 +43,10 @@ function App() {
         <Route path="/directory" element={<DirectoryPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/studentLogin" element={<StudentLoginPage />} />
         <Route path="/grads" element={<GradsPage />} />
         <Route path="/grades" element={<AddGradesPage />} />
-        <Route path="/enrolled" element={<EnrolledStudentsPage />} />  {/* via home screen; EE access */}
+        <Route path="/enrolled" element={<EnrolledStudentsPage />} /> 
         <Route path="/available" element={<AvailableCourses />} />
         <Route path="/transcript" element={<TranscriptPage />} />
         <Route path="/scheduled/:studentId/" element={<ScheduledCoursesPage />} />
