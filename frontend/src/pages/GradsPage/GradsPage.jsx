@@ -27,7 +27,8 @@ const GradsPage = () => {
     return (
         <><h1>Candidates for Graduation</h1>
             <h2>BACHELOR'S DEGREE PROGRAM</h2>
-            <h2>24 credits required to graduate</h2>
+            <h2>24 CREDITS MINIMUM AND 3.0 GPA REQUIRED</h2>
+            <h2><Link to="/directory">Back to Employee Portal</Link></h2><hr />
             <br /><><><div className="container">
             {   persons.map((person) => (
                 <div key={person.id}>

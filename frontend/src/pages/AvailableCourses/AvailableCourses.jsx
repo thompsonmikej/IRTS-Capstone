@@ -53,10 +53,9 @@ const AvailableCourses = () => {
  
     };
     return (
-        <><h1>Courses Available to {user.first_name} {user.last_name}, ID# S-10{user.id}</h1><><>
-            <h2>
-                <Link to="/add_courses" className="register">Add Course to Catalog</Link>
-            </h2>   
+        <><h1>Courses Available to {user.first_name} {user.last_name}</h1><><>
+            <h2>BACHELOR'S DEGREE PROGRAM</h2>
+            <h2>24 CREDITS TOTAL REQUIRED TO GRADUATE</h2><br />   
             <div>
             {   items.map((item) => (
                 <><div key={item.id} className="container">
