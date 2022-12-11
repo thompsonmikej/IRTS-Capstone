@@ -15,7 +15,12 @@ const Navbar = () => {
           <Link to="/studentLogin" className="navText">
             <b>Integrated Registration<br/>Tracking System</b>
           </Link> 
-          </li>
+        </li>
+        <li >
+          <Link to="/transcript" className="navLink">
+            <b>View<br />Transcript </b>
+          </Link>
+        </li>
         <li >
           <Link to="/available" className="navLink">
             <b>Available<br />Courses</b>
@@ -24,11 +29,6 @@ const Navbar = () => {
         <li >
           <Link to={"/scheduled/"} className="navLink">
             <b>Scheduled<br/>Courses </b>
-          </Link>
-        </li>
-        <li >
-          <Link to="/transcript" className="navLink">
-            <b>View<br />Transcript </b>
           </Link>
         </li>
         <li >
