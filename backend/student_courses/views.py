@@ -27,10 +27,23 @@ def get_transcript(request):
 def get_available(request):
     """api/student_courses/available/  classes ungraded, available   //.filter(credits_received=None)
     """
-    available_courses = StudentCourse.objects.filter(user=request.user)
-    serializer = StudentCourseSerializer(available_courses, many=True)
-    print('available courses', available_courses)
+    credit_tally= StudentCourse.objects.filter(user=request.user).exclude(credits_received=None)
+    sum_of_credits = 0
+    current_semester = 0
+    print('credit_tally', credit_tally)
+    for credit in credit_tally:
+        sum_of_credits += credit.credits_received
+        if sum_of_credits <=11:
+            current_semester = 7
+        elif(sum_of_credits >11 and sum_of_credits <=24):
+            current_semester = 8
+        print('sum of credits', sum_of_credits)
+        available_courses = StudentCourse.objects.filter(data=request.data).filter(semester=current_semester)
+        serializer = StudentCourseSerializer(available_courses, many=True)
+        print('available courses', available_courses)
     return Response(serializer.data)
+
+
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])

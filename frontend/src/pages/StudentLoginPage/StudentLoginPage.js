@@ -24,7 +24,7 @@ const StudentLoginPage = () => {
     <><h1>Welcome to the Student Portal!</h1>
       <div className="stu-pic"><img src="https://img.freepik.com/free-photo/portrait-smiling-african-american-male-college-student-walking-with-coffee-isolated-white-wall_231208-638.jpg?w=740&t=st=1670117811~exp=1670118411~hmac=c8e92f3fe7101ca46fa69017402a1f51c691d6d6bff23e98701e80bf4bd97045" alt="student" /><img src="https://img.freepik.com/free-photo/lifestyle-people-emotions-casual-concept-confident-nice-smiling-asian-woman-cross-arms-chest-confident-ready-help-listening-coworkers-taking-part-conversation_1258-59335.jpg" alt="student" />
       </div>
-      <div className="schedule-button"></div><br />
+      <div className="schedule-button"></div>
       <hr/>
       <div className="container">
       <form className="form" onSubmit={handleSubmit}>

@@ -3,7 +3,7 @@ import "./Footer.css";
 const Footer = () => {
   return (
     <footer>
-      <p>MJT College, Copyright © 2022</p>{" "}
+      <p>Michael J. Thompson, CPACC, Copyright © 2022</p>{" "}
     </footer>
   );
 };
