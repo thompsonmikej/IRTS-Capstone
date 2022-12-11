@@ -35,7 +35,7 @@ class RegisterView(generics.CreateAPIView):
 def student_users(request):
     """/api/auth/enrolled/  These are students with classes. GET users with courses
     """
-    students = User.objects.filter(semester__gt=0)
+    students = User.objects.all().exclude(semester=None).exclude(semester=0)
     serializer = GradReadySerializer(students, many=True)
     print('GET users with courses, all_student users', students)
     return Response(serializer.data)

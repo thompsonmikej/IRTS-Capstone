@@ -55,15 +55,6 @@ Link , a , .register{
 }
 
 
-/* .register {
-  background: #550040;
-  color: white;
-  text-decoration: none;
-  font-size: 1.5rem;
-  font-family: monospace;
-  text-align: center; 
-} */
-
 .form {
   align-items: center;
   display: flex;

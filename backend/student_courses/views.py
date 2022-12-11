@@ -157,6 +157,7 @@ def calculate_semester_by_credits(request, user_id):
 
 
 
+
 # @api_view(['GET'])
 # def calculate_graduation_ready(request, user_id):
 #     credit_tally= StudentCourse.objects.filter(user_id=user_id).exclude(credits_received=None)

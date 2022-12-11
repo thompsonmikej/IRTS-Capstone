@@ -17,7 +17,8 @@ const RegisterPage = () => {
   );
 
   return (
-    <div className="container">
+    <><h1>Register An Employee</h1><br /><hr />
+      <div className="container">
       <form className="form" onSubmit={handleSubmit}>
         <label>
           Username:{" "}
@@ -25,8 +26,7 @@ const RegisterPage = () => {
             type="text"
             name="username"
             value={formData.username}
-            onChange={handleInputChange}
-          />
+            onChange={handleInputChange} />
         </label>
         <label>
           First Name:{" "}
@@ -34,8 +34,7 @@ const RegisterPage = () => {
             type="text"
             name="firstName"
             value={formData.firstName}
-            onChange={handleInputChange}
-          />
+            onChange={handleInputChange} />
         </label>
         <label>
           Last Name:{" "}
@@ -43,8 +42,7 @@ const RegisterPage = () => {
             type="text"
             name="lastName"
             value={formData.lastName}
-            onChange={handleInputChange}
-          />
+            onChange={handleInputChange} />
         </label>
         <label>
           Email:{" "}
@@ -52,8 +50,7 @@ const RegisterPage = () => {
             type="text"
             name="email"
             value={formData.email}
-            onChange={handleInputChange}
-          />
+            onChange={handleInputChange} />
         </label>
         <label>
           Password:{" "}
@@ -61,26 +58,15 @@ const RegisterPage = () => {
             type="text"
             name="password"
             value={formData.password}
-            onChange={handleInputChange}
-          />
+            onChange={handleInputChange} />
         </label>
         <p>
           NOTE: Create an unusual word or phrase with a combination <br />of at least 8 characters, numbers, and
           special characters.<br />
         </p>
-        <label >
-          If Student, Type 1:{" "} 
-          <input
-            className="EEwidth"
-            type="text"
-            name="Type '1' if a Student"
-            value={formData.is_student}
-            onChange={handleInputChange}
-          />
-        </label>
-         <button>Register!</button>
+        <button>Register!</button>
       </form>    <div className="page-bottom"></div>
-    </div>
+    </div></>
   );
 };
 

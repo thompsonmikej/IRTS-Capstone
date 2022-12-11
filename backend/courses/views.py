@@ -37,15 +37,13 @@ def find_courses(request):
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def get_current_studentcourses(request):
+def get_current_studentcourses(request, semester):
     """api/courses/current/
     """
-    current_available = Course.objects.exclude(credit_value=None)
+    current_available = Course.objects.filter(semester=semester).exclude(credit_value=None)
     serializer = CourseSerializer(current_available, many=True)
     print('get current courses', current_available)
     return Response(serializer.data)
-
-    
 
 
 @api_view(['POST'])

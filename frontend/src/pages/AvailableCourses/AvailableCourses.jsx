@@ -12,10 +12,13 @@ const AvailableCourses = () => {
     const [applyCourse, setApplyCourse] = useState([]);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const fetchItems = async () => {
+    let thisSemester = user.semester
+
+    useEffect((thisSemester) => {
+        const fetchItems = async (thisSemester) => {
+            console.log('semester', thisSemester)
             try {
-                let response = await axios.get(`http://127.0.0.1:8000/api/courses/current/`, {
+                let response = await axios.get(`http://127.0.0.1:8000/api/courses/available/${thisSemester}`, {
                     headers: {
                         Authorization: "Bearer " + token,
                     },
@@ -55,12 +58,14 @@ const AvailableCourses = () => {
     return (
         <><h1>Courses Available to {user.first_name} {user.last_name}</h1><><>
             <h2>BACHELOR'S DEGREE PROGRAM</h2>
-            <h2>24 CREDITS TOTAL REQUIRED TO GRADUATE</h2><br />   
+            <h2>24 CREDITS TOTAL REQUIRED TO GRADUATE</h2>
+            <h2><Link to="/transcript">View Transcript</Link></h2>
+            <br />   
             <div>
             {   items.map((item) => (
                 <><div key={item.id} className="container">
                     <hr />  
-                    <span><Link to="/scheduled">{item.name} |</Link></span>
+                    <span><Link to={`/scheduled/${item.id}/`}>{item.name} |</Link></span>
                     <span>CR VALUE: {item.credit_value} | </span>
                     <span>DAYS: M, T, W | </span>
                     <span>INSTR: X | </span>

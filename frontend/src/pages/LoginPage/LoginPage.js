@@ -20,7 +20,8 @@ const LoginPage = () => {
   }, [isServerError]);
 
   return (
-    <><h1>Welcome to the Employee Portal</h1>
+    <><h1>Welcome to the Employee Portal</h1><br/>
+      <hr/>
       <div className="container">
       <form className="form" onSubmit={handleSubmit}>
         <label>
@@ -45,7 +46,7 @@ const LoginPage = () => {
         <Link to="/register" className="register">New? Register here.</Link>
           <button type='submit' onClick={() => navigate('/directory')}>Login</button>
       </form>
-    </div></>
+    <div className="page-bottom"></div></div></>
   );
 };
 

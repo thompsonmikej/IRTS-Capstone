@@ -18,9 +18,9 @@ const ScheduledCoursesPage = () => {
     //Then able to get all studentcourses for that student
 
     useEffect(() => {
-        const fetchItems = async () => {
+        const fetchItems = async (props) => {
             try {
-                let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/scheduled/`, {
+                let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/scheduled/${user.id}/`, {
                     headers: {
                         Authorization: "Bearer " + token,
                     },
@@ -58,10 +58,11 @@ const ScheduledCoursesPage = () => {
 
     };
     return (
-        <><h1>Scheduled Courses for {user.first_name} {user.last_name}, ID# S-10{user.id}</h1>
+        <><h1>Scheduled Courses for {user.first_name} {user.last_name}</h1>
                 <h2>BACHELOR'S DEGREE PROGRAM</h2>
                 <h2>COURSES ENROLLED: TBD </h2>
-                <h2>TOTAL CREDITS ATTEMPTED: TBD</h2> 
+            <h2>CREDITS ATTEMPTED THIS SEMESTER: TBD</h2>
+            <h2><Link to="/available">See Available Courses</Link></h2>
                 <br /><><><div>
                     {items.map((item) => (
                         <div key={item.id} className="container">
@@ -69,17 +70,12 @@ const ScheduledCoursesPage = () => {
                             <span>{item.course.name} | </span>
                             <span>DAYS: M, T, W | </span>
                             <span>CR VALUE: {item.course.credit_value} |</span>
-                            <span>LOC: Online | </span>
+                            <span>LOC: ONLN | </span>
                             <span>AUG - NOV | </span>
-                        <div className="schedule-button">
-                            <button type='submit' onClick={() => fetchItems(item.course.id)}>Add Grades</button>
-                            </div>
                     </div>
-                
-                ))}
-
+                  ))}
                 {console.log('Return in item', items)}
-            </div>
+            </div><div className="page-bottom"></div>
         </></></>
     );
 };

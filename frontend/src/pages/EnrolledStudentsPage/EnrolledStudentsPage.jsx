@@ -14,7 +14,7 @@ const EnrolledStudentsPage = () => {
     useEffect(() => {
         const fetchPersons = async () => {
             try {
-                let response = await axios.get('http://127.0.0.1:8000/api/auth/enrolled/', {
+                let response = await axios.get(`http://127.0.0.1:8000/api/auth/enrolled/`, {
                     headers: {
                         Authorization: "Bearer " + token,
                     },
@@ -39,12 +39,12 @@ const EnrolledStudentsPage = () => {
                         <hr /><div>
                             {console.log('person', person)}
                            
-                        <span><Link to={`/scheduled/${person.id}/`}>{person.first_name} {person.last_name}</Link> | </span>
+                        <span><Link to={`/available/${person.id}/`}>{person.first_name} {person.last_name}</Link> | </span>
                         <span>SEM: {person.semester} | </span>
-                        <span>ACTIVE | </span>
-                        <span>F-TIME | </span>
-                        <span>ADMIT: AUG | </span>
-                        <span><Link to="/enrolled">CONTACT INFO </Link> </span></div>
+                        <span>FULL-TIME | </span>
+                        <span><Link to="/grades">ADD GRADE | </Link> </span>
+                        <span><Link to={`/scheduled/${person.id}/`}>ADD COURSE | </Link> </span>
+                        <span><Link to="/enrolled">CONTACT</Link></span></div>
                         
                     </div>
                 ))}

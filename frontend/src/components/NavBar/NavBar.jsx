@@ -2,6 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
+
 import "./NavBar.css";
 
 const Navbar = () => {
@@ -11,18 +12,18 @@ const Navbar = () => {
     <div className="navBar">
       <ul>
         <li className="navText brand">
-          <Link to="/" className="navText">
+          <Link to="/studentLogin" className="navText">
             <b>Integrated Registration<br/>Tracking System</b>
           </Link> 
           </li>
         <li >
-          <Link to="/scheduled" className="navLink">
+          <Link to={"/scheduled/"} className="navLink">
             <b>Scheduled<br/>Courses </b>
           </Link>
         </li>
         <li >
           <Link to="/available" className="navLink">
-            <b>Courses<br/>Available</b>
+            <b>Available<br/>Courses</b>
           </Link>
         </li>
         <li >

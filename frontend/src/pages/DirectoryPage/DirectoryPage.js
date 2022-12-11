@@ -2,7 +2,6 @@ import React from "react";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
-import './DirectoryPage.css';
 import axios from "axios";
 
 const DirectoryPage = () => {

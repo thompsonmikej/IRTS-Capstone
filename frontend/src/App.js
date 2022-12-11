@@ -39,19 +39,27 @@ function App() {
             </PrivateRoute>
           }
         />
-        
-        <Route path="/directory" element={<DirectoryPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage />} />
+        {/* EE access to student records */}
+        {/* <Route path="/grades/:studentId/" element={<AddGradesPage />} />
+        <Route path="/enrolled/:studentId/" element={<EnrolledStudentsPage />} />
+        <Route path="/available/:studentId/" element={<AvailableCourses />} /> */}
+        <Route path="/scheduled/:studentId/" element={<ScheduledCoursesPage />} />
+
+        {/* student portal */}
         <Route path="/studentLogin" element={<StudentLoginPage />} />
-        <Route path="/grads" element={<GradsPage />} />
-        <Route path="/grades" element={<AddGradesPage />} />
         <Route path="/enrolled" element={<EnrolledStudentsPage />} /> 
         <Route path="/available" element={<AvailableCourses />} />
         <Route path="/transcript" element={<TranscriptPage />} />
-        <Route path="/scheduled/:studentId/" element={<ScheduledCoursesPage />} />
-        {/* <Route path="/add_courses" element={<PrivateRoute><AddCoursesPage /></PrivateRoute>} /> */}
-        <Route path="/add_courses" element={<AddCoursesPage />} />  {/*  via available courses; EE access */}
+        
+        {/* EE portal */}
+        <Route path="/directory" element={<DirectoryPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/grads" element={<GradsPage />} />
+        <Route path="/grades" element={<AddGradesPage />} />
+        <Route path="/add_courses" element={<AddCoursesPage />} /> 
+
+
 
       </Routes>
       <Footer />
