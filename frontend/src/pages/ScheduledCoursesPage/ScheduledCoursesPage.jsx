@@ -47,7 +47,7 @@ const ScheduledCoursesPage = () => {
 
             console.log('success in courseId: ', courseId)
             setApplyCourse(response.data.items)
-            navigate('/scheduled')
+            navigate(`/scheduled/${user.id}/`)
         } catch (error) {
             console.log('error in courseId', error.response.data)
         }

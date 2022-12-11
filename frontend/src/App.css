@@ -44,6 +44,10 @@ button:hover {
   display: contents;
 }
 
+.dummy:hover {
+  background-color: #555;
+}
+
 .container {
   margin: 0 auto;
   max-width: 80rem;

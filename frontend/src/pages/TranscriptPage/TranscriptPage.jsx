@@ -8,9 +8,9 @@ const TranscriptPage = (props) => {
 
     const [user, token] = useAuth();
     const [studentCourses, setStudentCourses] = useState([]);
-    const [Gpa, setGpa] = useState(0)
-    const [credits, setCredits] = useState(0)
-    const [semester, setSemester] = useState(0)
+    const [Gpa, setGpa] = useState(0);
+    const [credits, setCredits] = useState(0);
+    const [semester, setSemester] = useState(0);
         
     useEffect(() => {
         const fetchStudentCourses = async () => {
@@ -87,7 +87,7 @@ const TranscriptPage = (props) => {
             <h2>CREDITS EARNED: {credits}</h2>
             <h2>CURRENT SEMESTER: {semester}</h2>
             <h2>GPA: {Gpa}</h2>
-            <h2><Link to="/available">See Available Courses</Link></h2>
+            <h2><Link to={`/available/${user.semester}/`}>View Available Courses</Link></h2>
             <hr />
             <br /><><><div className="container">
             {studentCourses.map((studentCourse) => (
@@ -97,7 +97,7 @@ const TranscriptPage = (props) => {
                     <span>GRADE: {studentCourse.grade_received} |</span>
                     <span>CR EARNED: {studentCourse.credits_received} |</span> 
                     <span>FALL 2022 |</span> 
-                    <span><Link to="/transcript">CR REQUIREMENTS</Link></span> 
+                    <span><Link to="/transcript" className="dummy">CR REQUIREMENTS</Link></span> 
                     <hr/>
                     </p>
                     ))}

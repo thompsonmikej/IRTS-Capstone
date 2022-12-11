@@ -38,35 +38,9 @@ def get_available(request):
     """api/student_courses/available_courses
     """
     user_transcript = StudentCourse.objects.filter(user=request.user).exclude(credits_received=None)
-    print('transcript', user_transcript)
     serializer = StudentCourseSerializer(user_transcript, many=True)
     print('transcript', user_transcript)
     return Response(serializer.data)
-
-
-# @api_view(['GET'])
-# @permission_classes([IsAuthenticated])
-# def get_available(request):
-#     """api/student_courses/available/  classes ungraded, available   //.filter(credits_received=None)
-#     """
-#     semesters = StudentCourse.objects.filter(user=request.user.semester)
-#     serializer = StudentCourseSerializer(semesters, many=True)
-#     print('available courses', semesters)
-#     credit_tally= StudentCourse.objects.filter(user=request.user).exclude(credits_received=None)
-#     serializer = StudentCourseSerializer(credit_tally, many=True)
-#     # sum_of_credits = 0
-#     # current_semester = 0
-#     print('credit_tally', credit_tally)
-#     # for credit in credit_tally:
-#     #     sum_of_credits += credit.credits_received
-#     #     if sum_of_credits <=11:
-#     #         current_semester = 7
-#     #         print('sum of credits', sum_of_credits)
-#     #     elif(sum_of_credits >11 and sum_of_credits <=24):
-#     #         current_semester = 8
-#     #         print('sum of credits', sum_of_credits)
-   
-#     return Response(semesters)
 
 
 

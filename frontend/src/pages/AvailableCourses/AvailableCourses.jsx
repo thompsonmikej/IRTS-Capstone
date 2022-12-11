@@ -11,12 +11,13 @@ const AvailableCourses = () => {
     const [items, setItems] = useState([]);
     const [applyCourse, setApplyCourse] = useState([]);
     const navigate = useNavigate();
+    const [semester, setSemester] = useState(0);
 
         useEffect(() => {
         const fetchItems = async () => {
             
             try {
-                let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/enroll_student/`, {
+                let response = await axios.get(`http://127.0.0.1:8000/api/courses/enroll_student/`, {
                     headers: {
                         Authorization: "Bearer " + token,
                     },
@@ -30,6 +31,24 @@ const AvailableCourses = () => {
         fetchItems();
     }, [token]);
 
+    useEffect(() => {
+        const fetchSemester = async () => {
+            try {
+                let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/calculate_semester/${user.id}/`, {
+                    headers: {
+                        Authorization: "Bearer " + token,
+                    },
+                });
+                console.log('Success response Fetch semester in AvailableCourses', semester)
+                setSemester(response.data);
+            } catch (error) {
+                console.log('Error in fetch semester', error);
+            }
+        };
+        fetchSemester();
+    }, [])
+
+    
     const selectCourse = async(courseId) => {
         let courseObject = {
             "course_id": courseId,
@@ -47,7 +66,7 @@ const AvailableCourses = () => {
             
             console.log('success in courseId: ', courseId)
             setApplyCourse(response.data.items)
-            navigate('/scheduled')
+            navigate(`/scheduled/${user.id}/`)
         } catch (error) {
             console.log('error in courseId', error.response.data)
         }
@@ -57,14 +76,14 @@ const AvailableCourses = () => {
         <><h1>Courses Available to {user.first_name} {user.last_name}</h1><><>
             <h2>BACHELOR'S DEGREE PROGRAM</h2>
             <h2>24 CREDITS TOTAL REQUIRED TO GRADUATE</h2>
-            <h2><Link to={`/scheduled/${user.id}/`}>See Scheduled Courses</Link></h2>
+            <h2><Link to={`/scheduled/${user.id}/`}>View Scheduled Courses</Link></h2>
             <br />   
             <div>
             {   items.map((item) => (
                 <><div key={item.id} className="container">
                     <hr />  
                
-                    <span><Link to={"/scheduled"}>{item.course.name} |</Link></span>
+                    <span><Link to={`/scheduled/${user.id}/`} className="dummy">{item.course.name} |</Link></span>
                     <span>CR VALUE: {item.course.credit_value} | </span>
                     <span>DAYS: M, T, W | </span>
                     <span>INSTR: X | </span>

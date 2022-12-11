@@ -38,14 +38,13 @@ const EnrolledStudentsPage = () => {
                     <div key={person.id}>
                         <hr /><div>
                             {console.log('person', person)}
-                           
-                        <span><Link to={`/available/${person.id}/`}>{person.first_name} {person.last_name}</Link> | </span>
-                        <span>SEM: {person.semester} | </span>
-                        <span>FULL-TIME | </span>
-                        <span><Link to="/grades">ADD GRADE | </Link> </span>
-                        <span><Link to={`/scheduled/${person.id}/`}>ADD COURSE | </Link> </span>
-                        <span><Link to="/enrolled">CONTACT</Link></span></div>
-                        
+                            <span><Link to={`/available/`}>ADD COURSE |</Link></span>
+                            <span><Link to="/grades">ADD GRADE |</Link></span>
+                            <span>{person.first_name} {person.last_name} |</span>
+                            <span>SEM: {person.semester} |</span>
+                            <span>F-TIME |</span>
+                            <span><Link to="/enrolled" className="dummy">TRANSFER CR</Link></span>
+                        </div>
                     </div>
                 ))}
 

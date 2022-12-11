@@ -5,7 +5,7 @@ import AuthContext from "../../context/AuthContext";
 
 import "./NavBar.css";
 
-const Navbar = () => {
+const Navbar = (props) => {
   const { logoutUser, user } = useContext(AuthContext);
   const navigate = useNavigate();
   return (
@@ -27,12 +27,12 @@ const Navbar = () => {
           </Link>
         </li>
         <li >
-          <Link to="/available" className="navLink">
+          <Link to={`/available/${semester}/`} className="navLink">
             <b>Available<br />Courses</b>
           </Link>
         </li>
         <li >
-          <Link to={"/scheduled/"} className="navLink">
+          <Link to={`/scheduled/${user.id}/`} className="navLink">
             <b>Scheduled<br/>Courses </b>
           </Link>
         </li>
