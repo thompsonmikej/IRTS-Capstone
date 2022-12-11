@@ -34,7 +34,7 @@ const AvailableCourses = () => {
         let courseObject = {
             "course_id": courseId,
         }
-
+        console.log('courseObject', courseObject)
         try {
             console.log('courseObject', courseObject)
             let response = await axios.post(`http://127.0.0.1:8000/api/student_courses/register_new_course/`,
@@ -63,8 +63,9 @@ const AvailableCourses = () => {
             {   items.map((item) => (
                 <><div key={item.id} className="container">
                     <hr />  
-                    <span><Link to={"/scheduled"}>{item.name} |</Link></span>
-                    <span>CR VALUE: {item.credit_value} | </span>
+               
+                    <span><Link to={"/scheduled"}>{item.course.name} |</Link></span>
+                    <span>CR VALUE: {item.course.credit_value} | </span>
                     <span>DAYS: M, T, W | </span>
                     <span>INSTR: X | </span>
                     <span>LOC: ONLN | </span>
