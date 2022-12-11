@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
 from .models import StudentCourse, User
-from .serializers import StudentCourseSerializer, GradedCourseSerializer
+from .serializers import StudentCourseSerializer
 
 # Create your views here.
 #USERS
@@ -16,9 +16,30 @@ from .serializers import StudentCourseSerializer, GradedCourseSerializer
 def get_transcript(request):
     """api/student_courses/transcript/  TRANSCRIPT
     """
-    user_received = StudentCourse.objects.filter(user=request.user)
-    serializer = GradedCourseSerializer(user_received, many=True)
-    print('get user by id', user_received)
+    user_transcript = StudentCourse.objects.filter(user=request.user)
+    serializer = StudentCourseSerializer(user_transcript, many=True)
+    print('transcript', user_transcript)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_available(request):
+    """api/student_courses/available/  classes ungraded, available   //.filter(credits_received=None)
+    """
+    available_courses = StudentCourse.objects.filter(user=request.user)
+    serializer = StudentCourseSerializer(available_courses, many=True)
+    print('available courses', available_courses)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_scheduled(request, user_id):
+    """api/student_courses/scheduled/<int:user_id>/  classes ungraded, available
+    """
+    available_courses = StudentCourse.objects.exclude(credits_received=None)
+    serializer = StudentCourseSerializer(available_courses, many=True)
+    print('available courses', available_courses)
     return Response(serializer.data)
 
 
@@ -29,7 +50,7 @@ def get_scheduled_studentcourses(request):
     """api/student_courses/scheduled  FINDS UNGRADED COURSES ON STUDENT SCHEDULE
     """
     ungraded_courses = StudentCourse.objects.filter(grade_received=None)
-    serializer = GradedCourseSerializer(ungraded_courses, many=True)
+    serializer = StudentCourseSerializer(ungraded_courses, many=True)
     print('get scheduled courses', ungraded_courses)
     return Response(serializer.data)
 
@@ -62,7 +83,7 @@ def change_grades(request, studentcourse_id):
     existing_studentcourse.credits_received=request.data['credits_received']
     try:
         existing_studentcourse.save()
-        serializer = GradedCourseSerializer(existing_studentcourse)
+        serializer = StudentCourseSerializer(existing_studentcourse)
         return Response(serializer.data, status=status.HTTP_200_OK)
     except:
         return Response(status=status.HTTP_400_BAD_REQUEST)
@@ -129,6 +150,7 @@ def calculate_gpa(request, user_id):
         sum_of_grades += grade.grade_received
     gpa= sum_of_grades/len(graded_courses)
     return Response(gpa)
+
 
 
 @api_view(['GET'])

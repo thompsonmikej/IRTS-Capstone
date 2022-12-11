@@ -18,9 +18,9 @@ const ScheduledCoursesPage = () => {
     //Then able to get all studentcourses for that student
 
     useEffect(() => {
-        const fetchItems = async (props) => {
+        const fetchItems = async () => {
             try {
-                let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/scheduled/${user.id}/`, {
+                let response = await axios.get("http://127.0.0.1:8000/api/student_courses/scheduled/", {
                     headers: {
                         Authorization: "Bearer " + token,
                     },

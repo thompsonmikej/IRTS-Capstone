@@ -39,7 +39,7 @@ const AddCoursesPage = () => {
       <h2><Link to="/directory">Back to Employee Portal</Link></h2><hr />
       <form className="form" onSubmit={handleSubmit}>
         <label>
-          Course:{" 3 digit, 4 character"}
+          Course:{" 3 digit, 7 character"}
           <input
             type="text"
             name="name"

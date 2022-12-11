@@ -11,6 +11,8 @@ urlpatterns = [
     path('calculate_credits/<int:user_id>/', views.calculate_credits_earned),
     path('calculate_semester/<int:user_id>/', views.calculate_semester_by_credits),
     # path('grad_ready/', views.calculate_graduation_ready),
+    path('available/', views.get_available),
+    path('scheduled/<int:user_id>/', views.get_scheduled),
    
 
 # Currently unused
