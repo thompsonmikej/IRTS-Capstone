@@ -17,6 +17,11 @@ const Navbar = () => {
           </Link> 
         </li>
         <li >
+          <Link to="/login" className="navLink">
+            <b>Employee<br />Login </b>
+          </Link>
+        </li>
+        <li >
           <Link to="/transcript" className="navLink">
             <b>View<br />Transcript </b>
           </Link>
@@ -29,11 +34,6 @@ const Navbar = () => {
         <li >
           <Link to={"/scheduled/"} className="navLink">
             <b>Scheduled<br/>Courses </b>
-          </Link>
-        </li>
-        <li >
-          <Link to="/login" className="navLink">
-            <b>Employee<br />Login </b>
           </Link>
         </li>
         <li>
