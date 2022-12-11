@@ -30,8 +30,8 @@ const EnrolledStudentsPage = () => {
     return (
         <><h1>Enrolled Students</h1>
             <h2>BACHELOR'S DEGREE PROGRAM</h2>
-            <h2>THIS SEMESTER: AUG 1 - NOV 30 </h2>
-            <h2>NEXT SEMESTER: DEC 1 - FEB 28 </h2>
+            <h2>THIS SEMESTER: AUG 1 - DEC 31 </h2>
+            <h2>NEXT SEMESTER: FEB 1 - MAY 31 </h2>
             <h2><Link to="/directory">Back to Employee Portal</Link></h2>
             <br /><><><div className="container">
                 {persons.map((person) => (

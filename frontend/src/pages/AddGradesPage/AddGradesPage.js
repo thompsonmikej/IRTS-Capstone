@@ -59,7 +59,7 @@ const AddGradesPage = async (props) => {
       <h1>Add Grade for {user.first_name} {user.last_name}</h1>
       <h2>COURSE TITLE</h2>
       <h2>CREDIT VALUE</h2>
-      <h2>AUG - NOV </h2><hr/><br />
+      <h2>AUG - DEC </h2><hr/><br />
       <form className="form" onSubmit={handleSubmit}>
         <label>
           ENTER A GRADE: {"A, B, C, or D "}

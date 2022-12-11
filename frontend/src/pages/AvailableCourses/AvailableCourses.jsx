@@ -16,7 +16,7 @@ const AvailableCourses = () => {
         const fetchItems = async () => {
             
             try {
-                let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/available/`, {
+                let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/enroll_student/`, {
                     headers: {
                         Authorization: "Bearer " + token,
                     },
@@ -57,7 +57,7 @@ const AvailableCourses = () => {
         <><h1>Courses Available to {user.first_name} {user.last_name}</h1><><>
             <h2>BACHELOR'S DEGREE PROGRAM</h2>
             <h2>24 CREDITS TOTAL REQUIRED TO GRADUATE</h2>
-            <h2><Link to="/transcript">View Transcript</Link></h2>
+            <h2><Link to={`/scheduled/${user.id}/`}>See Scheduled Courses</Link></h2>
             <br />   
             <div>
             {   items.map((item) => (

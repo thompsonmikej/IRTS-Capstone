@@ -87,7 +87,7 @@ const TranscriptPage = (props) => {
             <h2>CREDITS EARNED: {credits}</h2>
             <h2>CURRENT SEMESTER: {semester}</h2>
             <h2>GPA: {Gpa}</h2>
-            <h2><Link to={`/scheduled/${user.id}/`}>See Scheduled Courses</Link></h2>
+            <h2><Link to="/available">See Available Courses</Link></h2>
             <hr />
             <br /><><><div className="container">
             {studentCourses.map((studentCourse) => (

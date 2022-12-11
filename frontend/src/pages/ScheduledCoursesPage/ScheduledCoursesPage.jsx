@@ -9,36 +9,32 @@ const ScheduledCoursesPage = () => {
 
     const [user, token] = useAuth();
     const [items, setItems] = useState([]);
-    const [gpa, setGpa] = useState(0)
-    const [credits, setCredits] = useState(0)
-    const [semester, setCalcSemester] = useState(0)
-    const [scheduledCourses, setScheduledCourses] = useState([]);
+    const [applyCourse, setApplyCourse] = useState([]);
     const navigate = useNavigate();
-    const { studentId } = useParams()
-    //Then able to get all studentcourses for that student
 
     useEffect(() => {
         const fetchItems = async () => {
+
             try {
-                let response = await axios.get("http://127.0.0.1:8000/api/student_courses/scheduled/", {
+                let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/enroll_student/`, {
                     headers: {
                         Authorization: "Bearer " + token,
                     },
                 });
-                console.log('Success response in ScheduledCourses', items)
+                console.log('Success response in AvailableCourses', items)
                 setItems(response.data);
             } catch (error) {
-                console.log('Error in ScheduledCoursesPage', error);
+                console.log('Error in AvailableCourses', error);
             }
         };
-    fetchItems();
+        fetchItems();
     }, [token]);
 
-    const fetchItems = async (courseId) => {
+    const selectCourse = async (courseId) => {
         let courseObject = {
             "course_id": courseId,
         }
-
+        console.log('courseObject', courseObject)
         try {
             console.log('courseObject', courseObject)
             let response = await axios.post(`http://127.0.0.1:8000/api/student_courses/register_new_course/`,
@@ -49,9 +45,9 @@ const ScheduledCoursesPage = () => {
                     },
                 });
 
-            console.log('Success response in items', courseId)
-            setItems(response.data.items)
-            navigate("/grades/:studentId")
+            console.log('success in courseId: ', courseId)
+            setApplyCourse(response.data.items)
+            navigate('/scheduled')
         } catch (error) {
             console.log('error in courseId', error.response.data)
         }
@@ -62,7 +58,7 @@ const ScheduledCoursesPage = () => {
                 <h2>BACHELOR'S DEGREE PROGRAM</h2>
                 <h2>COURSES ENROLLED: TBD </h2>
             <h2>CREDITS ATTEMPTED THIS SEMESTER: TBD</h2>
-            <h2><Link to="/available">See Available Courses</Link></h2>
+            <h2><Link to="/transcript">View Transcript</Link></h2>
                 <br /><><><div>
                     {items.map((item) => (
                         <div key={item.id} className="container">
@@ -71,7 +67,7 @@ const ScheduledCoursesPage = () => {
                             <span>DAYS: M, T, W | </span>
                             <span>CR VALUE: {item.course.credit_value} |</span>
                             <span>LOC: ONLN | </span>
-                            <span>AUG - NOV | </span>
+                            <span>AUG - DEC | </span>
                     </div>
                   ))}
                 {console.log('Return in item', items)}

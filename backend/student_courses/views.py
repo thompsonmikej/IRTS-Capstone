@@ -24,10 +24,20 @@ def get_transcript(request):
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def get_available(request):
-    """api/student_courses/available
+def get_enrolled(request):
+    """api/student_courses/enroll_student
     """
     user_transcript = StudentCourse.objects.filter(user=request.user).filter(credits_received=None)
+    print('transcript', user_transcript)
+    serializer = StudentCourseSerializer(user_transcript, many=True)
+    print('transcript', user_transcript)
+    return Response(serializer.data)
+
+@permission_classes([IsAuthenticated])
+def get_available(request):
+    """api/student_courses/available_courses
+    """
+    user_transcript = StudentCourse.objects.filter(user=request.user).exclude(credits_received=None)
     print('transcript', user_transcript)
     serializer = StudentCourseSerializer(user_transcript, many=True)
     print('transcript', user_transcript)
