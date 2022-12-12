@@ -67,7 +67,7 @@ const AvailableCourses = () => {
             
             console.log('success in courseId: ', courseId)
             setApplyCourse(response.data.items)
-            navigate(`/scheduled/${user.id}/`)
+            navigate(`/scheduled/`)
         } catch (error) {
             console.log('error in courseId', error.response.data)
         }
@@ -77,14 +77,14 @@ const AvailableCourses = () => {
         <><h1>Courses Available to {user.first_name} {user.last_name}</h1><><>
             <h2>BACHELOR'S DEGREE PROGRAM</h2>
             <h2>128 CREDITS TOTAL REQUIRED TO GRADUATE</h2>
-            <h2><Link to={`/scheduled/${user.id}/`}>View Scheduled Courses</Link></h2>
+            <h2><Link to={`/scheduled/`}>View Scheduled Courses</Link></h2>
             <br />   
             <div>
             {   items.map((item) => (
                 <><div key={item.id} className="container">
                     <hr />  
                
-                    <span><Link to={`/scheduled/${user.id}/`} className="dummy">{item.name} |</Link></span>
+                    <span><Link to={`/scheduled/`} className="dummy">{item.name} |</Link></span>
                     <span>CR VALUE: {item.credit_value} | </span>
                     <span>DAYS: M, T, W | </span>
                     <span>INSTR: X | </span>

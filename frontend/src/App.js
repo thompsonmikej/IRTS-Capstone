@@ -42,12 +42,13 @@ function App() {
         {/* <Route path="/grades/:studentId/" element={<AddGradesPage />} />
         <Route path="/enrolled/:studentId/" element={<EnrolledStudentsPage />} />
         <Route path="/available/:studentId/" element={<AvailableCourses />} /> */}
-        <Route path="/scheduled/:studentId/" element={<ScheduledCoursesPage />} />
 
         {/* student portal */}
         <Route path="/enrolled" element={<EnrolledStudentsPage />} /> 
-        <Route path="/available/" element={<AvailableCourses />} />
         <Route path="/transcript" element={<TranscriptPage />} />
+        <Route path="/available/" element={<AvailableCourses />} />
+        <Route path="/scheduled/" element={<ScheduledCoursesPage />} />
+
         
         {/* EE portal */}
         <Route path="/directory" element={<DirectoryPage />} />

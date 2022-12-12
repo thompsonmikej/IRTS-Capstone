@@ -26,7 +26,7 @@ const AddCoursesPage = () => {
           Authorization: "Bearer " + token,
         },
       });
-      navigate(`/available/${user.semester}/`);
+      navigate(`/available/`);
       console.log('add courses create ')
     } catch (error) {
       console.log(error.message);

@@ -20,7 +20,7 @@ def get_all_courses(request):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_available_courses(request):
-    """api/courses/available/<int:semester>/  classes ungraded, available   //.filter(credits_received=None)
+    """api/courses/available/  classes ungraded, available   //.filter(credits_received=None)
     semester=request.user.semester
     """
     available_courses = Course.objects.all().filter(semester=request.user.semester)
