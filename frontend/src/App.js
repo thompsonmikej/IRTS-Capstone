@@ -46,7 +46,7 @@ function App() {
 
         {/* student portal */}
         <Route path="/enrolled" element={<EnrolledStudentsPage />} /> 
-        <Route path="/available/:semester/" element={<AvailableCourses />} />
+        <Route path="/available/" element={<AvailableCourses />} />
         <Route path="/transcript" element={<TranscriptPage />} />
         
         {/* EE portal */}

@@ -56,8 +56,8 @@ const HomePage = () => {
             <p className="error">Incorrect credentials.<br />Please try again.</p>
           ) : null}
 
-          <button type='submit' onClick={() => navigate(`/transcript/`)}>Login</button>
-          {/* <button type='submit' onClick={() => navigate(`/transcript/${user.id}/`)}>Login</button> */}
+          {/* <button type='submit' onClick={() => navigate(`/transcript/`)}>Login</button> */}
+          <button type='submit' onClick={() => navigate(`/transcript/${user.id}/`)}>Login</button>
         </form>
         <div className="page-bottom"></div></div></>
   );

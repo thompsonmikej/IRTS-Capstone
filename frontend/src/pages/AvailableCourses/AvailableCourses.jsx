@@ -14,39 +14,39 @@ const AvailableCourses = () => {
     const [semester, setSemester] = useState(0);
 
         useEffect(() => {
-        const fetchItems = async () => {
-            
+        const fetchAvailableCourses = async () => {
             try {
-                let response = await axios.get(`http://127.0.0.1:8000/api/courses/enroll_student/`, {
+                let response = await axios.get(`http://127.0.0.1:8000/api/courses/get_available_courses/`, {
                     headers: {
                         Authorization: "Bearer " + token,
                     },
                 });
-                console.log('Success response in AvailableCourses', items)
+                console.log('Success response in AvailableCourses', response.data)
                 setItems(response.data);
             } catch (error) {
                 console.log('Error in AvailableCourses', error);
             }
         };
-        fetchItems();
+            fetchAvailableCourses();
+            setSemester(user.semester)
     }, [token]);
 
-    useEffect(() => {
-        const fetchSemester = async () => {
-            try {
-                let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/calculate_semester/${user.id}/`, {
-                    headers: {
-                        Authorization: "Bearer " + token,
-                    },
-                });
-                console.log('Success response Fetch semester in AvailableCourses', semester)
-                setSemester(response.data);
-            } catch (error) {
-                console.log('Error in fetch semester', error);
-            }
-        };
-        fetchSemester();
-    }, [])
+    // useEffect(() => {
+    //     const fetchSemester = async () => {
+    //         try {
+    //             let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/calculate_semester/${user.id}/`, {
+    //                 headers: {
+    //                     Authorization: "Bearer " + token,
+    //                 },
+    //             });
+    //             console.log('Success response Fetch semester in AvailableCourses', semester)
+    //             setSemester(response.data);
+    //         } catch (error) {
+    //             console.log('Error in fetch semester', error);
+    //         }
+    //     };
+    //     fetchSemester();
+    // }, [])
 
     
     const selectCourse = async(courseId) => {
@@ -83,8 +83,8 @@ const AvailableCourses = () => {
                 <><div key={item.id} className="container">
                     <hr />  
                
-                    <span><Link to={`/scheduled/${user.id}/`} className="dummy">{item.course.name} |</Link></span>
-                    <span>CR VALUE: {item.course.credit_value} | </span>
+                    <span><Link to={`/scheduled/${user.id}/`} className="dummy">{item.name} |</Link></span>
+                    <span>CR VALUE: {item.credit_value} | </span>
                     <span>DAYS: M, T, W | </span>
                     <span>INSTR: X | </span>
                     <span>LOC: ONLN | </span>

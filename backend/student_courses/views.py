@@ -30,15 +30,6 @@ def get_enrolled(request):
     print('transcript', user_transcript)
     return Response(serializer.data)
 
-@permission_classes([IsAuthenticated])
-def get_available(request):
-    """api/student_courses/available_courses
-    """
-    user_transcript = StudentCourse.objects.filter(user=request.user).exclude(credits_received=None)
-    serializer = StudentCourseSerializer(user_transcript, many=True)
-    print('transcript', user_transcript)
-    return Response(serializer.data)
-
 
 
 @api_view(['GET'])
@@ -159,17 +150,27 @@ def calculate_credits_earned(request, user_id):
 
 @api_view(['GET'])
 def calculate_semester_by_credits(request, user_id):
-    credit_tally= StudentCourse.objects.filter(user_id=user_id).exclude(credits_received=None)
+    users_courses = StudentCourse.objects.filter(user_id=user_id).exclude(credits_received=None)
     sum_of_credits = 0
     current_semester = 0
-    for credit in credit_tally:
-        sum_of_credits += credit.credits_received
-        if sum_of_credits <=11:
-            current_semester = 7
-        elif(sum_of_credits >11 and sum_of_credits <=23):
-            current_semester = 8
+    for course in users_courses:
+        sum_of_credits += course.credits_received
+
+    if sum_of_credits <=11:
+        current_semester = 7
+    elif(sum_of_credits >11 and sum_of_credits <=23):
+        current_semester = 8
     return Response(current_semester)
 
+
+# 0-16 Freshman 1
+# 17-32 Freshman 2
+# 33-48 Sophmore 1
+# 49-64 sophmore 2
+# 65-80 Junior 1
+# 81-96 Junior 2
+# 97-112 Senior 1
+# 113-128 Senior 2
 
 
 

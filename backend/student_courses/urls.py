@@ -10,7 +10,6 @@ urlpatterns = [
     path('calculate_gpa/<int:user_id>/', views.calculate_gpa),
     path('calculate_credits/<int:user_id>/', views.calculate_credits_earned),
     path('calculate_semester/<int:user_id>/', views.calculate_semester_by_credits),
-    path('available_courses/', views.get_available),
     path('enroll_student/', views.get_enrolled),
     path('scheduled/<int:user_id>/', views.get_scheduled),
     path('grade_this_studentcourse/', views.create_studentgrades),
