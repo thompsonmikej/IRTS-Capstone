@@ -36,7 +36,7 @@ const ScheduledCoursesPage = () => {
         }
         console.log('courseObject', courseObject)
         try {
-            let response = await axios.post(`http://127.0.0.1:8000/api/student_courses/register_new_course/`,
+            let response = await axios.post(`http://127.0.0.1:8000/api/student_courses/add_student_to_course/`,
                 courseObject,
                 {
                     headers: {

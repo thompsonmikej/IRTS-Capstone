@@ -51,12 +51,13 @@ const AvailableCourses = () => {
     
     const selectCourse = async(courseId) => {
         let courseObject = {
+            "user_id": user.id,
             "course_id": courseId,
         }
         console.log('courseObject', courseObject)
         try {
             console.log('courseObject', courseObject)
-            let response = await axios.post(`http://127.0.0.1:8000/api/student_courses/register_new_course/`,
+            let response = await axios.post(`http://127.0.0.1:8000/api/student_courses/add_student_to_course/`,
                 courseObject,
             {
                 headers: {

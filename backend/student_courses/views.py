@@ -94,7 +94,7 @@ def change_grades(request, studentcourse_id):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def create_studentcourses(request):
-    """api/student_courses/register_new_course/  FUNCTION TO ADD COURSE ONTO SCHEDULE
+    """api/student_courses/register_new_course/  ADD COURSE ONTO SCHEDULE
     """
     serializer = StudentCourseSerializer(data=request.data)
     print('create courses')
@@ -159,17 +159,6 @@ def calculate_semester_by_credits(request, user_id):
     print(sum_of_credits)
     # print(course.credits_received)
     return Response(current_semester)
-
-
-# 0-16 Freshman 1
-# 17-32 Freshman 2
-# 33-48 Sophmore 1
-# 49-64 sophmore 2
-# 65-80 Junior 1
-# 81-96 Junior 2
-# 97-112 Senior 1
-# 113-128 Senior 2
-
 
 
 def award_course_credits(numeric_grade, credits_attempted):
