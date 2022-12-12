@@ -20,7 +20,9 @@ const LoginPage = () => {
   }, [isServerError]);
 
   return (
-    <><h1>Welcome to the Employee Portal</h1><br/>
+    <><h1>Welcome to the Employee Portal</h1>
+      <div className="stu-pic"><img src="https://img.freepik.com/free-photo/co-workers-giving-great-feedback_53876-13464.jpg?w=740&t=st=1670860211~exp=1670860811~hmac=57b21eb95dac1a0c0ad28d337d15c5435495265756b366a596c3f787c9f97a24" alt="student" />
+      </div><br />
       <hr/>
       <div className="container">
       <form className="form" onSubmit={handleSubmit}>

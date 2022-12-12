@@ -6,7 +6,6 @@ import "./App.css";
 // Pages Imports
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
-import StudentLoginPage from "./pages/StudentLoginPage/StudentLoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import GradsPage from "./pages/GradsPage/GradsPage";
 import EnrolledStudentsPage from "./pages/EnrolledStudentsPage/EnrolledStudentsPage"
@@ -46,7 +45,6 @@ function App() {
         <Route path="/scheduled/:studentId/" element={<ScheduledCoursesPage />} />
 
         {/* student portal */}
-        <Route path="/studentLogin" element={<StudentLoginPage />} />
         <Route path="/enrolled" element={<EnrolledStudentsPage />} /> 
         <Route path="/available/:semester/" element={<AvailableCourses />} />
         <Route path="/transcript" element={<TranscriptPage />} />
@@ -58,8 +56,7 @@ function App() {
         <Route path="/grads" element={<GradsPage />} />
         <Route path="/grades" element={<AddGradesPage />} />
         <Route path="/add_courses" element={<AddCoursesPage />} /> 
-
-
+        <Route path="/HomePage" element={<HomePage />} /> 
 
       </Routes>
       <Footer />

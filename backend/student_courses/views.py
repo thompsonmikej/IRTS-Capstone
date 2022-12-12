@@ -6,10 +6,7 @@ from rest_framework.decorators import api_view, permission_classes
 from .models import StudentCourse, User
 from .serializers import StudentCourseSerializer
 
-# Create your views here.
 #USERS
-
-
 # Get all the logged in user's courses, aka transcript
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
@@ -140,32 +137,6 @@ def delete_grades(request):
     serializer = StudentCourseSerializer(grade_deleted) 
     return Response(serializer.data)
 
-#Not used
-@api_view(['POST']) 
-def change_studentcourses(request):
-    serializer = StudentCourseSerializer(data=request.data)
-    print('Postman body: student_id, course_id')
-    if serializer.is_valid():
-        serializer.save(user=request.user)
-        print('POST change courses')
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-#Not used
-@api_view(['DELETE']) 
-def delete_studentcourses(request):
-    """api/users/courses/delete/
-    """
-    course_deleted= get_object_or_404(StudentCourse)
-    serializer = StudentCourseSerializer(course_deleted) 
-    print('delete_courses', course_deleted)
-    return Response(serializer.data)
-
-
-# How to get a user
-# How to assign a course
-# How to assign a grade
-
 
 @api_view(['GET'])
 def calculate_gpa(request, user_id):
@@ -175,7 +146,6 @@ def calculate_gpa(request, user_id):
         sum_of_grades += grade.grade_received
     gpa= sum_of_grades/len(graded_courses)
     return Response(gpa)
-
 
 
 @api_view(['GET'])
@@ -201,59 +171,6 @@ def calculate_semester_by_credits(request, user_id):
     return Response(current_semester)
 
 
-
-
-
-
-# @api_view(['GET'])
-# def calculate_graduation_ready(request, user_id):
-#     credit_tally= StudentCourse.objects.filter(user_id=user_id).exclude(credits_received=None)
-#     graded_courses = StudentCourse.objects.filter(user_id=user_id).exclude(grade_received=None)
-#     sum_of_credits = 0
-#     sum_of_grades = 0
-#     enough_credits = False
-#     valid_gpa = False
-#     for credit in credit_tally:
-#         sum_of_credits += credit.credits_received
-#         print('sum_of_credits',sum_of_credits)
-#         if sum_of_credits >=24:
-#             enough_credits = True
-#             print('enough_credits', enough_credits)
-#             for grade in graded_courses:
-#                 sum_of_grades += grade.grade_received
-#                 print('sum_of_grades', sum_of_grades)
-#                 gpa= sum_of_grades/len(graded_courses)
-#                 print('gpa', gpa)
-#                 if gpa >=3:
-#                     valid_gpa = True
-#                 print('valid_gpa', valid_gpa)
-
-#     return Response(valid_gpa)
-
-
-
-# def choose_grade():
-#     """Returns a grade. 
-#     """
-#     grades = ['D', 'C', 'B', 'A']
-    
-#     selected_grade = grades[(int(input('''Enter the letter grade that the student earned, A, B, C, D.
-#         4 : A
-#         3 : B
-#         2 : C
-#         1 : D
-#         ''')))-1]
-
-#     index = grades.index(selected_grade)+1
-#     if grades == 1 or 2 or 3 or 4:
-#         print('On the grade report, the letter value is ', selected_grade, ' and the grade point value is ', index)
-#         return (selected_grade, index)
-#     else:
-#         print('Please re-enter a number within the range.')
-#         return choose_grade()
-# grade_applied = choose_grade()
-
-# if grade_applied = 
 
 
 def award_course_credits(numeric_grade, credits_attempted):

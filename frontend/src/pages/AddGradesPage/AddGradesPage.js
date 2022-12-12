@@ -18,8 +18,8 @@ const AddGradesPage = async (props) => {
 
   const [user, token] = useAuth();
   const navigate = useNavigate();
-  const [formData, handleInputChange, handleSubmit] = useCustomForm(initialValues);
-  // const [formData, handleInputChange, handleSubmit] = useCustomForm(initialValues, postNewGrade);
+  // const [formData, handleInputChange, handleSubmit] = useCustomForm(initialValues);
+  const [formData, handleInputChange, handleSubmit] = useCustomForm(initialValues, postNewGrade);
   const [grades, setGrades] = useState([]);
 
   useEffect(() => {
@@ -44,26 +44,26 @@ const AddGradesPage = async (props) => {
     fetchGrades();
   }, [token]);
 
-  // async function postNewGrade(props) {
-  //   let modifiedGrade = formData;
+  async function postNewGrade(props) {
+    let modifiedGrade = formData;
 
-  //   if (modifiedGrade == "A") {
-  //     console.log('A, 4', modifiedGrade)
-  //     return "4";
-  //   }
-  //   else if (modifiedGrade == "B", modifiedGrade) {
-  //     console.log('B, 3', modifiedGrade)
-  //     return "3";
-  //   }
-  //   else if (modifiedGrade == "C", modifiedGrade) {
-  //     console.log('C, 2', modifiedGrade)
-  //     return "2";
-  //   }
-  //   else {
-  //     console.log('else, 0', modifiedGrade)
-  //     return "0";
-  //   }
-  // }
+    if (modifiedGrade == "A") {
+      console.log('A, 4', modifiedGrade)
+      return "4";
+    }
+    else if (modifiedGrade == "B", modifiedGrade) {
+      console.log('B, 3', modifiedGrade)
+      return "3";
+    }
+    else if (modifiedGrade == "C", modifiedGrade) {
+      console.log('C, 2', modifiedGrade)
+      return "2";
+    }
+    else {
+      console.log('else, 0', modifiedGrade)
+      return "0";
+    }
+  }
   //   // postNewGrades();
   //   // }, []);
     
