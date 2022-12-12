@@ -155,11 +155,9 @@ def calculate_semester_by_credits(request, user_id):
     current_semester = 0
     for course in users_courses:
         sum_of_credits += course.credits_received
-
-    if sum_of_credits <=11:
-        current_semester = 7
-    elif(sum_of_credits >11 and sum_of_credits <=23):
-        current_semester = 8
+        sum_of_credits=(sum_of_credits//16)+1
+    print(sum_of_credits)
+    # print(course.credits_received)
     return Response(current_semester)
 
 

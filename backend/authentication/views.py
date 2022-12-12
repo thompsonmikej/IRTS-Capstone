@@ -45,7 +45,7 @@ def student_users(request):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def grad_ready_users(request):
-    """/api/auth/grads/  students to be filtered by credits_received >=24 && gpa >=3
+    """/api/auth/grads/  students to be filtered by credits_received >=128 && gpa >=3
     """
     print(f'''students to be filtered by above 24 and gpa above 3 ''')
     graduate = User.objects.filter(grad_ready=True)
