@@ -116,6 +116,19 @@ def create_studentcourses(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def create_studentgrades(request):
+    """api/student_courses/grade_this_studentcourse/ 
+    """
+    serializer = StudentCourseSerializer(data=request.data)
+    print('grade this course')
+    if serializer.is_valid():
+        serializer.save(user=request.user)
+        print('add grades page')
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 #Not used
 @api_view(['DELETE']) 

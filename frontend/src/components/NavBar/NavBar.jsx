@@ -27,12 +27,14 @@ const Navbar = (props) => {
           </Link>
         </li>
         <li >
-          <Link to={`/available/${semester}/`} className="navLink">
+          <Link to={`/available/`} className="navLink">
+          {/* <Link to={`/available/${user.id.semester}/`} className="navLink"> */}
             <b>Available<br />Courses</b>
           </Link>
         </li>
         <li >
-          <Link to={`/scheduled/${user.id}/`} className="navLink">
+          <Link to={`/scheduled/`} className="navLink">
+          {/* <Link to={`/scheduled/${user.id}/`} className="navLink"> */}
             <b>Scheduled<br/>Courses </b>
           </Link>
         </li>

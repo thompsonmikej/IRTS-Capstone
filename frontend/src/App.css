@@ -82,3 +82,9 @@ Link , a , .register{
 .page-bottom{
   margin-bottom: 15rem;
 }
+
+.footer-nav{
+  position: fixed;
+  margin-bottom: 01rem;
+  
+}

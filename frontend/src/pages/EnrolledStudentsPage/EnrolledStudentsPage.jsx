@@ -38,7 +38,7 @@ const EnrolledStudentsPage = () => {
                     <div key={person.id}>
                         <hr /><div>
                             {console.log('person', person)}
-                            <span><Link to={`/available/`}>ADD COURSE |</Link></span>
+                            <span><Link to={`/available/${person.semester}/`}>ENROLL IN COURSE |</Link></span>
                             <span><Link to="/grades">ADD GRADE |</Link></span>
                             <span>{person.first_name} {person.last_name} |</span>
                             <span>SEM: {person.semester} |</span>
