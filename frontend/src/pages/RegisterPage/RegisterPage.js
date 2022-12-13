@@ -18,9 +18,7 @@ const RegisterPage = () => {
 
   return (
     <><h1>Register An Employee</h1>
-      <h2>* PASSWORD: Create an unusual word or phrase with a combo <br />of at least 8 characters, numbers, and
-        special characters.</h2>
-      <br /><hr />
+      <hr />
       <div className="container">
       <form className="form" onSubmit={handleSubmit}>
         <label>
@@ -56,14 +54,15 @@ const RegisterPage = () => {
             onChange={handleInputChange} />
         </label>
         <label>
-          * Password:{" "}
+          Password:{" "}
           <input
             type="password"
             name="password"
             value={formData.password}
             onChange={handleInputChange} />
-        </label>
-         <button>Register!</button>
+          </label>
+        <p>*Your unique combination of 8 letters, numbers, and special characters.</p>
+         <button>Register</button>
       </form>    <div className="page-bottom"></div>
     </div></>
   );
