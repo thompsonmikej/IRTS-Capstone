@@ -9,6 +9,7 @@ const EnrolledStudentsPage = () => {
 
     const [user, token] = useAuth();
     const [persons, setPersons] = useState([]);
+    const [selectEnroll, setSelectEnroll] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -27,6 +28,28 @@ const EnrolledStudentsPage = () => {
         };
         fetchPersons();
     }, [token]);
+
+
+    const fetchSelectEnroll = async (seekId) => {
+        let userId = seekId
+        try {
+            let response = await axios.get(`http://127.0.0.1:8000api/student_courses/admin_views_studentcourses/${userId}/`,
+                 {
+                    headers: {
+                        Authorization: "Bearer " + token,
+                    },
+                });
+
+            console.log('userId in select Enroll: ', userId)
+            setSelectEnroll(response.items)
+            navigate(`/available/`)
+        } catch (error) {
+            console.log('error in select Enroll', error.response.data)
+        }
+
+    };
+
+
     return (
         <><h1>Enrolled Students</h1>
             <h2>BACHELOR'S DEGREE PROGRAM</h2>
@@ -38,12 +61,14 @@ const EnrolledStudentsPage = () => {
                     <div key={person.id}>
                         <hr /><div>
                             {console.log('person', person)}
-                            <span><Link to={`/available/${person.semester}/`}>ENROLL IN COURSE |</Link></span>
+                            <span className="schedule-button">
+                                <button type='submit' onClick={() => fetchSelectEnroll(person.id)}>Select, Enroll</button>
+                              </span>
                             <span><Link to="/grades">ADD GRADE |</Link></span>
                             <span>{person.first_name} {person.last_name} |</span>
                             <span>SEM: {person.semester} |</span>
-                            <span>F-TIME |</span>
-                            <span><Link to="/enrolled" className="dummy">TRANSFER CR</Link></span>
+                            <span>FULL TIME |</span>
+                            <span><Link to="/enrolled" className="dummy">XFER CREDIT</Link></span>
                         </div>
                     </div>
                 ))}

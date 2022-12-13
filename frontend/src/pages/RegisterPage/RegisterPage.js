@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 import useCustomForm from "../../hooks/useCustomForm";
+import { Link } from "react-router-dom";
 
 const RegisterPage = () => {
   const { registerUser } = useContext(AuthContext);
@@ -18,6 +19,7 @@ const RegisterPage = () => {
 
   return (
     <><h1>Register An Employee</h1>
+      <h2><Link to="/login">Back to Login</Link></h2>
       <hr />
       <div className="container">
       <form className="form" onSubmit={handleSubmit}>

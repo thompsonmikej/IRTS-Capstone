@@ -2,7 +2,8 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path('add_student_to_course/', views.create_studentcourses), #adds course to schedule
+    path('add_student_to_course/', views.add_student_to_courses), #adds course to schedule
+    path('admin_views_studentcourses/<int:user_id>/', views.admin_views_studentcourses), #admin may view student records
     path('transcript/', views.get_transcript), #Transcript of All the logged in student's Courses
     path('scheduled/', views.get_scheduled_studentcourses), #Ungraded Courses/ Current
     path('grade_change/<int:studentcourse_id>/', views.change_grades), #Give grade to existing course

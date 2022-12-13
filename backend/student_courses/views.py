@@ -30,6 +30,17 @@ def get_enrolled(request):
     print('transcript', user_transcript)
     return Response(serializer.data)
 
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def admin_views_studentcourses(request, user_id):
+    """api/student_courses/admin_views_studentcourses/<int:user_id>/   SEE ENROLLED STUDENTS PAGE
+    """
+    admin_studentcourses = StudentCourse.objects.filter(user_id=user_id)
+    print('admin views student courses', admin_studentcourses)
+    serializer = StudentCourseSerializer(admin_studentcourses, many=True)
+    print('admin views student courses', admin_studentcourses)
+    return Response(serializer.data)
+
 
 
 @api_view(['GET'])
@@ -93,14 +104,14 @@ def change_grades(request, studentcourse_id):
 #Used for when a logged-in student registers for a new course
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def create_studentcourses(request):
+def add_student_to_courses(request):
     """api/student_courses/register_new_course/  ADD COURSE ONTO SCHEDULE
     """
     serializer = StudentCourseSerializer(data=request.data)
-    print('create courses')
+    print('add student to  courses')
     if serializer.is_valid():
         serializer.save(user=request.user)
-        print('create courses')
+        print('add student to courses')
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

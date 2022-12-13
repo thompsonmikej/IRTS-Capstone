@@ -23,6 +23,7 @@ import Footer from "./components/Footer/Footer";
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
 import EmployeeRoute from "./utils/EmployeeRoute";
+import AdminRoute from "./utils/AdminRoute";
 
 
 function App() {
@@ -36,9 +37,11 @@ function App() {
             <PrivateRoute>
               <EmployeeRoute>
                 <DirectoryPage />
+                
+                 
+
               </EmployeeRoute>
-             
-              
+                           
             </PrivateRoute>
           }
         />

@@ -12,7 +12,7 @@ const Navbar = (props) => {
     <div className="navBar">
       <ul>
         <li className="navText brand">
-          <Link to="/HomePage" className="navText">
+          <Link to="/login" className="navText">
             <b>Integrated Registration Tracking System</b>
           </Link> 
         </li>
