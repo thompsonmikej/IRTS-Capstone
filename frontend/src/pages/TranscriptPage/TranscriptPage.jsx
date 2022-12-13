@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 const TranscriptPage = (props) => {
 
     const [user, token] = useAuth();
+    console.log('user', user);
+    console.log('token', token);
     const [studentCourses, setStudentCourses] = useState([]);
     const [Gpa, setGpa] = useState(0);
     const [credits, setCredits] = useState(0);

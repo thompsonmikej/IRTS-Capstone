@@ -47,7 +47,7 @@ const HomePage = () => {
           <label>
             Password:{" "}
             <input
-              type="text"
+              type="password"
               name="password"
               value={formData.password}
               onChange={handleInputChange} />
@@ -55,9 +55,7 @@ const HomePage = () => {
           {isServerError ? (
             <p className="error">Incorrect credentials.<br />Please try again.</p>
           ) : null}
-
-          {/* <button type='submit' onClick={() => navigate(`/transcript/`)}>Login</button> */}
-          <button type='submit' onClick={() => navigate(`/transcript/${user.id}/`)}>Login</button>
+          <button type='submit'>Login</button>
         </form>
         <div className="page-bottom"></div></div></>
   );

@@ -6,7 +6,7 @@ import AuthContext from "../../context/AuthContext";
 import "./NavBar.css";
 
 const Navbar = (props) => {
-  const { logoutUser, user } = useContext(AuthContext);
+  const { logoutUser, user } = useContext(AuthContext);  
   const navigate = useNavigate();
   return (
     <div className="navBar">
@@ -42,6 +42,11 @@ const Navbar = (props) => {
           ) : (
             <button onClick={() => navigate("/login")}>Login</button>
           )}
+          {/* user.is_student= false (EE) ? Directory : No (is student), Transcript */}
+          {/* result = user.is_student ? restrict access : unrestrict access */}
+          {/* user ? Yes, must log out : No, must log in */}
+          {/* user.is_student= false (EE) ? Yes, must log out : No (is student), must log in */}
+          {/* result = user.is_student= false (EE) ? require log in : no log in */}
         </li>
       </ul>
     </div>

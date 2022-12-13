@@ -22,6 +22,7 @@ import Footer from "./components/Footer/Footer";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
+import EmployeeRoute from "./utils/EmployeeRoute";
 
 
 function App() {
@@ -33,7 +34,10 @@ function App() {
           path="/"
           element={
             <PrivateRoute>
-              <HomePage />
+              <EmployeeRoute>
+                <DirectoryPage />
+              </EmployeeRoute>
+             
               
             </PrivateRoute>
           }
@@ -46,8 +50,8 @@ function App() {
         {/* student portal */}
         <Route path="/enrolled" element={<EnrolledStudentsPage />} /> 
         <Route path="/transcript" element={<TranscriptPage />} />
-        <Route path="/available/" element={<AvailableCourses />} />
-        <Route path="/scheduled/" element={<ScheduledCoursesPage />} />
+        <Route path="/available" element={<AvailableCourses />} />
+        <Route path="/scheduled" element={<ScheduledCoursesPage />} />
 
         
         {/* EE portal */}

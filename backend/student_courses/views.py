@@ -119,14 +119,6 @@ def create_studentgrades(request):
 
 
 #Not used
-@api_view(['DELETE']) 
-def delete_grades(request):
-    """api/users/grades/delete/
-    """
-    print('deleted grades')
-    grade_deleted= get_object_or_404(StudentCourse)
-    serializer = StudentCourseSerializer(grade_deleted) 
-    return Response(serializer.data)
 
 
 @api_view(['GET'])
@@ -155,8 +147,8 @@ def calculate_semester_by_credits(request, user_id):
     current_semester = 0
     for course in users_courses:
         sum_of_credits += course.credits_received
-        sum_of_credits=(sum_of_credits//16)+1
-    print(sum_of_credits)
+        current_semester=(sum_of_credits//16)+1
+    print(current_semester)
     # print(course.credits_received)
     return Response(current_semester)
 
@@ -165,7 +157,7 @@ def award_course_credits(numeric_grade, credits_attempted):
     """First part, awards credit for a course based on earning at least two grade points.
     """
     grade_points_earned = numeric_grade
-    if grade_points_earned >= 2:
+    if (grade_points_earned >= 2):
         print('Grade points earned: ', grade_points_earned )
         return credits_attempted
     else:

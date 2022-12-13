@@ -21,6 +21,10 @@ p, label {
   font-size: 1.25rem;
 }
 
+label{
+  margin-bottom: -.75rem;
+}
+
 button {
   background-color: #550040;
   color: white;

@@ -37,13 +37,13 @@ const LoginPage = () => {
         <label>
           Password:{" "}
           <input
-            type="text"
+            type="password"
             name="password"
             value={formData.password}
             onChange={handleInputChange} />
         </label>
         {isServerError ? (
-          <p className="error">Incorrect credentials.<br />Please try again.</p>
+          <p className="error">Incorrect or incomplete credentials.<br />Please try again.</p>
         ) : null}
         <Link to="/register" className="register">New? Register here.</Link>
           <button type='submit' onClick={() => navigate('/directory')}>Login</button>
