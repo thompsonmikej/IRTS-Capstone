@@ -10,6 +10,7 @@ const EnrolledStudentsPage = () => {
     const [user, token] = useAuth();
     const [persons, setPersons] = useState([]);
     const [selectEnroll, setSelectEnroll] = useState([]);
+    const [sendToGrades, setToGrades] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -49,7 +50,23 @@ const EnrolledStudentsPage = () => {
         }
     };
 
-
+    const fetchToGrades = async (studentToGrade) => {
+        let toStudentGrading = studentToGrade
+        try {
+            console.log('enrolled student object sent to Add Grades: ', toStudentGrading)
+            let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/admin_views_studentcourses/${toStudentGrading}/`,
+                {
+                    headers: {
+                        Authorization: "Bearer " + token,
+                    },
+                });
+            console.log('enrolled student object sent to Add Grades: ', toStudentGrading)
+            setToGrades(response.persons)
+            navigate(`/grades/`)
+        } catch (error) {
+            console.log('enrolled student object sent to Add Grades: ', error.message)
+        }
+    };
 
     return (
         <><h1>Enrolled Students</h1>
@@ -65,8 +82,10 @@ const EnrolledStudentsPage = () => {
                             <span className="schedule-button">
                                 <button type='submit' onClick={() => fetchSelectEnroll(person.id)}>Select, Enroll</button>
                               </span>
-                            <span><Link to="/grades">ADD GRADE |</Link></span>
-                            <span>{person.first_name} {person.last_name} |</span>
+                            <span className="schedule-button">
+                                <button type='submit' onClick={() => fetchToGrades(person.id)}>Add a Grade</button>
+                            </span>
+                            <span>| {person.first_name} {person.last_name} |</span>
                             <span>SEM: {person.semester} |</span>
                             <span>FULL TIME |</span>
                             <span><Link to="/enrolled" className="dummy">XFER CREDIT</Link></span>

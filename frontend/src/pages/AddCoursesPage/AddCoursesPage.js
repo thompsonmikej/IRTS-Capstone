@@ -39,7 +39,7 @@ const AddCoursesPage = () => {
       <h2><Link to="/directory">Back to Employee Portal</Link></h2><hr />
       <form className="form" onSubmit={handleSubmit}>
         <label>
-          Course:{" 3 digit, 7 character"}
+          Course:{" 3 digit, 3 char, 4 char"}
           <input
             type="text"
             name="name"
@@ -48,7 +48,7 @@ const AddCoursesPage = () => {
           />
         </label>
         <label>
-          Credit Value:{" 1 digit, 0-4"}
+          Credit Value:{" 1 digit, 0 - 4"}
           <input
             type="text"
             name="credit_value"
@@ -57,7 +57,7 @@ const AddCoursesPage = () => {
           />
         </label>
         <label>
-          Semester: {"1 digit, 7 or 8"}
+          Semester: {"1 digit, 1 - 8"}
           <input
             type="text"
             name="semester"
@@ -65,33 +65,25 @@ const AddCoursesPage = () => {
             onChange={handleInputChange}
           />
         </label>
-        <label>
+        <label >
           Instructor: {""}
-          <input
+          <input className="dummy"
             type="text"
             name=""
             // value={formData.semester}
             // onChange={handleInputChange}
           />
         </label>
-        <label>
+        <label >
           Location: {""}
-          <input
+          <input className="dummy"
             type="text"
             name=""
             // value={formData.semester}
             // onChange={handleInputChange}
           />
         </label>
-        <label>
-          Course Description: {""}
-          <input
-            type="text"
-            name=""
-          // value={formData.semester}
-          // onChange={handleInputChange}
-          />
-        </label>
+
         <button onClick={() => postNewCourses()}>Add to Catalog</button>
       </form><div className="page-bottom"></div>
     </div>

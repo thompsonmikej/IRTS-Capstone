@@ -42,7 +42,6 @@ def admin_views_studentcourses(request, user_id):
     return Response(serializer.data)
 
 
-
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_scheduled(request, user_id):
