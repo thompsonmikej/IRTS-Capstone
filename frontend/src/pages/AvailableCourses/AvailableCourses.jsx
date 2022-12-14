@@ -5,13 +5,16 @@ import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 
-const AvailableCourses = () => {
+const AvailableCourses = (props) => {
 
     const [user, token] = useAuth();
+    console.log('user on AvailableCourses', user)
     const [items, setItems] = useState([]);
     const [applyCourse, setApplyCourse] = useState([]);
     const navigate = useNavigate();
     const [semester, setSemester] = useState(0);
+
+    console.log('props on AvailableCourses', props)
 
         useEffect(() => {
         const fetchAvailableCourses = async () => {
@@ -30,23 +33,6 @@ const AvailableCourses = () => {
             fetchAvailableCourses();
             setSemester(user.semester)
     }, [token]);
-
-    // useEffect(() => {
-    //     const fetchSemester = async () => {
-    //         try {
-    //             let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/calculate_semester/${user.id}/`, {
-    //                 headers: {
-    //                     Authorization: "Bearer " + token,
-    //                 },
-    //             });
-    //             console.log('Success response Fetch semester in AvailableCourses', semester)
-    //             setSemester(response.data);
-    //         } catch (error) {
-    //             console.log('Error in fetch semester', error);
-    //         }
-    //     };
-    //     fetchSemester();
-    // }, [])
 
     
     const selectCourse = async(courseId) => {
@@ -78,20 +64,19 @@ const AvailableCourses = () => {
             <h2>BACHELOR'S DEGREE PROGRAM</h2>
             <h2>128 CREDITS TOTAL REQUIRED TO GRADUATE</h2>
             <h2><Link to={`/scheduled/`}>View Scheduled Courses</Link></h2>
-            <br />   
+            <hr /><br />   
             <div>
             {   items.map((item) => (
                 <><div key={item.id} className="container">
                     <hr />  
-               
-                    <span><Link to={`/scheduled/`} className="dummy">{item.name} |</Link></span>
+                    <span className="schedule-button">
+                        <button type='submit' onClick={() => selectCourse(item.id)}>Enroll Student</button>
+                    </span>               
+                    <span><Link to={`/available/`} className="dummy">| {item.name} |</Link></span>
                     <span>CR VALUE: {item.credit_value} | </span>
                     <span>DAYS: M, T, W | </span>
                     <span>INSTR: X | </span>
-                    <span>LOC: ONLN | </span>
-                    <span className="schedule-button">
-                        <button type='submit' onClick={() => selectCourse(item.id)}>Enroll Student</button>
-                    </span>
+                    <span>LOC: ONLINE  </span>
                   </div>
                 </>
                     ))}

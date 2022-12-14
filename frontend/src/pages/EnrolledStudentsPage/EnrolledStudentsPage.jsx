@@ -9,7 +9,7 @@ const EnrolledStudentsPage = () => {
 
     const [user, token] = useAuth();
     const [persons, setPersons] = useState([]);
-    const [selectEnroll, setSelectEnroll] = useState([]);
+    const [addGrade, setAddGrade] = useState([]);
     const [sendToGrades, setToGrades] = useState([]);
     const navigate = useNavigate();
 
@@ -31,43 +31,7 @@ const EnrolledStudentsPage = () => {
     }, [token]);
 
 
-    const fetchSelectEnroll = async (seekId) => {
-        let userId = seekId
-        try {
-            console.log('userId in select Enroll: ', userId)
-            let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/admin_views_studentcourses/${userId}/`,
-                 {
-                    headers: {
-                        Authorization: "Bearer " + token,
-                    },
-                });
-
-            console.log('userId in select Enroll: ', userId)
-            setSelectEnroll(response.persons)
-            navigate(`/available/`);
-        } catch (error) {
-            console.log('error in select Enroll', error.message)
-        }
-    };
-
-    const fetchToGrades = async (studentToGrade) => {
-        let toStudentGrading = studentToGrade
-        try {
-            console.log('enrolled student object sent to Add Grades: ', toStudentGrading)
-            let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/admin_views_studentcourses/${toStudentGrading}/`,
-                {
-                    headers: {
-                        Authorization: "Bearer " + token,
-                    },
-                });
-            console.log('enrolled student object sent to Add Grades: ', toStudentGrading)
-            setToGrades(response.persons)
-            navigate(`/grades/`)
-        } catch (error) {
-            console.log('enrolled student object sent to Add Grades: ', error.message)
-        }
-    };
-
+   
     return (
         <><h1>Enrolled Students</h1>
             <h2>BACHELOR'S DEGREE PROGRAM</h2>
@@ -79,12 +43,10 @@ const EnrolledStudentsPage = () => {
                     <div key={person.id}>
                         <hr /><div>
                             {console.log('person', person)}
-                            <span className="schedule-button">
-                                <button type='submit' onClick={() => fetchSelectEnroll(person.id)}>Select, Enroll</button>
+                            <span >
+                                <Link to={`/student/${person.id}`}>Add a Grade</Link>
                               </span>
-                            <span className="schedule-button">
-                                <button type='submit' onClick={() => fetchToGrades(person.id)}>Add a Grade</button>
-                            </span>
+
                             <span>| {person.first_name} {person.last_name} |</span>
                             <span>SEM: {person.semester} |</span>
                             <span>FULL TIME |</span>

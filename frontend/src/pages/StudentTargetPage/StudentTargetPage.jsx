@@ -5,57 +5,43 @@ import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { useParams } from 'react-router-dom';
 
-const ScheduledCoursesPage = () => {
+const StudentTargetPage = () => {
 
     const [user, token] = useAuth();
     console.log('user on scheduledCourses', user)
     const [items, setItems] = useState([]);
+    const [student, setStudent] = useState([]);
     const [applyCourse, setApplyCourse] = useState([]);
     const navigate = useNavigate();
+    const { studentObject } = useParams();
 
     
     useEffect(() => {
-        const fetchItems = async () => {
-
+        const fetchStudent = async () => {
+            console.log('userObject', studentObject)
             try {
-                let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/enroll_student/`, {
-                    headers: {
-                        Authorization: "Bearer " + token,
-                    },
-                });
-                console.log('Success response in AvailableCourses', items)
-                setItems(response.data);
+                let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/admin_views_studentcourses/${studentObject}`,
+
+                    {
+                        headers: {
+                            Authorization: "Bearer " + token,
+                        },
+                    });
+
+                console.log('userObject', studentObject)
+                console.log('userObject', student)
+                console.log(response.data)
+                setStudent(response.data.items)
             } catch (error) {
-                console.log('Error in AvailableCourses', error);
+                console.log('error in fetch student', error.response.data)
             }
-        };
-        fetchItems();
+
+            fetchStudent();
+        }
     }, [token]);
 
-    const selectCourse = async (courseId) => {
-        let courseObject = {
-            "course_id": courseId,
-        }
-        console.log('courseObject', courseObject)
-        try {
-            let response = await axios.post(`http://127.0.0.1:8000/api/student_courses/add_student_to_course/`,
-                courseObject,
-                {
-                    headers: {
-                        Authorization: "Bearer " + token,
-                    },
-                });
-
-            console.log('success in courseId: ', courseId)
-            setApplyCourse(response.data.items)
-            navigate(`/scheduled/`)
-        } catch (error) {
-            console.log('error in courseId', error.response.data)
-        }
-
-    };
     return (
-        <><h1>Scheduled Courses for {user.first_name} {user.last_name}</h1>
+        <><h1>Student Target: {student.first_name} {student.last_name}</h1>
                 <h2>BACHELOR'S DEGREE PROGRAM</h2>
                 <h2>COURSES ENROLLED: TBD </h2>
             <h2>CREDITS ATTEMPTED THIS SEMESTER: TBD</h2>
@@ -78,5 +64,5 @@ const ScheduledCoursesPage = () => {
     );
 };
 
-export default ScheduledCoursesPage;
+export default StudentTargetPage;
 

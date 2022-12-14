@@ -36,7 +36,6 @@ def admin_views_studentcourses(request, user_id):
     """api/student_courses/admin_views_studentcourses/<int:user_id>/   SEE ENROLLED STUDENTS PAGE
     """
     admin_studentcourses = StudentCourse.objects.filter(user_id=user_id)
-    print('admin views student courses', admin_studentcourses)
     serializer = StudentCourseSerializer(admin_studentcourses, many=True)
     print('admin views student courses', admin_studentcourses)
     return Response(serializer.data)
@@ -127,20 +126,6 @@ def create_studentgrades(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
-#Not used
-
-
-@api_view(['GET'])
-def calculate_gpa(request, user_id):
-    graded_courses = StudentCourse.objects.filter(user_id=user_id).exclude(grade_received=None)
-    sum_of_grades = 0
-    for grade in graded_courses:
-        sum_of_grades += grade.grade_received
-    gpa= sum_of_grades/len(graded_courses)
-    return Response(gpa)
-
-
 @api_view(['GET'])
 def calculate_credits_earned(request, user_id):
     credit_tally= StudentCourse.objects.filter(user_id=user_id).exclude(credits_received=None)
@@ -159,20 +144,70 @@ def calculate_semester_by_credits(request, user_id):
         sum_of_credits += course.credits_received
         current_semester=(sum_of_credits//16)+1
     print(current_semester)
-    # print(course.credits_received)
     return Response(current_semester)
 
 
-def award_course_credits(numeric_grade, credits_attempted):
-    """First part, awards credit for a course based on earning at least two grade points.
-    """
-    grade_points_earned = numeric_grade
-    if (grade_points_earned >= 2):
-        print('Grade points earned: ', grade_points_earned )
-        return credits_attempted
-    else:
-        credits_attempted = 0
-        print('Grade points earned: ', grade_points_earned )
-        return credits_attempted
-credits_earned_per_course = award_course_credits(3.1, 4)
 
+#Not used
+
+@api_view(['GET'])
+def calculate_gpa(request, user_id):
+    graded_courses = StudentCourse.objects.filter(user_id=user_id).exclude(grade_received=None)
+    sum_of_grades = 0
+    for grade in graded_courses:
+        sum_of_grades += grade.grade_received
+    gpa= sum_of_grades/len(graded_courses)
+    return Response(gpa)
+
+
+# def award_course_credits(numeric_grade, credits_attempted):
+#     """First part, awards credit for a course based on earning at least two grade points.
+#     """
+#     grade_points_earned = numeric_grade
+#     if (grade_points_earned >= 2):
+#         print('Grade points earned: ', grade_points_earned )
+#         return credits_attempted
+#     else:
+#         credits_attempted = 0
+#         print('Grade points earned: ', grade_points_earned )
+#         return credits_attempted
+# credits_earned_per_course = award_course_credits(3.1, 4)
+
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def calculate_object_count(request):
+    object_count= StudentCourse.objects.all()
+    total_objects = 0
+    for count in object_count:
+        total_objects += count.object_count
+    return Response(total_objects)
+
+# @api_view(['GET'])
+# @permission_classes([AllowAny])
+# def calculate_object_count(request):
+#     """api/student_courses/calculate_object_count(request):  TRANSCRIPT
+#     """
+#     object_count= StudentCourse.objects.all()
+#     total_objects = 0
+#     # user_transcript = StudentCourse.objects.filter(user=request.user)
+#     # serializer = StudentCourseSerializer(user_transcript, many=True)
+    # print('transcript', user_transcript)
+    # return Response(serializer.data)
+
+
+# 
+# @api_view(['GET'])
+# @permission_classes([IsAuthenticated])
+# def get_last_object(request, user_id):
+#     """api/users/grades/get_last_object  
+#     """
+#     #query for all studentcourses for logged in user, find the grades and average them
+#     last_object = StudentCourse.objects.filter(user_id=user_id).len()
+#     serializer = StudentCourseSerializer(data=request.data)
+#     print('get GPA')
+#     if serializer.is_valid():
+#         serializer.save()
+#         print('get GPA', gpa_received)
+#         return Response(serializer.data, status=status.HTTP_201_CREATED)
+#     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -11,7 +11,6 @@ const DirectoryPage = () => {
       <br /><h1>Welcome to the Employee Portal, <br/>{user.first_name} {user.last_name}!</h1>
       <br /><hr />
       <h2>FIND YOUR STUDENT </h2>
-      <h2>ENROLL STUDENT INTO A CLASS </h2>
       <h2>GRADE YOUR STUDENT </h2>
       <div><Link to="/enrolled" className="register"> Directory of Current Students </Link></div><br />
       <div>

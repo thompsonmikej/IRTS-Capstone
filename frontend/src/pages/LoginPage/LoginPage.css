@@ -2,3 +2,27 @@
   color: #900000;
 }
 
+.stu-pic {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+img {
+  width: 20%;
+  height: 19%;
+}
+
+.linkText {
+  margin: 2rem;
+  font-size: 1.5rem;
+  text-align: center;
+
+}
+
+.centered {
+  align: center;
+  text-align: center;
+
+}

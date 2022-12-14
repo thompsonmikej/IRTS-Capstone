@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import "./App.css";
 
 // Pages Imports
-import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import GradsPage from "./pages/GradsPage/GradsPage";
@@ -12,6 +11,7 @@ import EnrolledStudentsPage from "./pages/EnrolledStudentsPage/EnrolledStudentsP
 import AvailableCourses from "./pages/AvailableCourses/AvailableCourses"
 import TranscriptPage from "./pages/TranscriptPage/TranscriptPage";
 import ScheduledCoursesPage from "./pages/ScheduledCoursesPage/ScheduledCoursesPage";
+import StudentTargetPage from "./pages/StudentTargetPage/StudentTargetPage";
 import AddCoursesPage from "./pages/AddCoursesPage/AddCoursesPage";
 import AddGradesPage from "./pages/AddGradesPage/AddGradesPage";
 import DirectoryPage from "./pages/DirectoryPage/DirectoryPage";
@@ -37,9 +37,7 @@ function App() {
             <PrivateRoute>
               <EmployeeRoute>
                 <DirectoryPage />
-                
-                 
-
+                  
               </EmployeeRoute>
                            
             </PrivateRoute>
@@ -54,6 +52,7 @@ function App() {
         <Route path="/enrolled" element={<EnrolledStudentsPage />} /> 
         <Route path="/transcript" element={<TranscriptPage />} />
         <Route path="/available" element={<AvailableCourses />} />
+        <Route path="/student/:studentId" element={<StudentTargetPage />} />
         <Route path="/scheduled" element={<ScheduledCoursesPage />} />
 
         
@@ -64,7 +63,7 @@ function App() {
         <Route path="/grads" element={<GradsPage />} />
         <Route path="/grades" element={<AddGradesPage />} />
         <Route path="/add_courses" element={<AddCoursesPage />} /> 
-        <Route path="/HomePage" element={<HomePage />} /> 
+
 
       </Routes>
       <Footer />
