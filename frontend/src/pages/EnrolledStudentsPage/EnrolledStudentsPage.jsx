@@ -33,7 +33,8 @@ const EnrolledStudentsPage = () => {
     const fetchSelectEnroll = async (seekId) => {
         let userId = seekId
         try {
-            let response = await axios.get(`http://127.0.0.1:8000api/student_courses/admin_views_studentcourses/${userId}/`,
+            console.log('userId in select Enroll: ', userId)
+            let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/admin_views_studentcourses/${userId}/`,
                  {
                     headers: {
                         Authorization: "Bearer " + token,
@@ -41,13 +42,13 @@ const EnrolledStudentsPage = () => {
                 });
 
             console.log('userId in select Enroll: ', userId)
-            setSelectEnroll(response.items)
-            navigate(`/available/`)
+            setSelectEnroll(response.persons)
+            navigate(`/available/`);
         } catch (error) {
-            console.log('error in select Enroll', error.response.data)
+            console.log('error in select Enroll', error.message)
         }
-
     };
+
 
 
     return (
