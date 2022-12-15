@@ -16,17 +16,16 @@ const ScheduledCoursesPage = () => {
     
     useEffect(() => {
         const fetchCourses = async () => {
-
             try {
                 let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/enroll_student/`, {
                     headers: {
                         Authorization: "Bearer " + token,
                     },
                 });
-                console.log('Success response in AvailableCourses', courses)
+                console.log('courses: Success response', courses)
                 setCourses(response.data);
             } catch (error) {
-                console.log('Error in AvailableCourses', error);
+                console.log('courses: Error', error);
             }
         };
         fetchCourses();

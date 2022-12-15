@@ -47,7 +47,8 @@ const AddGradesPage = async (props) => {
   async function postNewGrade(props) {
     let modifiedGrade = formData;
 
-    if (modifiedGrade == "A") {
+  
+    if (modifiedGrade == "A")  {
       console.log('A, 4', modifiedGrade)
       return "4";
     }
@@ -63,7 +64,7 @@ const AddGradesPage = async (props) => {
       console.log('else, 0', modifiedGrade)
       return "0";
     }
-  }
+  };
   //   // postNewGrades();
   //   // }, []);
     

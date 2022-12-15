@@ -15,29 +15,25 @@ def get_transcript(request):
     """
     user_transcript = StudentCourse.objects.filter(user=request.user)
     serializer = StudentCourseSerializer(user_transcript, many=True)
-    print('transcript', user_transcript)
     return Response(serializer.data)
 
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def get_enrolled(request):
+def enroll_student(request):
     """api/student_courses/enroll_student
     """
     user_transcript = StudentCourse.objects.filter(user=request.user).filter(credits_received=None)
-    print('transcript', user_transcript)
     serializer = StudentCourseSerializer(user_transcript, many=True)
-    print('transcript', user_transcript)
     return Response(serializer.data)
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def admin_views_studentcourses(request, user_id):
-    """api/student_courses/admin_views_studentcourses/<int:user_id>/   SEE ENROLLED STUDENTS PAGE
+    """api/student_courses/admin_views_studentcourses/<int:user_id>/  
     """
-    admin_studentcourses = StudentCourse.objects.filter(user_id=user_id)
-    serializer = StudentCourseSerializer(admin_studentcourses, many=True)
-    print('admin views student courses', admin_studentcourses)
+    view_studentcourses = StudentCourse.objects.filter(user_id=user_id)
+    serializer = StudentCourseSerializer(view_studentcourses, many=True)
     return Response(serializer.data)
 
 
@@ -48,7 +44,6 @@ def get_scheduled(request, user_id):
     """
     available_courses = StudentCourse.objects.exclude(credits_received=None)
     serializer = StudentCourseSerializer(available_courses, many=True)
-    print('available courses', available_courses)
     return Response(serializer.data)
 
 
@@ -60,30 +55,25 @@ def get_scheduled_studentcourses(request):
     """
     ungraded_courses = StudentCourse.objects.filter(grade_received=None)
     serializer = StudentCourseSerializer(ungraded_courses, many=True)
-    print('get scheduled courses', ungraded_courses)
     return Response(serializer.data)
 
 
 # GRADES
-
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_gpa(request):
-    """api/users/grades/gpa  ##USER?
+    """api/users/grades/gpa 
     """
-    #query for all studentcourses for logged in user, find the grades and average them
     gpa_received = StudentCourse.objects.filter(gpa__gte=0)
     serializer = StudentCourseSerializer(data=request.data)
-    print('get GPA')
     if serializer.is_valid():
         serializer.save()
-        print('get GPA', gpa_received)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 # Supply a grade & credits to an existing studentcourse
 @api_view(['PUT'])
-@permission_classes([IsAuthenticated])   #by name
+@permission_classes([IsAuthenticated])   
 def change_grades(request, studentcourse_id):
     """api/student_courses/grade_change/
     """   
@@ -99,30 +89,25 @@ def change_grades(request, studentcourse_id):
 
 #COURSES
 
-#Used for when a logged-in student registers for a new course
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def add_student_to_courses(request):
     """api/student_courses/register_new_course/  ADD COURSE ONTO SCHEDULE
     """
     serializer = StudentCourseSerializer(data=request.data)
-    print('add student to  courses')
     if serializer.is_valid():
         serializer.save(user=request.user)
-        print('add student to courses')
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def create_studentgrades(request):
+def grade_this_studentcourse(request):
     """api/student_courses/grade_this_studentcourse/ 
     """
     serializer = StudentCourseSerializer(data=request.data)
-    print('grade this course')
     if serializer.is_valid():
         serializer.save(user=request.user)
-        print('add grades page')
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -143,12 +128,8 @@ def calculate_semester_by_credits(request, user_id):
     for course in users_courses:
         sum_of_credits += course.credits_received
         current_semester=(sum_of_credits//16)+1
-    print(current_semester)
     return Response(current_semester)
 
-
-
-#Not used
 
 @api_view(['GET'])
 def calculate_gpa(request, user_id):
@@ -159,13 +140,4 @@ def calculate_gpa(request, user_id):
     gpa= sum_of_grades/len(graded_courses)
     return Response(gpa)
 
-
-@api_view(['GET'])
-@permission_classes([AllowAny])
-def calculate_object_count(request):
-    object_count= StudentCourse.objects.all()
-    total_objects = 0
-    for count in object_count:
-        total_objects += count.object_count
-    return Response(total_objects)
 

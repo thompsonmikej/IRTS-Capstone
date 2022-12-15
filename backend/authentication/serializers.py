@@ -9,9 +9,6 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)
-        # for any additional fields you'd like to add to the JWT sent back in response
-        # add below using the token["field name"] = user.name_of_property
-        
         token["username"] = user.username
         token["first_name"] = user.first_name
         token["last_name"] = user.last_name
@@ -21,16 +18,12 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         return token
 
 
-class GradReadySerializer(serializers.ModelSerializer):
-    """api/auth/grads/
-    """ 
+class PersonObjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'first_name', 'last_name', 'semester', 'gpa', 'credits_earned',
                   'grad_ready']
 
-# student_id = serializers.IntegerField(write_only=True)
-# course_id = serializers.IntegerField(write_only=True)
 
 
 
@@ -44,8 +37,6 @@ class RegistrationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        # If added new columns through the User model, add them in the fields
-        # list as seen below
         fields = ('username', 'password', 'email',
                   'first_name', 'last_name')
 
@@ -57,10 +48,6 @@ class RegistrationSerializer(serializers.ModelSerializer):
             first_name=validated_data['first_name'],
             last_name=validated_data['last_name'],
 
-            # If added new columns through the User model, add them in this
-            # create method. Example below:
-
-            # is_student=validated_data['is_student']
         )
         user.set_password(validated_data['password'])
         user.save()

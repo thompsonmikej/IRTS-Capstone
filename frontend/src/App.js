@@ -48,7 +48,6 @@ function App() {
         <Route path="/available" element={<AvailableCourses />} />
         <Route path="/student/:studentId" element={<StudentTargetPage />} />
         <Route path="/scheduled" element={<ScheduledCoursesPage />} />
-
         
         {/* EE portal */}
         <Route path="/directory" element={<DirectoryPage />} />
@@ -57,7 +56,6 @@ function App() {
         <Route path="/grads" element={<GradsPage />} />
         <Route path="/grades" element={<AddGradesPage />} />
         <Route path="/add_courses" element={<AddCoursesPage />} /> 
-
 
       </Routes>
       <Footer />

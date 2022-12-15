@@ -70,10 +70,10 @@ const AvailableCourses = (props) => {
                     <span className="schedule-button">
                         <button type='submit' onClick={() => selectCourse(course.id)}>Enroll Student</button>
                     </span>               
-                    <span><Link to={`/available/`} className="dummy">| {course.name} |</Link></span>
+                    <span><Link to={`#`} className="dummy">| {course.name} |</Link></span>
                     <span>CR VALUE: {course.credit_value} | </span>
-                    <span>DAYS: M, T, W | </span>
-                    <span>INSTR: X | </span>
+                    <span><Link to={`#`} className="dummy">DAYS: M, T, W | </Link></span>
+                    <span>INSTR: JONASSEN | </span>
                     <span>LOC: ONLINE  </span>
                   </div>
                 </>

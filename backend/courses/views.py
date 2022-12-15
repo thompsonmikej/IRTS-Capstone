@@ -20,32 +20,19 @@ def get_all_courses(request):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_available_courses(request):
-    """api/courses/available/  classes ungraded, available   //.filter(credits_received=None)
-    semester=request.user.semester
+    """api/courses/available/  classes ungraded, available   
     """
     available_courses = Course.objects.all().filter(semester=request.user.semester)
-    print('available courses', available_courses)
     serializer = CourseSerializer(available_courses, many=True)
-    print('available courses', available_courses)
     return Response(serializer.data)
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])   #by name
+@permission_classes([IsAuthenticated])   
 def find_courses(request):
     """api/courses/find
     """
     courses = Course.objects.filter(data=request.data)
     serializer = CourseSerializer(courses, many=True)
-    return Response(serializer.data)
-
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def get_current_studentcourses(request, semester):
-    """api/courses/current/
-    """
-    current_available = Course.objects.filter(semester=semester).exclude(credit_value=None)
-    serializer = CourseSerializer(current_available, many=True)
-    print('get current courses', current_available)
     return Response(serializer.data)
 
 

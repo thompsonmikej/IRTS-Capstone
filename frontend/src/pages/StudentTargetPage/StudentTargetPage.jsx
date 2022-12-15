@@ -9,56 +9,45 @@ const StudentTargetPage = () => {
     const [user, token] = useAuth();
     console.log('user on scheduledCourses', user)
     const [courses, setCourses] = useState([]);
-    const [students, setStudents] = useState([]);
-    const { studentObject } = useParams();
-    // const [ studentObject, setStudentObject ] = useState();
+    const [student, setstudent] = useState([]);
+    const { studentId } = useParams();
+    console.log('studentId scheduledCourses', studentId)
 
     
     useEffect(() => {
-        const fetchStudents = async () => {
-            console.log('userObject', studentObject)
-            console.log('student', students)
+        const fetchstudent = async (props) => {
             try {
-                let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/admin_views_studentcourses/${studentObject}`,
+                let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/admin_views_studentcourses/${studentId}/`,
                     {
                         headers: {
                             Authorization: "Bearer " + token,
                         },
                     });
 
-                console.log('userObject', studentObject)
-                console.log('userObject', students)
-                console.log(response.data)
-                setStudents(response.data.items)
+                // console.log('userObject', studentId)
+                // console.log('userObject', student)
+                // console.log(response.data)
+                setstudent(response.data)
             } catch (error) {
-                console.log('error in fetch student', error.response.data)
-            }
-            fetchStudents();
+                console.log('error in fetch student', error)
+            }      
         }
+        fetchstudent();
     }, [token]);
 
-    // useEffect(() => {
-    //     if (isServerError) {
-    //         reset();
-    //     }
-    // }, [isServerError]);
     
     return (
-        <><h1>Student Target: {students.first_name} {students.last_name}</h1>
+        <><h1>Grades for Student, {student[0].user.first_name} {student[0].user.last_name}</h1>
                 <h2>BACHELOR'S DEGREE PROGRAM</h2>
-                <h2>COURSES ENROLLED: TBD </h2>
-            <h2>CREDITS ATTEMPTED THIS SEMESTER: TBD</h2>
-            <h2><Link to="/transcript">View Transcript</Link></h2><hr />
+            <h2>Logged-in Employee: {user.first_name} {user.last_name}</h2>
                 <br /><><><div>
-                    {courses.map((course) => (
-                        <div key={course.id} className="container">
-                            <hr />
-                            <span><Link to={`/scheduled/`} className="dummy">{course.course.name} |</Link> </span>
-                            <span>DAYS: M, T, W | </span>
-                            <span>CR VALUE: {course.course.credit_value} |</span>
-                            <span>LOC: ONLN | </span>
-                            <span>AUG - DEC | </span>
-                            <span>GRADE: TBD </span>
+                    {student.map((course) => (
+                       <div key={course.id} className="container">
+                           <hr />
+                            <span><Link to={`#`} className="dummy">{course.course.name} |</Link> </span>
+                            <span>GR RECEIVED: {course.grade_received} | </span>
+                            <span><Link to={`#`} className="dummy">INSTR: JONASSEN |</Link> </span>
+        
                     </div>
                   ))}
                 {console.log('Courses', courses)}

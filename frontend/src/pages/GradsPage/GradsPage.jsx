@@ -24,6 +24,7 @@ const GradsPage = () => {
         };
         fetchGraduates();
     }, [token]);
+    
     return (
         <><h1>Candidates for Graduation</h1>
             <h2>BACHELOR'S DEGREE PROGRAM</h2>

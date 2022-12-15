@@ -28,7 +28,6 @@ const EnrolledStudentsPage = () => {
         fetchStudents();
     }, [token]);
 
-
    
     return (
         <><h1>Enrolled Students</h1>
@@ -42,9 +41,8 @@ const EnrolledStudentsPage = () => {
                         <hr /><div>
                             {console.log('person', student)}
                             <span >
-                                <Link to={`/student/${student.id}`}>Add a Grade</Link>
-                              </span>
-
+                                <Link to={`/student/${student.id}`}>ADD A GRADE</Link>
+                            </span>
                             <span>| {student.first_name} {student.last_name} |</span>
                             <span>SEM: {student.semester} |</span>
                             <span>FULL TIME |</span>
