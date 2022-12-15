@@ -46,7 +46,7 @@ const EnrolledStudentsPage = () => {
                             <span>| {student.first_name} {student.last_name} |</span>
                             <span>SEM: {student.semester} |</span>
                             <span>FULL TIME |</span>
-                            <span><Link to="/enrolled" className="dummy">XFER CREDIT</Link></span>
+                            <span><Link to="#" className="dummy">XFER CREDIT</Link></span>
                         </div>
                     </div>
                 ))}

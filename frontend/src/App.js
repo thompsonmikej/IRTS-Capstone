@@ -11,7 +11,7 @@ import EnrolledStudentsPage from "./pages/EnrolledStudentsPage/EnrolledStudentsP
 import AvailableCourses from "./pages/AvailableCourses/AvailableCourses"
 import TranscriptPage from "./pages/TranscriptPage/TranscriptPage";
 import ScheduledCoursesPage from "./pages/ScheduledCoursesPage/ScheduledCoursesPage";
-import StudentTargetPage from "./pages/StudentTargetPage/StudentTargetPage";
+import SelectedStudentPage from "./pages/SelectedStudentPage/SelectedStudentPage";
 import AddCoursesPage from "./pages/AddCoursesPage/AddCoursesPage";
 import AddGradesPage from "./pages/AddGradesPage/AddGradesPage";
 import DirectoryPage from "./pages/DirectoryPage/DirectoryPage";
@@ -46,7 +46,7 @@ function App() {
         <Route path="/enrolled" element={<EnrolledStudentsPage />} /> 
         <Route path="/transcript" element={<TranscriptPage />} />
         <Route path="/available" element={<AvailableCourses />} />
-        <Route path="/student/:studentId" element={<StudentTargetPage />} />
+        <Route path="/student/:studentId" element={<SelectedStudentPage />} />
         <Route path="/scheduled" element={<ScheduledCoursesPage />} />
         
         {/* EE portal */}
@@ -54,7 +54,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/grads" element={<GradsPage />} />
-        <Route path="/grades" element={<AddGradesPage />} />
+        <Route path="/add_grades" element={<AddGradesPage />} />
         <Route path="/add_courses" element={<AddCoursesPage />} /> 
 
       </Routes>

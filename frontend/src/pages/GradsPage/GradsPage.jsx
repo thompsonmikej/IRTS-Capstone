@@ -24,7 +24,7 @@ const GradsPage = () => {
         };
         fetchGraduates();
     }, [token]);
-    
+
     return (
         <><h1>Candidates for Graduation</h1>
             <h2>BACHELOR'S DEGREE PROGRAM</h2>
@@ -37,7 +37,7 @@ const GradsPage = () => {
                     <span>{graduate.first_name} {graduate.last_name} | </span>
                     <span>LAST SEM: {graduate.semester} | </span>
                     <span>GPA: {graduate.gpa} |</span>
-                    <span> <Link to="/grads" className="dummy">CR EARNED: {graduate.credits_earned} | </Link> </span>
+                    <span> <Link to="#" className="dummy">CR EARNED: {graduate.credits_earned} | </Link> </span>
                     <span>GRAD: FEB | </span>
                     <span>WITH HONORS </span>
                     <span> </span>
