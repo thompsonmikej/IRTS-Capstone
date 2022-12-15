@@ -13,8 +13,8 @@ from .serializers import CourseSerializer
 def get_all_courses(request):
     """api/courses/all
     """
-    courses = Course.objects.all()
-    serializer = CourseSerializer(courses, many=True)
+    all_courses = Course.objects.all()
+    serializer = CourseSerializer(all_courses, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
@@ -31,8 +31,8 @@ def get_available_courses(request):
 def find_courses(request):
     """api/courses/find
     """
-    courses = Course.objects.filter(data=request.data)
-    serializer = CourseSerializer(courses, many=True)
+    find_all_courses = Course.objects.filter(data=request.data)
+    serializer = CourseSerializer(find_all_courses, many=True)
     return Response(serializer.data)
 
 

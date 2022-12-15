@@ -100,11 +100,11 @@ def current_semester(request, user_id):
 def grad_status(request, user_id):
     """api/auth/post_grad_status/<int:user_id>/' #stores grad status to DB
     """   
-    is_grad = get_object_or_404(User, pk=user_id)
-    is_grad.grad_ready=request.data['grad_ready']
+    status_is_a_graduate = get_object_or_404(User, pk=user_id)
+    status_is_a_graduate.grad_ready=request.data['grad_ready']
     try:
-        is_grad.save()
-        serializer = PersonObjectSerializer(is_grad)
+        status_is_a_graduate.save()
+        serializer = PersonObjectSerializer(status_is_a_graduate)
         return Response(serializer.data, status=status.HTTP_200_OK)
     except:
         return Response(status=status.HTTP_400_BAD_REQUEST)

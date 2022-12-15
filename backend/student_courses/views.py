@@ -20,11 +20,11 @@ def get_transcript(request):
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def enroll_student(request):
-    """api/student_courses/enroll_student
+def get_scheduled_courses(request):
+    """api/student_courses/get_scheduled_courses
     """
-    user_transcript = StudentCourse.objects.filter(user=request.user).filter(credits_received=None)
-    serializer = StudentCourseSerializer(user_transcript, many=True)
+    scheduled_ungraded_courses = StudentCourse.objects.filter(user=request.user).filter(credits_received=None)
+    serializer = StudentCourseSerializer(scheduled_ungraded_courses, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
@@ -37,25 +37,9 @@ def admin_views_studentcourses(request, user_id):
     return Response(serializer.data)
 
 
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def get_scheduled(request, user_id):
-    """api/student_courses/scheduled/<int:user_id>/  classes ungraded, available
-    """
-    available_courses = StudentCourse.objects.exclude(credits_received=None)
-    serializer = StudentCourseSerializer(available_courses, many=True)
-    return Response(serializer.data)
-
 
 #Get all studentcourses that need grades
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def get_scheduled_studentcourses(request):
-    """api/student_courses/scheduled  FINDS UNGRADED COURSES ON STUDENT SCHEDULE
-    """
-    ungraded_courses = StudentCourse.objects.filter(grade_received=None)
-    serializer = StudentCourseSerializer(ungraded_courses, many=True)
-    return Response(serializer.data)
+
 
 
 # GRADES

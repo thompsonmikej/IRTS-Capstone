@@ -15,11 +15,6 @@ li {
   font-size: 1.5rem;
 }
 
-li:hover {
-  background-color:#cc5500;
-  
-}
-
 .navBar {
   background: #550040;
   box-shadow: .5rem .5rem .5rem #444;

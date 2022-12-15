@@ -16,21 +16,7 @@ const Navbar = (props) => {
             <b>Integrated Registration Tracking System</b>
           </Link> 
         </li>
-        <li >
-          <Link to="/transcript" className="navLink">
-            <b>| View Transcript </b>
-          </Link>
-        </li>
-        <li >
-          <Link to={`/available/`} className="navLink">
-            <b>| Available Courses</b>
-          </Link>
-        </li>
-        <li >
-          <Link to={`/scheduled/`} className="navLink">
-            <b>| Scheduled Courses </b>
-          </Link>
-        </li>
+        
         <li>
           {user ? (
             <button onClick={logoutUser}>Logout</button>

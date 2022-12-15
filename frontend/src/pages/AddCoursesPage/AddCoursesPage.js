@@ -24,12 +24,12 @@ const AddCoursesPage = () => {
           Authorization: "Bearer " + token,
         },
       });
-      navigate(`/available/`);
-      console.log('add courses create ')
+      navigate(`/directory`);
     } catch (error) {
       console.log(error.message);
     }
   }
+
 
   return (
     <div className="container">
@@ -37,7 +37,7 @@ const AddCoursesPage = () => {
       <h2><Link to="/directory">Back to Employee Portal</Link></h2><hr />
       <form className="form" onSubmit={handleSubmit}>
         <label>
-          Course:{" 000 LLL0 LLLL "}
+          Course:{" 3 digits, 7 alphanumeric "}
           <input
             type="text"
             name="name"
@@ -77,7 +77,9 @@ const AddCoursesPage = () => {
             name=""
           />
         </label>
-
+        {/* {isServerError ? (
+          <p className="error">Incorrect or incomplete credentials.<br />Please try again.</p>
+        ) : null} */}
         <button onClick={() => postNewCourses()}>Add to Catalog</button>
       </form><div className="page-bottom"></div>
     </div>

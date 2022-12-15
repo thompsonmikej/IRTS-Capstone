@@ -8,13 +8,10 @@ import useAuth from "../../hooks/useAuth";
 const AvailableCourses = (props) => {
 
     const [user, token] = useAuth();
-    console.log('user on AvailableCourses', user)
     const [availableCourses, setAvailableCourses] = useState([]);
     const [applyCourse, setApplyCourse] = useState([]);
     const navigate = useNavigate();
     
-    console.log('props on AvailableCourses', props)
-
         useEffect(() => {
         const fetchAvailableCourses = async () => {
             try {
@@ -23,7 +20,6 @@ const AvailableCourses = (props) => {
                         Authorization: "Bearer " + token,
                     },
                 });
-                console.log('Success response in AvailableCourses', response.data)
                 setAvailableCourses(response.data);
             } catch (error) {
                 console.log('Error in AvailableCourses', error);
@@ -38,9 +34,7 @@ const AvailableCourses = (props) => {
             "user_id": user.id,
             "course_id": courseId,
         }
-        console.log('courseObject', courseObject)
         try {
-            console.log('courseObject', courseObject)
             let response = await axios.post(`http://127.0.0.1:8000/api/student_courses/add_student_to_course/`,
                 courseObject,
             {
@@ -49,7 +43,6 @@ const AvailableCourses = (props) => {
                 },
             });
             
-            console.log('success in courseId: ', courseId)
             setApplyCourse(response.data.items)
             navigate(`/scheduled/`)
         } catch (error) {
@@ -62,24 +55,24 @@ const AvailableCourses = (props) => {
             <h2>BACHELOR'S DEGREE PROGRAM</h2>
             <h2>128 CREDITS TOTAL REQUIRED TO GRADUATE</h2>
             <h2><Link to={`/scheduled/`}>View Scheduled Courses</Link></h2>
+            <h2><Link to="/transcript">View Transcript</Link></h2><hr />
             <hr /><br />   
             <div>
             {   availableCourses.map((course) => (
                 <><div key={course.id} className="container">
                     <hr />  
                     <span className="schedule-button">
-                        <button type='submit' onClick={() => selectCourse(course.id)}>Enroll Student</button>
+                        <button type='submit' onClick={() => selectCourse(course.id)}>Enroll</button>
                     </span>               
                     <span><Link to={`#`} className="dummy">| {course.name} |</Link></span>
-                    <span>CR VALUE: {course.credit_value} | </span>
-                    <span><Link to={`#`} className="dummy">DAYS: M, T, W | </Link></span>
-                    <span>INSTR: JONASSEN | </span>
-                    <span>LOC: ONLINE  </span>
+                    <span>CR VALUE: {course.credit_value} |</span>
+                    <span><Link to={`#`} className="dummy">DAYS: M, T, W |</Link></span>
+                    <span>INSTR: SMITH |</span>
+                    <span>LOC: ONLN  </span>
                   </div>
                 </>
                     ))}
-            
-            {console.log('Return in AvailableCourses', availableCourses)}
+           
             </div><div className="page-bottom"></div>
         </></></>
     );

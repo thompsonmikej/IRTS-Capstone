@@ -8,7 +8,6 @@ import { useParams } from 'react-router-dom';
 const ScheduledCoursesPage = () => {
 
     const [user, token] = useAuth();
-    console.log('user on scheduledCourses', user)
     const [courses, setCourses] = useState([]);
     const [applyCourse, setApplyCourse] = useState([]);
     const navigate = useNavigate();
@@ -17,15 +16,14 @@ const ScheduledCoursesPage = () => {
     useEffect(() => {
         const fetchCourses = async () => {
             try {
-                let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/enroll_student/`, {
+                let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/get_scheduled_courses/`, {
                     headers: {
                         Authorization: "Bearer " + token,
                     },
                 });
-                console.log('courses: Success response', courses)
                 setCourses(response.data);
             } catch (error) {
-                console.log('courses: Error', error);
+                console.log('Error in courses', error);
             }
         };
         fetchCourses();
@@ -35,7 +33,6 @@ const ScheduledCoursesPage = () => {
         let courseObject = {
             "course_id": courseId,
         }
-        console.log('courseObject', courseObject)
         try {
             let response = await axios.post(`http://127.0.0.1:8000/api/student_courses/add_student_to_course/`,
                 courseObject,
@@ -44,8 +41,6 @@ const ScheduledCoursesPage = () => {
                         Authorization: "Bearer " + token,
                     },
                 });
-
-            console.log('success in courseId: ', courseId)
             setApplyCourse(response.data.items)
             navigate(`/scheduled/`)
         } catch (error) {
@@ -58,20 +53,20 @@ const ScheduledCoursesPage = () => {
                 <h2>BACHELOR'S DEGREE PROGRAM</h2>
                 <h2>COURSES ENROLLED: TBD </h2>
             <h2>CREDITS ATTEMPTED THIS SEMESTER: TBD</h2>
+            <h2><Link to={`/available/`}>View Available Courses</Link></h2>
             <h2><Link to="/transcript">View Transcript</Link></h2><hr />
                 <br /><><><div>
                     {courses.map((course) => (
                         <div key={course.id} className="container">
                             <hr />
-                            <span><Link to={`/scheduled/`} className="dummy">{course.course.name} |</Link> </span>
-                            <span>DAYS: M, T, W | </span>
+                            <span><Link to={`#`} className="dummy">{course.course.name} |</Link> </span>
+                            <span>DAYS: M, T, W |</span>
                             <span>CR VALUE: {course.course.credit_value} |</span>
-                            <span>LOC: ONLN | </span>
-                            <span>AUG - DEC | </span>
+                            <span>LOC: ONLN |</span>
+                            <span>AUG - DEC |</span>
                             <span>GRADE: TBD </span>
                     </div>
                   ))}
-                {console.log('Return in item', courses)}
             </div><div className="page-bottom"></div>
         </></></>
     );

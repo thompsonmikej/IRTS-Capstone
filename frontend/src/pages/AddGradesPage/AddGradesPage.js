@@ -27,7 +27,6 @@ const AddGradesPage = async (props) => {
       let gradeObject = {
         "grade_received": gradeSubmitted,
       }
-      console.log('gradeObject', gradeObject)
       try {
         let response = await axios.post(`http://127.0.0.1:8000/api/student_courses/grade_this_studentcourse/`, gradeObject, {
           headers: {
@@ -35,10 +34,9 @@ const AddGradesPage = async (props) => {
           },
         });
         navigate('/transcript');
-        console.log('add Grades create ', gradeObject)
         setGrades(response.data.items)
       } catch (error) {
-        console.log('error in courseId', error.response.data);
+        console.log('error in set grades', error.response.data);
       }
     };
     fetchGrades();
@@ -49,7 +47,6 @@ const AddGradesPage = async (props) => {
   return (  
     <div className="container">
       <h1>Add Grade for {user.first_name} {user.last_name}</h1>
-      {console.log('user', user)}
       <h2>COURSE TITLE</h2>
       <h2>CREDIT VALUE</h2>
       <h2>AUG - DEC </h2><hr/><br />

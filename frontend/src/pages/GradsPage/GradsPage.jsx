@@ -16,10 +16,9 @@ const GradsPage = () => {
                         Authorization: "Bearer " + token,
                     },
                 });
-                console.log('Success response in Grad_ready', graduates)
                 setGraduates(response.data);
             } catch (error) {
-                console.log('Error in Grad_ready', error);
+                console.log('Error in set graduates', error);
             }
         };
         fetchGraduates();
@@ -34,17 +33,15 @@ const GradsPage = () => {
             {   graduates.map((graduate) => (
                 <div key={graduate.id}>
                     <hr />
-                    <span>{graduate.first_name} {graduate.last_name} | </span>
-                    <span>LAST SEM: {graduate.semester} | </span>
+                    <span>{graduate.first_name} {graduate.last_name} |</span>
+                    <span>LAST SEM: {graduate.semester} |</span>
                     <span>GPA: {graduate.gpa} |</span>
-                    <span> <Link to="#" className="dummy">CR EARNED: {graduate.credits_earned} | </Link> </span>
-                    <span>GRAD: FEB | </span>
+                    <span> <Link to="#" className="dummy">CR EARNED: {graduate.credits_earned} |</Link> </span>
+                    <span>GRAD: FEB |</span>
                     <span>WITH HONORS </span>
                     <span> </span>
                 </div>
-                      ))}
-            
-            {console.log('Return in Grad_ready', graduates)}
+                      ))}          
             </div><div className="page-bottom"></div>
         </></></>
     );

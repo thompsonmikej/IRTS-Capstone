@@ -7,8 +7,6 @@ import { Link } from "react-router-dom";
 const TranscriptPage = (props) => {
 
     const [user, token] = useAuth();
-    console.log('user', user);
-    console.log('token', token);
     const [studentCourses, setStudentCourses] = useState([]);
     const [Gpa, setGpa] = useState(0);
     const [credits, setCredits] = useState(0);
@@ -22,7 +20,6 @@ const TranscriptPage = (props) => {
                         Authorization: "Bearer " + token,
                     },
                 });
-                console.log('Success response in StudentCourses', studentCourses)
                 setStudentCourses(response.data);
             } catch (error) {
                 console.log('Error in StudentCourses', error);
@@ -39,7 +36,6 @@ const TranscriptPage = (props) => {
                         Authorization: "Bearer " + token,
                     },
                 });
-                console.log('credits: Success response FetchCredits', credits)
                 setCredits(response.data);
             } catch (error) {
                 console.log('Error in fetch credits', error);
@@ -56,7 +52,6 @@ const TranscriptPage = (props) => {
                         Authorization: "Bearer " + token,
                     },
                 });
-                console.log('Semester: success response Fetchsemester', semester)
                 setSemester(response.data);
             } catch (error) {
                 console.log('Error in fetch semester', error);
@@ -89,6 +84,7 @@ const TranscriptPage = (props) => {
             <h2>CURRENT SEMESTER: {semester}</h2>
             <h2>GPA: {Gpa}</h2>
             <h2><Link to={`/available/`}>View Available Courses</Link></h2>
+            <h2><Link to={`/scheduled/`}>View Scheduled Courses</Link></h2>
             <hr />
             <br /><><><div className="container">
             {studentCourses.map((studentCourse) => (
@@ -98,13 +94,10 @@ const TranscriptPage = (props) => {
                     <span>GRADE: {studentCourse.grade_received} |</span>
                     <span>CR EARNED: {studentCourse.credits_received} |</span> 
                     <span>FALL 2022 |</span> 
-                    <span><Link to="/transcript" className="dummy">CR REQUIREMENTS</Link></span> 
+                    <span><Link to="#" className="dummy">CR REQUIREMENTS</Link></span> 
                     <hr/>
                     </p>
                     ))}
-            
-            {console.log('studentCourse return', studentCourses)}
-            
             </div><div className="page-bottom"></div>
         </></></>
 
