@@ -23,7 +23,6 @@ import Footer from "./components/Footer/Footer";
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
 import EmployeeRoute from "./utils/EmployeeRoute";
-import AdminRoute from "./utils/AdminRoute";
 
 
 function App() {
@@ -43,11 +42,6 @@ function App() {
             </PrivateRoute>
           }
         />
-        {/* EE access to student records */}
-        {/* <Route path="/grades/:studentId/" element={<AddGradesPage />} />
-        <Route path="/enrolled/:studentId/" element={<EnrolledStudentsPage />} />
-        <Route path="/available/:studentId/" element={<AvailableCourses />} /> */}
-
         {/* student portal */}
         <Route path="/enrolled" element={<EnrolledStudentsPage />} /> 
         <Route path="/transcript" element={<TranscriptPage />} />

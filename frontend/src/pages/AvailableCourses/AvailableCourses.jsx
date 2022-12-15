@@ -9,11 +9,10 @@ const AvailableCourses = (props) => {
 
     const [user, token] = useAuth();
     console.log('user on AvailableCourses', user)
-    const [items, setItems] = useState([]);
+    const [availableCourses, setAvailableCourses] = useState([]);
     const [applyCourse, setApplyCourse] = useState([]);
     const navigate = useNavigate();
-    const [semester, setSemester] = useState(0);
-
+    
     console.log('props on AvailableCourses', props)
 
         useEffect(() => {
@@ -25,13 +24,12 @@ const AvailableCourses = (props) => {
                     },
                 });
                 console.log('Success response in AvailableCourses', response.data)
-                setItems(response.data);
+                setAvailableCourses(response.data);
             } catch (error) {
                 console.log('Error in AvailableCourses', error);
             }
         };
             fetchAvailableCourses();
-            setSemester(user.semester)
     }, [token]);
 
     
@@ -66,14 +64,14 @@ const AvailableCourses = (props) => {
             <h2><Link to={`/scheduled/`}>View Scheduled Courses</Link></h2>
             <hr /><br />   
             <div>
-            {   items.map((item) => (
-                <><div key={item.id} className="container">
+            {   availableCourses.map((course) => (
+                <><div key={course.id} className="container">
                     <hr />  
                     <span className="schedule-button">
-                        <button type='submit' onClick={() => selectCourse(item.id)}>Enroll Student</button>
+                        <button type='submit' onClick={() => selectCourse(course.id)}>Enroll Student</button>
                     </span>               
-                    <span><Link to={`/available/`} className="dummy">| {item.name} |</Link></span>
-                    <span>CR VALUE: {item.credit_value} | </span>
+                    <span><Link to={`/available/`} className="dummy">| {course.name} |</Link></span>
+                    <span>CR VALUE: {course.credit_value} | </span>
                     <span>DAYS: M, T, W | </span>
                     <span>INSTR: X | </span>
                     <span>LOC: ONLINE  </span>
@@ -81,7 +79,7 @@ const AvailableCourses = (props) => {
                 </>
                     ))}
             
-            {console.log('Return in AvailableCourses', items)}
+            {console.log('Return in AvailableCourses', availableCourses)}
             </div><div className="page-bottom"></div>
         </></></>
     );

@@ -9,13 +9,13 @@ const ScheduledCoursesPage = () => {
 
     const [user, token] = useAuth();
     console.log('user on scheduledCourses', user)
-    const [items, setItems] = useState([]);
+    const [courses, setCourses] = useState([]);
     const [applyCourse, setApplyCourse] = useState([]);
     const navigate = useNavigate();
 
     
     useEffect(() => {
-        const fetchItems = async () => {
+        const fetchCourses = async () => {
 
             try {
                 let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/enroll_student/`, {
@@ -23,13 +23,13 @@ const ScheduledCoursesPage = () => {
                         Authorization: "Bearer " + token,
                     },
                 });
-                console.log('Success response in AvailableCourses', items)
-                setItems(response.data);
+                console.log('Success response in AvailableCourses', courses)
+                setCourses(response.data);
             } catch (error) {
                 console.log('Error in AvailableCourses', error);
             }
         };
-        fetchItems();
+        fetchCourses();
     }, [token]);
 
     const selectCourse = async (courseId) => {
@@ -61,18 +61,18 @@ const ScheduledCoursesPage = () => {
             <h2>CREDITS ATTEMPTED THIS SEMESTER: TBD</h2>
             <h2><Link to="/transcript">View Transcript</Link></h2><hr />
                 <br /><><><div>
-                    {items.map((item) => (
-                        <div key={item.id} className="container">
+                    {courses.map((course) => (
+                        <div key={course.id} className="container">
                             <hr />
-                            <span><Link to={`/scheduled/`} className="dummy">{item.course.name} |</Link> </span>
+                            <span><Link to={`/scheduled/`} className="dummy">{course.course.name} |</Link> </span>
                             <span>DAYS: M, T, W | </span>
-                            <span>CR VALUE: {item.course.credit_value} |</span>
+                            <span>CR VALUE: {course.course.credit_value} |</span>
                             <span>LOC: ONLN | </span>
                             <span>AUG - DEC | </span>
                             <span>GRADE: TBD </span>
                     </div>
                   ))}
-                {console.log('Return in item', items)}
+                {console.log('Return in item', courses)}
             </div><div className="page-bottom"></div>
         </></></>
     );

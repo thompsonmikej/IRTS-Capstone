@@ -6,8 +6,6 @@ import useCustomForm from "../../hooks/useCustomForm";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 
-//12072022 EE adds a course into catalog
-
 let initialValues = {
   name: "",
   credit_value: "",
@@ -70,17 +68,13 @@ const AddCoursesPage = () => {
           <input className="dummy"
             type="text"
             name=""
-            // value={formData.semester}
-            // onChange={handleInputChange}
-          />
+           />
         </label>
         <label >
           Location: {""}
           <input className="dummy"
             type="text"
             name=""
-            // value={formData.semester}
-            // onChange={handleInputChange}
           />
         </label>
 

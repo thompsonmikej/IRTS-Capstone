@@ -25,7 +25,6 @@ def get_available_courses(request):
     """
     available_courses = Course.objects.all().filter(semester=request.user.semester)
     print('available courses', available_courses)
-    # print('semester', semester)
     serializer = CourseSerializer(available_courses, many=True)
     print('available courses', available_courses)
     return Response(serializer.data)
@@ -61,13 +60,3 @@ def create_courses(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST) 
         
-
-@api_view(['DELETE'])
-@permission_classes([IsAuthenticated])   #by name  
-def delete_courses(request, name):
-    """api/courses/delete/<name>/
-    """  
-    course = get_object_or_404(Course, name=name)
-    course.delete()
-    return Response(status=status.HTTP_204_NO_CONTENT)
-    

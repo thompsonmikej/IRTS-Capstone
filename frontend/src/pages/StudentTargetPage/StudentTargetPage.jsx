@@ -14,11 +14,13 @@ const StudentTargetPage = () => {
     const [applyCourse, setApplyCourse] = useState([]);
     const navigate = useNavigate();
     const { studentObject } = useParams();
+    // const [ studentObject, setStudentObject ] = useState();
 
     
     useEffect(() => {
         const fetchStudent = async () => {
             console.log('userObject', studentObject)
+            console.log('student', student)
             try {
                 let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/admin_views_studentcourses/${studentObject}`,
 
@@ -40,6 +42,7 @@ const StudentTargetPage = () => {
         }
     }, [token]);
 
+    
     return (
         <><h1>Student Target: {student.first_name} {student.last_name}</h1>
                 <h2>BACHELOR'S DEGREE PROGRAM</h2>

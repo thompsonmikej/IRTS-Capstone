@@ -8,26 +8,25 @@ import { useNavigate } from "react-router-dom";
 const EnrolledStudentsPage = () => {
 
     const [user, token] = useAuth();
-    const [persons, setPersons] = useState([]);
+    const [students, setStudents] = useState([]);
     const [addGrade, setAddGrade] = useState([]);
-    const [sendToGrades, setToGrades] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchPersons = async () => {
+        const fetchStudents = async () => {
             try {
                 let response = await axios.get(`http://127.0.0.1:8000/api/auth/enrolled/`, {
                     headers: {
                         Authorization: "Bearer " + token,
                     },
                 });
-                console.log('Success response in all students', persons)
-                setPersons(response.data);
+                console.log('Success response in all students', students)
+                setStudents(response.data);
             } catch (error) {
                 console.log('Error in Grad_ready', error);
             }
         };
-        fetchPersons();
+        fetchStudents();
     }, [token]);
 
 
@@ -39,23 +38,23 @@ const EnrolledStudentsPage = () => {
             <h2>NEXT SEMESTER: FEB 1 - MAY 31 </h2>
             <h2><Link to="/directory">Back to Employee Portal</Link></h2>
             <br /><><><div className="container">
-                {persons.map((person) => (
-                    <div key={person.id}>
+                {students.map((student) => (
+                    <div key={student.id}>
                         <hr /><div>
-                            {console.log('person', person)}
+                            {console.log('person', student)}
                             <span >
-                                <Link to={`/student/${person.id}`}>Add a Grade</Link>
+                                <Link to={`/student/${student.id}`}>Add a Grade</Link>
                               </span>
 
-                            <span>| {person.first_name} {person.last_name} |</span>
-                            <span>SEM: {person.semester} |</span>
+                            <span>| {student.first_name} {student.last_name} |</span>
+                            <span>SEM: {student.semester} |</span>
                             <span>FULL TIME |</span>
                             <span><Link to="/enrolled" className="dummy">XFER CREDIT</Link></span>
                         </div>
                     </div>
                 ))}
 
-                {console.log('Return in Grad_ready', persons)}
+                {console.log('Return in Grad_ready', students)}
             </div><div className="page-bottom"></div>
             </></></>
     );

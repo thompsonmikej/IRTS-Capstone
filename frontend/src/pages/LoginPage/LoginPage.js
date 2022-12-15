@@ -55,4 +55,3 @@ const LoginPage = () => {
 export default LoginPage;
 
 
-// If the person registered as EE, then loginPage should request the name of the student and display view Graduates
