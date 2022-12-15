@@ -17,7 +17,7 @@ html {
   font-family: monospace;
 }
 
-p, label {
+p, label, button {
   font-size: 1.25rem;
 }
 
@@ -28,7 +28,6 @@ label{
 button {
   background-color: #550040;
   color: white;
-  font-size: 1.25rem;
   font-weight: bold;
   max-width: 15rem;
   border-radius: 2rem;
@@ -58,7 +57,7 @@ button:hover {
   text-align: left;
 }
 
-Link , a , .register{
+Link , a {
   font-size: 1.5rem;
   color: blue;
 }
@@ -80,9 +79,6 @@ Link , a , .register{
   padding: .5rem .75rem;
   font-size: 1.5rem;
 }
-.grade {
-  background-color: #550a;
-}
 
 .page-bottom{
   margin-bottom: 15rem;
@@ -92,4 +88,8 @@ Link , a , .register{
   position: fixed;
   margin-bottom: 01rem;
   
+}
+
+.error {
+  color: #900000;
 }

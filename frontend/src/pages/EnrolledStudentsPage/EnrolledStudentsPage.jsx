@@ -9,7 +9,6 @@ const EnrolledStudentsPage = () => {
 
     const [user, token] = useAuth();
     const [students, setStudents] = useState([]);
-    const [addGrade, setAddGrade] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {

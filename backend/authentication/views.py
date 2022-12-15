@@ -58,7 +58,7 @@ def get_all_students(request):
 
     # Store credits earned to an existing student in auth userDB
 @api_view(['PUT'])
-@permission_classes([IsAuthenticated])   #by name
+@permission_classes([IsAuthenticated])  
 def sum_credits_earned(request, user_id):
     """api/auth/sum_credits_earned/
     """   
@@ -73,7 +73,7 @@ def sum_credits_earned(request, user_id):
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['PUT'])
-@permission_classes([IsAuthenticated])   #by name
+@permission_classes([IsAuthenticated])   
 def gpa_earned(request, user_id):
     """api/auth/post_gpa/<int:user_id>/', #stores GPA to DB
     """   
@@ -88,7 +88,7 @@ def gpa_earned(request, user_id):
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['PUT'])
-@permission_classes([IsAuthenticated])   #by name
+@permission_classes([IsAuthenticated])   
 def current_semester(request, user_id):
     """api/auth/post_semester/<int:user_id>/', #stores semester to DB
     """   
@@ -103,7 +103,7 @@ def current_semester(request, user_id):
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['PUT'])
-@permission_classes([IsAuthenticated])   #by name
+@permission_classes([IsAuthenticated])   
 def grad_status(request, user_id):
     """api/auth/post_grad_status/<int:user_id>/' #stores grad status to DB
     """   
@@ -113,21 +113,6 @@ def grad_status(request, user_id):
     try:
         is_grad.save()
         serializer = GradReadySerializer(is_grad)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-    except:
-        return Response(status=status.HTTP_400_BAD_REQUEST)
-
-@api_view(['PUT'])
-@permission_classes([IsAuthenticated])   #by name
-def student_status(request, user_id):
-    """api/auth/post_student_status/<int:user_id>/' #stores grad status to DB
-    """   
-    is_current_student = get_object_or_404(User, pk=user_id)
-    print('is_student', user_id) 
-    is_current_student.is_student=request.data['is_student']
-    try:
-        is_current_student.save()
-        serializer = GradReadySerializer(is_current_student)
         return Response(serializer.data, status=status.HTTP_200_OK)
     except:
         return Response(status=status.HTTP_400_BAD_REQUEST)

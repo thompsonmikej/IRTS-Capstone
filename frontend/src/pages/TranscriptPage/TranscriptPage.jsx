@@ -39,7 +39,7 @@ const TranscriptPage = (props) => {
                         Authorization: "Bearer " + token,
                     },
                 });
-                console.log('Success response FetchCredits in StudentCourses', studentCourses)
+                console.log('credits: Success response FetchCredits', credits)
                 setCredits(response.data);
             } catch (error) {
                 console.log('Error in fetch credits', error);
@@ -56,7 +56,7 @@ const TranscriptPage = (props) => {
                         Authorization: "Bearer " + token,
                     },
                 });
-                console.log('Success response Fetch semester in StudentCourses', studentCourses)
+                console.log('Semester: success response Fetchsemester', semester)
                 setSemester(response.data);
             } catch (error) {
                 console.log('Error in fetch semester', error);
@@ -74,7 +74,6 @@ const TranscriptPage = (props) => {
                         Authorization: "Bearer " + token,
                     },
                 });               
-                console.log('Success response FetchGpa in StudentCourses', studentCourses)
                 setGpa(response.data);
             } catch (error) {
                 console.log('Error in fetch Gpa', error);
