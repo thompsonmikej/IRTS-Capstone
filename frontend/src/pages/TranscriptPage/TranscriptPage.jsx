@@ -78,7 +78,7 @@ const TranscriptPage = (props) => {
     }, [])
 
     return (
-        <><h1>Transcript of Courses for {user.first_name} {user.last_name}</h1>
+        <><h1>Your Transcript of Courses, <br/>{user.first_name} {user.last_name}</h1>
             <h2>BACHELOR'S DEGREE PROGRAM</h2>
             <h2>CREDITS EARNED: {credits}</h2>
             <h2>CURRENT SEMESTER: {semester}</h2>

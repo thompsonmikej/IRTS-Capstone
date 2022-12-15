@@ -8,7 +8,7 @@ const DirectoryPage = () => {
   const [user, token] = useAuth();
   return (
     <><div className="centered">
-      <br /><h1>Welcome to the Employee Portal, <br/>{user.first_name} {user.last_name}!</h1>
+      <br /><h1>Welcome to Your Employee Portal, <br/>{user.first_name} {user.last_name}</h1>
       <br /><hr />
       <h2>FIND YOUR STUDENT </h2>
       <h2>GRADE YOUR STUDENT </h2>

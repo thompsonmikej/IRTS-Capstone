@@ -34,11 +34,11 @@ const GradsPage = () => {
                 <div key={graduate.id}>
                     <hr />
                     <span>{graduate.first_name} {graduate.last_name} |</span>
-                    <span>LAST SEM: {graduate.semester} |</span>
                     <span>GPA: {graduate.gpa} |</span>
-                    <span> <Link to="#" className="dummy">CR EARNED: {graduate.credits_earned} |</Link> </span>
-                    <span>GRAD: FEB |</span>
-                    <span>WITH HONORS </span>
+                    <span><Link to="#" className="dummy">CR EARNED: {graduate.credits_earned} |</Link></span>
+                    <span>LAST SEM: DEC |</span>
+                    <span>EXP. GRAD: FEB |</span>
+                    <span>W/ HONORS </span>
                     <span> </span>
                 </div>
                       ))}          

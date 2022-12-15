@@ -7,7 +7,11 @@
 
 img {
   width: 20%;
-  height: 19%;
+  height: 20%;
+}
+
+.brand, button {
+    letter-spacing: .1rem;
 }
 
 .linkText {

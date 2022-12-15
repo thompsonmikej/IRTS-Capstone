@@ -51,7 +51,7 @@ const AvailableCourses = (props) => {
  
     };
     return (
-        <><h1>Courses Available to {user.first_name} {user.last_name}</h1><><>
+        <><h1>Courses Available to You,<br />{user.first_name} {user.last_name}</h1><><>
             <h2>BACHELOR'S DEGREE PROGRAM</h2>
             <h2>128 CREDITS TOTAL REQUIRED TO GRADUATE</h2>
             <h2><Link to={`/scheduled/`}>View Scheduled Courses</Link></h2>

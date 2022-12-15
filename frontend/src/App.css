@@ -39,7 +39,7 @@ button {
 button:hover {
   cursor: pointer;
   color: white;
-  background-color: #cc5500;
+  background-color: #83280b;
   border-radius: 0rem;
 }
 
@@ -48,7 +48,7 @@ button:hover {
 }
 
 .dummy:hover {
-  background-color: #555;
+  background-color: #444;
 }
 
 .container {
@@ -59,7 +59,7 @@ button:hover {
 
 Link , a {
   font-size: 1.5rem;
-  color: blue;
+  color: #001ec2;
 }
 
 

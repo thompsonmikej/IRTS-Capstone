@@ -18,7 +18,7 @@ const RegisterPage = () => {
   );
 
   return (
-    <><h1>Register An Employee</h1>
+    <><h1>Register an Employee</h1>
       <h2><Link to="/login">Back to Login</Link></h2>
       <hr />
       <div className="container">
@@ -56,7 +56,7 @@ const RegisterPage = () => {
             onChange={handleInputChange} />
         </label>
         <label>
-          Password:{" "}
+          Password*:{" "}
           <input
             type="password"
             name="password"

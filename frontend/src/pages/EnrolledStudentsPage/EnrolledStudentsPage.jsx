@@ -39,12 +39,12 @@ const EnrolledStudentsPage = () => {
                     <div key={student.id}>
                         <hr /><div>
                             <span >
-                                <Link to={`/student/${student.id}`}>ADD A GRADE</Link>
+                                <Link to={`/student/${student.id}`}>ADD GRADE</Link>
                             </span>
-                            <span><Link to="#" className="dummy">| XFER CREDIT</Link></span>
+                            <span><Link to="#" className="dummy">| ADD XFER CREDIT</Link></span>
                             <span>| {student.first_name} {student.last_name} |</span>
                             <span>SEM: {student.semester} |</span>
-                            <span>FULL TIME </span>
+                            <span>F-TIME </span>
         
                         </div>
                     </div>
