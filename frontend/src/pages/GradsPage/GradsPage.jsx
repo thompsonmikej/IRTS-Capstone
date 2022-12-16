@@ -42,7 +42,7 @@ const GradsPage = () => {
                     <span> </span>
                 </div>
                       ))}          
-            </div><div className="page-bottom"></div>
+            </div><hr /><h2><Link to="#" className="dummy">Back to Top</Link></h2><div className="page-bottom"></div>
         </></></>
     );
 };

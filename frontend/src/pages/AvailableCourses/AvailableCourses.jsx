@@ -55,8 +55,8 @@ const AvailableCourses = (props) => {
             <h2>BACHELOR'S DEGREE PROGRAM</h2>
             <h2>128 CREDITS TOTAL REQUIRED TO GRADUATE</h2>
             <h2><Link to={`/scheduled/`}>View Scheduled Courses</Link></h2>
-            <h2><Link to="/transcript">View Transcript</Link></h2><hr />
-            <hr /><br />   
+            <h2><Link to="/transcript">View Transcript</Link></h2>
+            <br />   
             <div>
             {   availableCourses.map((course) => (
                 <><div key={course.id} className="container">

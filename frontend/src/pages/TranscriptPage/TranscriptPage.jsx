@@ -98,7 +98,9 @@ const TranscriptPage = (props) => {
                     <hr/>
                     </p>
                     ))}
-            </div><div className="page-bottom"></div>
+            </div>
+                <h2><Link to="#" className="dummy">Back to Top</Link></h2>
+                <div className="page-bottom"></div>
         </></></>
 
     );

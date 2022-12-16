@@ -54,7 +54,7 @@ const ScheduledCoursesPage = () => {
                 <h2>COURSES ENROLLED: TBD </h2>
             <h2>CREDITS ATTEMPTED THIS SEMESTER: TBD</h2>
             <h2><Link to={`/available/`}>View Available Courses</Link></h2>
-            <h2><Link to="/transcript">View Transcript</Link></h2><hr />
+            <h2><Link to="/transcript">View Transcript</Link></h2>
                 <br /><><><div>
                     {courses.map((course) => (
                         <div key={course.id} className="container">
