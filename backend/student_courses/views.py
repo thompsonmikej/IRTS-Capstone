@@ -55,15 +55,20 @@ def get_gpa(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
+
 # Supply a grade & credits to an existing studentcourse
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])   
-def change_grades(request, studentcourse_id):
-    """api/student_courses/grade_change/
+def grade_course_object(request, studentcourse_id):
+    """api/student_courses/grade_course_object/
     """   
-    existing_studentcourse = get_object_or_404(StudentCourse, pk=studentcourse_id) 
+    existing_studentcourse = get_object_or_404(StudentCourse, pk=studentcourse_id)
+    console.log('existing_studentcourse',existing_studentcourse) 
     existing_studentcourse.grade_received=request.data['grade_received']
+    console.log('existing_studentcourse  grade',existing_studentcourse)
     existing_studentcourse.credits_received=request.data['credits_received']
+    console.log('existing_studentcourse credits',existing_studentcourse)
     try:
         existing_studentcourse.save()
         serializer = StudentCourseSerializer(existing_studentcourse)

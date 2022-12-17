@@ -7,18 +7,17 @@ import { useParams } from 'react-router-dom';
 import AuthContext from "../../context/AuthContext";
 
 
-const SelectedStudentPage = () => {
+const GradeStudentPage = () => {
 
     const [user, token] = useAuth();
     const [course, setCourse] = useState([]);
-    const [student, setstudent] = useState([]);
+    const [student, setStudent] = useState([]);
     const { studentId } = useParams();
     const navigate = useNavigate();
-
-
     
     useEffect(() => {
-        const fetchstudent = async (props) => {
+        const fetchStudent = async (props) => {
+            { console.log('props pass in studentid', studentId) }
             try {
                 let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/admin_views_studentcourses/${studentId}/`,
                     {
@@ -26,12 +25,13 @@ const SelectedStudentPage = () => {
                             Authorization: "Bearer " + token,
                         },
                     });
-                setstudent(response.data)
+                console.log('success in fetch student', studentId)
+                setStudent(response.data)
             } catch (error) {
                 console.log('error in fetch student', error)
             }      
         }
-        fetchstudent();
+        fetchStudent();
     }, [token]);
 
     return (
@@ -40,7 +40,8 @@ const SelectedStudentPage = () => {
             <h2><Link to="/directory">Back to Employee Portal</Link></h2>
             <br /><><><div>
                     {student.map((course) => (
-                       <div key={course.id} className="container">
+                        <div key={course.id} className="container">
+                            {console.log('success in fetch student', course)}
                            <hr />
                             <span className="schedule-button">
                                 <button type='submit' className="dummy">Add Grade</button>
@@ -56,5 +57,5 @@ const SelectedStudentPage = () => {
     );
 };
 
-export default SelectedStudentPage;
+export default GradeStudentPage;
 

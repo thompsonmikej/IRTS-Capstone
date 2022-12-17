@@ -11,9 +11,10 @@ import EnrolledStudentsPage from "./pages/EnrolledStudentsPage/EnrolledStudentsP
 import AvailableCourses from "./pages/AvailableCourses/AvailableCourses"
 import TranscriptPage from "./pages/TranscriptPage/TranscriptPage";
 import ScheduledCoursesPage from "./pages/ScheduledCoursesPage/ScheduledCoursesPage";
-import SelectedStudentPage from "./pages/SelectedStudentPage/SelectedStudentPage";
+import SelectedStudentPage from "./pages/GradeStudentPage/GradeStudentPage";
 import AddCoursesPage from "./pages/AddCoursesPage/AddCoursesPage";
-import AddGradesPage from "./pages/AddGradesPage/AddGradesPage";
+import GradeStudentPage from "./pages/GradeStudentPage/GradeStudentPage";
+import GradeCoursePage from "./pages/GradeCoursePage/GradeCoursePage";
 import DirectoryPage from "./pages/DirectoryPage/DirectoryPage";
 
 // Component Imports
@@ -53,8 +54,9 @@ function App() {
         <Route path="/directory" element={<DirectoryPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/grade_course" element={<GradeCoursePage />} />
         <Route path="/grads" element={<GradsPage />} />
-        <Route path="/add_grades" element={<AddGradesPage />} />
+        <Route path="/grade_student/:studentId" element={<GradeStudentPage />} />
         <Route path="/add_courses" element={<AddCoursesPage />} /> 
 
       </Routes>

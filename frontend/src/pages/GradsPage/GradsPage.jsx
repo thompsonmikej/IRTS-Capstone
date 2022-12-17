@@ -28,17 +28,17 @@ const GradsPage = () => {
         <><h1>Candidates for Graduation</h1>
             <h2>BACHELOR'S DEGREE PROGRAM</h2>
             <h2>128 CREDITS MINIMUM AND 3.0 GPA REQUIRED</h2>
-            <h2><Link to="/directory">Back to Employee Portal</Link></h2><hr />
+            <h2><Link to="/directory">Back to Employee Portal</Link></h2>
             <br /><><><div className="container">
             {   graduates.map((graduate) => (
                 <div key={graduate.id}>
                     <hr />
-                    <span>{graduate.first_name} {graduate.last_name} |</span>
-                    <span>GPA: {graduate.gpa} |</span>
-                    <span><Link to="#" className="dummy">CR EARNED: {graduate.credits_earned} |</Link></span>
                     <span>LAST SEM: DEC |</span>
                     <span>EXP. GRAD: FEB |</span>
-                    <span>W/ HONORS </span>
+                    <span>{graduate.first_name} {graduate.last_name} |</span>
+                    <span>GPA: {graduate.gpa} |</span>
+                    <span><Link to="#" className="dummy">CR EARNED: {graduate.credits_earned} </Link></span>
+                    {/* <span>W/ HONORS </span> */}
                     <span> </span>
                 </div>
                       ))}          
