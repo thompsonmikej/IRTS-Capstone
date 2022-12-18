@@ -9,9 +9,9 @@ const Navbar = (props) => {
   const { logoutUser, user } = useContext(AuthContext);  
   const navigate = useNavigate();
   return (
-    <div className="navBar">
+    <div className="navBar centered max-60width">
       <ul>
-        <li className="navText brand">
+        <li className="navText brand centered">
           <Link to="/login" className="navText">
             <b>Integrated Registration Tracking System</b>
           </Link> 

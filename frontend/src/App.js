@@ -54,7 +54,7 @@ function App() {
         <Route path="/directory" element={<DirectoryPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/grade_course" element={<GradeCoursePage />} />
+        <Route path="/grade_course/:studentId" element={<GradeCoursePage />} />
         <Route path="/grads" element={<GradsPage />} />
         <Route path="/grade_student/:studentId" element={<GradeStudentPage />} />
         <Route path="/add_courses" element={<AddCoursesPage />} /> 

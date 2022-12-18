@@ -38,9 +38,7 @@ const GradsPage = () => {
                     <span>{graduate.first_name} {graduate.last_name} |</span>
                     <span>GPA: {graduate.gpa} |</span>
                     <span><Link to="#" className="dummy">CR EARNED: {graduate.credits_earned} </Link></span>
-                    {/* <span>W/ HONORS </span> */}
-                    <span> </span>
-                </div>
+                   </div>
                       ))}          
             </div><hr /><h2><Link to="#" className="dummy">Back to Top</Link></h2><div className="page-bottom"></div>
         </></></>

@@ -77,9 +77,6 @@ const AddCoursesPage = () => {
             name=""
           />
         </label>
-        {/* {isServerError ? (
-          <p className="error">Incorrect or incomplete credentials.<br />Please try again.</p>
-        ) : null} */}
         <button onClick={() => postNewCourses()}>Add to Catalog</button>
       </form><div className="page-bottom"></div>
     </div>

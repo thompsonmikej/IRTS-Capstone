@@ -20,9 +20,6 @@ li {
   box-shadow: .5rem .5rem .5rem #444;
   color: white;
   margin: 1.5rem;
-  margin-left: auto;
-  margin-right: auto;
-  width: 60%;
   padding: .6rem .6rem;
   border-radius: 1.5rem;
   font-size: 1.75rem;
@@ -40,6 +37,14 @@ li {
   color: white;
 }
 
+.max-60width {
+  width: 60%;
+}
+
+.max-100width {
+  width: 100%;
+}
+
 .navBar button:hover , a:hover {
   background: #83280b;
   color:white;
@@ -54,6 +59,9 @@ li {
   text-align: center;
   margin: 0 2rem;
   padding: 0rem;
+}
+
+.centered {
   margin-left: auto;
   margin-right: auto;
 }
