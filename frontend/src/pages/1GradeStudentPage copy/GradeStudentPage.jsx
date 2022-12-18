@@ -6,7 +6,7 @@ import useAuth from "../../hooks/useAuth";
 import { useParams } from 'react-router-dom';
 import useCustomForm from "../../hooks/useCustomForm";
 import AuthContext from "../../context/AuthContext";
-import './GradeStudentPage.css';
+import './GradeStudentPage.css'
 
 const GradeStudentPage = () => {
 
@@ -19,11 +19,10 @@ const GradeStudentPage = () => {
     const navigate = useNavigate();
     const defaultValues = { user_id: "userId", course_id: "", grade_received: "" };
     const [formData, handleInputChange, handleSubmit, reset] = useCustomForm(
-        defaultValues, postNewGrades
+        defaultValues,
         // loginUser
     );
-
-
+    
     useEffect(() => {
         const fetchStudent = async (props) => {
             { console.log('props pass in studentid', studentId) }
@@ -43,11 +42,12 @@ const GradeStudentPage = () => {
         fetchStudent();
     }, [token]);
 
-    const Course = async (courseId) => {
+    const gradeCourse = async (courseId) => {
      console.log('courseId', courseId)
         let courseObject = {
             "user_id": user.id,
-            "course_id": courseId,           
+            "course_id": courseId,
+            
         }
         try {
             let response = await axios.post(`http://127.0.0.1:8000/api/student_courses/grade_course_object/`,
@@ -62,60 +62,15 @@ const GradeStudentPage = () => {
                 } catch (error) {
             console.log('error in courseId', error.response.data)
         }
-    };
 
-    async function postNewGrades() {
-        try {
-            let response = await axios.post(`http://127.0.0.1:8000/api/student_courses/grade_course_object/5/`, formData, {
-                headers: {
-                    Authorization: "Bearer " + token,
-                },
-            });
-            navigate("/directory");
-            console.log('post new Grade', formData)
-        } catch (error) {
-            console.log(error.message);
-        }
     };
-
-    
 
     return (
-        <><h1>Find Course to Grade</h1>
+        <><h1>Find Student Course to Grade</h1>
             <h2>Logged-in Employee: {user.first_name} {user.last_name}</h2>
             <br />
-            <><div className="container">
-                    <form className="form horizontal-fields" onSubmit={handleSubmit}>
-                        <div><label className="label-style">
-                            Student ID: {" "}
-                            <input className="input-reduced-width"
-                                type="text"
-                                name="userId"
-                                value={formData.userId}
-                            onChange={handleInputChange} />
-                        {/* {student[0].user.id} */}
-                        </label></div>
-                        <div><label className="label-style">
-                            Course ID:{" "}
-                            <input className="input-reduced-width"
-                                type="text"
-                                name="course"
-                                value={formData.course}
-                                onChange={handleInputChange} />
-                        </label></div>
-                        <div><label className="label-style">
-                            Enter Grade:{" "}
-                            <input className="input-reduced-width"
-                                type="text"
-                                name="grade_received"
-                                value={formData.grade_received}
-                                onChange={handleInputChange} />
-                        </label></div><br />
-                        <button type="submit" onClick={() => navigate('/directory')}>Grade</button>
-                    </form>
-                </div></>
-            <br/><h2><Link to="/directory">Back to Employee Portal</Link></h2>
-            <hr />
+            <h2><Link to={`/grade_course/${student.id}/`}>Ahead to Grade the Course</Link></h2>
+            <h2><Link to="/directory">Back to Employee Portal</Link></h2>
              <br /><><><div>
                     {student.map((course) => (
                         <div key={course.id} className="container">
