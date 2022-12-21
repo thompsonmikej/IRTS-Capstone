@@ -77,6 +77,20 @@ const TranscriptPage = (props) => {
         fetchGpa();
     }, [])
 
+    function getGradeLetter(gradeNumber) {
+        switch (gradeNumber) {
+            case 4:
+                return 'A';
+            case 3:
+                return 'B';
+            case 2:
+                return 'C';
+            default:
+                return 'F';
+        }
+    }
+
+
     return (
         <><h1>Your Transcript of Courses, <br />{user.first_name} {user.last_name}</h1>
             <h2>BACHELOR'S DEGREE PROGRAM</h2>
@@ -90,8 +104,8 @@ const TranscriptPage = (props) => {
                 {studentCourses.map((studentCourse) => (
                     <p key={studentCourse.id}>
                         <span>{studentCourse.course.name} |</span>
+                        <span>GRADE: {getGradeLetter(studentCourse.grade_received)} |</span>
                         <span>CR VALUE: {studentCourse.course.credit_value} |</span>
-                        <span>GRADE: {studentCourse.grade_received} |</span>
                         <span>CR EARNED: {studentCourse.credits_received} |</span>
                         <span>FALL 2022 |</span>
                         <span><Link to="#" className="dummy">CR REQUIREMENTS</Link></span>
