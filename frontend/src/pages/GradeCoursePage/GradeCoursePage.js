@@ -6,6 +6,7 @@ import useAuth from "../../hooks/useAuth";
 import useCustomForm from "../../hooks/useCustomForm";
 import axios from 'axios';
 import AuthContext from "../../context/AuthContext";
+import './GradeCoursePage.css'
 
 
 let initialValues = {
@@ -22,8 +23,10 @@ const GradeCoursePage = () => {
   const [formData, handleInputChange, handleSubmit] = useCustomForm(initialValues, postNewGrades);
 
   async function postNewGrades() {
+    let courseId = formData.course_id
+    {console.log('courseId', courseId)}
     try {
-      let response = await axios.post(`http://127.0.0.1:8000/api/student_courses/grade_this_studentcourse/`, formData, {
+      let response = await axios.put(`http://127.0.0.1:8000/api/student_courses/grade_course_object/${courseId}/`, formData, {
         headers: {
           Authorization: "Bearer " + token,
         },
@@ -43,40 +46,34 @@ const GradeCoursePage = () => {
       <h2><Link to={`/find_student_course/${studentId}`}>Back to Find Student's Course</Link></h2>
       <h2><Link to="/directory">Back to Employee Portal</Link></h2>
       <hr />
-    </div><div className="container">
+      </div><div className="container">
+        <h2>Student ID: {studentId}</h2>
         <form className="form" onSubmit={handleSubmit}>
-          <label>
-            Student ID: {" "}
-            <input
-              type="text"
-              name="user_id"
-              value={formData.user_id}
-              onChange={handleInputChange} />
-          </label>
-          <label>
-            Course ID:{" "}
-            <input
+          <label className="input-mini">
+            <span>COURSE ID:{" "}</span>
+            <span>
+              <input 
               type="text"
               name="course_id"
               value={formData.course_id}
-              onChange={handleInputChange} />
+                onChange={handleInputChange} /></span>
           </label>
-          <label>
-            Enter Grade:{" "}
-            <input
+          <label className="input-mini">
+            <span>GRADE:{" "}</span>
+          <span><input
               type="text"
               name="grade_received"
               value={formData.grade_received}
-              onChange={handleInputChange} />
+              onChange={handleInputChange} /></span>
           </label>
-          <label>
+          {/* <label>
             Enter Credit Value:{" "}
             <input
               type="text"
               name="credits_received"
               value={formData.credits_received}
               onChange={handleInputChange} />
-          </label>             
+          </label>              */}
           <br />
 
           <button type="submit">Submit Grade</button>

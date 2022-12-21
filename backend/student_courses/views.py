@@ -36,11 +36,7 @@ def admin_views_studentcourses(request, user_id):
     serializer = StudentCourseSerializer(view_studentcourses, many=True)
     return Response(serializer.data)
 
-
-
 #Get all studentcourses that need grades
-
-
 
 # GRADES
 @api_view(['GET'])
@@ -64,11 +60,7 @@ def grade_course_object(request, course_id):
     """api/student_courses/grade_course_object/
     """   
     existing_studentcourse = get_object_or_404(StudentCourse, pk=course_id)
-    console.log('existing_studentcourse', existing_studentcourse) 
     existing_studentcourse.grade_received=request.data['grade_received']
-    console.log('existing_studentcourse  grade', existing_studentcourse)
-    existing_studentcourse.credits_received=request.data['credits_received']
-    console.log('existing_studentcourse credits', existing_studentcourse)
     try:
         existing_studentcourse.save()
         serializer = StudentCourseSerializer(existing_studentcourse)
@@ -130,3 +122,9 @@ def calculate_gpa(request, user_id):
     return Response(gpa)
 
 
+
+    # if grade_received < 2:
+    #     credits_received = 0
+    # else:
+    #     credits_received
+    

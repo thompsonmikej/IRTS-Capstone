@@ -30,7 +30,6 @@ def student_users(request):
     return Response(serializer.data)
 
 
-
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def grad_ready_users(request):
@@ -49,7 +48,6 @@ def get_all_students(request):
     all_students = User.objects.filter(is_student=True)
     serializer = RegistrationSerializer(all_students, many=True)
     return Response(serializer.data)
-
 
 
     # Store credits earned to an existing student in auth userDB

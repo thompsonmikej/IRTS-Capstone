@@ -76,8 +76,8 @@ const FindStudentCoursePage = (props) => {
                         {console.log('student id', studentId)}
                         <span>{student[0].user.first_name} {student[0].user.last_name} |</span>
                         <span>{course.course.name} |</span>
-                        <span>STUDENT ID: {student[0].user.id} |</span>
-                        <span><Link to={`/grade_course/${studentId}`}>COURSE ID: {course.course.id} |</Link></span>
+                        <span>STU ID: {student[0].user.id} |</span>
+                        <span><Link to={`/grade_course/${studentId}`}>COURSE ID: {course.id} |</Link></span>
                         <span>GRADE: {course.grade_received} |</span>
                         <span>CR VALUE: {course.course.credit_value} </span>
                         {/* <span><Link to="#" className="dummy">CR REQUIREMENTS</Link></span> */}
