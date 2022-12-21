@@ -7,11 +7,10 @@ import { useNavigate } from "react-router-dom";
 import useCustomForm from "../../hooks/useCustomForm";
 import { useParams } from 'react-router-dom';
 import AuthContext from "../../context/AuthContext";
-import './GradeStudentPage.css';
+import './FindStudentCoursePage.css';
 
 
-
-const GradeStudentPage = (props) => {
+const FindStudentCoursePage = (props) => {
 
     const [user, token] = useAuth();
     const [studentCourses, setStudentCourses] = useState([]);
@@ -85,13 +84,13 @@ const GradeStudentPage = (props) => {
                     </p>
                 ))}
             </div>
-                <h2><Link to="#" className="dummy">Back to Top</Link></h2>
+                <hr/><h2><Link to="#" className="dummy">Back to Top</Link></h2>
                 <div className="page-bottom"></div>
             </></></>
 
     );
 };
 
-export default GradeStudentPage;
+export default FindStudentCoursePage;
 
 

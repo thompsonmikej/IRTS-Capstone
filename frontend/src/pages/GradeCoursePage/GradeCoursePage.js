@@ -38,8 +38,8 @@ const GradeCoursePage = () => {
 
 
   return (
-    <><div><h1>Enter a Grade</h1></div><div>
-      <h2>Enter the values from the Student Listing.</h2><br/>
+    <><div><h1>Enter a Grade</h1></div>
+      <div><h2>Logged-in Employee: {user.first_name} {user.last_name}</h2><br/>
       <h2><Link to={`/find_student_course/${studentId}`}>Back to Find Student's Course</Link></h2>
       <h2><Link to="/directory">Back to Employee Portal</Link></h2>
       <hr />

@@ -6,9 +6,9 @@ import useAuth from "../../hooks/useAuth";
 import { useParams } from 'react-router-dom';
 import useCustomForm from "../../hooks/useCustomForm";
 import AuthContext from "../../context/AuthContext";
-import './GradeStudentPage.css'
+import './FindStudentPage.css'
 
-const GradeStudentPage = () => {
+const FindStudentPage = () => {
 
     const [user, token] = useAuth();
     const [course, setCourse] = useState([]);
@@ -88,5 +88,5 @@ const GradeStudentPage = () => {
     );
 };
 
-export default GradeStudentPage;
+export default FindStudentPage;
 
