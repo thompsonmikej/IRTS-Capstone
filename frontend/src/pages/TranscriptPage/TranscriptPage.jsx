@@ -85,8 +85,10 @@ const TranscriptPage = (props) => {
                 return 'B';
             case 2:
                 return 'C';
-            default:
+            case 1:
                 return 'F';
+            default:
+                return ' ';
         }
     }
 

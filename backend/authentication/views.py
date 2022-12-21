@@ -23,7 +23,7 @@ class RegisterView(generics.CreateAPIView):
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def student_users(request):
-    """/api/auth/enrolled/  These are students with classes. GET users with courses
+    """/api/auth/directory/  These are students with classes. GET users with courses
     """
     students = User.objects.all().exclude(semester=None).exclude(semester=0)
     serializer = PersonObjectSerializer(students, many=True)

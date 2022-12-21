@@ -13,7 +13,6 @@ urlpatterns = [
     path('get_scheduled_courses/', views.get_scheduled_courses),
    
     path('grade_course_object/<int:course_id>/', views.grade_course_object), 
-    # path('grade_this_studentcourse/', views.grade_this_studentcourse),
 
 ]
 

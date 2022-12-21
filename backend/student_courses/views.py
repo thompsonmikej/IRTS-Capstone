@@ -81,17 +81,6 @@ def add_student_to_courses(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-# @api_view(['POST'])
-# @permission_classes([IsAuthenticated])
-# def grade_this_studentcourse(request):
-#     """api/student_courses/grade_this_studentcourse/ 
-#     """
-#     serializer = StudentCourseSerializer(data=request.data)
-#     if serializer.is_valid():
-#         serializer.save(user=request.user)
-#         return Response(serializer.data, status=status.HTTP_201_CREATED)
-#     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 @api_view(['GET'])
 def calculate_credits_earned(request, user_id):
     credit_tally= StudentCourse.objects.filter(user_id=user_id).exclude(credits_received=None)

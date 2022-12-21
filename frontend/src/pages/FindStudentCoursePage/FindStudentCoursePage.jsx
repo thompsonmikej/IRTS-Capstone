@@ -50,7 +50,7 @@ const FindStudentCoursePage = (props) => {
                 },
             });
             console.log('post new Grade', formData)
-            // navigate("/directory");
+            // navigate("/employee");
         } catch (error) {
             console.log('post new grade', error.message);
         }
@@ -64,8 +64,10 @@ const FindStudentCoursePage = (props) => {
                 return 'B';
             case 2:
                 return 'C';
-            default:
+            case 1:
                 return 'F';
+            default:
+                return ' ';
         }
     }
 
@@ -78,22 +80,18 @@ const FindStudentCoursePage = (props) => {
             {console.log('student id', studentId)}
             <br />
             <h2><Link to={`/grade_course/${studentId}`}>Go to Grade</Link></h2>
-            <h2><Link to="/directory">Back to Employee Portal</Link></h2><>
+            <h2><Link to="/employee">Back to Employee Portal</Link></h2><>
                 <><div className="container">
                 {student.map((course) => (
                     <p key={course.id}>
                         <hr />
-                        {console.log('course', course)}
-                        {console.log('user', user)}
-                        {console.log('formData', formData)}
-                        {console.log('student id', studentId)}
+                        <span>STU ID: {student[0].user.id} |</span>
                         <span>{student[0].user.first_name} {student[0].user.last_name} |</span>
                         <span>{course.course.name} |</span>
-                        <span>STU ID: {student[0].user.id} |</span>
                         <span><Link to={`/grade_course/${studentId}`}>COURSE ID: {course.id} |</Link></span>
-                        <span>GRADE: {getGradeLetter(course.grade_received)} |</span>
-                        <span>CR VALUE: {course.course.credit_value} </span>
-                        {/* <span><Link to="#" className="dummy">CR REQUIREMENTS</Link></span> */}
+                        <span>GRADE: {getGradeLetter(course.grade_received)} </span>
+                        {/* <span>CR VALUE: {course.course.credit_value} </span> */}
+                   
                     </p>
                 ))}
             </div>

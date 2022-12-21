@@ -11,7 +11,6 @@ import StudentDirectoryPage from "./pages/StudentDirectoryPage/StudentDirectoryP
 import AvailableCourses from "./pages/AvailableCourses/AvailableCourses"
 import TranscriptPage from "./pages/TranscriptPage/TranscriptPage";
 import ScheduledCoursesPage from "./pages/ScheduledCoursesPage/ScheduledCoursesPage";
-import SelectedStudentPage from "./pages/FindStudentCoursePage/FindStudentCoursePage";
 import AddCoursesPage from "./pages/AddCoursesPage/AddCoursesPage";
 import FindStudentPage from "./pages/FindStudentCoursePage/FindStudentCoursePage";
 import GradeCoursePage from "./pages/GradeCoursePage/GradeCoursePage";
@@ -44,14 +43,13 @@ function App() {
           }
         />
         {/* student portal */}
-        <Route path="/enrolled" element={<StudentDirectoryPage />} /> 
+        <Route path="/directory" element={<StudentDirectoryPage />} /> 
         <Route path="/transcript" element={<TranscriptPage />} />
         <Route path="/available" element={<AvailableCourses />} />
-        <Route path="/student/:studentId" element={<SelectedStudentPage />} />
         <Route path="/scheduled" element={<ScheduledCoursesPage />} />
         
         {/* EE portal */}
-        <Route path="/directory" element={<EmployeePortalPage />} />
+        <Route path="/employee" element={<EmployeePortalPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/grade_course/:studentId" element={<GradeCoursePage />} />

@@ -24,7 +24,7 @@ const AddCoursesPage = () => {
           Authorization: "Bearer " + token,
         },
       });
-      navigate(`/directory`);
+      navigate(`/employee`);
     } catch (error) {
       console.log(error.message);
     }
@@ -34,7 +34,7 @@ const AddCoursesPage = () => {
   return (
     <div className="container">
       <h1>Create New Course</h1>
-      <h2><Link to="/directory">Back to Employee Portal</Link></h2><hr />
+      <h2><Link to="/employee">Back to Employee Portal</Link></h2><hr />
       <form className="form" onSubmit={handleSubmit}>
         <label>
           Course:{" 3 digits, 7 alphanumeric "}

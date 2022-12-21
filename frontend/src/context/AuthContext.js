@@ -65,7 +65,7 @@ export const AuthProvider = ({ children }) => {
       });
       if (response.status === 201) {
         setIsServerError(false);
-        navigate("/directory");
+        navigate("/employee");
       } else {
         navigate("/find_student_course");
       }

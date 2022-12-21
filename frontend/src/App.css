@@ -74,10 +74,11 @@ Link , a {
 .form input {
   display: block;
   width: 100%;
-  height: 1.5rem;
+  height: 1.8rem;
   margin: .5rem;
   padding: .5rem .75rem;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 .page-bottom{
@@ -93,3 +94,4 @@ Link , a {
 .error {
   color: #900000;
 }
+

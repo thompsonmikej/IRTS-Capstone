@@ -28,7 +28,7 @@ const GradCandidatesPage = () => {
         <><h1>Candidates for Graduation</h1>
             <h2>BACHELOR'S DEGREE PROGRAM</h2>
             <h2>128 CREDITS MINIMUM AND 3.0 GPA REQUIRED</h2>
-            <h2><Link to="/directory">Back to Employee Portal</Link></h2>
+            <h2><Link to="/employee">Back to Employee Portal</Link></h2>
             <br /><><><div className="container">
             {   graduates.map((graduate) => (
                 <div key={graduate.id}>

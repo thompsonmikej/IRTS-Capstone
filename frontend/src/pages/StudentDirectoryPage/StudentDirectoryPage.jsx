@@ -14,7 +14,7 @@ const StudentDirectoryPage = () => {
     useEffect(() => {
         const fetchStudents = async () => {
             try {
-                let response = await axios.get(`http://127.0.0.1:8000/api/auth/enrolled/`, {
+                let response = await axios.get(`http://127.0.0.1:8000/api/auth/directory/`, {
                     headers: {
                         Authorization: "Bearer " + token,
                     },
@@ -32,9 +32,9 @@ const StudentDirectoryPage = () => {
         <><h1>Directory of Current Students</h1>
             <h2>BACHELOR'S DEGREE PROGRAM</h2>
             <h2>THIS SEMESTER: AUG 1 - DEC 31 </h2>
-            <h2>NEXT SEMESTER: FEB 1 - MAY 31 </h2>
-            <h2><Link to="/directory">Back to Employee Portal</Link></h2>
-            <br /><><><div className="container">
+            <h2>NEXT SEMESTER: FEB 1 - MAY 31 </h2><br/>
+            <h2><Link to="/employee">Back to Employee Portal</Link></h2>
+            <><><div className="container">
                 {students.map((student) => (
                     <div key={student.id}>
                         <hr /><div>
@@ -42,10 +42,10 @@ const StudentDirectoryPage = () => {
                                 <Link to={`/find_student_course/${student.id}`}>FIND STUDENT COURSE</Link>
                             </span>
                             <span><Link to="#" className="dummy">| ADD XFER CREDIT</Link></span>
+                            <span>| FULL-TIME</span>
                             <span>| {student.first_name} {student.last_name} |</span>
-                            <span>SEM: {student.semester} |</span>
-                            <span>F-TIME </span>
-        
+                            <span>SEM: {student.semester} </span>
+       
                         </div>
                     </div>
                 ))}
