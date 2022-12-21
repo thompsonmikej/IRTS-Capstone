@@ -4,7 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const DirectoryPage = () => {
+const EmployeePortalPage = () => {
   const [user, token] = useAuth();
   return (
     <><div className="centered">
@@ -25,4 +25,4 @@ const DirectoryPage = () => {
 
   );
 };
-export default DirectoryPage;
+export default EmployeePortalPage;

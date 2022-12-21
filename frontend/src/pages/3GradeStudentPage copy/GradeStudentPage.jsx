@@ -58,15 +58,37 @@ const GradeStudentPage = (props) => {
     };
 
     return (
-        <><h1>Find Student's Course to Grade</h1>
+        <><h1>Find Course to Grade</h1>
             <h2>Logged-in Employee: {user.first_name} {user.last_name}</h2>
+            <br />
             {console.log('studentCourse', studentCourses)}
             {console.log('user', user)}
             {console.log('formData', formData)}
             {console.log('student id', studentId)}
+            <><div className="container">
+                <form className="form horizontal-fields" onSubmit={handleSubmit}>
+                    <div><label className="label-style">
+                        Course ID:{" "}
+                        <input className="input-reduced-width"
+                            type="text"
+                            name="course"
+                            value={formData.id}
+                            onChange={handleInputChange}
+                        />
+                    </label></div>
+                    <div><label className="label-style">
+                        Enter Grade:{" "}
+                        <input className="input-reduced-width"
+                            type="text"
+                            name="grade_received"
+                            value={formData.grade_received}
+                            onChange={handleInputChange} />
+                    </label></div><br />
+                    <button type="submit" onClick={() => postNewGrades(studentCourses)}>Grade</button>
+                </form>
+            </div></>
             <br />
-            <h2><Link to={`/grade_course/${studentId}`}>Go to Grade</Link></h2>
-            <h2><Link to="/directory">Back to Employee Portal</Link></h2><>
+            <h2><Link to="/directory">Back to Employee Portal</Link></h2><hr /><>
                 <><div className="container">
                 {student.map((course) => (
                     <p key={course.id}>
@@ -76,11 +98,10 @@ const GradeStudentPage = (props) => {
                         {console.log('formData', formData)}
                         {console.log('student id', studentId)}
                         <span>{student[0].user.first_name} {student[0].user.last_name} |</span>
+                        <span>COURSE ID: {course.course.id} |</span>
                         <span>{course.course.name} |</span>
-                        <span>STUDENT ID: {student[0].user.id} |</span>
-                        <span><Link to={`/grade_course/${studentId}`}>COURSE ID: {course.course.id} |</Link></span>
+                        <span>CR VALUE: {course.course.credit_value} |</span>
                         <span>GRADE: {course.grade_received} |</span>
-                        <span>CR VALUE: {course.course.credit_value} </span>
                         {/* <span><Link to="#" className="dummy">CR REQUIREMENTS</Link></span> */}
                     </p>
                 ))}

@@ -1,0 +1,15 @@
+.horizontal-fields {
+  display: flex;
+  align-content: space-between;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+
+.input-reduced-width {
+  width: 2rem;
+}
+
+.label-style {
+  display: flex;
+}

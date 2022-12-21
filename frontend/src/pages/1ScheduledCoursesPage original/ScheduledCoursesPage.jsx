@@ -12,7 +12,7 @@ const ScheduledCoursesPage = () => {
     const [applyCourse, setApplyCourse] = useState([]);
     const navigate = useNavigate();
 
-
+    
     useEffect(() => {
         const fetchCourses = async () => {
             try {
@@ -49,26 +49,26 @@ const ScheduledCoursesPage = () => {
 
     };
     return (
-        <><h1>Your Course Schedule, <br />{user.first_name} {user.last_name}</h1>
-            <h2>BACHELOR'S DEGREE PROGRAM</h2>
-            <h2>COURSES ENROLLED: TBD </h2>
+        <><h1>Your Course Schedule, <br/>{user.first_name} {user.last_name}</h1>
+                <h2>BACHELOR'S DEGREE PROGRAM</h2>
+                <h2>COURSES ENROLLED: TBD </h2>
             <h2>CREDITS ATTEMPTED THIS SEMESTER: TBD</h2>
             <h2><Link to={`/available/`}>View Available Courses</Link></h2>
             <h2><Link to="/transcript">View Transcript</Link></h2>
-            <br /><><><div>
-                {courses.map((course) => (
-                    <div key={course.id} className="container">
-                        <hr />
-                        <span><Link to={`#`} className="dummy">{course.course.name} |</Link> </span>
-                        <span>DAYS: M, T, W |</span>
-                        <span>CR VALUE: {course.course.credit_value} |</span>
-                        <span>LOC: ONLN |</span>
-                        <span>AUG - DEC |</span>
-                        <span>GRADE: TBD </span>
+                <br /><><><div>
+                    {courses.map((course) => (
+                        <div key={course.id} className="container">
+                            <hr />
+                            <span><Link to={`#`} className="dummy">{course.course.name} |</Link> </span>
+                            <span>DAYS: M, T, W |</span>
+                            <span>CR VALUE: {course.course.credit_value} |</span>
+                            <span>LOC: ONLN |</span>
+                            <span>AUG - DEC |</span>
+                            <span>GRADE: TBD </span>
                     </div>
-                ))}
+                  ))}
             </div><div className="page-bottom"></div>
-            </></></>
+        </></></>
     );
 };
 

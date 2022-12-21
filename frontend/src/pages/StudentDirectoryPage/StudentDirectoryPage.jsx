@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 //EMPLOYEES ONLY
-const EnrolledStudentsPage = () => {
+const StudentDirectoryPage = () => {
 
     const [user, token] = useAuth();
     const [students, setStudents] = useState([]);
@@ -39,7 +39,7 @@ const EnrolledStudentsPage = () => {
                     <div key={student.id}>
                         <hr /><div>
                             <span >
-                                <Link to={`/grade_student/${student.id}`}>GRADE STUDENT</Link>
+                                <Link to={`/find_student_course/${student.id}`}>FIND STUDENT COURSE</Link>
                             </span>
                             <span><Link to="#" className="dummy">| ADD XFER CREDIT</Link></span>
                             <span>| {student.first_name} {student.last_name} |</span>
@@ -54,6 +54,6 @@ const EnrolledStudentsPage = () => {
     );
 };
 
-export default EnrolledStudentsPage;
+export default StudentDirectoryPage;
 
 

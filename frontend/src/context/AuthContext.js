@@ -50,6 +50,33 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const gradeStudent = async (gradeData) => {
+    try {
+      let studentGradeData = {
+        studentId: gradeData.user_id,
+        courseId: gradeData.course_id,
+        grade: gradeData.grade_received,
+      };
+      // let response = await axios.post(`${BASE_URL}/register/`, studentGradeData);
+      let response = await axios.put(`http://127.0.0.1:8000/api/student_courses/grade_course_object/`, studentGradeData, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      if (response.status === 201) {
+        setIsServerError(false);
+        navigate("/directory");
+      } else {
+        navigate("/find_student_course");
+      }
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
+
+
+
   const loginUser = async (loginData) => {
     try {
       let response = await axios.post(`${BASE_URL}/login/`, loginData);

@@ -7,7 +7,7 @@ import "./App.css";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import GradsPage from "./pages/GradsPage/GradsPage";
-import EnrolledStudentsPage from "./pages/EnrolledStudentsPage/EnrolledStudentsPage"
+import StudentDirectoryPage from "./pages/StudentDirectoryPage/StudentDirectoryPage"
 import AvailableCourses from "./pages/AvailableCourses/AvailableCourses"
 import TranscriptPage from "./pages/TranscriptPage/TranscriptPage";
 import ScheduledCoursesPage from "./pages/ScheduledCoursesPage/ScheduledCoursesPage";
@@ -15,7 +15,7 @@ import SelectedStudentPage from "./pages/GradeStudentPage/GradeStudentPage";
 import AddCoursesPage from "./pages/AddCoursesPage/AddCoursesPage";
 import GradeStudentPage from "./pages/GradeStudentPage/GradeStudentPage";
 import GradeCoursePage from "./pages/GradeCoursePage/GradeCoursePage";
-import DirectoryPage from "./pages/DirectoryPage/DirectoryPage";
+import EmployeePortalPage from "./pages/EmployeePortalPage/EmployeePortalPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -36,7 +36,7 @@ function App() {
           element={
             <PrivateRoute>
               <EmployeeRoute>
-                <DirectoryPage />
+                <EmployeePortalPage />
                   
               </EmployeeRoute>
                            
@@ -44,19 +44,19 @@ function App() {
           }
         />
         {/* student portal */}
-        <Route path="/enrolled" element={<EnrolledStudentsPage />} /> 
+        <Route path="/enrolled" element={<StudentDirectoryPage />} /> 
         <Route path="/transcript" element={<TranscriptPage />} />
         <Route path="/available" element={<AvailableCourses />} />
         <Route path="/student/:studentId" element={<SelectedStudentPage />} />
         <Route path="/scheduled" element={<ScheduledCoursesPage />} />
         
         {/* EE portal */}
-        <Route path="/directory" element={<DirectoryPage />} />
+        <Route path="/directory" element={<EmployeePortalPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/grade_course/:studentId" element={<GradeCoursePage />} />
         <Route path="/grads" element={<GradsPage />} />
-        <Route path="/grade_student/:studentId" element={<GradeStudentPage />} />
+        <Route path="/find_student_course/:studentId" element={<GradeStudentPage />} />
         <Route path="/add_courses" element={<AddCoursesPage />} /> 
 
       </Routes>

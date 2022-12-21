@@ -8,6 +8,8 @@ import axios from 'axios';
 import AuthContext from "../../context/AuthContext";
 
 
+// Employee enters a grade for student record
+
 let initialValues = {
   user_id: "",
   course_id: "",
@@ -28,7 +30,7 @@ const GradeCoursePage = () => {
           Authorization: "Bearer " + token,
         },
       });
-      navigate(`/find_student_course/${studentId}`);
+      navigate("/directory");
       console.log('post new Grade', formData)
     } catch (error) {
       console.log(error.message);
@@ -40,7 +42,7 @@ const GradeCoursePage = () => {
   return (
     <><div><h1>Enter a Grade</h1></div><div>
       <h2>Enter the values from the Student Listing.</h2><br/>
-      <h2><Link to={`/find_student_course/${studentId}`}>Back to Find Student's Course</Link></h2>
+      {/* <h2><Link to={`/find_student_course/${studentId}`}>Back to Student Course Listing</Link></h2> */}
       <h2><Link to="/directory">Back to Employee Portal</Link></h2>
       <hr />
     </div><div className="container">
