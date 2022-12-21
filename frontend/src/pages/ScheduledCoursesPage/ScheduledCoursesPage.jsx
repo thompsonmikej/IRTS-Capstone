@@ -49,7 +49,7 @@ const ScheduledCoursesPage = () => {
 
     };
     return (
-        <><h1>Your Course Schedule, <br />{user.first_name} {user.last_name}</h1>
+        <><h1>Your Course Schedule, <br />{user.first_name} {user.last_name}, ID# {user.id}</h1>
             <h2>BACHELOR'S DEGREE PROGRAM</h2>
             <h2>COURSES ENROLLED: TBD </h2>
             <h2>CREDITS ATTEMPTED THIS SEMESTER: TBD</h2>

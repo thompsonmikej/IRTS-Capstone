@@ -67,7 +67,6 @@ const GradeCoursePage = () => {
               onChange={handleInputChange} /></span>
           </label>
          <br />
-
           <button type="submit">Submit Grade</button>
         </form>
       </div></>

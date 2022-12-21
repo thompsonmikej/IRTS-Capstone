@@ -3,7 +3,7 @@ import axios from 'axios';
 import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
 
-const GradCandidatesPage = () => {
+const CandidatesPage = () => {
 
     const [user, token] = useAuth();
     const [graduates, setGraduates] = useState([]);
@@ -11,7 +11,7 @@ const GradCandidatesPage = () => {
     useEffect(() => {
         const fetchGraduates = async () => {
             try {
-                let response = await axios.get('http://127.0.0.1:8000/api/auth/grads/', {
+                let response = await axios.get('http://127.0.0.1:8000/api/auth/candidates/', {
                     headers: {
                         Authorization: "Bearer " + token,
                     },
@@ -45,6 +45,6 @@ const GradCandidatesPage = () => {
     );
 };
 
-export default GradCandidatesPage;
+export default CandidatesPage;
 
 

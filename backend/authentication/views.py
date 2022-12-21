@@ -33,7 +33,7 @@ def student_users(request):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def grad_ready_users(request):
-    """/api/auth/grads/  students to be filtered by credits_received >=128 && gpa >=3
+    """/api/auth/candidatesdates/  students to be filtered by credits_received >=128 && gpa >=3
     """
     potential_graduates = User.objects.filter(grad_ready=True)
     serializer = PersonObjectSerializer(potential_graduates, many=True)

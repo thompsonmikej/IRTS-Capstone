@@ -19,9 +19,9 @@ const EmployeePortalPage = () => {
       </div><br />
       <div>
         <h2>NEXT GRADUATING CLASS</h2>
-        <Link to="/grads" className="register"> Candidates for Graduation </Link></div>
+        <Link to="/candidates" className="register"> Candidates for Graduation </Link></div>
 
-    </div><div className="page-bottom"></div></>
+    </div></>
 
   );
 };

@@ -11,7 +11,7 @@ const TranscriptPage = (props) => {
     const [Gpa, setGpa] = useState(0);
     const [credits, setCredits] = useState(0);
     const [semester, setSemester] = useState(0);
-        
+
     useEffect(() => {
         const fetchStudentCourses = async () => {
             try {
@@ -60,7 +60,7 @@ const TranscriptPage = (props) => {
         fetchSemester();
     }, [])
 
-        
+
     useEffect(() => {
         const fetchGpa = async () => {
             try {
@@ -68,7 +68,7 @@ const TranscriptPage = (props) => {
                     headers: {
                         Authorization: "Bearer " + token,
                     },
-                });               
+                });
                 setGpa(response.data);
             } catch (error) {
                 console.log('Error in fetch Gpa', error);
@@ -77,8 +77,24 @@ const TranscriptPage = (props) => {
         fetchGpa();
     }, [])
 
+    function getGradeLetter(gradeNumber) {
+        switch (gradeNumber) {
+            case 4:
+                return 'A';
+            case 3:
+                return 'B';
+            case 2:
+                return 'C';
+            case 1:
+                return 'F';
+            default:
+                return ' ';
+        }
+    }
+
+
     return (
-        <><h1>Your Transcript of Courses, <br/>{user.first_name} {user.last_name}</h1>
+        <><h1>Your Transcript of Courses, <br />{user.first_name} {user.last_name}, ID# {user.id}</h1>
             <h2>BACHELOR'S DEGREE PROGRAM</h2>
             <h2>CREDITS EARNED: {credits}</h2>
             <h2>CURRENT SEMESTER: {semester}</h2>
@@ -87,21 +103,21 @@ const TranscriptPage = (props) => {
             <h2><Link to={`/scheduled/`}>View Scheduled Courses</Link></h2>
             <hr />
             <br /><><><div className="container">
-            {studentCourses.map((studentCourse) => (
-                <p key={studentCourse.id}>
-                    <span>{studentCourse.course.name} |</span>
-                    <span>CR VALUE: {studentCourse.course.credit_value} |</span>
-                    <span>GRADE: {studentCourse.grade_received} |</span>
-                    <span>CR EARNED: {studentCourse.credits_received} |</span> 
-                    <span>FALL 2022 |</span> 
-                    <span><Link to="#" className="dummy">CR REQUIREMENTS</Link></span> 
-                    <hr/>
+                {studentCourses.map((studentCourse) => (
+                    <p key={studentCourse.id}>
+                        <span>{studentCourse.course.name} |</span>
+                        <span>GRADE: {getGradeLetter(studentCourse.grade_received)} |</span>
+                        <span>CR VALUE: {studentCourse.course.credit_value} |</span>
+                        <span>CR EARNED: {studentCourse.credits_received} |</span>
+                        <span>FALL 2022 |</span>
+                        <span><Link to="#" className="dummy">CR REQUIREMENTS</Link></span>
+                        <hr />
                     </p>
-                    ))}
+                ))}
             </div>
                 <h2><Link to="#" className="dummy">Back to Top</Link></h2>
                 <div className="page-bottom"></div>
-        </></></>
+            </></></>
 
     );
 };

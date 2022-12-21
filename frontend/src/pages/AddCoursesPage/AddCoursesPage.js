@@ -78,7 +78,7 @@ const AddCoursesPage = () => {
           />
         </label>
         <button onClick={() => postNewCourses()}>Add to Catalog</button>
-      </form><div className="page-bottom"></div>
+      </form>
     </div>
   );
 };
