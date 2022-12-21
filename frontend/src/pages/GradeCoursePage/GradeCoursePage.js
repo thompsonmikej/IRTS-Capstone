@@ -39,7 +39,6 @@ const GradeCoursePage = () => {
     }
   }
 
-
   return (
     <><div><h1>Enter a Grade</h1></div>
       <div><h2>Logged-in Employee: {user.first_name} {user.last_name}</h2><br/>
@@ -59,22 +58,14 @@ const GradeCoursePage = () => {
                 onChange={handleInputChange} /></span>
           </label>
           <label className="input-mini">
-            <span>GRADE:{" "}</span>
+            <span>GRADE:{" (1-4) "}</span>
           <span><input
               type="text"
               name="grade_received"
               value={formData.grade_received}
               onChange={handleInputChange} /></span>
           </label>
-          {/* <label>
-            Enter Credit Value:{" "}
-            <input
-              type="text"
-              name="credits_received"
-              value={formData.credits_received}
-              onChange={handleInputChange} />
-          </label>              */}
-          <br />
+         <br />
 
           <button type="submit">Submit Grade</button>
         </form>

@@ -56,6 +56,19 @@ const FindStudentCoursePage = (props) => {
         }
     };
 
+    function getGradeLetter(gradeNumber) {
+        switch (gradeNumber) {
+            case 4:
+                return 'A';
+            case 3:
+                return 'B';
+            case 2:
+                return 'C';
+            default:
+                return 'F';
+        }
+    }
+
     return (
         <><h1>Find Student's Course to Grade</h1>
             <h2>Logged-in Employee: {user.first_name} {user.last_name}</h2>
@@ -78,7 +91,7 @@ const FindStudentCoursePage = (props) => {
                         <span>{course.course.name} |</span>
                         <span>STU ID: {student[0].user.id} |</span>
                         <span><Link to={`/grade_course/${studentId}`}>COURSE ID: {course.id} |</Link></span>
-                        <span>GRADE: {course.grade_received} |</span>
+                        <span>GRADE: {getGradeLetter(course.grade_received)} |</span>
                         <span>CR VALUE: {course.course.credit_value} </span>
                         {/* <span><Link to="#" className="dummy">CR REQUIREMENTS</Link></span> */}
                     </p>

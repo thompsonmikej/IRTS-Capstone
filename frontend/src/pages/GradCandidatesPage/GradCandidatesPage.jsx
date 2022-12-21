@@ -3,7 +3,7 @@ import axios from 'axios';
 import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
 
-const GradsPage = () => {
+const GradCandidatesPage = () => {
 
     const [user, token] = useAuth();
     const [graduates, setGraduates] = useState([]);
@@ -45,6 +45,6 @@ const GradsPage = () => {
     );
 };
 
-export default GradsPage;
+export default GradCandidatesPage;
 
 

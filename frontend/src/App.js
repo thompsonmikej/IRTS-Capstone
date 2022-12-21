@@ -6,7 +6,7 @@ import "./App.css";
 // Pages Imports
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
-import GradsPage from "./pages/GradsPage/GradsPage";
+import GradCandidatesPage from "./pages/GradCandidatesPage/GradCandidatesPage";
 import StudentDirectoryPage from "./pages/StudentDirectoryPage/StudentDirectoryPage"
 import AvailableCourses from "./pages/AvailableCourses/AvailableCourses"
 import TranscriptPage from "./pages/TranscriptPage/TranscriptPage";
@@ -55,7 +55,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/grade_course/:studentId" element={<GradeCoursePage />} />
-        <Route path="/grads" element={<GradsPage />} />
+        <Route path="/grads" element={<GradCandidatesPage />} />
         <Route path="/find_student_course/:studentId" element={<FindStudentPage />} />
         <Route path="/add_courses" element={<AddCoursesPage />} /> 
 
