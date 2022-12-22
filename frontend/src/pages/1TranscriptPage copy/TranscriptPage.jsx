@@ -3,7 +3,7 @@ import axios from 'axios';
 import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
 
-//TranscriptPage
+
 const TranscriptPage = (props) => {
 
     const [user, token] = useAuth();
@@ -15,7 +15,7 @@ const TranscriptPage = (props) => {
     useEffect(() => {
         const fetchStudentCourses = async () => {
             try {
-                let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/transcript/`, {
+                let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/get_transcript/`, {
                     headers: {
                         Authorization: "Bearer " + token,
                     },
@@ -99,8 +99,8 @@ const TranscriptPage = (props) => {
             <h2>CREDITS EARNED: {credits}</h2>
             <h2>CURRENT SEMESTER: {semester}</h2>
             <h2>GPA: {Gpa}</h2>
-            <h2><Link to={`/available/`}>View Available Courses</Link></h2>
-            <h2><Link to={`/scheduled/`}>View Scheduled Courses</Link></h2>
+            <h2><Link to={`/courses_available/`}>View Available Courses</Link></h2>
+            <h2><Link to={`/course_schedule/`}>View Scheduled Courses</Link></h2>
             <hr />
             <br /><><><div className="container">
                 {studentCourses.map((studentCourse) => (

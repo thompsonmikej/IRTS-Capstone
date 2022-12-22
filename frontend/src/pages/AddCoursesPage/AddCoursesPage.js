@@ -19,7 +19,7 @@ const AddCoursesPage = () => {
 
   async function postNewCourses() {
     try {
-      let response = await axios.post(`http://127.0.0.1:8000/api/courses/create/`, formData, {
+      let response = await axios.post(`http://127.0.0.1:8000/api/courses/create_courses/`, formData, {
         headers: {
           Authorization: "Bearer " + token,
         },
@@ -38,7 +38,7 @@ const AddCoursesPage = () => {
       <form className="form" onSubmit={handleSubmit}>
         <label>
           Course:{" 3 digits, 7 alphanumeric "}
-          <input
+          <input 
             type="text"
             name="name"
             value={formData.name}

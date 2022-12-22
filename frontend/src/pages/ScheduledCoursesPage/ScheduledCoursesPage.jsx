@@ -34,7 +34,7 @@ const ScheduledCoursesPage = () => {
             "course_id": courseId,
         }
         try {
-            let response = await axios.post(`http://127.0.0.1:8000/api/student_courses/add_student_to_course/`,
+            let response = await axios.post(`http://127.0.0.1:8000/api/student_courses/enroll_student_into_courses/`,
                 courseObject,
                 {
                     headers: {
@@ -42,7 +42,7 @@ const ScheduledCoursesPage = () => {
                     },
                 });
             setApplyCourse(response.data.items)
-            navigate(`/scheduled/`)
+            navigate(`/course_schedule/`)
         } catch (error) {
             console.log('error in courseId', error.response.data)
         }
@@ -53,8 +53,8 @@ const ScheduledCoursesPage = () => {
             <h2>BACHELOR'S DEGREE PROGRAM</h2>
             <h2>COURSES ENROLLED: TBD </h2>
             <h2>CREDITS ATTEMPTED THIS SEMESTER: TBD</h2>
-            <h2><Link to={`/available/`}>View Available Courses</Link></h2>
-            <h2><Link to="/transcript">View Transcript</Link></h2>
+            <h2><Link to={`/courses_available/`}>View Available Courses</Link></h2>
+            <h2><Link to="/course_transcript">View Transcript</Link></h2>
             <br /><><><div>
                 {courses.map((course) => (
                     <div key={course.id} className="container">

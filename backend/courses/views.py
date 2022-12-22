@@ -20,20 +20,12 @@ def get_all_courses(request):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_available_courses(request):
-    """api/courses/available/  classes ungraded, available   
+    """api/courses/courses_available/  classes ungraded, available   
     """
     available_courses = Course.objects.all().filter(semester=request.user.semester)
     serializer = CourseSerializer(available_courses, many=True)
     return Response(serializer.data)
 
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])   
-def find_courses(request):
-    """api/courses/find
-    """
-    find_all_courses = Course.objects.filter(data=request.data)
-    serializer = CourseSerializer(find_all_courses, many=True)
-    return Response(serializer.data)
 
 
 @api_view(['POST'])

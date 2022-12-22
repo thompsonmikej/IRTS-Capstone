@@ -44,9 +44,9 @@ function App() {
         />
         {/* student portal */}
         <Route path="/directory" element={<StudentDirectoryPage />} /> 
-        <Route path="/transcript" element={<TranscriptPage />} />
-        <Route path="/available" element={<AvailableCourses />} />
-        <Route path="/scheduled" element={<ScheduledCoursesPage />} />
+        <Route path="/course_transcript" element={<TranscriptPage />} />
+        <Route path="/courses_available" element={<AvailableCourses />} />
+        <Route path="/course_schedule" element={<ScheduledCoursesPage />} />
         
         {/* EE portal */}
         <Route path="/employee" element={<EmployeePortalPage />} />

@@ -68,7 +68,7 @@ def sum_credits_earned(request, user_id):
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])   
 def gpa_earned(request, user_id):
-    """api/auth/post_gpa/<int:user_id>/', #stores GPA to DB
+    """api/auth/put_gpa/<int:user_id>/', #stores GPA to DB
     """   
     calculated_gpa = get_object_or_404(User, pk=user_id)
     calculated_gpa.gpa=request.data['gpa']
@@ -82,7 +82,7 @@ def gpa_earned(request, user_id):
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])   
 def current_semester(request, user_id):
-    """api/auth/post_semester/<int:user_id>/', #stores semester to DB
+    """api/auth/put_semester/<int:user_id>/', #stores semester to DB
     """   
     student_semester = get_object_or_404(User, pk=user_id)
     student_semester.semester=request.data['semester']
@@ -96,7 +96,7 @@ def current_semester(request, user_id):
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])   
 def grad_status(request, user_id):
-    """api/auth/post_grad_status/<int:user_id>/' #stores grad status to DB
+    """api/auth/put_grad_status/<int:user_id>/' #stores grad status to DB
     """   
     status_is_a_graduate = get_object_or_404(User, pk=user_id)
     status_is_a_graduate.grad_ready=request.data['grad_ready']

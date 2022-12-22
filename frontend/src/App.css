@@ -95,3 +95,13 @@ Link , a {
   color: #900000;
 }
 
+.input-mini {
+  display: flex;
+  margin-left: 42%;
+  margin-right: auto;
+  height: 5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  width: 2rem;
+  padding: 0rem 0rem 1rem 0rem;
+}

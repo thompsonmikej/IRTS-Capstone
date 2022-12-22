@@ -11,10 +11,10 @@ from .serializers import StudentCourseSerializer
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_transcript(request):
-    """api/student_courses/transcript/  TRANSCRIPT
+    """api/student_courses/get_transcript/  
     """
-    user_transcript = StudentCourse.objects.filter(user=request.user)
-    serializer = StudentCourseSerializer(user_transcript, many=True)
+    student_transcript = StudentCourse.objects.filter(user=request.user)
+    serializer = StudentCourseSerializer(student_transcript, many=True)
     return Response(serializer.data)
 
 
@@ -51,9 +51,22 @@ def get_gpa(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])   
+def grade_course_object(request, course_id):
+    """api/student_courses/grade_course_object/
+    """   
+    courses_to_grade = get_object_or_404(StudentCourse, pk=course_id)
+    courses_to_grade.grade_received=request.data['grade_received']
+    try:
+        courses_to_grade.save()
+        serializer = StudentCourseSerializer(courses_to_grade)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    except:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
-# Supply a grade & credits to an existing studentcourse
+
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])   
 def grade_course_object(request, course_id):
@@ -61,19 +74,21 @@ def grade_course_object(request, course_id):
     """   
     existing_studentcourse = get_object_or_404(StudentCourse, pk=course_id)
     existing_studentcourse.grade_received=request.data['grade_received']
-    try:
-        existing_studentcourse.save()
-        serializer = StudentCourseSerializer(existing_studentcourse)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-    except:
-        return Response(status=status.HTTP_400_BAD_REQUEST)
+    if existing_studentcourse >=2:
+            try:
+                existing_studentcourse.save()
+                serializer = StudentCourseSerializer(existing_studentcourse)
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            except:
+                return Response(status=status.HTTP_400_BAD_REQUEST)
+
 
 #COURSES
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def add_student_to_courses(request):
-    """api/student_courses/register_new_course/  ADD COURSE ONTO SCHEDULE
+def enroll_student_into_courses(request):
+    """api/student_courses/enroll_student_into_courses/  
     """
     serializer = StudentCourseSerializer(data=request.data)
     if serializer.is_valid():
@@ -101,6 +116,18 @@ def calculate_semester_by_credits(request, user_id):
     return Response(current_semester)
 
 
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def credits_for_passed_courses(request):
+    """api/student_courses/credits_for_passed_courses/  ADD credits ONTO SCHEDULE
+    """
+    serializer = StudentCourseSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save(user=request.user)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
 @api_view(['GET'])
 def calculate_gpa(request, user_id):
     graded_courses = StudentCourse.objects.filter(user_id=user_id).exclude(grade_received=None)
@@ -109,7 +136,6 @@ def calculate_gpa(request, user_id):
         sum_of_grades += grade.grade_received
     gpa= sum_of_grades/len(graded_courses)
     return Response(gpa)
-
 
 
     # if grade_received < 2:
