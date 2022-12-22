@@ -51,6 +51,7 @@ def get_gpa(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])   
 def grade_course_object(request, course_id):
@@ -137,3 +138,72 @@ def calculate_gpa(request, user_id):
     return Response(gpa)
 
 
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_transcript(request):
+    """api/student_courses/get_transcript/  
+    """
+    student_transcript = StudentCourse.objects.filter(user=request.user)
+    serializer = StudentCourseSerializer(student_transcript, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_graded_courses(request):
+    """api/student_courses/get_graded_courses/<int:user_id>/  
+    """
+    graded_courses = StudentCourse.objects.filter(user=request.user)
+    passing_courses = []
+    failing_courses = []
+    for single_grade in graded_courses:
+        if (single_grade["grade_received"] > 2):
+            passing_courses.append(single_grade)
+        else:
+            failing_courses.append(single_grade)
+        
+        print('Passing courses', passing_courses)
+        print('Failing courses', failing_courses)
+        
+    custom_course_dictionary = {
+		"passing_courses":  StudentCourseSerializer(passing_courses, many=True).data,
+		"failing_courses": StudentCourseSerializer(failing_courses, many=True).data,
+	};
+    print('Passing courses', custom_course_dictionary)
+    return Response(custom_course_dictionary)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_course_credits(request):
+    """api/student_courses/get_course_credits/
+    """
+    graded_courses = StudentCourse.objects.filter(user=request.user)
+    custom_transcripts = []
+    for single_graded_course in graded_courses:
+        credit_value_earned = single_graded_course["course"]["credit_value"]
+        if credit_value_earned < 3:
+            credit_value_earned = 0
+
+        print('single graded courses', single_graded_course)
+        print('credit_value_earned', credit_value_earned)
+        
+    custom_graded_course_dictionary = {
+        "user": {
+            "id": single_graded_course["user"]["id"],
+            "first_name": single_graded_course["user"]["first_name"],
+            "last_name": single_graded_course["user"]["last_name"],
+        },
+        "course": {
+            "id": single_graded_course["course"]["id"],
+            "name": single_graded_course["course"]["name"],
+            "credit_value": single_graded_course ["course"]["credit_value"],
+        },
+        # "grade_received": single_graded_course["student_courses"]["grade_received"],
+        # "course_id": single_graded_course["student_courses"]["course_id"],
+    }
+    custom_transcripts.append(custom_graded_course_dictionary)
+	
+    print('single_graded_course', single_graded_course)
+    print("credit_value", credit_value_earned)
+
+    return Response(custom_transcripts)

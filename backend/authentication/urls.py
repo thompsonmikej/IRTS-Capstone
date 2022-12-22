@@ -13,7 +13,8 @@ urlpatterns = [
     path('sum_credits_earned/<int:user_id>/', views.sum_credits_earned), 
     path('put_gpa/<int:user_id>/', views.gpa_earned), 
     path('put_semester/<int:user_id>/', views.current_semester), 
-    path('put_grad_status/<int:user_id>/', views.grad_status), 
+    path('put_grad_status/<int:user_id>/', views.grad_status),
+
 
 
 ]

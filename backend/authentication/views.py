@@ -120,3 +120,4 @@ def student_status(request, user_id):
         return Response(serializer.data, status=status.HTTP_200_OK)
     except:
         return Response(status=status.HTTP_400_BAD_REQUEST)
+
