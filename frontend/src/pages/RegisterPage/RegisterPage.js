@@ -65,7 +65,7 @@ const RegisterPage = () => {
           </label>
           <p>*Your unique combination of 8 letters, numbers, and special characters.</p>
           <button>Register</button>
-        </form>    <div className="page-bottom"></div>
+        </form>
       </div></>
   );
 };

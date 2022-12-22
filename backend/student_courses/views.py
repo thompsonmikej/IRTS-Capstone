@@ -67,22 +67,6 @@ def grade_course_object(request, course_id):
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
-
-@api_view(['PUT'])
-@permission_classes([IsAuthenticated])   
-def grade_course_object(request, course_id):
-    """api/student_courses/grade_course_object/
-    """   
-    existing_studentcourse = get_object_or_404(StudentCourse, pk=course_id)
-    existing_studentcourse.grade_received=request.data['grade_received']
-    try:
-        existing_studentcourse.save()
-        serializer = StudentCourseSerializer(existing_studentcourse)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-    except:
-        return Response(status=status.HTTP_400_BAD_REQUEST)
-
-
 #COURSES
 
 @api_view(['POST'])
@@ -151,7 +135,7 @@ def get_transcript(request):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_graded_courses(request):
-    """api/student_courses/get_graded_courses/<int:user_id>/  
+    """api/student_courses/get_graded_courses/
     """
     graded_courses = StudentCourse.objects.filter(user=request.user)
     passing_courses = []
@@ -168,8 +152,7 @@ def get_graded_courses(request):
     custom_course_dictionary = {
 		"passing_courses":  StudentCourseSerializer(passing_courses, many=True).data,
 		"failing_courses": StudentCourseSerializer(failing_courses, many=True).data,
-	};
-    print('Passing courses', custom_course_dictionary)
+	}
     return Response(custom_course_dictionary)
 
 @api_view(['GET'])
@@ -196,10 +179,7 @@ def get_course_credits(request):
         "course": {
             "id": single_graded_course["course"]["id"],
             "name": single_graded_course["course"]["name"],
-            "credit_value": single_graded_course ["course"]["credit_value"],
         },
-        # "grade_received": single_graded_course["student_courses"]["grade_received"],
-        # "course_id": single_graded_course["student_courses"]["course_id"],
     }
     custom_transcripts.append(custom_graded_course_dictionary)
 	

@@ -48,7 +48,7 @@ const LoginPage = () => {
         <Link to="/register" className="register">New Employee? Register.</Link>
           <button type='submit'>Login</button>
       </form>
-    <div className="page-bottom"></div></div></>
+    </div></>
   );
 };
 

@@ -74,21 +74,17 @@ const FindStudentCoursePage = (props) => {
     return (
         <><h1>Find Student's Course to Grade</h1>
             <h2>Logged-in Employee: {user.first_name} {user.last_name}</h2>
-            {console.log('studentCourse', studentCourses)}
-            {console.log('user', user)}
-            {console.log('formData', formData)}
-            {console.log('student id', studentId)}
             <br />
-            <h2><Link to={`/grade_course/${studentId}`}>Go to Grade</Link></h2>
-            <h2><Link to="/employee">Back to Employee Portal</Link></h2><>
+            <h2><Link to="/employee">Back to Employee Portal</Link></h2><br/><>
                 <><div className="container">
-                {student.map((course) => (
-                    <p key={course.id}>
-                        <hr />
-                        <span>STU ID: {student[0].user.id} |</span>
-                        <span>{student[0].user.first_name} {student[0].user.last_name} |</span>
-                        <span>{course.course.name} |</span>
-                        <span><Link to={`/grade_course/${studentId}`}>COURSE ID: {course.id} |</Link></span>
+                    {student.map((course) => (
+                        <p key={course.id}>
+                            <hr />
+                            <span>STU ID: {student[0].user.id} |</span>
+                            <span>{student[0].user.first_name} {student[0].user.last_name} |</span>
+                            <span>{course.course.name} |</span>
+                            <span><Link to={`/grade_course/${studentId}`}>GRADE, COURSE ID: {course.id} |</Link></span>
+
                         <span>GRADE: {getGradeLetter(course.grade_received)} </span>
                         {/* <span>CR VALUE: {course.course.credit_value} </span> */}
                    

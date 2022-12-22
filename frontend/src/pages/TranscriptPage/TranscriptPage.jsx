@@ -86,6 +86,7 @@ const TranscriptPage = (props) => {
         fetchGpa();
     }, [])
 
+
     function getGradeLetter(gradeNumber) {
         switch (gradeNumber) {
             case 4:

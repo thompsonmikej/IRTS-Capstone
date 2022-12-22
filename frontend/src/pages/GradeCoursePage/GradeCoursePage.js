@@ -24,7 +24,7 @@ const GradeCoursePage = () => {
 
   async function postNewGrades() {
     let courseId = formData.course_id
-    {console.log('courseId', courseId)}
+    { console.log('courseId', courseId) }
     try {
       let response = await axios.put(`http://127.0.0.1:8000/api/student_courses/grade_course_object/${courseId}/`, formData, {
         headers: {
@@ -39,21 +39,13 @@ const GradeCoursePage = () => {
     }
   }
 
-  // function passGradeCreditsEarned(gradeReceived, creditValue) {
-  //   if (gradeReceived >= 2)
-  //     return creditValue
-  //   else
-  //     let creditValue = 0
-  //     return creditValue
-  //   } let creditsEarned = passGradeCreditsEarned(3)
-   
 
   return (
     <><div><h1>Enter a Grade</h1></div>
-      <div><h2>Logged-in Employee: {user.first_name} {user.last_name}</h2><br/>
-      <h2><Link to={`/find_student_course/${studentId}`}>Back to Find Student's Course</Link></h2>
-      <h2><Link to="/employee">Back to Employee Portal</Link></h2>
-      <hr />
+      <div><h2>Logged-in Employee: {user.first_name} {user.last_name}</h2><br />
+        <h2><Link to={`/find_student_course/${studentId}`}>Back to Find Student's Course</Link></h2>
+        <h2><Link to="/employee">Back to Employee Portal</Link></h2>
+        <hr />
       </div><div className="container">
         <h2>Student ID: {studentId}</h2>
         <form className="form" onSubmit={handleSubmit}>
@@ -61,22 +53,21 @@ const GradeCoursePage = () => {
             <span >COURSE ID:{" "}</span>
             <span >
               <input className="form-box"
-              type="text"
-              name="course_id"
-              value={formData.course_id}
+                type="text"
+                name="course_id"
+                value={formData.course_id}
                 onChange={handleInputChange} /></span>
           </label>
           <label className="input-mini">
             <span>GRADE:{" (1-4) "}</span>
             <span >
               <input className="form-box"
-              type="text"
-              name="grade_received"
+                type="text"
+                name="grade_received"
                 value={formData.grade_received}
-                // value={passGradeCreditsEarned(formData.grade_received)}
-              onChange={handleInputChange} /></span>
+                onChange={handleInputChange} /></span>
           </label>
-         <br />
+          <br />
           <button type="submit">Submit Grade</button>
         </form>
       </div></>
