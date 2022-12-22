@@ -39,14 +39,6 @@ const GradeCoursePage = () => {
     }
   }
 
-  // function passGradeCreditsEarned(gradeReceived, creditValue) {
-  //   if (gradeReceived >= 2)
-  //     return creditValue
-  //   else
-  //     let creditValue = 0
-  //     return creditValue
-  //   } let creditsEarned = passGradeCreditsEarned(3)
-   
 
   return (
     <><div><h1>Enter a Grade</h1></div>
@@ -72,8 +64,7 @@ const GradeCoursePage = () => {
               <input className="form-box"
               type="text"
               name="grade_received"
-                value={formData.grade_received}
-                // value={passGradeCreditsEarned(formData.grade_received)}
+              value={formData.grade_received}
               onChange={handleInputChange} /></span>
           </label>
          <br />

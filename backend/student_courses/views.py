@@ -74,13 +74,12 @@ def grade_course_object(request, course_id):
     """   
     existing_studentcourse = get_object_or_404(StudentCourse, pk=course_id)
     existing_studentcourse.grade_received=request.data['grade_received']
-    if existing_studentcourse >=2:
-            try:
-                existing_studentcourse.save()
-                serializer = StudentCourseSerializer(existing_studentcourse)
-                return Response(serializer.data, status=status.HTTP_200_OK)
-            except:
-                return Response(status=status.HTTP_400_BAD_REQUEST)
+    try:
+        existing_studentcourse.save()
+        serializer = StudentCourseSerializer(existing_studentcourse)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    except:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
 #COURSES
@@ -138,8 +137,3 @@ def calculate_gpa(request, user_id):
     return Response(gpa)
 
 
-    # if grade_received < 2:
-    #     credits_received = 0
-    # else:
-    #     credits_received
-    

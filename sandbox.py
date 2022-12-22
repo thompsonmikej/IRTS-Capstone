@@ -1,7 +1,11 @@
-def readyToGraduate(credits, Gpa): 
-    if (credits >= 128 and Gpa >= 3):
-        print("4, grad_ready")
+def passGradeCreditsEarned(grade_received, credit_value): 
+    if (grade_received >= 2):
+        print(credit_value)
+        return credit_value
     else:
-        print("0, not grad_ready")
+        credit_value = 0
+        print(credit_value)
+        return credit_value
 
-readyToGraduate(127, 3)
+passGradeCreditsEarned(2, 4)
+
