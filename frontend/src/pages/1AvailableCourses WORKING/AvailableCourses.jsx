@@ -42,15 +42,14 @@ const AvailableCourses = (props) => {
                         Authorization: "Bearer " + token,
                     },
                 });
-            console.log('enroll', courseObject)
+
             setApplyCourse(response.data.items)
             navigate(`/course_schedule/`)
         } catch (error) {
-            console.log('error in enroll', error.response.data)
+            console.log('error in courseId', error.response.data)
         }
 
     };
-    
     return (
         <><h1>Courses Available to You,<br />{user.first_name} {user.last_name}, ID# {user.id}</h1><><>
             <h2>BACHELOR'S DEGREE PROGRAM</h2>

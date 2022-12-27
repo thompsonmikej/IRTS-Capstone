@@ -26,8 +26,6 @@ def get_available_courses(request):
     serializer = CourseSerializer(available_courses, many=True)
     return Response(serializer.data)
 
-
-
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])   
 def create_courses(request):

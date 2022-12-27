@@ -16,7 +16,11 @@ const EmployeePortalPage = () => {
       <div>
         <h2>COURSE CATALOG</h2>
         <Link to="/add_courses" className="register">Add A Course</Link>
-      </div><br />
+      </div>
+      {/* <div>
+        <Link to="/course_catalog" className="register">View/Delete A Course</Link>
+      </div> */}
+      <br />
       <div>
         <h2>NEXT GRADUATING CLASS</h2>
         <Link to="/candidates" className="register"> Candidates for Graduation </Link></div>

@@ -68,6 +68,14 @@ def grade_course_object(request, course_id):
 
 
 #COURSES
+@api_view(['DELETE']) 
+def delete_courses(request, pk):
+    """/api/student_courses/delete_courses/<int:pk>/
+    """
+    course= get_object_or_404(StudentCourse, pk=pk)
+    course.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)
+
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])

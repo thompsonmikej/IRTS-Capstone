@@ -14,7 +14,7 @@ urlpatterns = [
     path('credits_for_passed_courses/', views.credits_for_passed_courses),
     path('get_course_credits/', views.get_course_credits), 
     path('get_graded_courses/', views.get_graded_courses),
-
+ path('delete_courses/<int:pk>/', views.delete_courses),
 ]
 
 

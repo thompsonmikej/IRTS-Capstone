@@ -75,7 +75,7 @@ const FindStudentCoursePage = (props) => {
         <><h1>Find Student's Course to Grade</h1>
             <h2>Logged-in Employee: {user.first_name} {user.last_name}</h2>
             <br />
-            <h2><Link to="/employee">Back to Employee Portal</Link></h2><br /><>
+            <h2><Link to="/employee">Back to Employee Portal</Link></h2><br/><>
                 <><div className="container">
                     {student.map((course) => (
                         <p key={course.id}>
@@ -85,15 +85,15 @@ const FindStudentCoursePage = (props) => {
                             <span>{course.course.name} |</span>
                             <span><Link to={`/grade_course/${studentId}`}>GRADE, COURSE ID: {course.id} |</Link></span>
 
-                            <span>GRADE: {getGradeLetter(course.grade_received)} </span>
-                            {/* <span>CR VALUE: {course.course.credit_value} </span> */}
-
-                        </p>
-                    ))}
-                </div>
-                    <hr /><h2><Link to="#" className="dummy">Back to Top</Link></h2>
-                    <div className="page-bottom"></div>
-                </></></>
+                        <span>GRADE: {getGradeLetter(course.grade_received)} </span>
+                        {/* <span>CR VALUE: {course.course.credit_value} </span> */}
+                   
+                    </p>
+                ))}
+            </div>
+                <hr/><h2><Link to="#" className="dummy">Back to Top</Link></h2>
+                <div className="page-bottom"></div>
+            </></></>
 
     );
 };
