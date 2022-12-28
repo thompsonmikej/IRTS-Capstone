@@ -36,4 +36,13 @@ def create_courses(request):
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST) 
+
+
         
+@api_view(['DELETE']) 
+def employee_deletes_courses(request, pk):
+    """/api/courses/delete_courses/<int:pk>/
+    """
+    course= get_object_or_404(Course, pk=pk)
+    course.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)

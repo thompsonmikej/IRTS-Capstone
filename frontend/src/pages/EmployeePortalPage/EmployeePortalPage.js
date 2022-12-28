@@ -17,9 +17,9 @@ const EmployeePortalPage = () => {
         <h2>COURSE CATALOG</h2>
         <Link to="/add_courses" className="register">Add A Course</Link>
       </div>
-      {/* <div>
-        <Link to="/course_catalog" className="register">View/Delete A Course</Link>
-      </div> */}
+      <div>
+        <Link to="/course_catalog" className="register">View Catalog/Delete A Course</Link>
+      </div>
       <br />
       <div>
         <h2>NEXT GRADUATING CLASS</h2>

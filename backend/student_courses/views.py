@@ -7,7 +7,6 @@ from .models import StudentCourse, User
 from .serializers import StudentCourseSerializer
 
 #USERS
-# Get all the logged in user's courses, aka transcript
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_transcript(request):
@@ -35,8 +34,6 @@ def admin_views_studentcourses(request, user_id):
     view_studentcourses = StudentCourse.objects.filter(user_id=user_id)
     serializer = StudentCourseSerializer(view_studentcourses, many=True)
     return Response(serializer.data)
-
-#Get all studentcourses that need grades
 
 # GRADES
 @api_view(['GET'])

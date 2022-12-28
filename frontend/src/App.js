@@ -15,7 +15,6 @@ import AddCoursesPage from "./pages/AddCoursesPage/AddCoursesPage";
 import FindStudentPage from "./pages/FindStudentCoursePage/FindStudentCoursePage";
 import GradeCoursePage from "./pages/GradeCoursePage/GradeCoursePage";
 import EmployeePortalPage from "./pages/EmployeePortalPage/EmployeePortalPage";
-import DeleteCoursesPage from "./pages/DeleteCoursesPage/DeleteCoursesPage";
 import CourseCatalogPage from "./pages/CourseCatalogPage/CourseCatalogPage";
 
 // Component Imports
@@ -58,7 +57,6 @@ function App() {
         <Route path="/candidates" element={<CandidatesPage />} />
         <Route path="/find_student_course/:studentId" element={<FindStudentPage />} />
         <Route path="/add_courses" element={<AddCoursesPage />} /> 
-        <Route path="/delete_courses" element={<DeleteCoursesPage />} /> 
         <Route path="/course_catalog" element={<CourseCatalogPage />} /> 
 
       </Routes>

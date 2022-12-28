@@ -4,7 +4,6 @@ import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-//EMPLOYEES ONLY
 const StudentDirectoryPage = () => {
 
     const [user, token] = useAuth();
@@ -27,12 +26,12 @@ const StudentDirectoryPage = () => {
         fetchStudents();
     }, [token]);
 
-   
+
     return (
         <><h1>Directory of Current Students</h1>
             <h2>BACHELOR'S DEGREE PROGRAM</h2>
             <h2>THIS SEMESTER: AUG 1 - DEC 31 </h2>
-            <h2>NEXT SEMESTER: FEB 1 - MAY 31 </h2><br/>
+            <h2>NEXT SEMESTER: FEB 1 - MAY 31 </h2><br />
             <h2><Link to="/employee">Back to Employee Portal</Link></h2>
             <><><div className="container">
                 {students.map((student) => (
@@ -45,11 +44,11 @@ const StudentDirectoryPage = () => {
                             <span>| FULL-TIME</span>
                             <span>| {student.first_name} {student.last_name} |</span>
                             <span>SEM: {student.semester} </span>
-       
+
                         </div>
                     </div>
                 ))}
-            </div><hr/><h2><Link to="#" className="dummy">Back to Top</Link></h2><div className="page-bottom"></div>
+            </div><hr /><h2><Link to="#" className="dummy">Back to Top</Link></h2><div className="page-bottom"></div>
             </></></>
     );
 };
