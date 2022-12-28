@@ -45,9 +45,9 @@ const LoginPage = () => {
         {isServerError ? (
           <p className="error">Incorrect or incomplete credentials.<br />Please try again.</p>
         ) : null}
-        <Link to="/register" className="register">New Employee? Register.</Link>
           <button type='submit'>Login</button>
-      </form>
+          <Link to="/register" className="register">New Employee? Register.</Link>
+        </form>
     </div></>
   );
 };

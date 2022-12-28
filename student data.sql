@@ -1,1 +1,0 @@
-SELECT * FROM irts_db.authentication_user;

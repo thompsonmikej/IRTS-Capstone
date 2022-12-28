@@ -1,0 +1,1 @@
+SELECT * FROM irts_db.student_courses_studentcourse;
