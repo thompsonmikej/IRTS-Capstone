@@ -10,7 +10,6 @@ const TranscriptPage = (props) => {
     const [studentCourses, setStudentCourses] = useState([]);
     const [Gpa, setGpa] = useState(0);
     const [credits, setCredits] = useState(0);
-    const [creditsEarned, setCreditsEarned] = useState(0);
     const [semester, setSemester] = useState(0);
 
     useEffect(() => {
@@ -47,9 +46,9 @@ const TranscriptPage = (props) => {
 
     function readyToGraduate(credits, Gpa) {
         if (credits >= 128 && Gpa >= 3)
-            return "Eligible for Bachelor's Degree"; 
+            return "Eligible for Bachelor's Degree"; //OR return 4 and send to DB
         else
-            return "En route to Bachelor's Degree";
+            return "";// OR return 0 and send to DB
     }
     let ready = readyToGraduate(credits, Gpa);
 
@@ -87,6 +86,7 @@ const TranscriptPage = (props) => {
         fetchGpa();
     }, [])
 
+
     function getGradeLetter(gradeNumber) {
         switch (gradeNumber) {
             case 4:
@@ -102,44 +102,14 @@ const TranscriptPage = (props) => {
         }
     }
 
-    function getCreditValue(getGradeLetter) {
-        switch (getGradeLetter) {
-            case 'F':
-                return 0;
-            default:
-                getCreditsEarned();       
-            // post to credits_received
-        }
-    }
 
-    const getCreditsEarned = async (courseId) => {
-        let courseObject = {
-            "user_id": user.id,
-            "course_id": courseId,
-        }
-        try {
-            let response = await axios.post(`http://127.0.0.1:8000/api/student_courses/enroll_student_into_courses/`,
-                courseObject,
-                {
-                    headers: {
-                        Authorization: "Bearer " + token,
-                    },
-                });
-            console.log('enroll', courseObject)
-            setCreditsEarned(response.data.items)
-        } catch (error) {
-            console.log('error in enroll', error.response.data)
-        }
-
-    };
-    
     return (
         <><h1>Your Transcript of Courses, <br />{user.first_name} {user.last_name}, ID# {user.id}</h1>
             <h2>BACHELOR'S DEGREE PROGRAM</h2>
             <h2>CREDITS EARNED: {credits}</h2>
             <h2>CURRENT SEMESTER: {semester}</h2>
             <h2>GPA: {Gpa}</h2>
-            <h2>GRADUATION STATUS: {ready}</h2><br/>
+            <h2>{ready}</h2>
             <h2><Link to={`/courses_available/`}>View Available Courses</Link></h2>
             <h2><Link to={`/course_schedule/`}>View Scheduled Courses</Link></h2>
             <hr />
@@ -150,7 +120,6 @@ const TranscriptPage = (props) => {
                         <span>GRADE: {getGradeLetter(studentCourse.grade_received)} |</span>
                         <span>CR VALUE: {studentCourse.course.credit_value} |</span>
                         <span>CR EARNED: {studentCourse.credits_received} |</span>
-                        {/* <span>CR EARNED: {getCreditValue(getGradeLetter(studentCourse.grade_received))} |</span> */}
                         <span>FALL 2022 |</span>
                         <span><Link to="#" className="dummy">CR REQUIREMENTS</Link></span>
                         <hr />

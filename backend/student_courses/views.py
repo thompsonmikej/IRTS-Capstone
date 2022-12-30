@@ -48,6 +48,18 @@ def get_gpa(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_gpa(request):
+    """api/users/grades/gpa 
+    """
+    gpa_received = StudentCourse.objects.filter(gpa__gte=0)
+    serializer = StudentCourseSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])   
@@ -119,11 +131,14 @@ def credits_for_passed_courses(request):
 
 @api_view(['GET'])
 def calculate_gpa(request, user_id):
+    """api/student_courses/calculate_gpa/<int:user_id>/'
+    """    
     graded_courses = StudentCourse.objects.filter(user_id=user_id).exclude(grade_received=None)
     sum_of_grades = 0
     for grade in graded_courses:
         sum_of_grades += grade.grade_received
     gpa= sum_of_grades/len(graded_courses)
+    print(grade.grade_received)
     return Response(gpa)
 
 
@@ -143,22 +158,28 @@ def get_graded_courses(request):
     """api/student_courses/get_graded_courses/
     """
     graded_courses = StudentCourse.objects.filter(user=request.user)
+    serializer = StudentCourseSerializer(graded_courses, many=True)
+    print('graded_courses', graded_courses)
     passing_courses = []
     failing_courses = []
-    for single_grade in graded_courses:
-        if (single_grade["grade_received"] > 2):
-            passing_courses.append(single_grade)
+    for single_course in graded_courses:
+        print('single_course', single_course)
+        if (single_course.grade_received > 2):
+            passing_courses.append(single_course)
         else:
-            failing_courses.append(single_grade)
+            failing_courses.append(single_course)
         
-        print('Passing courses', passing_courses)
-        print('Failing courses', failing_courses)
+    print('Passing courses', passing_courses)
+    print('Failing courses', failing_courses)
         
     custom_course_dictionary = {
-		"passing_courses":  StudentCourseSerializer(passing_courses, many=True).data,
+		"passing_courses": StudentCourseSerializer(passing_courses, many=True).data,
 		"failing_courses": StudentCourseSerializer(failing_courses, many=True).data,
 	}
+    print('custom course dictionary', custom_course_dictionary)
     return Response(custom_course_dictionary)
+
+
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
