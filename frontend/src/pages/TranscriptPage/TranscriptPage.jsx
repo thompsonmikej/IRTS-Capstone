@@ -112,30 +112,24 @@ const TranscriptPage = (props) => {
         }
     }
 
-    const getCreditsEarned = async (courseId) => {
-        let courseObject = {
-            "user_id": user.id,
-            "course_id": courseId,
-        }
+    const getCreditsEarned = async () => {
         try {
-            let response = await axios.post(`http://127.0.0.1:8000/api/student_courses/enroll_student_into_courses/`,
-                courseObject,
-                {
-                    headers: {
-                        Authorization: "Bearer " + token,
-                    },
-                });
-            console.log('enroll', courseObject)
-            setCreditsEarned(response.data.items)
+            let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/get_transcript/`, {
+                headers: {
+                    Authorization: "Bearer " + token,
+                },
+            });
+            { console.log('get credits earned', response.credits_received) }
+            setCreditsEarned(response.credits_received)
         } catch (error) {
-            console.log('error in enroll', error.response.data)
+            console.log('error in credits earned', error.response)
         }
 
     };
     
     return (
         <><h1>Your Transcript of Courses, <br />{user.first_name} {user.last_name}, ID# {user.id}</h1>
-            <h2>BACHELOR'S DEGREE PROGRAM</h2>
+            {/* <h2>BACHELOR'S DEGREE PROGRAM</h2> */}
             <h2>CREDITS EARNED: {credits}</h2>
             <h2>CURRENT SEMESTER: {semester}</h2>
             <h2>GPA: {Gpa}</h2>
@@ -149,7 +143,7 @@ const TranscriptPage = (props) => {
                         <span>{studentCourse.course.name} |</span>
                         <span>GRADE: {getGradeLetter(studentCourse.grade_received)} |</span>
                         <span>CR VALUE: {studentCourse.course.credit_value} |</span>
-                        <span>CR EARNED: {studentCourse.credits_received} |</span>
+                        <span>CR EARNED: {getCreditValue(getGradeLetter(studentCourse.grade_received))} |</span>
                         {/* <span>CR EARNED: {getCreditValue(getGradeLetter(studentCourse.grade_received))} |</span> */}
                         <span>FALL 2022 |</span>
                         <span><Link to="#" className="dummy">CR REQUIREMENTS</Link></span>

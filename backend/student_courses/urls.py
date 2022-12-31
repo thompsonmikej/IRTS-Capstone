@@ -15,6 +15,8 @@ urlpatterns = [
     path('get_course_credits/', views.get_course_credits), 
     path('get_graded_courses/', views.get_graded_courses),
     path('delete_courses/<int:pk>/', views.delete_courses),
+    path ('get_credit_value/<int:user_id>/', views.get_credit_value),
+        
 ]
 
 
