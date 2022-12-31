@@ -61,6 +61,7 @@ const AvailableCourses = (props) => {
             <div>
                 {availableCourses.map((course) => (
                     <><div key={course.id} className="container">
+                        {console.log('course:', course)}
                         <hr />
                         <span className="schedule-button">
                             <button type='submit' onClick={() => selectCourse(course.id)}>Enroll</button>

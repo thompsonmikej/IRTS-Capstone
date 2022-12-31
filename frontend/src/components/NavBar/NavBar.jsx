@@ -9,19 +9,18 @@ const Navbar = (props) => {
   const { logoutUser, user } = useContext(AuthContext);  
   const navigate = useNavigate();
   return (
-    <div className="navBar centered max-60width">
+    <div className="navBar centered max-55width">
       <ul>
         <li className="navText brand centered">
           <Link to="/login" className="navText">
             <b>Integrated Registration Tracking System</b>
           </Link> 
-        </li>
-        
+        </li>    
         <li>
           {user ? (
             <button onClick={logoutUser}>Logout</button>
           ) : (
-            <button onClick={() => navigate("/login")}>Login</button>
+              null
           )}
 
         </li>

@@ -50,7 +50,16 @@ def get_all_students(request):
     return Response(serializer.data)
 
 
-    # Store credits earned to an existing student in auth userDB
+# @api_view(['GET'])
+# @permission_classes([IsAuthenticated])
+# def get_available_courses(request):
+#     """api/auth/courses_available/  classes ungraded, available   
+#     """
+#     available_courses = User.objects.filter(semester=request.user.semester)
+#     serializer = PersonObjectSerializer(available_courses, many=True)
+#     return Response(serializer.data)
+
+
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])  
 def sum_credits_earned(request, user_id):

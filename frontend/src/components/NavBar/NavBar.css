@@ -19,8 +19,8 @@ li {
   background: #550040;
   box-shadow: .5rem .5rem .5rem #444;
   color: white;
-  margin: 1.5rem;
-  padding: .6rem .6rem;
+  margin: .5rem;
+  padding: .5rem .5rem;
   border-radius: 1.5rem;
   font-size: 1.75rem;
 }
@@ -37,8 +37,8 @@ li {
   color: white;
 }
 
-.max-60width {
-  width: 60%;
+.max-55width {
+  width: 55%;
 }
 
 .max-100width {

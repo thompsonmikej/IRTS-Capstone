@@ -85,6 +85,10 @@ Link , a {
   margin-bottom: 15rem;
 }
 
+.page-top{
+  margin-top: 3rem;
+}
+
 .footer-nav{
   position: fixed;
   margin-bottom: 01rem;

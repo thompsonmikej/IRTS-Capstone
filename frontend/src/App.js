@@ -29,7 +29,8 @@ import EmployeeRoute from "./utils/EmployeeRoute";
 function App() {
   return (
     <div>
-      <Navbar />
+      <div className="page-top"></div>
+      {/* <Navbar /> */}
       <Routes>
         <Route
           path="/"

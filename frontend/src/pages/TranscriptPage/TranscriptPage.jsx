@@ -112,24 +112,9 @@ const TranscriptPage = (props) => {
         }
     }
 
-    // const getCreditsEarned = async () => {
-    //     try {
-    //         let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/get_transcript/`, {
-    //             headers: {
-    //                 Authorization: "Bearer " + token,
-    //             },
-    //         });
-    //         { console.log('get credits earned', response.credits_received) }
-    //         setCreditsEarned(response.credits_received)
-    //     } catch (error) {
-    //         console.log('error in credits earned', error.response)
-    //     }
-
-    // };
     
     return (
         <><h1>Your Transcript of Courses, <br />{user.first_name} {user.last_name}, ID# {user.id}</h1>
-            {/* <h2>BACHELOR'S DEGREE PROGRAM</h2> */}
             <h2>CREDITS EARNED: {credits}</h2>
             <h2>CURRENT SEMESTER: {semester}</h2>
             <h2>GPA: {Gpa}</h2>
@@ -143,10 +128,7 @@ const TranscriptPage = (props) => {
                         <span>{studentCourse.course.name} |</span>
                         <span>GRADE: {getGradeLetter(studentCourse.grade_received)} |</span>
                         <span>CR VALUE: {studentCourse.course.credit_value} |</span>
-                        {console.log('map return: grade received', studentCourse.grade_received)}
-                        {console.log('map return: credit value', studentCourse.course.credit_value)}
                         <span>CR EARNED: {getCreditValue(studentCourse.grade_received, studentCourse.course.credit_value)} |</span>
-
                         <span>FALL 2022 |</span>
                         <span><Link to="#" className="dummy">CR REQUIREMENTS</Link></span>
                         <hr />
