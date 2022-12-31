@@ -14,7 +14,6 @@ urlpatterns = [
     path('put_gpa/<int:user_id>/', views.gpa_earned), 
     path('put_semester/<int:user_id>/', views.current_semester), 
     path('put_grad_status/<int:user_id>/', views.grad_status),
-    # path ("courses_available/", views.get_available_courses),
 
 
 

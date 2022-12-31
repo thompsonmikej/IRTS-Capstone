@@ -19,11 +19,13 @@ def get_all_courses(request):
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def get_available_courses(request):
+def get_available_courses(request, semester):
     """api/courses/courses_available/  classes ungraded, available   
     """
-    available_courses = Course.objects.filter(semester=request.user.semester)
+    available_courses = Course.objects.all().filter(semester__gt=semester)
     serializer = CourseSerializer(available_courses, many=True)
+    print(available_courses)
+    print(serializer.data)
     return Response(serializer.data)
 
 

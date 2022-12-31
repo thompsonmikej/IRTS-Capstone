@@ -11,23 +11,41 @@ const AvailableCourses = (props) => {
     const [availableCourses, setAvailableCourses] = useState([]);
     const [applyCourse, setApplyCourse] = useState([]);
     const navigate = useNavigate();
+    const [semester, setSemester] = useState(0);
 
     useEffect(() => {
-        const fetchAvailableCourses = async () => {
+        const fetchSemester = async () => {
             try {
-                let response = await axios.get(`http://127.0.0.1:8000/api/courses/get_available_courses/`, {
+                let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/calculate_semester/${user.id}/`, {
                     headers: {
                         Authorization: "Bearer " + token,
                     },
                 });
-                setAvailableCourses(response.data);
+                setSemester(response.data);
+                { console.log(semester) }
             } catch (error) {
+                console.log('Error in fetch semester', error);
+            }
+        };
+        fetchSemester();
+    }, [token]);
+
+    useEffect(() => {
+        const fetchAvailableCourses = async () => {
+            try {
+                let response = await axios.get(`http://127.0.0.1:8000/api/courses/courses_available/${semester}/`, {
+                    headers: {
+                        Authorization: "Bearer " + token,
+                    },
+                });
+                { console.log(semester) }
+                setAvailableCourses(response.data);
+            } catch(error) {
                 console.log('Error in AvailableCourses', error);
             }
         };
         fetchAvailableCourses();
     }, [token]);
-
 
     const selectCourse = async (courseId) => {
         let courseObject = {

@@ -6,3 +6,6 @@ footer {
   width: 100%;
   background-color: darkgray ;
 }
+p {
+  margin-bottom: .5rem;
+}
