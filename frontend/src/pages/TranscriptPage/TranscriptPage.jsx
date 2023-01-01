@@ -38,6 +38,7 @@ const TranscriptPage = (props) => {
                     },
                 });
                 setCredits(response.data);
+                { console.log(credits)}
             } catch (error) {
                 console.log('Error in fetch credits', error);
             }

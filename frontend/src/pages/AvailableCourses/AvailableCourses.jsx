@@ -30,6 +30,8 @@ const AvailableCourses = (props) => {
         fetchSemester();
     }, [token]);
 
+    { console.log('semester', semester) }
+
     useEffect(() => {
         const fetchAvailableCourses = async () => {
             try {
@@ -38,8 +40,9 @@ const AvailableCourses = (props) => {
                         Authorization: "Bearer " + token,
                     },
                 });
-                { console.log(semester) }
+                { console.log('semester', semester) }
                 setAvailableCourses(response.data);
+                { console.log('available courses', availableCourses) }
             } catch(error) {
                 console.log('Error in AvailableCourses', error);
             }
@@ -77,15 +80,15 @@ const AvailableCourses = (props) => {
             <h2><Link to="/course_transcript">View Transcript</Link></h2>
             <br />
             <div>
-                {availableCourses.map((course) => (
-                    <><div key={course.id} className="container">
-                        {console.log('course:', course)}
+                {availableCourses.map((availableCourse) => (
+                    <><div key={availableCourse.id} className="container">
+                        {console.log('course:', availableCourse)}
                         <hr />
                         <span className="schedule-button">
-                            <button type='submit' onClick={() => selectCourse(course.id)}>Enroll</button>
+                            <button type='submit' onClick={() => selectCourse(availableCourse.id)}>Enroll</button>
                         </span>
-                        <span><Link to={`#`} className="dummy">| {course.name} |</Link></span>
-                        <span>CR VALUE: {course.credit_value} |</span>
+                        <span><Link to={`#`} className="dummy">| {availableCourse.name} |</Link></span>
+                        <span>CR VALUE: {availableCourse.credit_value} |</span>
                         <span><Link to={`#`} className="dummy">DAYS: M, T, W |</Link></span>
                         <span>INSTR: SMITH |</span>
                         <span>LOC: ONLN  </span>

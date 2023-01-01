@@ -75,7 +75,8 @@ const FindStudentCoursePage = (props) => {
         <><h1>Find Student's Course to Grade</h1>
             <h2>Logged-in Employee: {user.first_name} {user.last_name}</h2>
             <br />
-            <h2><Link to="/employee">Back to Employee Portal</Link></h2><br /><>
+            <h2><Link to="/employee">Back to Employee Portal</Link></h2><>
+                <h2><Link to="/candidates" className="register"> Candidates for Graduation </Link></h2><br/>
                 <><div className="container">
                     {student.map((course) => (
                         <p key={course.id}>

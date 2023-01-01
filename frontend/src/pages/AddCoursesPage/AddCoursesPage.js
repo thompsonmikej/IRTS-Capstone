@@ -34,7 +34,10 @@ const AddCoursesPage = () => {
   return (
     <div className="container">
       <h1>Create New Course</h1>
-      <h2><Link to="/employee">Back to Employee Portal</Link></h2><hr />
+      <h2><Link to="/employee">Back to Employee Portal</Link></h2>
+      <h2><Link to="/course_catalog" className="register">View Catalog/Delete A Course</Link></h2>
+      <h2><Link to="/candidates" className="register"> Candidates for Graduation </Link></h2>
+      <hr />
       <form className="form" onSubmit={handleSubmit}>
         <label>
           Course:{" 3 digits, 7 alphanumeric "}

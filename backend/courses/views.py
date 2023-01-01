@@ -22,10 +22,9 @@ def get_all_courses(request):
 def get_available_courses(request, semester):
     """api/courses/courses_available/  classes ungraded, available   
     """
-    available_courses = Course.objects.all().filter(semester__gt=semester)
+    available_courses = Course.objects.filter(semester__gt=semester).values()
     serializer = CourseSerializer(available_courses, many=True)
-    print(available_courses)
-    print(serializer.data)
+    print('available courses', serializer.data)
     return Response(serializer.data)
 
 
@@ -39,8 +38,6 @@ def create_courses(request):
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST) 
-
-
         
 @api_view(['DELETE']) 
 def employee_deletes_courses(request, pk):
