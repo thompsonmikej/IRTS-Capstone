@@ -30,6 +30,7 @@ const CandidatesPage = () => {
             <h2>BACHELOR'S DEGREE PROGRAM</h2>
             <h2>128 CREDITS MINIMUM AND 3.0 GPA REQUIRED</h2>
             <h2><Link to="/employee">Back to Employee Portal</Link></h2>
+            <h2><Link to="/student_directory" className="register"> Directory of Current Students </Link></h2>
             <h2><Link to="/add_courses" className="register">Add A Course</Link></h2>
         <h2><Link to="/course_catalog" className="register">View Catalog/Delete A Course</Link></h2>
             <br /><><><div className="container">

@@ -35,6 +35,7 @@ const AddCoursesPage = () => {
     <div className="container">
       <h1>Create New Course</h1>
       <h2><Link to="/employee">Back to Employee Portal</Link></h2>
+      <h2><Link to="/student_directory" className="register"> Directory of Current Students </Link></h2>
       <h2><Link to="/course_catalog" className="register">View Catalog/Delete A Course</Link></h2>
       <h2><Link to="/candidates" className="register"> Candidates for Graduation </Link></h2>
       <hr />
