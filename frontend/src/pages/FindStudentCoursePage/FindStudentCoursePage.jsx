@@ -14,7 +14,7 @@ const FindStudentCoursePage = (props) => {
 
     const [user, token] = useAuth();
     const [studentCourses, setStudentCourses] = useState([]);
-    const [student, setStudent] = useState([]);
+    const [studentCourseRecords, setStudentCourseRecords] = useState([]);
     const { studentId, courseId } = useParams();
     const { studentGrades } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -23,7 +23,7 @@ const FindStudentCoursePage = (props) => {
     );
 
     useEffect(() => {
-        const fetchStudent = async (props) => {
+        const fetchStudentCourseRecords = async (props) => {
             { console.log('props pass in studentid', studentId) }
             try {
                 let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/admin_views_studentcourses/${studentId}/`,
@@ -33,12 +33,12 @@ const FindStudentCoursePage = (props) => {
                         },
                     });
                 console.log('success in fetch student', studentId)
-                setStudent(response.data)
+                setStudentCourseRecords(response.data)
             } catch (error) {
                 console.log('error in fetch student', error)
             }
         }
-        fetchStudent();
+        fetchStudentCourseRecords();
     }, [token]);
 
 
@@ -77,15 +77,11 @@ const FindStudentCoursePage = (props) => {
             <h2><Link to="/employee">Back to Employee Portal</Link></h2><>
                 <h2><Link to="/candidates" className="register"> Candidates for Graduation </Link></h2><br />
                 <><div className="container">
-                    {student.map((course) => (
-                        <p key={course.id}>
-                            {console.log('student', student)}
+                    {studentCourseRecords.map((studentCourseRecord) => (
+                        <p key={studentCourseRecord.id}>
+                            {console.log('student', studentCourseRecords)}
                             <hr />
-                            <span>STU ID: {student[0].user.id} | {student[0].user.first_name} {student[0].user.last_name} |</span>
-                            <span>{course.course.name} | <Link to={`/grade_course/${studentId}`}>GRADE, COURSE ID: {course.id} |</Link></span>
-                            <span>GRADE: {getGradeLetter(course.grade_received)} |</span>
-                            {/* <span>CR RECEIVED: {student[4].credits_received}</span> */}
-                            <span>CR RECEIVED: {student[5].credits_received}</span>
+                            <span>STU ID: {studentCourseRecords[0].user.id} | {studentCourseRecords[0].user.first_name} {studentCourseRecords[0].user.last_name} | {studentCourseRecord.course.name} | GRADE: {getGradeLetter(studentCourseRecord.grade_received)} | CR EARNED: {studentCourseRecord.credits_received} | <Link to={`/grade_course/${studentId}`}>GRADE, COURSE ID: {studentCourseRecord.id}</Link> </span>
                         </p>
                     ))}
                 </div>
