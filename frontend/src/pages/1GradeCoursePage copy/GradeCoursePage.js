@@ -41,6 +41,38 @@ const GradeCoursePage = () => {
   }
 
 
+  
+  // function getCreditValue(numberGrade, creditsReceived) {
+  //    switch (numberGrade) {
+  //      case 1:
+  //        let creditsReceived = 0;
+  //        { console.log(creditsReceived)}
+  //        return creditsReceived;   
+  //      default:
+  //        { console.log(creditsReceived) }
+  //        return creditsReceived;
+  //    }
+  //  }
+  // creditsAssigned = getCreditValue(numberGrade, creditsReceived)
+
+
+  // async function postCreditValue() {
+  //   let courseId = formData.course_id
+  //   { console.log('courseId', courseId) }
+  //   try {
+  //     let response = await axios.put(`http://127.0.0.1:8000/api/student_courses/grade_course_object/${courseId}/`, formData, {
+  //       headers: {
+  //         Authorization: "Bearer " + token,
+  //       },
+  //     });
+  //     navigate(`/find_student_course/${studentId}`);
+  //     console.log('post new Grade', formData)
+  //   } catch (error) {
+  //     console.log(error.message);
+
+  //   }
+  // }
+ 
   return (
     <><div><h1>Enter a Grade</h1></div>
       <div><h2>Logged-in Employee: {user.first_name} {user.last_name}</h2><br />

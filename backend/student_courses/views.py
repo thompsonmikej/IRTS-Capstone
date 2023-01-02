@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
 from .models import StudentCourse, User
+from courses.models import Course
 from .serializers import StudentCourseSerializer
 
 #USERS
@@ -54,8 +55,19 @@ def get_gpa(request):
 def grade_course_object(request, course_id):
     """api/student_courses/grade_course_object/
     """   
+    course = Course.objects.filter(id=course_id)
+    print('course', course)
+    
     courses_to_grade = get_object_or_404(StudentCourse, pk=course_id)
     courses_to_grade.grade_received=request.data['grade_received']
+    print('courses_to_grade', courses_to_grade)
+
+    if int(courses_to_grade.grade_received) < 2:
+        courses_to_grade.credits_received = 0
+    else:
+        courses_to_grade.credits_received = course.credit_value
+        print('courses_to_grade', courses_to_grade)
+
     try:
         courses_to_grade.save()
         serializer = StudentCourseSerializer(courses_to_grade)
@@ -177,38 +189,3 @@ def get_graded_courses(request):
 	}
     print('custom course dictionary', custom_course_dictionary)
     return Response(custom_course_dictionary)
-
-
-
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def get_course_credits(request):
-    """api/student_courses/get_course_credits/
-    """
-    graded_courses = StudentCourse.objects.filter(user=request.user)
-    custom_transcripts = []
-    for single_graded_course in graded_courses:
-        credit_value_earned = single_graded_course["course"]["credit_value"]
-        if credit_value_earned < 2:
-            credit_value_earned = 0
-
-        print('single graded courses', single_graded_course)
-        print('credit_value_earned', credit_value_earned)
-        
-    custom_graded_course_dictionary = {
-        "user": {
-            "id": single_graded_course["user"]["id"],
-            "first_name": single_graded_course["user"]["first_name"],
-            "last_name": single_graded_course["user"]["last_name"],
-        },
-        "course": {
-            "id": single_graded_course["course"]["id"],
-            "name": single_graded_course["course"]["name"],
-        },
-    }
-    custom_transcripts.append(custom_graded_course_dictionary)
-	
-    print('single_graded_course', single_graded_course)
-    print("credit_value", credit_value_earned)
-
-    return Response(custom_transcripts)

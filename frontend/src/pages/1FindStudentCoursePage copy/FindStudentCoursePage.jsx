@@ -75,17 +75,17 @@ const FindStudentCoursePage = (props) => {
             <h2>Logged-in Employee: {user.first_name} {user.last_name}</h2>
             <br />
             <h2><Link to="/employee">Back to Employee Portal</Link></h2><>
-                <h2><Link to="/candidates" className="register"> Candidates for Graduation </Link></h2><br />
+                <h2><Link to="/candidates" className="register"> Candidates for Graduation </Link></h2><br/>
                 <><div className="container">
                     {student.map((course) => (
                         <p key={course.id}>
-                            {console.log('student', student)}
                             <hr />
-                            <span>STU ID: {student[0].user.id} | {student[0].user.first_name} {student[0].user.last_name} |</span>
-                            <span>{course.course.name} | <Link to={`/grade_course/${studentId}`}>GRADE, COURSE ID: {course.id} |</Link></span>
-                            <span>GRADE: {getGradeLetter(course.grade_received)} |</span>
-                            {/* <span>CR RECEIVED: {student[4].credits_received}</span> */}
-                            <span>CR RECEIVED: {student[5].credits_received}</span>
+                            <span>STU ID: {student[0].user.id} |</span>
+                            <span>{student[0].user.first_name} {student[0].user.last_name} |</span>
+                            <span>{course.course.name} |</span>
+                            <span><Link to={`/grade_course/${studentId}`}>GRADE, COURSE ID: {course.id} |</Link></span>
+                            <span>GRADE: {getGradeLetter(course.grade_received)} </span>
+                            <span>CR VALUE: {course.course.credit_value} </span>
                         </p>
                     ))}
                 </div>

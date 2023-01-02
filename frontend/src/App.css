@@ -73,10 +73,10 @@ Link , a {
 
 .form input {
   display: block;
-  width: 100%;
+  width: 150%;
   height: 1.8rem;
   margin: .5rem;
-  padding: .5rem .75rem;
+  padding: .5rem .5rem;
   font-size: 1.2rem;
   font-weight: bold;
 }

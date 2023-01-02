@@ -12,10 +12,6 @@ const TranscriptPage = (props) => {
     const [credits, setCredits] = useState(0);
     const [creditsEarned, setCreditsEarned] = useState(0);
     const [semester, setSemester] = useState(0);
-    
-    { console.log('user', user)}
-    { console.log('studentCourses', studentCourses)}
-    { console.log('studentCourses course', studentCourses.credit_value)}
 
     useEffect(() => {
         const fetchStudentCourses = async () => {
@@ -108,20 +104,31 @@ const TranscriptPage = (props) => {
         }
     }
 
-    function getCreditValue(numberGrade, creditValue ) {
-        let creditsReceived = creditValue;
+    function getCreditValue(numberGrade, creditsReceived ) {
         switch (numberGrade) {
-            case 2:
-                return creditsReceived;
-            case 3:
-                return creditsReceived;
-            case 4:
-                return creditsReceived;
-            default:
+            case 1:
                 return 0;
+            default:
+                return creditsReceived;
         }
     }
+    
+    //     async function postCreditsToStu() {
+    //         try {
+    //             let response = await axios.post(`http://127.0.0.1:8000/api/courses/create_courses/`, formData, {
+    //                 headers: {
+    //                     Authorization: "Bearer " + token,
+    //                 },
+    //             });
+    //         } catch (error) {
+    //             console.log(error.message);
+    //         }
+    //     }
 
+
+    
+
+    
     return (
         <><h1>Your Transcript of Courses, <br />{user.first_name} {user.last_name}, ID# {user.id}</h1>
             <h2>CREDITS EARNED: {credits}</h2>
