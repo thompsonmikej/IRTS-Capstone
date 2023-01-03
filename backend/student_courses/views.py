@@ -55,19 +55,23 @@ def get_gpa(request):
 def grade_course_object(request, course_id):
     """api/student_courses/grade_course_object/
     """   
-    course = Course.objects.filter(id=course_id)
+    course = Course.objects.get(id=course_id)
     print('course', course)
 
     courses_to_grade = get_object_or_404(StudentCourse, pk=course_id)
     courses_to_grade.grade_received=request.data['grade_received']
     print('courses_to_grade', courses_to_grade)
 
-    if int(courses_to_grade.grade_received) < 2:
+    if  int(courses_to_grade.grade_received) < 2:
         courses_to_grade.credits_received = 0
+        print('courses_to_grade TRUE grade received)', courses_to_grade.grade_received)
+        print('courses_to_grade TRUE credits received)', courses_to_grade.credits_received)
+                
     else:
-        # courses_to_grade.credits_received = course['credit_value']
-        courses_to_grade.credits_received = course.credit_value
-        print('courses_to_grade', courses_to_grade)
+        courses_to_grade.credits_received == course.credit_value
+        print('courses_to_grade ELSE grade received)', courses_to_grade.grade_received)
+        print('courses_to_grade ELSE (credit value)', courses_to_grade.credits_received)
+        return Response (courses_to_grade.credits_received)
 
     try:
         courses_to_grade.save()
@@ -75,6 +79,33 @@ def grade_course_object(request, course_id):
         return Response(serializer.data, status=status.HTTP_200_OK)
     except:
         return Response(status=status.HTTP_400_BAD_REQUEST)
+
+# @api_view(['PUT'])
+# @permission_classes([IsAuthenticated])   
+# def credits_for_graduation(request, course_id):
+#     """api/student_courses/credits_for_graduation/
+#     """   
+#     gpa = User.objects.filter(id=course_id)
+#     print('gpa ', gpa )
+    # grad_credits = User.objects.filter(id=course_id)
+    # print('course', grad_credits)
+
+#     credits_accrued = get_object_or_404(User, pk=course_id)
+#     credits_accrued.credits_earned=request.data['credits_earned']
+#     print('credits_accrued', credits_accrued)
+
+#     if int(credits_accrued.credits_earned) >= 128:
+#         credits_accrued.grad_ready = 4
+#     else:
+#         credits_accrued.grad_ready = 0
+#         print('credits_accrued', credits_accrued)
+
+#     try:
+#         credits_accrued.save()
+#         serializer = PersonObjectSerializer(credits_accrued)
+#         return Response(serializer.data, status=status.HTTP_200_OK)
+#     except:
+#         return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
 #COURSES

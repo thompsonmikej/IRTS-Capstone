@@ -45,28 +45,27 @@ const GradeCoursePage = () => {
         <h2><Link to={`/find_student_course/${studentId}`}>Back to Find Student's Course</Link></h2>
         <h2><Link to="/employee">Back to Employee Portal</Link></h2>
         <hr />
-      </div><div className="container">
-        <h2>Student ID: {studentId}</h2>
+      </div><div className="container ">
+        <h2>Student ID: {studentId}</h2><br/>
         <form className="form" onSubmit={handleSubmit}>
-          <label className="input-mini">
+          <label>
             <span >COURSE ID:{" "}</span>
             <span >
-              <input className="form-box"
+              <input className=" input-mini form-box"
                 type="text"
                 name="course_id"
                 value={formData.course_id}
                 onChange={handleInputChange} /></span>
           </label>
-          <label className="input-mini">
-            <span>GRADE:{" (1-4) "}</span>
+          <label>
+            <span>GRADE{" (1-4): "}</span>
             <span >
-              <input className="form-box"
+              <input className="input-mini form-box"
                 type="text"
                 name="grade_received"
                 value={formData.grade_received}
                 onChange={handleInputChange} /></span>
           </label>
-          <br />
           <button type="submit">Submit Grade</button>
         </form>
       </div></>
