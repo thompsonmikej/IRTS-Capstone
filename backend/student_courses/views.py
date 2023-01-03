@@ -54,13 +54,15 @@ def get_gpa(request):
 
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])   
-def grade_course_object(request, course_id):
+def grade_course_object(request, student_course_id):
     """api/student_courses/grade_course_object/
     """   
-    course = Course.objects.get(id=course_id)
-    print('course object', Course.credit_value)
+    
+   
+    courses_to_grade = get_object_or_404(StudentCourse, pk=student_course_id)
 
-    courses_to_grade = get_object_or_404(StudentCourse, pk=course_id)
+    course = Course.objects.get(id=courses_to_grade.course_id)   
+
     courses_to_grade.grade_received=request.data['grade_received']
     print('courses_to_grade', courses_to_grade)
 
