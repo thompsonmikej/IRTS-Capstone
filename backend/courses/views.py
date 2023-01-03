@@ -28,6 +28,17 @@ def get_available_courses(request, semester):
     print('available courses', serializer.data)
     return Response(serializer.data)
 
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_course_credits(request, id):
+    """api/courses/get_course_credits/  classes ungraded, available   
+    """
+    course_credits = Course.objects.filter(id=id)
+    print('course credits', course_credits)
+    serializer = CourseSerializer(course_credits, many=True)
+    print('course credits', serializer.data)
+    return Response(serializer.data)
+
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])   

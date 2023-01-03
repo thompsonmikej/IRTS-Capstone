@@ -49,7 +49,7 @@ const FindStudentCoursePage = (props) => {
                     Authorization: "Bearer " + token,
                 },
             });
-            console.log('post new Grade', formData)
+            console.log('post new Grade, formData', formData)
         } catch (error) {
             console.log('post new grade', error.message);
         }
@@ -69,7 +69,10 @@ const FindStudentCoursePage = (props) => {
                 return ' ';
         }
     }
+    let letter = getGradeLetter()
 
+    
+        
     return (
         <><h1>Find Student's Course to Grade</h1>
             <h2>Logged-in Employee: {user.first_name} {user.last_name}</h2>

@@ -69,10 +69,10 @@ def grade_course_object(request, course_id):
                 
     else:
         courses_to_grade.credits_received == course.credit_value
-        print('courses_to_grade ELSE (<2) (grade received)', courses_to_grade.grade_received)
-        print('courses_to_grade ELSE (<2) (credit value)', courses_to_grade.credits_received)
-        return Response (courses_to_grade.credits_received)
-
+        print('course', course)
+        print('courses_to_grade ELSE (>=2) (grade received)', courses_to_grade.grade_received)
+        print('courses_to_grade ELSE (>=2) (credit value)', courses_to_grade.credits_received)
+ 
     try:
         courses_to_grade.save()
         serializer = StudentCourseSerializer(courses_to_grade)
