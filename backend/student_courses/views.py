@@ -6,6 +6,8 @@ from rest_framework.decorators import api_view, permission_classes
 from .models import StudentCourse, User
 from courses.models import Course
 from .serializers import StudentCourseSerializer
+from courses.serializers import CourseSerializer
+
 
 #USERS
 @api_view(['GET'])
@@ -56,7 +58,7 @@ def grade_course_object(request, course_id):
     """api/student_courses/grade_course_object/
     """   
     course = Course.objects.get(id=course_id)
-    print('course', course)
+    print('course object', Course.credit_value)
 
     courses_to_grade = get_object_or_404(StudentCourse, pk=course_id)
     courses_to_grade.grade_received=request.data['grade_received']
@@ -68,8 +70,8 @@ def grade_course_object(request, course_id):
         print('courses_to_grade TRUE credits received)', courses_to_grade.credits_received)
                 
     else:
-        courses_to_grade.credits_received == course.credit_value
-        print('course', course)
+        courses_to_grade.credits_received = course.credit_value
+        print('credit value', course.credit_value)
         print('courses_to_grade ELSE (>=2) (grade received)', courses_to_grade.grade_received)
         print('courses_to_grade ELSE (>=2) (credit value)', courses_to_grade.credits_received)
  
@@ -187,14 +189,14 @@ def calculate_gpa(request, user_id):
     return Response(gpa)
 
 
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def get_credit_value(request, user_id):
-    """api/student_courses/get_credit_value/  
-    """
-    get_credits = StudentCourse.objects.filter(user=request.user)
-    serializer = StudentCourseSerializer(get_credits, many=True)
-    return Response(serializer.data)
+# @api_view(['GET'])
+# @permission_classes([IsAuthenticated])
+# def get_credit_value(request, user_id):
+#     """api/student_courses/get_credit_value/  
+#     """
+#     get_credits = StudentCourse.objects.filter(user=request.user)
+#     serializer = StudentCourseSerializer(get_credits, many=True)
+#     return Response(serializer.data)
 
 
 @api_view(['GET'])

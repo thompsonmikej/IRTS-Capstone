@@ -31,7 +31,7 @@ def get_available_courses(request, semester):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_course_credits(request, id):
-    """api/courses/get_course_credits/  classes ungraded, available   
+    """api/courses/get_course_credits/    
     """
     course_credits = Course.objects.filter(id=id)
     print('course credits', course_credits)
