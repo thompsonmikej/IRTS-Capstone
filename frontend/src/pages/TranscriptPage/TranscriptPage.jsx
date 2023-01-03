@@ -79,7 +79,7 @@ const TranscriptPage = (props) => {
     useEffect(() => {
         const fetchGpa = async () => {
             try {
-                let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/calculate_gpa/${user.id}/`, {
+                let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/get_calculate_gpa/${user.id}/`, {
                     headers: {
                         Authorization: "Bearer " + token,
                     },
