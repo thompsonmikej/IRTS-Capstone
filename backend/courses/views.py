@@ -22,7 +22,8 @@ def get_all_courses(request):
 def get_available_courses(request, semester):
     """api/courses/courses_available/  classes ungraded, available   
     """
-    available_courses = Course.objects.filter(semester__gt=semester).exclude(semester__lte=semester).values()
+    available_courses = Course.objects.exclude(semester__lt=semester).values()
+    print('semester', semester)
     serializer = CourseSerializer(available_courses, many=True)
     print('available courses', serializer.data)
     return Response(serializer.data)

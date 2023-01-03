@@ -22,15 +22,14 @@ const AvailableCourses = (props) => {
                     },
                 });
                 setSemester(response.data);
-                { console.log(semester) }
+                {
+                    console.log('semester: available courses', semester) }
             } catch (error) {
                 console.log('Error in fetch semester', error);
             }
         };
         fetchSemester();
     }, [token]);
-
-    { console.log('semester', semester) }
 
     useEffect(() => {
         const fetchAvailableCourses = async () => {
@@ -40,7 +39,7 @@ const AvailableCourses = (props) => {
                         Authorization: "Bearer " + token,
                     },
                 });
-                { console.log('semester', semester) }
+                { console.log('semester: fetch available', semester) }
                 setAvailableCourses(response.data);
                 { console.log('available courses', availableCourses) }
             } catch(error) {
@@ -49,6 +48,7 @@ const AvailableCourses = (props) => {
         };
         fetchAvailableCourses();
     }, [token]);
+
 
     const selectCourse = async (courseId) => {
         let courseObject = {
@@ -72,6 +72,7 @@ const AvailableCourses = (props) => {
 
     };
     
+
     return (
         <><h1>Courses Available to You,<br />{user.first_name} {user.last_name}, ID# {user.id}</h1><><>
             <h2>BACHELOR'S DEGREE PROGRAM</h2>
@@ -97,6 +98,8 @@ const AvailableCourses = (props) => {
                 ))}
 
             </div><div className="page-bottom"></div>
+            <hr /><h2><Link to="#" className="dummy">Back to Top</Link></h2>
+            <div className="page-bottom"></div>
         </></></>
     );
 };

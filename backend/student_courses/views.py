@@ -23,7 +23,7 @@ def get_transcript(request):
 def get_scheduled_courses(request):
     """api/student_courses/get_scheduled_courses
     """
-    scheduled_ungraded_courses = StudentCourse.objects.filter(user=request.user).filter(credits_received=None)
+    scheduled_ungraded_courses = StudentCourse.objects.filter(user=request.user).filter(credits_received=0)
     serializer = StudentCourseSerializer(scheduled_ungraded_courses, many=True)
     return Response(serializer.data)
 
@@ -57,7 +57,7 @@ def grade_course_object(request, course_id):
     """   
     course = Course.objects.filter(id=course_id)
     print('course', course)
-    
+
     courses_to_grade = get_object_or_404(StudentCourse, pk=course_id)
     courses_to_grade.grade_received=request.data['grade_received']
     print('courses_to_grade', courses_to_grade)
@@ -65,6 +65,7 @@ def grade_course_object(request, course_id):
     if int(courses_to_grade.grade_received) < 2:
         courses_to_grade.credits_received = 0
     else:
+        # courses_to_grade.credits_received = course['credit_value']
         courses_to_grade.credits_received = course.credit_value
         print('courses_to_grade', courses_to_grade)
 
@@ -99,7 +100,7 @@ def enroll_student_into_courses(request):
 
 @api_view(['GET'])
 def calculate_credits_earned(request, user_id):
-    credit_tally= StudentCourse.objects.filter(user_id=user_id).exclude(credits_received=None)
+    credit_tally= StudentCourse.objects.filter(user_id=user_id).exclude(credits_received=0)
     sum_of_credits = 0
     for credit in credit_tally:
         sum_of_credits += credit.credits_received
@@ -108,7 +109,9 @@ def calculate_credits_earned(request, user_id):
 
 @api_view(['GET'])
 def calculate_semester_by_credits(request, user_id):
-    users_courses = StudentCourse.objects.filter(user_id=user_id).exclude(credits_received=None)
+    """calculate_semester/<int:user_id>/
+    """    
+    users_courses = StudentCourse.objects.filter(user_id=user_id).exclude(credits_received=0)
     sum_of_credits = 0
     current_semester = 0
     for course in users_courses:
@@ -144,7 +147,7 @@ def get_transcript(request):
 def calculate_gpa(request, user_id):
     """api/student_courses/calculate_gpa/<int:user_id>/'
     """    
-    graded_courses = StudentCourse.objects.filter(user_id=user_id).exclude(grade_received=None)
+    graded_courses = StudentCourse.objects.filter(user_id=user_id).exclude(grade_received=0)
     sum_of_grades = 0
     for grade in graded_courses:
         sum_of_grades += grade.grade_received

@@ -32,8 +32,6 @@ const GradeCoursePage = () => {
         },
       });
       navigate(`/find_student_course/${studentId}`);
-      // console.log('post course Id', courseId)
-      // console.log('post new Grade', formData)
     } catch (error) {
       console.log(error.message);
 
