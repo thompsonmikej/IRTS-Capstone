@@ -11,12 +11,9 @@ urlpatterns = [
     path('get_semester_by_credits/<int:user_id>/', views.get_semester_by_credits),
     path('get_scheduled_courses/', views.get_scheduled_courses),
     path('grade_course_object/<int:student_course_id>/', views.grade_course_object), 
-    # path('credits_for_passed_courses/', views.credits_for_passed_courses),    
     path('get_graded_courses/', views.get_graded_courses),
     path('delete_courses/<int:pk>/', views.delete_courses),
-    # path ('get_credit_value/<int:user_id>/', views.get_credit_value),
-    
-        
+            
 ]
 
 

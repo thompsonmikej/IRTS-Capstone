@@ -83,34 +83,6 @@ def grade_course_object(request, student_course_id):
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
-# @api_view(['PUT'])
-# @permission_classes([IsAuthenticated])   
-# def graduation_ready(request, course_id):
-#     """api/student_courses/graduation_ready/
-#     """   
-#     grade_average = User.objects.filter(id=course_id)
-#     print('grade_average ', grade_average )
-    # grad_credits = User.objects.filter(id=course_id)
-    # print('grad_credits', grad_credits)
-
-#     credits_accrued = get_object_or_404(User, pk=course_id)
-#     credits_accrued.credits_earned=request.data['credits_earned']
-#     print('credits_accrued', credits_accrued)
-
-#     if int(credits_accrued.credits_earned) >= 128:
-#         credits_accrued.grad_ready = 4
-#     else:
-#         credits_accrued.grad_ready = 0
-#         print('credits_accrued', credits_accrued)
-
-#     try:
-#         credits_accrued.save()
-#         serializer = PersonObjectSerializer(credits_accrued)
-#         return Response(serializer.data, status=status.HTTP_200_OK)
-#     except:
-#         return Response(status=status.HTTP_400_BAD_REQUEST)
-
-
 #COURSES
 @api_view(['DELETE']) 
 def delete_courses(request, pk):
@@ -152,19 +124,6 @@ def get_semester_by_credits(request, user_id):
         sum_of_credits += course.credits_received
         current_semester=(sum_of_credits//16)+1
     return Response(current_semester)
-
-
-
-# @api_view(['POST'])
-# @permission_classes([IsAuthenticated])
-# def credits_for_passed_courses(request):
-#     """api/student_courses/credits_for_passed_courses/  
-#     """
-#     serializer = StudentCourseSerializer(data=request.data)
-#     if serializer.is_valid():
-#         serializer.save(user=request.user)
-#         return Response(serializer.data, status=status.HTTP_201_CREATED)
-#     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['GET'])
