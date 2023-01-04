@@ -9,8 +9,10 @@ from rest_framework.response import Response
 from rest_framework import status
 from student_courses.serializers import StudentCourseSerializer
 from courses.serializers import CourseSerializer
+from courses.serializers import CourseSerializer
 from student_courses.models import StudentCourse, User
 from courses.models import Course
+from .models import User
 User = get_user_model()
 
 class MyTokenObtainPairView(TokenObtainPairView):
@@ -55,7 +57,6 @@ def put_calculate_credits_earned(request, user_id):
     for credit in credit_tally:
         credits_earned += credit.credits_received
     try:
-        credits_earned.save()
         serializer = PersonObjectSerializer(credits_earned, many=False)
         print('user_id', user_id)
         print('credit_tally', credit_tally)
@@ -70,36 +71,44 @@ def put_calculate_credits_earned(request, user_id):
 
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])   
-def put_individual_graduation_eligibility(request, id):
+def put_individual_graduation_eligibility(request, user_id):
     """api/auth/individual_graduation_eligibility/
     POST INTO grad ready
     """   
-    student_gpa = User.objects.get(id=id).filter(gpa=user.gpa)
-    serializer = PersonObjectSerializer(student_gpa, many=False)
-    # return Response(serializer.data)  
-    grad_ready = get_object_or_404(User, credits_earned=credits_earned)
-    # credits_accrued = get_object_or_404(User, pk=course_id)
-    grad_ready.credits_earned=request.data['credits_earned']
-    print('grad ready credits_accrued', grad_ready)
-    print('student_gpa', student_gpa )
+    student_object = User.objects.get(id=user_id)
 
-    grad_ready.grad_ready = 0
+    graded_courses = StudentCourse.objects.filter(user_id=user_id).exclude(grade_received=0)
+    sum_of_grades = 0
+    for grade in graded_courses:
+        sum_of_grades += grade.grade_received
+    gpa= sum_of_grades/len(graded_courses)
 
-    if (credits_earned >= 128 and gpa >= 3):
-        grad_ready.grad_ready = 4
-        print('student_gpa', student_gpa)
-        print('if TRUE (4) credits_accrued.credits_earned', grad_ready.credits_earned)
-        print('TRUE (0) credits_accrued.grad_ready; not grad_ready', grad_ready.grad_ready)
+    passed_courses = StudentCourse.objects.filter(user_id=user_id).exclude(credits_received=0)
+    sum_of_credits = 0
+    for passed_course in passed_courses:
+        sum_of_credits += passed_course.credits_received
+
+    student_object.grad_ready = 0    
+    
+    if (sum_of_credits >= 128 and gpa >= 3):
+        student_object.grad_ready = True
+        print('student_gpa', gpa)
+        print('TRUE (4) sum_of_credits', sum_of_credits)
+        print('TRUE (4) is grad_ready', student_object.grad_ready)
 
     else:
-        grad_ready.grad_ready
-        print('student_gpa', student_gpa)
-        print('ELSE (0) credits_accrued.credits_earned ; not grad_ready', grad_ready.credits_earned)
-        print('ELSE (0) credits_accrued.grad_ready; not grad_ready', grad_ready.grad_ready)
+        student_object.grad_ready = False
+        print('student_gpa', gpa)
+        print('ELSE (0) sum_of_credits', sum_of_credits)
+        print('ELSE (0) is grad ready', student_object.grad_ready)
+        print('student object', student_object)
+        print('student object #', student_object.id)
+        print('ELSE (0) is student', student_object.is_student)
 
     try:
-        grad_ready.save()
-        serializer = PersonObjectSerializer(grad_ready)
+        serializer = PersonObjectSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
         return Response(serializer.data, status=status.HTTP_200_OK)
     except:
         return Response(status=status.HTTP_400_BAD_REQUEST)
@@ -119,16 +128,15 @@ def put_calculate_gpa(request, user_id):
         sum_of_grades += grade.grade_received
     gpa= sum_of_grades/len(graded_courses)
     try:
-        gpa.save()
         serializer = PersonObjectSerializer(gpa, many=False)
         print('graded_courses', graded_courses)
         print('sum_of_grades', sum_of_grades)
         print('POST INTO: gpa', gpa)
         return Response(serializer.data, status=status.HTTP_200_OK)
     except:
-        print('graded_courses', graded_courses)
-        print('sum_of_grades', sum_of_grades)
-        print('POST INTO: gpa', gpa)
+        print('EXCEPT graded_courses', graded_courses)
+        print('EXCEPT sum_of_grades', sum_of_grades)
+        print('EXCEPT POST INTO: gpa', gpa)
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -146,15 +154,17 @@ def put_calculate_semester_by_credits(request, user_id):
         sum_of_credits += passed_course.credits_received
         semester=(sum_of_credits//16)+1
     try:
-        serializer = PersonObjectSerializer(semester)
+        serializer = PersonObjectSerializer(semester, many=False)
+        if serializer.is_valid():
+            serializer.save(semester=semester)
         print('users_courses', passed_courses)
         print('sum_of_credits', sum_of_credits)
         print('POST INTO SEMESTER: current_semester', semester)
         return Response(serializer.data, status=status.HTTP_200_OK)
     except:
-        print('users_courses', passed_courses)
-        print('sum_of_credits', sum_of_credits)
-        print('POST INTO SEMESTER: current_semester', semester)
+        print('EXCEPT users_courses', passed_courses)
+        print('EXCEPT sum_of_credits', sum_of_credits)
+        print('EXCEPT POST INTO SEMESTER: current_semester', semester)
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -193,7 +203,7 @@ def current_semester(request, user_id):
     student_semester = get_object_or_404(User, pk=user_id)
     student_semester.semester=request.data['semester']
     try:
-        student_semester.save()
+        # student_semester.save()
         serializer = PersonObjectSerializer(student_semester)
         return Response(serializer.data, status=status.HTTP_200_OK)
     except:

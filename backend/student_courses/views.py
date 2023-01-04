@@ -136,7 +136,6 @@ def get_transcript(request):
     return Response(serializer.data)
 
 
-
 @api_view(['GET'])
 def get_calculate_gpa(request, user_id):
     """api/student_courses/get_calculate_gpa/<int:user_id>/'
@@ -148,7 +147,6 @@ def get_calculate_gpa(request, user_id):
     gpa= sum_of_grades/len(graded_courses)
     print(grade.grade_received)
     return Response(gpa)
-
 
 
 
