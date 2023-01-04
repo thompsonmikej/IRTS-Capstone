@@ -13,7 +13,7 @@ const StudentDirectoryPage = () => {
     useEffect(() => {
         const fetchStudents = async () => {
             try {
-                let response = await axios.get(`http://127.0.0.1:8000/api/auth/directory/`, {
+                let response = await axios.get(`http://127.0.0.1:8000/api/auth/student_directory/`, {
                     headers: {
                         Authorization: "Bearer " + token,
                     },
