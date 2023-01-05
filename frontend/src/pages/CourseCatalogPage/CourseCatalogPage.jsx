@@ -64,10 +64,8 @@ const CourseCatalogPage = (props) => {
             <h2>THIS SEMESTER: AUG 1 - DEC 31 </h2>
             <h2>NEXT SEMESTER: FEB 1 - MAY 31 </h2>
             <h2><Link to="/employee">Back to Employee Portal</Link></h2>
-            <h2><Link to="/student_directory" className="register"> Directory of Current Students </Link></h2>
             <h2><Link to="/add_courses" className="register">Add A Course</Link></h2>
-            <h2><Link to="/candidates" className="register"> Candidates for Graduation </Link></h2><br/>
-            <><><div className="container">
+            <br/><><><div className="container">
                 {courses.map((course) => (
                     <div key={course.id}>
                         <hr /><div>
@@ -76,6 +74,7 @@ const CourseCatalogPage = (props) => {
                             </span>
                             <span>| {course.name} |</span>
                             <span>SEMESTER: {course.semester} |</span>
+                            <span>LOC: ONLINE |</span>
                             <span>CREDITS: {course.credit_value}</span>
                         </div>
                     </div>

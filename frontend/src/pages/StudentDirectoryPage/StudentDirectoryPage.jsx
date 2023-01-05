@@ -34,7 +34,6 @@ const StudentDirectoryPage = () => {
             <h2>NEXT SEMESTER: FEB 1 - MAY 31 </h2>
             <h2><Link to="/employee">Back to Employee Portal</Link></h2>
             <h2><Link to="/add_courses" className="register">Add A Course</Link></h2>
-            <h2><Link to="/course_catalog" className="register">View Catalog/Delete A Course</Link></h2>
             <h2><Link to="/candidates" className="register"> Candidates for Graduation </Link></h2><br/>
 
             <><><div className="container">

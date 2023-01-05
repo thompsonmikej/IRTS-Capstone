@@ -58,7 +58,7 @@ export const AuthProvider = ({ children }) => {
         grade: gradeData.grade_received,
       };
       // let response = await axios.post(`${BASE_URL}/register/`, studentGradeData);
-      let response = await axios.put(`http://127.0.0.1:8000/api/student_courses/grade_course_object/`, studentGradeData, {
+      let response = await axios.put(`http://127.0.0.1:8000/api/student_courses/put_grade_course_object/`, studentGradeData, {
         headers: {
           Authorization: "Bearer " + token,
         },

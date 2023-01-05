@@ -19,13 +19,11 @@ def get_all_courses(request):
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def get_available_courses(request, semester):
-    """api/courses/courses_available/  classes ungraded, available   
+def get_courses_available(request, semester):
+    """api/courses/courses_available/   
     """
     available_courses = Course.objects.exclude(semester__lt=semester).values()
-    print('semester', semester)
     serializer = CourseSerializer(available_courses, many=True)
-    print('available courses', serializer.data)
     return Response(serializer.data)
 
 @api_view(['GET'])
@@ -34,16 +32,14 @@ def get_course_credits(request, id):
     """api/courses/get_course_credits/    
     """
     course_credits = Course.objects.filter(id=id)
-    print('course credits', course_credits)
     serializer = CourseSerializer(course_credits, many=True)
-    print('course credits', serializer.data)
     return Response(serializer.data)
 
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])   
-def create_courses(request):
-    """api/courses/create
+def post_create_courses(request):
+    """api/courses/post_create_courses/
     """    
     serializer = CourseSerializer(data=request.data)
     if serializer.is_valid():

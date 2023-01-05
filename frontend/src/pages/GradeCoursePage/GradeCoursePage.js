@@ -26,7 +26,7 @@ const GradeCoursePage = () => {
     let courseId = formData.course_id
     { console.log('courseId', courseId) }
     try {
-      let response = await axios.put(`http://127.0.0.1:8000/api/student_courses/grade_course_object/${courseId}/`, formData, {
+      let response = await axios.put(`http://127.0.0.1:8000/api/student_courses/put_grade_course_object/${courseId}/`, formData, {
         headers: {
           Authorization: "Bearer " + token,
         },

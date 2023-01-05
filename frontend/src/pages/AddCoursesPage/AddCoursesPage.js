@@ -19,7 +19,7 @@ const AddCoursesPage = () => {
 
   async function postNewCourses() {
     try {
-      let response = await axios.post(`http://127.0.0.1:8000/api/courses/create_courses/`, formData, {
+      let response = await axios.post(`http://127.0.0.1:8000/api/courses/post_create_courses/`, formData, {
         headers: {
           Authorization: "Bearer " + token,
         },
@@ -33,11 +33,9 @@ const AddCoursesPage = () => {
 
   return (
     <div className="container">
-      <h1>Create New Course</h1>
+      <h1>Add New Course</h1>
       <h2><Link to="/employee">Back to Employee Portal</Link></h2>
-      <h2><Link to="/student_directory" className="register"> Directory of Current Students </Link></h2>
       <h2><Link to="/course_catalog" className="register">View Catalog/Delete A Course</Link></h2>
-      <h2><Link to="/candidates" className="register"> Candidates for Graduation </Link></h2>
       <hr />
       <form className="form" onSubmit={handleSubmit}>
         <label>

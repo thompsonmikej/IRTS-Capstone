@@ -35,7 +35,7 @@ const ScheduledCoursesPage = () => {
             "course_id": courseId,
         }
         try {
-            let response = await axios.post(`http://127.0.0.1:8000/api/student_courses/enroll_student_into_courses/`,
+            let response = await axios.post(`http://127.0.0.1:8000/api/student_courses/post_student_into_courses/`,
                 courseObject,
                 {
                     headers: {

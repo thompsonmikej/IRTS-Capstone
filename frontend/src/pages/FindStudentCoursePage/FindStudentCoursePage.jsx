@@ -15,9 +15,7 @@ const FindStudentCoursePage = (props) => {
     const [user, token] = useAuth();
     const [studentCourses, setStudentCourses] = useState([]);
     const [studentCourseRecords, setStudentCourseRecords] = useState([]);
-    // const [graduationEligibility, setGraduationEligibility] = useState([]);
     const { studentId, courseId } = useParams();
-    const { graduationEligibility } = useContext(AuthContext);
     const navigate = useNavigate();
     const defaultValues = { user_id: "", course_id: "", grade_received: "" };
     const userObjectValues = { semester: "", gpa: "", credits_earned: "", grad_ready:"" };
@@ -27,7 +25,7 @@ const FindStudentCoursePage = (props) => {
         const fetchStudentCourseRecords = async (props) => {
             { console.log('props pass in studentid, fetchStudentCourseRecords', studentId) }
             try {
-                let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/admin_views_studentcourses/${studentId}/`,
+                let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/admin_gets_studentcourses/${studentId}/`,
                     {
                         headers: {
                             Authorization: "Bearer " + token,
@@ -41,7 +39,7 @@ const FindStudentCoursePage = (props) => {
         }
         fetchStudentCourseRecords();
     }, [token]);
-//
+
     useEffect(() => {
         const fetchGraduationEligibility = async (props) => {
             { console.log('props pass in fetchGradEligibility', studentId) }
@@ -86,7 +84,8 @@ const FindStudentCoursePage = (props) => {
         <><h1>Find Student's Course to Grade</h1>
             <h2>Logged-in Employee: {user.first_name} {user.last_name}</h2>
             <br />
-            <h2><Link to="/employee">Back to Employee Portal</Link></h2><>
+            <h2><Link to="/employee">Back to Employee Portal</Link></h2>
+            <h2><Link to="/student_directory" className="register"> Directory of Current Students </Link></h2><>
                 <h2><Link to="/candidates" className="register"> Candidates for Graduation </Link></h2><br />
                 <><div className="container">
                     {studentCourseRecords.map((studentCourseRecord) => (
