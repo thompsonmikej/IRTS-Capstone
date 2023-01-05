@@ -69,7 +69,6 @@ const AvailableCourses = (props) => {
         } catch (error) {
             console.log('error in enroll', error.response.data)
         }
-
     };
     
 

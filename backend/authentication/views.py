@@ -28,7 +28,7 @@ class RegisterView(generics.CreateAPIView):
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
-def directory_of_students(request):
+def student_directory(request):
     """/api/auth/student_directory/  These are students with classes. GET users with courses
     """
     students = User.objects.all().filter(is_student=True)
@@ -48,8 +48,8 @@ def grad_ready_candidates(request):
 
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])   
-def put_individual_graduation_eligibility(request, user_id):
-    """api/auth/individual_graduation_eligibility/
+def put_student_graduation_eligibility(request, user_id):
+    """api/auth/student_graduation_eligibility/
     UPDATES grad_ready, GPA, semester, credits_earned
     """   
     student_object = User.objects.get(id=user_id)
@@ -72,18 +72,8 @@ def put_individual_graduation_eligibility(request, user_id):
     
     if (sum_of_credits >= 128 and gpa >= 3):
         student_object.grad_ready = True
-        print('student_gpa', gpa)
-        print('TRUE (4) sum_of_credits', sum_of_credits)
-        print('TRUE (4) is grad_ready', student_object.grad_ready)
-
     else:
         student_object.grad_ready = False
-        print('student_gpa', gpa)
-        print('ELSE (0) sum_of_credits', sum_of_credits)
-        print('ELSE (0) is grad ready', student_object.grad_ready)
-        print('student object', student_object)
-        print('student object #', student_object.id)
-        print('ELSE (0) is student', student_object.is_student)
 
     student_object.grad_ready
     student_object.save()
@@ -91,100 +81,6 @@ def put_individual_graduation_eligibility(request, user_id):
     serializer = PersonObjectSerializer(student_object)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
-
-
-@api_view(['PUT'])
-@permission_classes([IsAuthenticated]) 
-def put_calculate_semester_by_credits(request, user_id):
-    """api/auth/put_calculate_semester_by_credits/<int:user_id>/
-
-    PUT into AUTH/USER semester
-    """    
-    student_object = User.objects.get(id=user_id)
-
-    passed_courses = StudentCourse.objects.filter(user_id=user_id).exclude(credits_received=0)
-    sum_of_credits = 0
-    semester = 0
-    for passed_course in passed_courses:
-        sum_of_credits += passed_course.credits_received
-        semester=(sum_of_credits//16)+1
-
-    student_object.semester = semester
-
-
-    try:
-        serializer = PersonObjectSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save(semester=semester)
-        print('users_courses', passed_courses)
-        print('sum_of_credits', sum_of_credits)
-        print('POST INTO SEMESTER: current_semester', semester)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-    except:
-        print('EXCEPT users_courses', passed_courses)
-        print('EXCEPT sum_of_credits', sum_of_credits)
-        print('EXCEPT POST INTO SEMESTER: current_semester', semester)
-        return Response(status=status.HTTP_400_BAD_REQUEST)
-
-
-
-@api_view(['PUT'])
-@permission_classes([IsAuthenticated])  
-def sum_credits_earned(request, user_id):
-    """api/auth/sum_credits_earned/
-    """   
-    student_object = User.objects.get(id=user_id)
-
-    credits_accumulated = get_object_or_404(User, pk=user_id)
-    credits_accumulated.credits_earned=request.data['credits_earned']
-    try:
-        serializer = PersonObjectSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save(student_object.credits_earned)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-    except:
-        return Response(status=status.HTTP_400_BAD_REQUEST)
-
-@api_view(['PUT'])
-@permission_classes([IsAuthenticated])   
-def gpa_earned(request, user_id):
-    """api/auth/put_gpa/<int:user_id>/', #stores GPA to DB
-    """   
-    calculated_gpa = get_object_or_404(User, pk=user_id)
-    calculated_gpa.gpa=request.data['gpa']
-    try:
-        serializer = PersonObjectSerializer(calculated_gpa)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-    except:
-        return Response(status=status.HTTP_400_BAD_REQUEST)
-
-@api_view(['PUT'])
-@permission_classes([IsAuthenticated])   
-def current_semester(request, user_id):
-    """api/auth/put_semester/<int:user_id>/', #stores semester to DB
-    """   
-    student_semester = get_object_or_404(User, pk=user_id)
-    student_semester.semester=request.data['semester']
-    try:
-        # student_semester.save()
-        serializer = PersonObjectSerializer(student_semester)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-    except:
-        return Response(status=status.HTTP_400_BAD_REQUEST)
-
-@api_view(['PUT'])
-@permission_classes([IsAuthenticated])   
-def grad_status(request, user_id):
-    """api/auth/put_grad_status/<int:user_id>/' #stores grad status to DB
-    """   
-    status_is_a_graduate = get_object_or_404(User, pk=user_id)
-    status_is_a_graduate.grad_ready=request.data['grad_ready']
-    try:
-        status_is_a_graduate.save()
-        serializer = PersonObjectSerializer(status_is_a_graduate)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-    except:
-        return Response(status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])   

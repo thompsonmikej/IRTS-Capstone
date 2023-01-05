@@ -15,16 +15,17 @@ const FindStudentCoursePage = (props) => {
     const [user, token] = useAuth();
     const [studentCourses, setStudentCourses] = useState([]);
     const [studentCourseRecords, setStudentCourseRecords] = useState([]);
+    // const [graduationEligibility, setGraduationEligibility] = useState([]);
     const { studentId, courseId } = useParams();
-    const { studentGrades } = useContext(AuthContext);
+    const { graduationEligibility } = useContext(AuthContext);
     const navigate = useNavigate();
     const defaultValues = { user_id: "", course_id: "", grade_received: "" };
-    const [formData, handleInputChange, handleSubmit,] = useCustomForm(defaultValues, studentGrades, postNewGrades
-    );
+    const userObjectValues = { semester: "", gpa: "", credits_earned: "", grad_ready:"" };
+    const [formData, handleInputChange, handleSubmit,] = useCustomForm(defaultValues, userObjectValues,);
 
     useEffect(() => {
         const fetchStudentCourseRecords = async (props) => {
-            { console.log('props pass in studentid', studentId) }
+            { console.log('props pass in studentid, fetchStudentCourseRecords', studentId) }
             try {
                 let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/admin_views_studentcourses/${studentId}/`,
                     {
@@ -40,20 +41,30 @@ const FindStudentCoursePage = (props) => {
         }
         fetchStudentCourseRecords();
     }, [token]);
+//
+    useEffect(() => {
+        const fetchGraduationEligibility = async (props) => {
+            { console.log('props pass in fetchGradEligibility', studentId) }
+            try {
+                let userObjectValues = {
+                    semester: "",
+                    gpa: "",
+                    credits_earned: "",
+                    grad_ready: ""
+                };
+                let response = await axios.put(`http://127.0.0.1:8000/api/auth/student_graduation_eligibility/${studentId}/`, userObjectValues, {
+                    headers: {
+                        Authorization: "Bearer " + token,
+                    },
+                });
+                console.log('PUT graduation_eligibility success', response)
+            } catch (error) {
+                console.log('PUT graduation_eligibility fail', error.response.data);
+            }
+        };
+        fetchGraduationEligibility();
+    }, [token]);
 
-
-    async function postNewGrades() {
-        try {
-            let response = await axios.put(`http://127.0.0.1:8000/api/student_courses/grade_course_object/`, formData, {
-                headers: {
-                    Authorization: "Bearer " + token,
-                },
-            });
-            console.log('post new Grade, formData', formData)
-        } catch (error) {
-            console.log('post new grade', error.message);
-        }
-    };
 
     function getGradeLetter(gradeNumber) {
         switch (gradeNumber) {
@@ -69,8 +80,6 @@ const FindStudentCoursePage = (props) => {
                 return ' ';
         }
     }
-    let letter = getGradeLetter()
-
     
         
     return (

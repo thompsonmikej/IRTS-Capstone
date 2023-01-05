@@ -104,26 +104,7 @@ def enroll_student_into_courses(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['GET'])
-def calculate_credits_earned(request, user_id):
-    credit_tally= StudentCourse.objects.filter(user_id=user_id).exclude(credits_received=0)
-    sum_of_credits = 0
-    for credit in credit_tally:
-        sum_of_credits += credit.credits_received
-    return Response(sum_of_credits)
 
-
-@api_view(['GET'])
-def get_semester_by_credits(request, user_id):
-    """get_semester_by_credits/<int:user_id>/
-    """    
-    users_courses = StudentCourse.objects.filter(user_id=user_id).exclude(credits_received=0)
-    sum_of_credits = 0
-    current_semester = 0
-    for course in users_courses:
-        sum_of_credits += course.credits_received
-        current_semester=(sum_of_credits//16)+1
-    return Response(current_semester)
 
 
 @api_view(['GET'])
