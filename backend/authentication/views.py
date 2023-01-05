@@ -28,8 +28,8 @@ class RegisterView(generics.CreateAPIView):
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
-def student_directory(request):
-    """/api/auth/student_directory/  These are students with classes. GET users with courses
+def get_student_directory(request):
+    """/api/auth/get_student_directory/  These are students with classes. GET users with courses
     """
     students = User.objects.all().filter(is_student=True)
     serializer = PersonObjectSerializer(students, many=True)
@@ -44,6 +44,24 @@ def grad_ready_candidates(request):
     candidates = User.objects.filter(grad_ready=True)
     serializer = PersonObjectSerializer(candidates, many=True)
     return Response(serializer.data)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_student_data(request, user_id):
+    """/api/auth/get_student_data/
+    """
+    student_data = User.objects.filter(id=user_id)
+    print('student_data',student_data)
+    serializer = PersonObjectSerializer(student_data)
+    return Response(serializer.data)
+    
+    
+    student_data.semester 
+    student_data.credits_earned 
+    student_data.gpa 
+    student_data.grad_ready 
+
 
 
 @api_view(['PUT'])

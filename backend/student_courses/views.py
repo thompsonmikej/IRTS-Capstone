@@ -60,8 +60,7 @@ def put_grade_course_object(request, student_course_id):
     courses_to_grade.grade_received=request.data['grade_received']
  
     if  int(courses_to_grade.grade_received) < 2:
-        courses_to_grade.credits_received = 0
-                
+        courses_to_grade.credits_received = 0           
     else:
         courses_to_grade.credits_received = course.credit_value
  

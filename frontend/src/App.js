@@ -44,7 +44,7 @@ function App() {
           }
         />
         {/* student portal */}
-        <Route path="/student_directory" element={<StudentDirectoryPage />} /> 
+       
         <Route path="/course_transcript" element={<TranscriptPage />} />
         <Route path="/courses_available/" element={<AvailableCourses />} />
         <Route path="/course_schedule" element={<ScheduledCoursesPage />} />
@@ -53,6 +53,7 @@ function App() {
         <Route path="/employee" element={<EmployeePortalPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/student_directory" element={<StudentDirectoryPage />} /> 
         <Route path="/grade_course/:studentId" element={<GradeCoursePage />} />
         <Route path="/candidates" element={<CandidatesPage />} />
         <Route path="/find_student_course/:studentId" element={<FindStudentPage />} />
