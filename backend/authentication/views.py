@@ -9,7 +9,6 @@ from rest_framework.response import Response
 from rest_framework import status
 from student_courses.serializers import StudentCourseSerializer
 from courses.serializers import CourseSerializer
-from courses.serializers import CourseSerializer
 from student_courses.models import StudentCourse, User
 from courses.models import Course
 from .models import User
@@ -39,7 +38,7 @@ def get_student_directory(request):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def grad_ready_candidates(request):
-    """/api/auth/candidates/  students to be filtered by credits_received >=128 && gpa >=3
+    """/api/auth/candidates/  
     """
     candidates = User.objects.filter(grad_ready=True)
     serializer = PersonObjectSerializer(candidates, many=True)
@@ -56,13 +55,6 @@ def get_student_data(request, user_id):
     serializer = PersonObjectSerializer(student_data, many=True)
     return Response(serializer.data)
     
-    
-    student_data.semester 
-    student_data.credits_earned 
-    student_data.gpa 
-    student_data.grad_ready 
-
-
 
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])   

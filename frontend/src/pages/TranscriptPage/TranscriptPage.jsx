@@ -9,10 +9,10 @@ const TranscriptPage = (props) => {
     const [user, token] = useAuth();
     const [studentTranscripts, setStudentTranscripts] = useState([]);
     const [studentData, setStudentData] = useState(0);
-    
-    { console.log('user', user)}
-    { console.log('studentTranscripts', studentTranscripts)}
-    { console.log('studentTranscripts course', studentTranscripts.credit_value)}
+
+    { console.log('user', user) }
+    { console.log('studentTranscripts', studentTranscripts) }
+    { console.log('studentTranscripts course', studentTranscripts.credit_value) }
 
     useEffect(() => {
         const fetchStudentTranscripts = async () => {
@@ -30,7 +30,7 @@ const TranscriptPage = (props) => {
         fetchStudentTranscripts();
     }, [token]);
 
-    
+
     useEffect(() => {
         const fetchStudentData = async () => {
             try {
@@ -39,7 +39,7 @@ const TranscriptPage = (props) => {
                         Authorization: "Bearer " + token,
                     },
                 });
-                {console.log(response.data)}
+                { console.log(response.data) }
                 setStudentData(response.data);
             } catch (error) {
                 console.log('Error in fetch studentData', error);
@@ -47,8 +47,6 @@ const TranscriptPage = (props) => {
         };
         fetchStudentData();
     }, [])
-
-    
 
     function getGradeLetter(gradeNumber) {
         { console.log('New entry: getGradeLetter: grade number', gradeNumber) }
@@ -71,17 +69,14 @@ const TranscriptPage = (props) => {
         <><h1>Your Transcript of Courses, <br />{user.first_name} {user.last_name}, ID# {user.id}</h1>
             <h2>CREDITS EARNED: {studentData[0].credits_earned}</h2>
             <h2>CURRENT SEMESTER: {studentData[0].semester}</h2>
-            <h2>GPA: {studentData[0].gpa}</h2>
-            <h2>GRADUATION STATUS: {studentData[0].grad_ready}</h2><br/>
+            <h2>GPA: {studentData[0].gpa}</h2><br />
             <h2><Link to={`/courses_available/`}>View Available Courses</Link></h2>
             <h2><Link to={`/course_schedule/`}>View Scheduled Courses</Link></h2>
             <hr />
             <br /><><><div className="container">
                 {studentTranscripts.map((studentTranscript) => (
                     <p key={studentTranscript.id}>
-                        <span>{studentTranscript.course.name} |</span>
-                        <span>GRADE: {getGradeLetter(studentTranscript.grade_received)} |</span>
-                        <span>CR VALUE: {studentTranscript.course.credit_value} |</span>
+                        <span>{studentTranscript.course.name} | GRADE: {getGradeLetter(studentTranscript.grade_received)} | CR VALUE: {studentTranscript.course.credit_value} |</span>
                         <span>CR EARNED: {studentTranscript.credits_received} |</span>
                         <span>FALL 2022 |</span>
                         <span><Link to="#" className="dummy">CR REQUIREMENTS</Link></span>
@@ -97,5 +92,3 @@ const TranscriptPage = (props) => {
 };
 
 export default TranscriptPage;
-
-

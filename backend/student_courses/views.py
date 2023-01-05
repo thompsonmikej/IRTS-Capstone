@@ -36,17 +36,6 @@ def admin_gets_studentcourses(request, user_id):
     serializer = StudentCourseSerializer(view_studentcourses, many=True)
     return Response(serializer.data)
 
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def get_gpa(request):
-    """api/users/grades/gpa 
-    """
-    gpa_received = StudentCourse.objects.filter(gpa__gte=0)
-    serializer = StudentCourseSerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])   
@@ -122,3 +111,4 @@ def get_graded_courses(request):
 		"failing_courses": StudentCourseSerializer(failing_courses, many=True).data,
 	}
     return Response(custom_course_dictionary)
+

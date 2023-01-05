@@ -20,6 +20,69 @@ def get_student_data(request):
 
 
 
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_courses_available(request, user_id):
+    """api/courses/courses_available/   
+    """
+    student_object = User.objects.get(id=user_id).get(semester=semester)
+    available_courses = Course.objects.filter(user_id=user_id).filter(semester__gte=semester).filter(grade_received=None).filter(grade_received=0).
+    serializer = CourseSerializer(available_courses, many=True)
+    return Response(serializer.data)
+
+
+    student_object = User.objects.filter(semester=semester)
+    courses_for_student = Course.objects.exclude(semester__lt=semester).filter(semester__gte=semester).values()
+    serializer = CourseSerializer(available_courses, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])   
+def put_student_graduation_eligibility(request, user_id):
+    """api/auth/student_graduation_eligibility/
+    UPDATES grad_ready, GPA, semester, credits_earned
+    """   
+    student_object = User.objects.get(id=user_id) 
+    # gets the student
+
+    course_objects = Course.objects.filter(semester=semester)
+    # matches courses with user's semester 
+
+    available_courses = StudentCourse.objects.filter(user_id=user_id).filter(grade_received=None).filter(grade_received=0)
+    #  gets courses student did not take
+    
+
+
+    passed_courses = StudentCourse.objects.filter(user_id=user_id).exclude(credits_received=0)
+    
+    
+    
+    # sum_of_credits = 0
+    # for passed_course in passed_courses:
+    #     sum_of_credits += passed_course.credits_received
+    #     semester=(sum_of_credits//16)+1
+
+    student_object.semester = semester
+    student_object.credits_earned = sum_of_credits
+    student_object.gpa = gpa   
+    
+    if (sum_of_credits >= 128 and gpa >= 3):
+        student_object.grad_ready = True
+    else:
+        student_object.grad_ready = False
+
+    student_object.grad_ready
+    student_object.save()
+
+    serializer = PersonObjectSerializer(student_object)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+
+
+
+
 # @api_view(['PUT'])
 # @permission_classes([IsAuthenticated])   
 # def put_student_graduation_eligibility(request, user_id):

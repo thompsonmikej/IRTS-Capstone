@@ -33,6 +33,11 @@ li {
   border-color: white;
     }
 
+.navBar a {
+    color: white;
+    font-weight: 400;
+}
+
 .navText {
   color: white;
 }
@@ -41,8 +46,12 @@ li {
   width: 55%;
 }
 
-.max-100width {
-  width: 100%;
+.max-80width {
+  width: 80%;
+}
+
+.max-120width {
+  width: 120%;
 }
 
 .navBar button:hover , a:hover {
@@ -90,6 +99,10 @@ hr {
   height: .75rem;
 }
 
+.label-text {
+  font-size: 1.25rem;
+  margin: -.5rem -.5rem -.5rem -0rem;
+}
 
 .navLink {
 color: white;
