@@ -7,90 +7,48 @@ import { Link } from "react-router-dom";
 const TranscriptPage = (props) => {
 
     const [user, token] = useAuth();
-    const [studentCourses, setStudentCourses] = useState([]);
-    const [Gpa, setGpa] = useState(0);
-    const [credits, setCredits] = useState(0);
-    const [creditsEarned, setCreditsEarned] = useState(0);
-    const [semester, setSemester] = useState(0);
+    const [studentTranscripts, setStudentTranscripts] = useState([]);
+    const [studentData, setStudentData] = useState(0);
     
     { console.log('user', user)}
-    { console.log('studentCourses', studentCourses)}
-    { console.log('studentCourses course', studentCourses.credit_value)}
+    { console.log('studentTranscripts', studentTranscripts)}
+    { console.log('studentTranscripts course', studentTranscripts.credit_value)}
 
     useEffect(() => {
-        const fetchStudentCourses = async () => {
+        const fetchStudentTranscripts = async () => {
             try {
                 let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/get_transcript/`, {
                     headers: {
                         Authorization: "Bearer " + token,
                     },
                 });
-                setStudentCourses(response.data);
+                setStudentTranscripts(response.data);
             } catch (error) {
-                console.log('Error in StudentCourses', error);
+                console.log('Error in StudentTranscripts', error);
             }
         };
-        fetchStudentCourses();
+        fetchStudentTranscripts();
     }, [token]);
 
+    
     useEffect(() => {
-        const fetchCredits = async () => {
+        const fetchStudentData = async () => {
             try {
-                let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/calculate_credits/${user.id}/`, {
+                let response = await axios.get(`http://127.0.0.1:8000/api/auth/get_student_data/${user.id}/`, {
                     headers: {
                         Authorization: "Bearer " + token,
                     },
                 });
-                setCredits(response.data);
-                { console.log(credits)}
+                {console.log(response.data)}
+                setStudentData(response.data);
             } catch (error) {
-                console.log('Error in fetch credits', error);
+                console.log('Error in fetch studentData', error);
             }
         };
-        fetchCredits();
+        fetchStudentData();
     }, [])
 
-    function readyToGraduate(credits, Gpa) {
-        if (credits >= 128 && Gpa >= 3)
-            return "Eligible for Bachelor's Degree"; 
-        else
-            return "En route to Bachelor's Degree";
-    }
-    let ready = readyToGraduate(credits, Gpa);
-
-
-    useEffect(() => {
-        const fetchSemester = async () => {
-            try {
-                let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/calculate_semester/${user.id}/`, {
-                    headers: {
-                        Authorization: "Bearer " + token,
-                    },
-                });
-                setSemester(response.data);
-            } catch (error) {
-                console.log('Error in fetch semester', error);
-            }
-        };
-        fetchSemester();
-    }, [])
-
-
-    useEffect(() => {
-        const fetchGpa = async () => {
-            try {
-                let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/get_calculate_gpa/${user.id}/`, {
-                    headers: {
-                        Authorization: "Bearer " + token,
-                    },
-                });
-                setGpa(response.data);
-            } catch (error) {
-                console.log('Error in fetch Gpa', error);
-            }
-        };
-        fetchGpa();
-    }, [])
+    
 
     function getGradeLetter(gradeNumber) {
         { console.log('New entry: getGradeLetter: grade number', gradeNumber) }
@@ -108,36 +66,23 @@ const TranscriptPage = (props) => {
         }
     }
 
-    function getCreditValue(numberGrade, creditValue ) {
-        let creditsReceived = creditValue;
-        switch (numberGrade) {
-            case 2:
-                return creditsReceived;
-            case 3:
-                return creditsReceived;
-            case 4:
-                return creditsReceived;
-            default:
-                return 0;
-        }
-    }
 
     return (
         <><h1>Your Transcript of Courses, <br />{user.first_name} {user.last_name}, ID# {user.id}</h1>
-            <h2>CREDITS EARNED: {credits}</h2>
-            <h2>CURRENT SEMESTER: {semester}</h2>
-            <h2>GPA: {Gpa}</h2>
-            <h2>GRADUATION STATUS: {ready}</h2><br/>
+            <h2>CREDITS EARNED: {studentData[0].credits_earned}</h2>
+            <h2>CURRENT SEMESTER: {studentData[0].semester}</h2>
+            <h2>GPA: {studentData[0].gpa}</h2>
+            <h2>GRADUATION STATUS: {studentData[0].grad_ready}</h2><br/>
             <h2><Link to={`/courses_available/`}>View Available Courses</Link></h2>
             <h2><Link to={`/course_schedule/`}>View Scheduled Courses</Link></h2>
             <hr />
             <br /><><><div className="container">
-                {studentCourses.map((studentCourse) => (
-                    <p key={studentCourse.id}>
-                        <span>{studentCourse.course.name} |</span>
-                        <span>GRADE: {getGradeLetter(studentCourse.grade_received)} |</span>
-                        <span>CR VALUE: {studentCourse.course.credit_value} |</span>
-                        <span>CR EARNED: {getCreditValue(studentCourse.grade_received, studentCourse.course.credit_value)} |</span>
+                {studentTranscripts.map((studentTranscript) => (
+                    <p key={studentTranscript.id}>
+                        <span>{studentTranscript.course.name} |</span>
+                        <span>GRADE: {getGradeLetter(studentTranscript.grade_received)} |</span>
+                        <span>CR VALUE: {studentTranscript.course.credit_value} |</span>
+                        <span>CR EARNED: {studentTranscript.credits_received} |</span>
                         <span>FALL 2022 |</span>
                         <span><Link to="#" className="dummy">CR REQUIREMENTS</Link></span>
                         <hr />

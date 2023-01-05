@@ -53,7 +53,7 @@ def get_student_data(request, user_id):
     """
     student_data = User.objects.filter(id=user_id)
     print('student_data',student_data)
-    serializer = PersonObjectSerializer(student_data)
+    serializer = PersonObjectSerializer(student_data, many=True)
     return Response(serializer.data)
     
     
