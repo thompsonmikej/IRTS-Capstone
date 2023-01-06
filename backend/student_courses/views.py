@@ -32,8 +32,8 @@ def get_scheduled_courses(request):
 def admin_gets_studentcourses(request, user_id):
     """api/student_courses/admin_gets_studentcourses/<int:user_id>/  
     """
-    view_studentcourses = StudentCourse.objects.filter(user_id=user_id)
-    serializer = StudentCourseSerializer(view_studentcourses, many=True)
+    get_studentcourses = StudentCourse.objects.filter(user_id=user_id)
+    serializer = StudentCourseSerializer(get_studentcourses, many=True)
     return Response(serializer.data)
 
 
@@ -80,15 +80,6 @@ def post_student_into_courses(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def get_transcript(request):
-    """api/student_courses/get_transcript/  
-    """
-    student_transcript = StudentCourse.objects.filter(user=request.user)
-    serializer = StudentCourseSerializer(student_transcript, many=True)
-    return Response(serializer.data)
 
 
 @api_view(['GET'])

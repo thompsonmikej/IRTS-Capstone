@@ -5,8 +5,10 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
 from .models import Course
 from .serializers import CourseSerializer
-from student_courses.models import StudentCourse
+from student_courses.serializers import StudentCourseSerializer
 from django.contrib.auth.models import User
+from student_courses.models import StudentCourse, User
+from courses.models import Course
 
 
 # Create your views here.
@@ -20,15 +22,18 @@ def get_all_courses(request):
     serializer = CourseSerializer(all_courses, many=True)
     return Response(serializer.data)
 
+    
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def get_courses_available(request, user_id):
-    """api/courses/courses_available/   
+def get_courses_available(request):
+    """api/courses/courses_available/  
     """
-    student_object = User.objects.get(id=user_id)
-    available_courses = Course.objects.filter(user_id=user_id).filter(grade_received=None).filter(grade_received=0)
+    available_courses = Course.objects.filter(semester__gt=request.user.semester)
+    print(request.user.semester)
+    print(available_courses)
     serializer = CourseSerializer(available_courses, many=True)
     return Response(serializer.data)
+
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])

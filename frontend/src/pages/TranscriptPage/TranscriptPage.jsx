@@ -9,11 +9,7 @@ const TranscriptPage = (props) => {
     const [user, token] = useAuth();
     const [studentTranscripts, setStudentTranscripts] = useState([]);
     const [studentData, setStudentData] = useState(0);
-
-    { console.log('user', user) }
-    { console.log('studentTranscripts', studentTranscripts) }
-    { console.log('studentTranscripts course', studentTranscripts.credit_value) }
-
+    
     useEffect(() => {
         const fetchStudentTranscripts = async () => {
             try {
@@ -30,26 +26,26 @@ const TranscriptPage = (props) => {
         fetchStudentTranscripts();
     }, [token]);
 
+ useEffect(() => {
+     const fetchStudentData = async () => {
+         try {
+             let response = await axios.get(`http://127.0.0.1:8000/api/auth/get_student_data/${user.id}/`, {
+                 headers: {
+                     Authorization: "Bearer " + token,
+                 },
+             });
+             setStudentData(response.data);
+             console.log('studentData success', response.data)
+         } catch (error) {
+             console.log('Error in fetch studentData', error);
+         }
+     };
+     fetchStudentData();
+ }, [])
 
-    useEffect(() => {
-        const fetchStudentData = async () => {
-            try {
-                let response = await axios.get(`http://127.0.0.1:8000/api/auth/get_student_data/${user.id}/`, {
-                    headers: {
-                        Authorization: "Bearer " + token,
-                    },
-                });
-                { console.log(response.data) }
-                setStudentData(response.data);
-            } catch (error) {
-                console.log('Error in fetch studentData', error);
-            }
-        };
-        fetchStudentData();
-    }, [])
-
+    
     function getGradeLetter(gradeNumber) {
-        { console.log('New entry: getGradeLetter: grade number', gradeNumber) }
+        console.log('New entry: getGradeLetter: grade number', gradeNumber) 
         switch (gradeNumber) {
             case 4:
                 return 'A';
@@ -64,12 +60,16 @@ const TranscriptPage = (props) => {
         }
     }
 
+    console.log('user', user)
+    console.log('studentTranscripts', studentTranscripts)
+    console.log('studentData', studentData) 
 
     return (
         <><h1>Your Transcript of Courses, <br />{user.first_name} {user.last_name}, ID# {user.id}</h1>
-            <h2>CREDITS EARNED: {studentData[0].credits_earned}</h2>
-            <h2>CURRENT SEMESTER: {studentData[0].semester}</h2>
-            <h2>GPA: {studentData[0].gpa}</h2><br />
+            <h2>CREDITS EARNED: {studentData.credits_earned}</h2>
+            <h2>CURRENT SEMESTER: {studentData.semester}</h2>
+            <h2>GPA: {studentData.gpa}</h2><br />
+
             <h2><Link to={`/courses_available/`}>View Available Courses</Link></h2>
             <h2><Link to={`/course_schedule/`}>View Scheduled Courses</Link></h2>
             <hr />
