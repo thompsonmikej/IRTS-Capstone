@@ -1,1 +1,1 @@
-SELECT * FROM irts_db.courses_course;
+SELECT * FROM irts_db.authentication_user;

@@ -92,7 +92,7 @@ const FindStudentCoursePage = (props) => {
                         <p key={studentCourseRecord.id}>
                             {console.log('student', studentCourseRecords)}
                             <hr />
-                            <span>STU ID: {studentCourseRecords[0].user.id} | {studentCourseRecords[0].user.first_name} {studentCourseRecords[0].user.last_name} | {studentCourseRecord.course.name} | GRADE: {getGradeLetter(studentCourseRecord.grade_received)} | CR EARNED: {studentCourseRecord.credits_received} | <Link to={`/grade_course/${studentId}`}>GRADE, COURSE ID: {studentCourseRecord.id}</Link> </span>
+                            <span>ID: {studentCourseRecords[0].user.id} | {studentCourseRecords[0].user.first_name} {studentCourseRecords[0].user.last_name} | {studentCourseRecord.course.name} | GRADE: {getGradeLetter(studentCourseRecord.grade_received)} | CR EARNED: {studentCourseRecord.credits_received} | <Link to={`/grade_course/${studentId}`}>GRADE, COURSE ID: {studentCourseRecord.id}</Link> </span>
                         </p>
                     ))}
                 </div>
