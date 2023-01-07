@@ -23,7 +23,7 @@ const AddCoursesPage = () => {
         headers: {
           Authorization: "Bearer " + token,
         },
-      });
+      },[]);
       navigate(`/employee`);
     } catch (error) {
       console.log(error.message);
@@ -79,7 +79,7 @@ const AddCoursesPage = () => {
             name=""
           />
         </label>
-        <button onClick={() => postNewCourses()}>Add to Catalog</button>
+        <button>Add to Catalog</button>
       </form>
     </div>
   );
