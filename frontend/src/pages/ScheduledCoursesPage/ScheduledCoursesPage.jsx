@@ -77,8 +77,8 @@ const ScheduledCoursesPage = () => {
     return (
         <><h1>Your Course Schedule, <br />{user.first_name} {user.last_name}, ID# {user.id}</h1>
             <h2>BACHELOR'S DEGREE PROGRAM</h2>
-            <h2>COURSES ENROLLED: TBD </h2>
-            <h2>CREDITS ATTEMPTED THIS SEMESTER: TBD</h2>
+            <h2>COURSES ENROLLED: <Link to={`#`} className="dummy">TBD</Link> </h2>
+            <h2>CREDITS ATTEMPTED THIS SEMESTER:<Link to={`#`} className="dummy">TBD</Link></h2>
             <h2><Link to={`/courses_available/`}>View Available Courses</Link></h2>
             <h2><Link to="/course_transcript">View Transcript</Link></h2>
             <br /><><><div>
@@ -88,11 +88,7 @@ const ScheduledCoursesPage = () => {
                         <span className="schedule-button">
                             <button type='submit' onClick={() => selectDeleteCourses(course.id)}>Disenroll</button>
                         </span>
-                        <span><Link to={`#`} className="dummy">| {course.course.name} |</Link> </span>
-                        <span>DAYS: M, T, W |</span>
-                        <span>CR VALUE: {course.course.credit_value} |</span>
-                        <span>LOC: ONLN |</span>
-                        <span>AUG - DEC</span>
+                        <span><Link to={`#`} className="dummy">| {course.course.name} |</Link>DAYS: M, T, W | CR VALUE: {course.course.credit_value} | LOC: ONLN | AUG - DEC</span>
 
                     </div>
                 ))}

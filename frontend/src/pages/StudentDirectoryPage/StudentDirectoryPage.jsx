@@ -40,9 +40,7 @@ const StudentDirectoryPage = () => {
                 {students.map((student) => (
                     <div key={student.id}>
                         <hr /><div>
-                            <span ><Link to={`/find_student_course/${student.id}`}>FIND STUDENT COURSE</Link> | <Link to="#" className="dummy">XFER CRDT</Link> | SEM: {student.semester} | {student.first_name} {student.last_name} |</span>
-                            <span>GPA: {student.gpa} |</span>
-                            <span>CR EARNED: {student.credits_earned} |</span>
+                            <span ><Link to={`/find_student_course/${student.id}`}>FIND COURSE</Link>| <Link to="#" className="dummy">XFER CRDT</Link> | SEM: {student.semester} | {student.first_name} {student.last_name} | GPA: {student.gpa} | CR EARNED: {student.credits_earned}</span>
                         </div>
                     </div>
                 ))}

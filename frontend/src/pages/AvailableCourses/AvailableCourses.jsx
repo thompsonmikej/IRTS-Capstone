@@ -64,15 +64,9 @@ const AvailableCourses = (props) => {
                 {availableCourses.map((availableCourse) => (
                     <><div key={availableCourse.id} className="container">
                         {console.log('course:', availableCourse)}
-                        <hr />
-                        <span className="schedule-button">
-                            <button type='submit' onClick={() => selectCourse(availableCourse.id)}>Enroll</button>
-                        </span>
-                        <span><Link to={`#`} className="dummy">| {availableCourse.name} |</Link></span>
-                        <span>CR VALUE: {availableCourse.credit_value} |</span>
-                        <span><Link to={`#`} className="dummy">DAYS: M, T, W |</Link></span>
-                        <span>INSTR: SMITH |</span>
-                        <span>LOC: ONLN  </span>
+                        <hr /><span className="schedule-button">
+                            <button type='submit' onClick={() => selectCourse(availableCourse.id)}>Enroll</button></span>
+                        <span><Link to={`#`} className="dummy">| {availableCourse.name} |</Link>CR VALUE: {availableCourse.credit_value} |<Link to={`#`} className="dummy"> DAYS: M, T, W |</Link>INSTR: SMITH | LOC: ONLN </span>
                     </div>
                     </>
                 ))}
