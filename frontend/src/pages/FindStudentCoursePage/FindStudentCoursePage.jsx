@@ -13,7 +13,6 @@ import './FindStudentCoursePage.css';
 const FindStudentCoursePage = (props) => {
 
     const [user, token] = useAuth();
-    const [studentCourses, setStudentCourses] = useState([]);
     const [studentCourseRecords, setStudentCourseRecords] = useState([]);
     const { studentId, courseId } = useParams();
     const navigate = useNavigate();

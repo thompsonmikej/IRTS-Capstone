@@ -11,10 +11,10 @@ urlpatterns = [
     path('student_directory/', views.get_student_directory),    
     path('get_student_data/<int:user_id>/', views.get_student_data),    
     path("student_graduation_eligibility/<int:user_id>/", views.put_student_graduation_eligibility),
-
+    path("get_student_graduation_eligibility/<int:user_id>/", views.put_student_graduation_eligibility),
+    path('get_current_gpa/<int:user_id>/', views.get_current_gpa),
+    path('get_current_semester/<int:user_id>/', views.get_current_semester),
+    path('get_current_credits/<int:user_id>/', views.get_current_credits),
     
-    
-
-
 
 ]

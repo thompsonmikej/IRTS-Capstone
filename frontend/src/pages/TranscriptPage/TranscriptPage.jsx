@@ -2,14 +2,20 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 
 
 const TranscriptPage = (props) => {
 
     const [user, token] = useAuth();
     const [studentTranscripts, setStudentTranscripts] = useState([]);
-    const [studentData, setStudentData] = useState(0);
-    
+    const [Gpa, setGpa] = useState(0);
+    const [credits, setCredits] = useState(0);
+    const [semester, setSemester] = useState(0);
+    // const { userId } = useParams();
+    let userId= user.id
+    console.log(userId)
+
     useEffect(() => {
         const fetchStudentTranscripts = async () => {
             try {
@@ -26,24 +32,59 @@ const TranscriptPage = (props) => {
         fetchStudentTranscripts();
     }, [token]);
 
- useEffect(() => {
-     const fetchStudentData = async () => {
-         try {
-             let response = await axios.get(`http://127.0.0.1:8000/api/auth/get_student_data/${user.id}/`, {
-                 headers: {
-                     Authorization: "Bearer " + token,
-                 },
-             });
-             setStudentData(response.data);
-             console.log('studentData success', response.data)
-         } catch (error) {
-             console.log('Error in fetch studentData', error);
-         }
-     };
-     fetchStudentData();
- }, [])
 
-    
+    useEffect(() => {
+        const fetchGpa = async () => {
+            try {
+                let response = await axios.get(`http://127.0.0.1:8000/api/auth/get_current_gpa/${userId}/`, {
+                    headers: {
+                        Authorization: "Bearer " + token,
+                    },
+                });
+                setGpa(response.data);
+            } catch (error) {
+                console.log('Error in fetch Gpa', error);
+            }
+        };
+        fetchGpa();
+    }, [token])
+
+    useEffect(() => {
+        const fetchCredits = async () => {
+            console.log('userId', userId)
+            try {
+                let response = await axios.get(`http://127.0.0.1:8000/api/auth/get_current_credits/${userId}/`, {
+                    headers: {
+                        Authorization: "Bearer " + token,
+                    },
+                });
+                setCredits(response.data);
+            } catch (error) {
+                console.log('Error in fetch credits', error);
+            }
+        };
+        fetchCredits();
+    }, [token])
+
+
+    useEffect(() => {
+        const fetchSemester = async () => {
+            try {
+                let response = await axios.get(`http://127.0.0.1:8000/api/auth/get_current_semester/${userId}/`, {
+                    headers: {
+                        Authorization: "Bearer " + token,
+                    },
+                });
+                setSemester(response.data);
+            } catch (error) {
+                console.log('Error in fetch semester', error);
+            }
+        };
+        fetchSemester();
+    }, [token])
+
+
+
     function getGradeLetter(gradeNumber) {
         console.log('New entry: getGradeLetter: grade number', gradeNumber) 
         switch (gradeNumber) {
@@ -60,15 +101,22 @@ const TranscriptPage = (props) => {
         }
     }
 
-    console.log('user', user)
-    console.log('studentTranscripts', studentTranscripts)
-    console.log('studentData', studentData) 
+    function readyToGraduate(credits, Gpa) {
+        if (credits >= 128 && Gpa >= 3)
+            return "Eligible for Bachelor's Degree";
+        else
+            return "En route to Bachelor's Degree";
+    }
+    let ready = readyToGraduate(credits, Gpa);
 
     return (
         <><h1>Your Transcript of Courses, <br />{user.first_name} {user.last_name}, ID# {user.id}</h1>
-            <h2>CREDITS EARNED: {studentData.credits_earned}</h2>
-            <h2>CURRENT SEMESTER: {studentData.semester}</h2>
-            <h2>GPA: {studentData.gpa}</h2><br />
+            <h2>CREDITS EARNED: {credits}</h2>
+            <h2>CURRENT SEMESTER: {semester}</h2>
+            <h2>GPA: {Gpa}</h2>
+            <h2>STATUS: {ready}</h2>
+            
+            <br />
 
             <h2><Link to={`/courses_available/`}>View Available Courses</Link></h2>
             <h2><Link to={`/course_schedule/`}>View Scheduled Courses</Link></h2>

@@ -23,7 +23,7 @@ def get_transcript(request):
 def get_scheduled_courses(request):
     """api/student_courses/get_scheduled_courses
     """
-    scheduled_ungraded_courses = StudentCourse.objects.filter(user=request.user).filter(credits_received=None).filter(credits_received=0)
+    scheduled_ungraded_courses = StudentCourse.objects.filter(user=request.user).filter(credits_received=None)
     serializer = StudentCourseSerializer(scheduled_ungraded_courses, many=True)
     return Response(serializer.data)
 
@@ -35,6 +35,7 @@ def admin_gets_studentcourses(request, user_id):
     get_studentcourses = StudentCourse.objects.filter(user_id=user_id)
     serializer = StudentCourseSerializer(get_studentcourses, many=True)
     return Response(serializer.data)
+
 
 
 @api_view(['PUT'])

@@ -55,6 +55,51 @@ def get_student_data(request, user_id):
     serializer = PersonObjectSerializer(student_data, many=True)
     return Response(serializer.data)
     
+@api_view(['GET'])
+def get_current_semester(request, user_id):
+    """api/auth/current_semester/'
+    """    
+    student_object = User.objects.get(id=user_id)
+    passed_courses = StudentCourse.objects.filter(user_id=user_id).exclude(credits_received=0)
+    sum_of_credits = 0
+    for passed_course in passed_courses:
+        sum_of_credits += passed_course.credits_received
+        semester=(sum_of_credits//16)+1
+    print('current_semester', semester)    
+    # current_semester = User.objects.filter(semester__gte=1)
+    # serializer = PersonObjectSerializer(current_semester, many=False)
+    return Response(semester)
+
+
+@api_view(['GET'])
+def get_current_credits(request, user_id):
+    """api/auth/get_current_credits/'
+    """    
+    student_object = User.objects.get(id=user_id)
+    passed_courses = StudentCourse.objects.filter(user_id=user_id).exclude(credits_received=0)
+    sum_of_credits = 0
+    for passed_course in passed_courses:
+        sum_of_credits += passed_course.credits_received
+    print('sum_of_credits', sum_of_credits)
+    # serializer = PersonObjectSerializer(semester, many=False)
+    return Response(sum_of_credits)
+    
+
+@api_view(['GET'])
+def get_current_gpa(request, user_id):
+    """api/auth/get_current_gpa/'
+    """        
+    student_object = User.objects.get(id=user_id)
+    graded_courses = StudentCourse.objects.filter(user_id=user_id).exclude(grade_received=0)
+    sum_of_grades = 0
+    for grade in graded_courses:
+        sum_of_grades += grade.grade_received
+        print('grade_received', grade.grade_received)
+        print('sum_of_grades', sum_of_grades)
+    gpa = sum_of_grades/len(graded_courses)
+    print('gpa', gpa)
+    return Response(gpa)
+
 
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])   
@@ -64,10 +109,12 @@ def put_student_graduation_eligibility(request, user_id):
     """   
     student_object = User.objects.get(id=user_id)
 
-    graded_courses = StudentCourse.objects.filter(user_id=user_id).exclude(grade_received=0)
+    graded_courses = StudentCourse.objects.filter(user_id=user_id).exclude(grade_received = 0 )
     sum_of_grades = 0
     for grade in graded_courses:
         sum_of_grades += grade.grade_received
+        print('grade_received', grade.grade_received)
+        print('sum_of_grades', sum_of_grades)
     gpa = sum_of_grades/len(graded_courses)
 
     passed_courses = StudentCourse.objects.filter(user_id=user_id).exclude(credits_received=0)
