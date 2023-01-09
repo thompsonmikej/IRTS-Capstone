@@ -9,7 +9,7 @@ const Navbar = (props) => {
   const { logoutUser, user } = useContext(AuthContext);  
   const navigate = useNavigate();
   return (
-    <div className="navBar centered max-55width">
+    <div className="navBar centered max-45width">
           {user ? (
               <><label>
             <span className="navText brand centered">

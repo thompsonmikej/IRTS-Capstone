@@ -66,8 +66,6 @@ def get_current_semester(request, user_id):
         sum_of_credits += passed_course.credits_received
         semester=(sum_of_credits//16)+1
     print('current_semester', semester)    
-    # current_semester = User.objects.filter(semester__gte=1)
-    # serializer = PersonObjectSerializer(current_semester, many=False)
     return Response(semester)
 
 
@@ -81,7 +79,6 @@ def get_current_credits(request, user_id):
     for passed_course in passed_courses:
         sum_of_credits += passed_course.credits_received
     print('sum_of_credits', sum_of_credits)
-    # serializer = PersonObjectSerializer(semester, many=False)
     return Response(sum_of_credits)
     
 
