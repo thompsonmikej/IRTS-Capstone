@@ -29,8 +29,6 @@ def get_courses_available(request):
     """api/courses/courses_available/  
     """
     available_courses = Course.objects.filter(semester=request.user.semester)
-    print(request.user.semester)
-    print(available_courses)
     serializer = CourseSerializer(available_courses, many=True)
     return Response(serializer.data)
 
