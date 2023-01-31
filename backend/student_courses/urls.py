@@ -7,7 +7,7 @@ urlpatterns = [
     path('get_transcript/', views.get_transcript), 
     path('get_scheduled_courses/', views.get_scheduled_courses),
     path('put_grade_course_object/<int:student_course_id>/', views.put_grade_course_object), 
-    path('get_graded_courses/', views.get_graded_courses),
+    # path('get_graded_courses/', views.get_graded_courses),
     path('delete_courses/<int:pk>/', views.delete_courses),
     
      

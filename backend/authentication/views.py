@@ -45,14 +45,14 @@ def grad_ready_candidates(request):
     return Response(serializer.data)
 
 
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def get_student_data(request, user_id):
-    """/api/auth/get_student_data/
-    """
-    student_data = User.objects.filter(id=user_id)
-    serializer = PersonObjectSerializer(student_data, many=True)
-    return Response(serializer.data)
+# @api_view(['GET'])
+# @permission_classes([IsAuthenticated])
+# def get_student_data(request, user_id):
+#     """/api/auth/get_student_data/
+#     """
+#     student_data = User.objects.filter(id=user_id)
+#     serializer = PersonObjectSerializer(student_data, many=True)
+#     return Response(serializer.data)
     
 @api_view(['GET'])
 def get_current_semester(request, user_id):
@@ -92,40 +92,40 @@ def get_current_gpa(request, user_id):
     return Response(gpa)
 
 
-@api_view(['PUT'])
-@permission_classes([IsAuthenticated])   
-def put_student_graduation_eligibility(request, user_id):
-    """api/auth/student_graduation_eligibility/
-    UPDATES grad_ready, GPA, semester, credits_earned
-    """   
-    student_object = User.objects.get(id=user_id)
+# @api_view(['PUT'])
+# @permission_classes([IsAuthenticated])   
+# def put_student_graduation_eligibility(request, user_id):
+#     """api/auth/student_graduation_eligibility/
+#     UPDATES grad_ready, GPA, semester, credits_earned
+#     """   
+#     student_object = User.objects.get(id=user_id)
 
-    graded_courses = StudentCourse.objects.filter(user_id=user_id).exclude(grade_received = 0 )
-    sum_of_grades = 0
-    for grade in graded_courses:
-        sum_of_grades += grade.grade_received
-    gpa = sum_of_grades/len(graded_courses)
+#     graded_courses = StudentCourse.objects.filter(user_id=user_id).exclude(grade_received = 0 )
+#     sum_of_grades = 0
+#     for grade in graded_courses:
+#         sum_of_grades += grade.grade_received
+#     gpa = sum_of_grades/len(graded_courses)
 
-    passed_courses = StudentCourse.objects.filter(user_id=user_id).exclude(credits_received=0)
-    sum_of_credits = 0
-    for passed_course in passed_courses:
-        sum_of_credits += passed_course.credits_received
-        semester=(sum_of_credits//16)+1
+#     passed_courses = StudentCourse.objects.filter(user_id=user_id).exclude(credits_received=0)
+#     sum_of_credits = 0
+#     for passed_course in passed_courses:
+#         sum_of_credits += passed_course.credits_received
+#         semester=(sum_of_credits//16)+1
 
-    student_object.semester = semester
-    student_object.credits_earned = sum_of_credits
-    student_object.gpa = gpa   
+#     student_object.semester = semester
+#     student_object.credits_earned = sum_of_credits
+#     student_object.gpa = gpa   
     
-    if (sum_of_credits >= 128 and gpa >= 3):
-        student_object.grad_ready = True
-    else:
-        student_object.grad_ready = False
+#     if (sum_of_credits >= 128 and gpa >= 3):
+#         student_object.grad_ready = True
+#     else:
+#         student_object.grad_ready = False
 
-    student_object.grad_ready
-    student_object.save()
+#     student_object.grad_ready
+#     student_object.save()
 
-    serializer = PersonObjectSerializer(student_object)
-    return Response(serializer.data, status=status.HTTP_200_OK)
+#     serializer = PersonObjectSerializer(student_object)
+#     return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 @api_view(['PUT'])

@@ -83,24 +83,24 @@ def post_student_into_courses(request):
 
 
 
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def get_graded_courses(request):
-    """api/student_courses/get_graded_courses/
-    """
-    graded_courses = StudentCourse.objects.filter(user=request.user)
-    serializer = StudentCourseSerializer(graded_courses, many=True)
-    passing_courses = []
-    failing_courses = []
-    for single_course in graded_courses:
-        if (single_course.grade_received > 2):
-            passing_courses.append(single_course)
-        else:
-            failing_courses.append(single_course)
+# @api_view(['GET'])
+# @permission_classes([IsAuthenticated])
+# def get_graded_courses(request):
+#     """api/student_courses/get_graded_courses/
+#     """
+#     graded_courses = StudentCourse.objects.filter(user=request.user)
+#     serializer = StudentCourseSerializer(graded_courses, many=True)
+#     passing_courses = []
+#     failing_courses = []
+#     for single_course in graded_courses:
+#         if (single_course.grade_received > 2):
+#             passing_courses.append(single_course)
+#         else:
+#             failing_courses.append(single_course)
         
-    custom_course_dictionary = {
-		"passing_courses": StudentCourseSerializer(passing_courses, many=True).data,
-		"failing_courses": StudentCourseSerializer(failing_courses, many=True).data,
-	}
-    return Response(custom_course_dictionary)
+#     custom_course_dictionary = {
+# 		"passing_courses": StudentCourseSerializer(passing_courses, many=True).data,
+# 		"failing_courses": StudentCourseSerializer(failing_courses, many=True).data,
+# 	}
+#     return Response(custom_course_dictionary)
 

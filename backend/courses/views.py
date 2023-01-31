@@ -33,14 +33,14 @@ def get_courses_available(request):
     return Response(serializer.data)
 
 
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def get_course_credits(request, id):
-    """api/courses/get_course_credits/    
-    """
-    course_credits = Course.objects.filter(id=id)
-    serializer = CourseSerializer(course_credits, many=True)
-    return Response(serializer.data)
+# @api_view(['GET'])
+# @permission_classes([IsAuthenticated])
+# def get_course_credits(request, id):
+#     """api/courses/get_course_credits/    
+#     """
+#     course_credits = Course.objects.filter(id=id)
+#     serializer = CourseSerializer(course_credits, many=True)
+#     return Response(serializer.data)
 
 
 @api_view(['POST'])

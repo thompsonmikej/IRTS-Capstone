@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'courses.apps.CoursesConfig',  
     'student_courses.apps.StudentCourseConfig',  
-    'cars.apps.CarsConfig'  # This app is for example use only
+    # 'cars.apps.CarsConfig'  # This app is for example use only
     
 ]
 
