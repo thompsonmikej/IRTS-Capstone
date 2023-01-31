@@ -56,7 +56,7 @@ const ScheduledCoursesPage = () => {
         }
         { console.log('courseId', courseId) }
         try {
-            let response = await axios.delete(`http://127.0.0.1:8000/api/student_courses/delete_courses/${courseId}/`,
+            let response = await axios.delete(`http://127.0.0.1:8000/api/student_courses/disenrolls_course/${courseId}/`,
                 {
                     headers: {
                         Authorization: "Bearer " + token

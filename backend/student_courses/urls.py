@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns = [
     path('post_student_into_courses/', views.post_student_into_courses), 
-    path('admin_gets_studentcourses/<int:user_id>/', views.admin_gets_studentcourses), 
+    path('employee_gets_studentcourses/<int:user_id>/', views.employee_gets_studentcourses), 
     path('get_transcript/', views.get_transcript), 
     path('get_scheduled_courses/', views.get_scheduled_courses),
     path('put_grade_course_object/<int:student_course_id>/', views.put_grade_course_object), 

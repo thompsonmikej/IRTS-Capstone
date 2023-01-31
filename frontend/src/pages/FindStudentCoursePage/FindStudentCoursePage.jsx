@@ -24,7 +24,7 @@ const FindStudentCoursePage = (props) => {
         const fetchStudentCourseRecords = async (props) => {
             { console.log('props pass in studentid, fetchStudentCourseRecords', studentId) }
             try {
-                let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/admin_gets_studentcourses/${studentId}/`,
+                let response = await axios.get(`http://127.0.0.1:8000/api/student_courses/employee_gets_studentcourses/${studentId}/`,
                     {
                         headers: {
                             Authorization: "Bearer " + token,

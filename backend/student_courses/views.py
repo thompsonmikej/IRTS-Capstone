@@ -29,8 +29,8 @@ def get_scheduled_courses(request):
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def admin_gets_studentcourses(request, user_id):
-    """api/student_courses/admin_gets_studentcourses/<int:user_id>/  
+def employee_gets_studentcourses(request, user_id):
+    """api/student_courses/employee_gets_studentcourses/<int:user_id>/  
     """
     get_studentcourses = StudentCourse.objects.filter(user_id=user_id)
     serializer = StudentCourseSerializer(get_studentcourses, many=True)
@@ -63,7 +63,7 @@ def put_grade_course_object(request, student_course_id):
 
 @api_view(['DELETE']) 
 def delete_courses(request, pk):
-    """/api/student_courses/delete_courses/<int:pk>/
+    """/api/student_courses/disenrolls_course/<int:pk>/
     """
     course= get_object_or_404(StudentCourse, pk=pk)
     course.delete()
