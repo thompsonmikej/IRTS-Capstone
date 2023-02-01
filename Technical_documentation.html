@@ -18,150 +18,158 @@
         eligibility for graduation.</p>
         
     <h2>Built With</h2>
-    <ol>
-        <li>![Brave](https://img.shields.io/badge/Brave-FB542B?style=for-the-badge&logo=Brave&logoColor=white)</li>
-        <li>CSS Flexbox</li>
-        <li>Cypress</li>
-        <li>![Django](https://img.shields.io/badge/DJANGO-REST-ff1709?style=for-the-badge&logo=django&logoColor=white&color=ff1709&labelColor=gray)
-        </li>
-        <li>![DjangoREST](https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white)
-            DjangoREST</li>
-        <li>![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)</li>
-        <li>![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)</li>
-        <li>![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)</li>
-        <li>![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)</li>
-    </ol>      
+        <ol>
+            <li>![Brave](https://img.shields.io/badge/Brave-FB542B?style=for-the-badge&logo=Brave&logoColor=white)</li>
+            <li>CSS Flexbox</li>
+            <li>Cypress</li>
+            <li>![Django](https://img.shields.io/badge/DJANGO-REST-ff1709?style=for-the-badge&logo=django&logoColor=white&color=ff1709&labelColor=gray)
+            </li>
+            <li>![DjangoREST](https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white)
+                DjangoREST</li>
+            <li>![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)</li>
+            <li>![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)</li>
+            <li>![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)</li>
+            <li>![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)</li>
+        </ol>      
 
     <h2>My Process</h2>
         <p>I submitted the Capstone project proposal on Thursday, November 17, 2022. It was approved on Thursday, November 17, 2022.</p>
         <p>The 15-day development sprint ran from Thursday, November 17, 2022 through Wednesday, December 14, 2022. </p>
         <p>I presented the project live on Zoom on Friday, December 16, 2022.</p>
-
         <p>The User Stories for this app were derived from my recollection of the functions that I used to use in registration
         systems as a Registrar’s office employee. The intention was to re-create the system and build accessibility features
         into the design.</p>
-        <p>The tools were a combination the technologies listed below, my prior usability testing experience, and education in
-        graphic design. Designing the wireframes and ERD were the easiest parts to finish. While writing the math calculations
-        in algebra was easy, writing them in Python as APIs proved far more difficult</p>
-        <p>My plan for the sprint was to devote the first three days to drafting the wireframes and ERD and sketching the math
-        calculations to return the expected results.</p>
-        <p>The overall pace was the balance of quick ideas and slow coding. Some functions required assistance to apply what was
-        taught in the class to more advanced applications of them to satisfy the User Story requirements.</p>
-
 
         <h3>Wireframes</h3>
-        <ol>
-            <li>irts Capstone wireframes 202211.jpg</li>
-            <li>irts_user wireframe.png</li>
-        </ol>
+            <ol>
+                <li>IRTS Capstone wireframes.jpg</li>
+                <li>IRTS Capstone wireframes.png</li>
+            </ol>
                 
         <h3>Entity Relational Diagram (ERD)</h3>
-        C:\Users\thomp_7zthxmg\Desktop\devCodeCamp\IRTS_Capstone\IRTS Capstone ERD.png
-
+            <ul>
+                <li>IRTS Capstone ERD.png</li>
+            </ul>
+            
     <h2>Technical Showcase</h2>
         <p>Technical challenge-- Creating the differentiated user experience. Giving the employee access to student records
             concealing the student path from the employee path.</p>
         <p>Combining calculations to trigger events such as updated eligibility status. </p>
   
         <h3>Differentiated User Experience</h3>
-                <h4>Paths for Logged-In User and Non-Logged-In</h4>
+            <p>Displaying or concealing information based on user type to create a differentiated user experience.</p>
+                <ol>
+                    <li>Paths for Logged-In User and Non-Logged-In</li>
                     <p>Appearance of the Search Bar and Log-out button</p>
                     <p>One example is that the search bar is only available to logged-in users.
                         For this sprint, the Search form field is simulated. In an upcoming sprint, the Search form will be fully
                         functional.</p>
+                                <ol>
+                                    <li>
+                                        <p>
+                                            <div className="navBar centered max-45width">
+                                                {user ? (
+                                                <><label>
+                                                        <span className="navText brand centered">
+                                                            <input className="dummy centered max-125width label-text" type="text"
+                                                                name="search" /></span>
+                                                        <span className="label-text">
+                                                            <Link to={'#'} className="dummy">Search</Link>
+                                                        </span>
+                                                    </label>
+                                                    <span><button onClick={logoutUser}>Logout</button></span>
+                                                </>
+                                                ) : (
+                                                <span className="navText brand centered">
+                                                    <b>Integrated Registration Tracking System</b>
+                                                </span>
+                                                )
+                                                }
+                                        </p>
+                                    </li>
+                                </ol>
             
-            <ol>
-                <li>
-                    <blockquote><!-- <div className="navBar centered max-45width">
-                            {user ? (
-                            <><label>
-                                    <span className="navText brand centered">
-                                        <input className="dummy centered max-125width label-text" type="text" name="search" /></span>
-                                    <span className="label-text">
-                                        <Link to={'#'} className="dummy">Search</Link>
-                                    </span>
-                                </label>
-                                <span><button onClick={logoutUser}>Logout</button></span>
-                            </>
-                            ) : (
-                            <span className="navText brand centered">
-                                <b>Integrated Registration Tracking System</b>
-                            </span>
-                            )
-                            }
-                        </div> -->
-                    </blockquote>
-                </li>
-            </ol>
-                        <h4>Paths for Employee and Student</h4>
-                    <p>Separate Menu options</p>
+            
+                    <li>Paths for Employee and Student</li>
+                </ol>
+                <p>Separate Menu options</p>
             
             <h3>Web Accessibility Features</h3>
-                <h4>Color palette</h4>
-                <h4>Button change shape and color</h4>
-                <h4><quot>Back to Top</quot> Skip links</h4>
-
-            <p>(A code block which showcases my solution to the problem)
-            displaying or concealing information based on user type to create a differentiated user experience.</p>
-                                  
+                    <ol>
+                        <li><h3>Color palette</h3></li>
+                            <p>The black, bold text palette and the gray and violet color palette is high contrast for low vision users and Web Content Accessibility Guidelines (WCAG) X.x compliant.</p>
+                        <li><h3>Button change color and shape.</h3></li>
+                            <p>The button change of shape and color is WCAG compliant serves sighted users.</p>
+                        <li><h3><quote>Back to Top</quote> Skip links</h3></li>
+                            <p>The quick navigation to top of page is compliant with WCAG X.x</p>
+                    </ol>
+                                      
            
     <h2>Installation Steps</h2>
         <h3>Launching Django for the Backend Server</h3>
             <ol>
-                <li>
+                <li><h3></h3>
                     <p></p>
                 </li>
-                <li>
+                <li><h3></h3>
                     <p></p>
                 </li>
-                <li>
+                <li><h3></h3>
                     <p></p>
                 </li>
-                <li>
+                <li><h3></h3>
                     <p></p>
                 </li>
-                <li>
+                <li><h3></h3>
                     <p></p>
                 </li>
-            
             </ol>
 
         
         <h3>Launching React for Frontend Server</h3>
             <ol>
                 <li>
+                    <h3></h3>
                     <p></p>
                 </li>
                 <li>
+                    <h3></h3>
                     <p></p>
                 </li>
                 <li>
+                    <h3></h3>
                     <p></p>
                 </li>
                 <li>
+                    <h3></h3>
                     <p></p>
                 </li>
                 <li>
+                    <h3></h3>
                     <p></p>
                 </li>
-            
             </ol>
 
         <h3>Launching MySQL for the active database</h3>
             <ol>
                 <li>
+                    <h3></h3>
                     <p></p>
                 </li>
                 <li>
+                    <h3></h3>
                     <p></p>
                 </li>
                 <li>
+                    <h3></h3>
                     <p></p>
                 </li>
                 <li>
+                    <h3></h3>
                     <p></p>
                 </li>
                 <li>
+                    <h3></h3>
                     <p></p>
                 </li>
             </ol>
@@ -169,197 +177,273 @@
         <h3>Launching Postman for the endpoint testing</h3>
             <ol>
                 <li>
+                    <h3></h3>
                     <p></p>
                 </li>
                 <li>
+                    <h3></h3>
                     <p></p>
                 </li>
                 <li>
+                    <h3></h3>
                     <p></p>
                 </li>
                 <li>
+                    <h3></h3>
                     <p></p>
                 </li>
                 <li>
+                    <h3></h3>
                     <p></p>
                 </li>
-            
             </ol>
 
         <h3>Launching Cypress for the automated testing</h3>
         <ol>
-            <li>
-                <p></p>
-            </li>
-            <li>
-                <p></p>
-            </li>
-            <li>
-                <p></p>
-            </li>
-            <li>
-                <p></p>
-            </li>
-            <li>
-                <p></p>
-            </li>
-
+                <li>
+                    <h3></h3>
+                    <p></p>
+                </li>
+                <li>
+                    <h3></h3>
+                    <p></p>
+                </li>
+                <li>
+                    <h3></h3>
+                    <p></p>
+                </li>
+                <li>
+                    <h3></h3>
+                    <p></p>
+                </li>
+                <li>
+                    <h3></h3>
+                    <p></p>
+                </li>
         </ol>
 
             
     <h2>Continued Development</h2>
-        <p>Anything that I want to improve in-- weaknesses in skill set
-        further my learning</p>
-        <h3>Functionality -- endpoints that expand upon the information</h3>
-        <h3>Creating a functional Search bar, functional skip links (“back to top”)</h3>
-        <h3>Building a delete function so that an Employee may remove a graded course from the student's record, thereby
-        automatically recalulating their GPA and credit totals  </h3>
-        
+        <p>Aspects of coding in which I want to further my learning and improve.</p>
+            <ol>
+                <li><h3>Link functionality</h3>
+                    <p>Create endpoints for display links. Add new screens to expand the information to which the links allude.</p>
+                </li>
+                <li><h3>Create functional skip links (“back to top”) and Search Bar</h3>
+                    <p>The Skip links, positioned at the bottom of a page will allow logged-in users to navigate to the top of a page with one click.</p>
+                    <p>The Search bar will allow students to quickly find courses, locations, and teachers with relevant search terms.</p>
+                    <p>The same bar will allow employees to quickly find courses, locations, and teachers and also students with relevant search terms.</p>
+                </li>
+                <li><h3>Delete a Graded Course</h3>
+                    <p>Building a delete function so that an Employee may remove a graded course from the student's transcript. This will
+                    trigger a re-calculation of the student's GPA and credit totals.</p>
+                </li>
+            </ol>
+      
 
     <h2>Contact Me</h2>
-    <ol>
-        <li>https://www.linkedin.com/in/the1michaelt/</li>
-        <li>https://github.com/the1michaelt</li>
-        <li>webdevmikethompson@gmail.com</li>
-    </ol>>
+        <ol>
+            <li>https://www.linkedin.com/in/the1michaelt/</li>
+            <li>https://github.com/the1michaelt</li>
+            <li>webdevmikethompson@gmail.com</li>
+        </ol>
 
     <h2>API Endpoints</h2>
+        <h3>JWT Backend APIs</h3>
+        <p>These are the subfolder directories for all subsequent endpoints.</p>
+            <ol>
+                <li>
+                    <h5>Admin Access Endpoint</h5>
+                    <p>URL for users with administrative privileges.</p>
+                    <p>http://127.0.0.1:8000/admin/</p>
+                    <hr />
+                </li>
+                <li>
+                    <h5>User Objects Subfolder</h5>
+                    <p>Subfolder for custom endpoints related to user data as employee or student.</p>
+                    <p>http://127.0.0.1:8000/api/auth/</p>
+                    <hr />
+                </li>
 
-        <h3>Person objects</h3>
+                <li>
+                    <h5>Courses Subfolder</h5>
+                    <p>Subfolder for custom endpoints related to courses in the catalog.</p>
+                    <p>http://127.0.0.1:8000/api/courses/</p>
+                    <hr />
+                </li>
+                <li>
+                    <h5>Student_Courses Subfolder</h5>
+                    <p>Subfolder of custom endpoints for the joining of student objects to the courses in which they are enrolled.
+                    </p>
+                    <p>http://127.0.0.1:8000/api/courses/</p>
+                    <hr />
+                </li>
+            </ol>
+
+        <h3>Person object APIs</h3>
+            <p>Person objects can be either students or employees.</p>
+            <ol>
+                <li>
+                    <h5>Student Gets Current Credit Total</h5>
+                    <p>A logged-in student may view his/her own current data on the Transcript page.</p>
+                    <p>http://127.0.0.1:8000/api/auth/get_current_credits/<code><int:user_id></code>/</p>
+                   
+                    <p>@api_view(['GET'])
+                    def get_current_credits(request, user_id):
+                    student_object = User.objects.get(id=user_id)
+                    passed_courses = StudentCourse.objects.filter(user_id=user_id).exclude(credits_received=0)
+                    sum_of_credits = 0
+                    for passed_course in passed_courses:
+                    sum_of_credits += passed_course.credits_received
+                    return Response(sum_of_credits)</p>
+                    
+                    <hr />
+                </li>
+
+                <li>
+                    <h5>Calculate Graduation Eligibility</h5>
+                    <p>A logged-in employee may calculate the selected student’s data and update the database via the FindStudentCourse
+                        page.</p>
+                    <p>http://127.0.0.1:8000/api/auth/student_graduation_eligibility/<code><int:user_id></code>/</p>
+                <hr /></li>
+                <li>
+                    <h5>View Student Directory</h5>
+                    <p>A logged-in employee may view a list of students in the database on the StudentDirectory page.</p>
+                    <p>http://127.0.0.1:8000/api/auth/student_directory/</p>
+                <hr /></li>
+                <li>
+                    <h5>View Graduate Ready Candidates</h5>
+                    <p>A logged-in employee may view the list of students meeting the minimum graduation criteria of 128 credits and 3.0
+                        GPA.</p>
+                    <p>http://127.0.0.1:8000/api/auth/grad_ready_candidates/</p>
+                <hr /></li>
+                <li>
+                    <h5>User Log-in</h5>
+                    <p>A registered student or employee may log-in with a token.</p>
+                    <p>http://127.0.0.1:8000/api/auth/login/</p>
+                <hr /></li>
+                <li>
+                    <h5>User Register</h5>
+                    <p>For Postman API testing. A user registers as a student or employee in the system.</p>
+                    <p>http://127.0.0.1:8000/api/auth/register/</p>
+                <hr /></li>
+                <li>
+                    <h5>Student Gets Current Semester</h5>
+                    <p>A logged-in student may view his/her own current data on the Transcript page.</p>
+                    <p>http://127.0.0.1:8000/api/auth/get_current_semester/<code><int:user_id></code>/</p>
+                    
+                    <p>@api_view(['GET'])
+                    def get_current_semester(request, user_id):
+                    student_object = User.objects.get(id=user_id)
+                    passed_courses = StudentCourse.objects.filter(user_id=user_id).exclude(credits_received=0)
+                    sum_of_credits = 0
+                    for passed_course in passed_courses:
+                    sum_of_credits += passed_course.credits_received
+                    semester=(sum_of_credits//16)+1
+                    return Response(semester)</p>
+
+                    <hr />
+                </li>
+                <li>
+                    <h5>Student Gets Current GPA</h5>
+                    <p>A logged-in student may view his/her own current data on the Transcript page.</p>
+                    <p>http://127.0.0.1:8000/api/auth/get_current_gpa/<code><int:user_id></code>/</p>
+                    
+                    <p>@api_view(['GET'])
+                    def get_current_gpa(request, user_id):
+                    student_object = User.objects.get(id=user_id)
+                    graded_courses = StudentCourse.objects.filter(user_id=user_id).exclude(grade_received=0)
+                    sum_of_grades = 0
+                    for grade in graded_courses:
+                    sum_of_grades += grade.grade_received
+                    gpa = sum_of_grades/len(graded_courses)
+                    return Response(gpa)</p>
+
+                    <hr />
+                </li>
+            </ol>
+
+
+        <h3>Courses APIs</h3>
+        <p>Courses contain credit values and semester levels. These objects fill the catalog</p>
         <ol>
-            <!-- Endpoint title
-            Brief description of endpoint
-            Endpoint URL, with http method
-            Request body (if applicable)
-            Request headers (if applicable) -->
             <li>
-                <h6>Student Gets Current Credits</h6>
-                <quot>http://127.0.0.1:8000/api/auth/get_current_credits/<int:user_id>/</quot>
-                <p>A logged-in student may view his/her own current data on the Transcript page.</p>
-                <hr />
-            </li>
-            <li>
-                <h6>Student Gets Current Semester</h6>
-                <quot>http://127.0.0.1:8000/api/auth/get_current_semester/<int:user_id>/</quot>
-                <p>A logged-in student may view his/her own current data on the Transcript page.</p>
-                <hr />
-            </li>
-            <li>
-                <h6>Student Gets Current GPA</h6>
-                <quot>http://127.0.0.1:8000/api/auth/get_current_gpa/<int:user_id>/</quot>
-                <p>A logged-in student may view his/her own current data on the Transcript page.</p>
-                <hr />
-            </li>
-        </ol>
-
-
-        <h3>Courses</h3>
-        <ol>
-            <li>
-                <h6>Display Courses Available to Student</h6>
-                <quot>http://127.0.0.1:8000/api/courses/courses_available/</quot>
-                <p>Displays all courses of a logged-in student at their current semester level on the AvailableCourses page.</p>
-                <hr />
-            </li>
-            <li>
-                <h6>Employee Creates Course in Catalog</h6>
-                <quot>http://127.0.0.1:8000/api/courses/post_create_courses/</quot>
+                <h5>Employee Creates Course in Catalog</h5>
                 <p>A logged-in employee may create a course via the AddCourses page.</p>
+                <p>http://127.0.0.1:8000/api/courses/post_create_courses/</p>
+               
+                <p>@api_view(['POST'])
+                @permission_classes([IsAuthenticated])
+                def post_create_courses(request):
+                """api/courses/post_create_courses/
+                """
+                serializer = CourseSerializer(data=request.data)
+                if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)</p>
+               
                 <hr />
             </li>
             <li>
-                <h6>Employee Deletes Course from Catalog</h6>
-                <quot>http://127.0.0.1:8000/api/courses/delete_courses/<int:pk>/</quot>
+                <h5>Employee Deletes Course from Catalog</h5>
                 <p>A logged-in employee may delete a course via the AddCourses page.</p>
+                <p>http://127.0.0.1:8000/api/courses/delete_courses/<code><int:pk></code>/</p>
+                <hr />
+            </li>
+            <li>
+                <h5>Display Courses Available to Student</h5>
+                <p>Displays all courses of a logged-in student at their current semester level on the AvailableCourses page.</p>
+                <p>http://127.0.0.1:8000/api/courses/courses_available/</p>
                 <hr />
             </li>
         </ol>
 
-
-    <h3>Student Courses</h3>
-        <ol>
-<!-- Endpoint title
-Brief description of endpoint
-Endpoint URL, with http method
-Request body (if applicable)
-Request headers (if applicable) -->
-
-
-            <li>
-                <h6>Student Enrolls into a Course</h6>
-                <quot>http://127.0.0.1:8000/api/student_courses/post_student_into_courses/</quot>
-                <p>Allows a logged-in student placement into a course via the “enroll” button on the AvailableCourses page.</p>
-                <hr />
-            </li>
-            <li>
-                <h6>Employee Displays Student Courses</h6>
-                <quot>http://127.0.0.1:8000/api/student_courses/employee_gets_studentcourses/<int:user_id>/</quot>
-                <p>Displays all courses of a logged-in employee for a student selected via the FindStudentCourses page.</p>
-                <hr />
-            </li>
-            <li>
-                <h6>Student Gets Transcript</h6>
-                <quot>http://127.0.0.1:8000/api/student_courses/get_transcript/</quot>
-                <p>Displays all courses of a logged-in student on the Transcript page.</p>
-                <hr />
-            </li>
-            <li>
-                <h6>Student Gets Schedule of Courses</h6>
-                <quot>http://127.0.0.1:8000/api/student_courses/get_scheduled_courses/</quot>
-                <p>Displays all courses into which a logged-in student has clicked “enroll” from the menu of options on the
-                AvailableCourses page.</p>
-                <hr />
-            </li>
-            <li>
-                <h6>Employee Grades Student Course</h6>
-                <quot>http://127.0.0.1:8000/api/student_courses/put_grade_course_object/<int:student_course_id>/</quot>
-                <p>A logged-in employee may apply a grade to the specific course or a specific student via the GradeCourse page.</p>
-                <hr />
-            </li>
-            <li>
-                <h6>Student Disenrolls from a Course</h6>
-                <quot>http://127.0.0.1:8000/api/student_courses/disenrolls_course/<int:pk>/</quot>
-                <p>A logged-in student may delete a course via the “disenroll” button on the ScheduledCourses page.</p>
-                <hr />
-            </li>
-        </ol>
-
-        <h3>JWT Backend</h3>
-        <ol>
-            <li>
-                <quot></quot>
-                <p></p>
-            <hr /></li>
-            <li>
-                <quot></quot>
-                <p></p>
-            <hr /></li>
-            <li>
-                <quot></quot>
-                <p></p>
-            <hr /></li>
-            <li>
-                <quot></quot>
-                <p></p>
-            <hr /></li>
-            <li>
-                <quot></quot>
-                <p></p>
-            <hr /></li>
-            <li>
-                <quot></quot>
-                <p></p>
-            <hr /></li>
-            <li>
-                <quot></quot>
-                <p></p>
-            <hr /></li>
-        </ol>
-
-
+        <h3>Student Courses APIs</h3>
+            <p>Courses in which the student is enrolled</p>
+            <ol>
+                <li>
+                    <h5>Student Enrolls into a Course</h5>
+                    <p>Allows a logged-in student placement into a course via the “enroll” button on the AvailableCourses page.</p>
+                    <p>http://127.0.0.1:8000/api/student_courses/post_student_into_courses/</p>
+                    <hr />
+                </li>
+                <li>
+                    <h5>Employee Displays Student Courses</h5>
+                    <p>Displays all courses of a logged-in employee for a student selected via the FindStudentCourses page.</p>
+                    <p>http://127.0.0.1:8000/api/student_courses/employee_gets_studentcourses/<code><int:user_id></code>/</p>
+                    <hr />
+                </li>
+                <li>
+                    <h5>Student Gets Transcript</h5>
+                    <p>Displays all courses of a logged-in student on the Transcript page.</p>
+                    <p>http://127.0.0.1:8000/api/student_courses/get_transcript/</p>
+                    <hr />
+                </li>
+                <li>
+                    <h5>Student Gets Schedule of Courses</h5>
+                    <p>Displays all courses into which a logged-in student has clicked “enroll” from the menu of options on the
+                        AvailableCourses page.</p>
+                    <p>http://127.0.0.1:8000/api/student_courses/get_scheduled_courses/</p>
+                    <hr />
+                </li>
+                <li>
+                    <h5>Employee Grades Student Course</h5>
+                    <p>A logged-in employee may apply a grade to the specific course or a specific student via the GradeCourse page.</p>
+                    <p>http://127.0.0.1:8000/api/student_courses/put_grade_course_object/<code><int:student_course_id></code>/</p>
+                    <hr />
+                </li>
+                <li>
+                    <h5>Student Disenrolls from a Course</h5>
+                    <p>A logged-in student may delete a course via the “disenroll” button on the ScheduledCourses page.</p>
+                    <p>http://127.0.0.1:8000/api/student_courses/disenrolls_course/<code><int:pk></code>/</p>
+                    <hr />
+                </li>
+            </ol>
+                        
+    </ol>
 
     <h2></h2>
-
 
 </body>
 </html>
