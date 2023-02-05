@@ -1,6 +1,6 @@
-      IRTS Technical Documentation
+# IRTS Technical Documentation
 
-Integrated Registration Tracking System Technical Documentation
+## Integrated Registration Tracking System Technical Documentation
 ===============================================================
 
 About the Project
@@ -34,12 +34,12 @@ The User Stories for this app were derived from my recollection of the functions
 
 ### Wireframes
 
-1. IRTS Capstone wireframes.jpg
-2. IRTS Capstone wireframes.png
+1. IRTS Capstone wireframe screens.jpg
+2. IRTS Capstone wireframe user flows.png
 
 ### Entity Relational Diagram (ERD)
 
-* IRTS Capstone ERD.png
+1. IRTS Capstone ERD.png
 
 Technical Showcase
 ------------------
@@ -60,7 +60,7 @@ One example is that the search bar is only available to logged-in users. For thi
 
 1. {user ? ( <>  Search Logout ) : ( **Integrated Registration Tracking System** ) }
 
-5. Paths for Employee and Student
+2. Paths for Employee and Student
 
 Separate Menu options
 
@@ -68,28 +68,45 @@ Separate Menu options
 
 1. ### Color palette
 
-The black, bold text palette and the gray and violet color palette is high contrast for low vision users and Web Content Accessibility Guidelines (WCAG) X.x compliant.
+The black, bold text palette and the gray and violet color palette is high contrast for low vision users and Web Content Accessibility Guidelines (WCAG) 1.4.3 compliant.
 
-3. ### Button change color and shape
+2. ### Button change color and shape
 
 The button change of shape and color is WCAG compliant serves sighted users.
 
-5. ### Back to Top Skip links
+3. ### "Back to Top" Skip links
 
-The quick navigation to top of page is compliant with WCAG X.x
+The quick navigation to top of page is compliant with WCAG 2.4.1.
 
 Installation Steps
 ------------------
 
 ### Launching Django for the Backend Server
+1. Clone this repo from Github
+2. Download and install Visual Studio Code
+3. 
+4. cd backend
+5. pipenv shell
+6. python manage.py runserver
 
 ### Launching React for Frontend Server
+1. clone the repo
+2. npx create-react-app
+3. IRTS to run Node
+4. cd frontend
+5. npm start
 
 ### Launching MySQL for the active database
+1. Download and install MySQL
+2. Double-click the file, \IRTS_Capstone\package-lock.json
 
 ### Launching Postman for the endpoint testing
+1. Download and install Postman
+2. Double-click the file, \IRTS_Capstone\student data2022.sql
 
 ### Launching Cypress for the automated testing
+1. Download and install Cypress
+2. Double-click the file, \IRTS_Capstone\cypress\e2e\App.cy.js"
 
 Continued Development
 ---------------------
