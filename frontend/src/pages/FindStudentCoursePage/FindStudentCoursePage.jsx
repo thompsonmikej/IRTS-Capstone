@@ -49,7 +49,7 @@ const FindStudentCoursePage = (props) => {
                     credits_earned: "",
                     grad_ready: ""
                 };
-                let response = await axios.put(`http://127.0.0.1:8000/api/auth/student_graduation_eligibility/${studentId}/`, userObjectValues, {
+                let response = await axios.put(`http://127.0.0.1:8000/api/auth/put_student_graduation_eligibility/${studentId}/`, userObjectValues, {
                     headers: {
                         Authorization: "Bearer " + token,
                     },

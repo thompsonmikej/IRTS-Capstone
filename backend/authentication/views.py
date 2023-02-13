@@ -95,7 +95,7 @@ def get_current_gpa(request, user_id):
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])   
 def put_student_graduation_eligibility(request, user_id):
-    """api/auth/student_graduation_eligibility/
+    """api/auth/put_student_graduation_eligibility/
     UPDATES grad_ready, GPA, semester, credits_earned
     """   
     student_object = User.objects.get(id=user_id)
