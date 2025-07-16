@@ -107,7 +107,9 @@ Thanks to the instructors, mentors, and staff at [**devCodeCamp**](https://devco
 
 Feel free to reach out or connect:
 
-**Michael Thompson**  
+**Michael Thompson**
+[LinkedIn Profile] https://www.linkedin.com/in/thompsonmikej  
+
 ## Technologies
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
