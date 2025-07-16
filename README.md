@@ -38,7 +38,7 @@ The IRTS (Integrated Record Tracking System) is a full-stack web application for
 To run this project locally, follow these steps:
 
 Clone the repo
-git clone https://github.com/your-username/irts-capstone.git
+git clone https://github.com/thompsonmikej/IRTS-Capstone.git
 cd irts-capstone
 Backend setup
 pip install -r requirements.txt
@@ -54,11 +54,9 @@ text
 
 ---
 
-## ? Usage & Demo
+## ? Watch a Demo
 
-- ? **[Watch Full Demo Video](#)** (Insert Link)
-- ? Screenshots and GIFs available in the `/assets` folder.
-- ? Project proposal and documentation included in `/docs`.
+- ? **https://youtu.be/8jh5V1k99rI?feature=shared**
 
 ---
 
